@@ -21,12 +21,9 @@ Mobile and GP108 GPUs excluded. These are INF additions, not individual validati
 
 [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest)
 
-**Source and rebuilding**
 
-[Read the build guide](REBUILDING.md) for the final patches, required NVIDIA inputs, reproduction commands and validation results. The repository includes the Python patcher, C/assembly routines and installer templates.
+This is a custom 368.81-derived distribution, not an official NVIDIA 382.69 release. Display driver file version: 6.14.13.8269; INF version: 10.18.13.8269. HD Audio, PhysX and other component versions are unchanged.
 
-**License**
+Validation: the installation payload passed normal XP setup/reboot, version checks and 64 accelerated D3D9 shader/readback checks on a GTX 1080 Ti. Native HDMI 3440x1440/100 Hz at 543.5 MHz was physically confirmed. The 594 MHz policy ceiling is not a confirmed 594 MHz visible-picture result. DP testing used P4000 and GTX 1080 Ti. This does not establish every listed GPU, full DP 1.4 features such as DSC/HDR/MST, every monitor, physical DVI, audio playback or long-term stability.
 
-The project's original code and documentation are licensed under [GPL-3.0-only](LICENSE), with a narrow [NVIDIA integration exception](NVIDIA-EXCEPTION.txt). Distributed modifications to the covered code must remain under GPLv3 and include corresponding source.
-
-NVIDIA binaries, firmware, vendor-derived installer files and NVIDIA-derived portions of the patch data retain their existing terms. This project does not relicense NVIDIA's material.
+Nouveau/Mesa references guided independent Windows analysis; Linux code was not copied. Recorded source pins: Linux adc218676eef25575469234709c2d87185ca223a; Mesa f1f246cfda65eff82fba3be1caf2d23bdeda60cc. Relevant Nouveau sources include drivers/gpu/drm/nouveau/nvkm/engine/disp/gp100.c, gp102.c, gm200.c and gf119.c.

@@ -1,0 +1,15 @@
+NVIDIA integration exception to GPL-3.0-only
+
+As an additional permission under section 7 of GNU GPL version 3, you may
+combine or link this project's covered code with NVIDIA's proprietary
+graphics drivers and firmware, and convey the resulting combination under
+the applicable terms for each part.
+
+You must still comply with GPLv3's source and notice requirements for this
+project's covered code, including your modifications. For a combination
+permitted by this exception, NVIDIA's proprietary portions are excluded
+from the Corresponding Source requirement.
+
+This permission does not grant rights to NVIDIA's material or waive its
+license terms. It applies only to code whose copyright holders grant this
+exception.

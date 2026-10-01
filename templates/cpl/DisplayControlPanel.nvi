@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nvi name="Display.ControlPanel" title="${{title}}" version="${{version}}" versionText="${{version}}" timestamp="2016-07-10T18:02:11" installerMin="2.265.1.0" disposition="critical" hidden="true">
+	<filter name="XP" min="5.1" max="5"/>
+	<filter name="XP32" min="5.1" max="5" platform="x86"/>
+	<filter name="XP64" min="5.1" max="5" platform="amd64"/>
+	<filter name="minVista" min="6.0"/>
+	<filter name="minVista32" min="6.0" platform="x86"/>
+	<filter name="minVista64" min="6.0" platform="amd64"/>
+	<filter name="minWin7" min="6.1"/>
+	<filter name="minWin732" min="6.1" platform="x86"/>
+	<filter name="minWin764" min="6.1" platform="amd64"/>
+	<strings>
+		<string name="version" value="382.69"/>
+		<string name="serviceDisplayName" value="NVIDIA Display Driver Service"/>
+		<string name="serviceDescription" value="Provides system and desktop level support to the NVIDIA display driver"/>
+		<string name="serviceName" value="nvsvc"/>
+		<string name="NvidiaPerUserClassesKey" value="HKCU\Software\Classes\VirtualStore\MACHINE\Software\NVIDIA Corporation"/>
+		<string name="nvxdSyncDestinationPath" value="${{NvidiaProgramFiles}}\Display\nvxdsync.exe"/>
+		<if filter="minVista">
+			<string name="cplServiceBinaryName" value="nvvsvc.exe"/>
+			<else filter="XP32">
+				<string name="cplServiceBinaryName" value="nvsvc32.exe"/>
+				<else filter="XP64">
+					<string name="cplServiceBinaryName" value="nvsvc64.exe"/>
+				</else>
+			</else>
+		</if>
+		<if filter="minVista">
+			<string name="driverServiceName" value="nvlddmkm"/>
+			<else>
+				<string name="driverServiceName" value="nv"/>
+			</else>
+		</if>
+		<localized locale="0x0409">
+			<string name="title" value="NVIDIA Control Panel"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0401">
+			<string name="title" value="لوحة تحكم NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0405">
+			<string name="title" value="Ovládací panel NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0406">
+			<string name="title" value="NVIDIA Kontrolpanel"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0407">
+			<string name="title" value="NVIDIA Systemsteuerung"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0408">
+			<string name="title" value="Πίνακας Ελέγχου NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0809">
+			<string name="title" value="NVIDIA Control Panel"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x040a">
+			<string name="title" value="Panel de control de NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x080a">
+			<string name="title" value="Panel de control de NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x040b">
+			<string name="title" value="NVIDIA-ohjauspaneeli"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x040c">
+			<string name="title" value="Panneau de configuration NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x040d">
+			<string name="title" value="לוח הבקרה של NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x040e">
+			<string name="title" value="NVIDIA Vezérlőpult"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0410">
+			<string name="title" value="Pannello di controllo NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0411">
+			<string name="title" value="NVIDIA コントロール パネル"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0412">
+			<string name="title" value="NVIDIA 제어판"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0413">
+			<string name="title" value="NVIDIA-configuratiescherm"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0414">
+			<string name="title" value="NVIDIA kontrollpanel"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0415">
+			<string name="title" value="Panel sterowania NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0816">
+			<string name="title" value="Painel de controlo da NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0416">
+			<string name="title" value="Painel de controle da NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0419">
+			<string name="title" value="Панель управления NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x041b">
+			<string name="title" value="Ovládací panel NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0424">
+			<string name="title" value="NVIDIA nadzorna plošča"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x041d">
+			<string name="title" value="NVIDIAs kontrollpanel"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x041e">
+			<string name="title" value="แผงควบคุมของ NVIDIA"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x041f">
+			<string name="title" value="NVIDIA Denetim Masası"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0804">
+			<string name="title" value="NVIDIA 控制面板"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+		<localized locale="0x0404">
+			<string name="title" value="NVIDIA 控制面板"/>
+			<string name="arpDisplayName" value="${{title}} ${{version}}"/>
+		</localized>
+	</strings>
+	<dependencies>
+	</dependencies>
+	<description/>
+	<constraints>
+	</constraints>
+	<extensions>
+		<extension file="DisplayCplExt.DLL"/>
+	</extensions>
+	<properties>
+		<bool name="FixedInstallLocation" value="true"/>
+		<string name="InstallLocation" value="${{NvidiaProgramFiles}}\Control Panel Client"/>
+		<string name="ArpDisplayName" value="${{arpDisplayName}}"/>
+		<string name="CplServiceBinaryName" value="${{cplServiceBinaryName}}"/>
+		<string name="DriverServiceName" value="${{driverServiceName}}"/>
+	</properties>
+	<manifest>
+		<file name="DisplayCplExt.dll"/>
+		<file name="DisplayControlPanel.nvi"/>
+		<file name="0000.ui.forms"/><file name="0000.ui.strings"/><file name="0401.ui.forms"/><file name="0401.ui.strings"/><file name="0404.ui.forms"/><file name="0404.ui.strings"/><file name="0405.ui.forms"/><file name="0405.ui.strings"/><file name="0406.ui.forms"/><file name="0406.ui.strings"/><file name="0407.ui.forms"/><file name="0407.ui.strings"/><file name="0408.ui.forms"/><file name="0408.ui.strings"/><file name="0409.ui.forms"/><file name="0409.ui.strings"/><file name="040a.ui.forms"/><file name="040a.ui.strings"/><file name="040b.ui.forms"/><file name="040b.ui.strings"/><file name="040c.ui.forms"/><file name="040c.ui.strings"/><file name="040d.ui.forms"/><file name="040d.ui.strings"/><file name="040e.ui.forms"/><file name="040e.ui.strings"/><file name="0410.ui.forms"/><file name="0410.ui.strings"/><file name="0411.ui.forms"/><file name="0411.ui.strings"/><file name="0412.ui.forms"/><file name="0412.ui.strings"/><file name="0413.ui.forms"/><file name="0413.ui.strings"/><file name="0414.ui.forms"/><file name="0414.ui.strings"/><file name="0415.ui.forms"/><file name="0415.ui.strings"/><file name="0416.ui.forms"/><file name="0416.ui.strings"/><file name="0419.ui.forms"/><file name="0419.ui.strings"/><file name="041b.ui.forms"/><file name="041b.ui.strings"/><file name="041d.ui.forms"/><file name="041d.ui.strings"/><file name="041e.ui.forms"/><file name="041e.ui.strings"/><file name="041f.ui.forms"/><file name="041f.ui.strings"/><file name="0424.ui.forms"/><file name="0424.ui.strings"/><file name="0804.ui.strings"/><file name="0809.ui.strings"/><file name="080a.ui.strings"/><file name="0816.ui.forms"/><file name="0816.ui.strings"/><file name="Advanced.tvp"/><file name="box_checked_disabled.png"/><file name="box_checked_enabled.png"/><file name="box_partialcheckboxed_enabled.png"/><file name="box_unchecked_disabled.png"/><file name="box_unchecked_enabled.png"/><file name="btn_disable_135.png"/><file name="btn_disable_180.png"/><file name="btn_disable_90.png"/><file name="btn_primary_135.png"/><file name="btn_primary_180.png"/><file name="btn_primary_90.png"/><file name="btn_primary_focus_135.png"/><file name="btn_primary_focus_180.png"/><file name="btn_primary_focus_90.png"/><file name="btn_primary_pressed_135.png"/><file name="btn_primary_pressed_180.png"/><file name="btn_primary_pressed_90.png"/><file name="btn_secondary_135.png"/><file name="btn_secondary_180.png"/><file name="btn_secondary_90.png"/><file name="btn_secondary_focus_135.png"/><file name="btn_secondary_focus_180.png"/><file name="btn_secondary_focus_90.png"/><file name="btn_secondary_pressed_135.png"/><file name="btn_secondary_pressed_180.png"/><file name="btn_secondary_pressed_90.png"/><file name="CAD.tvp"/><file name="check.png"/><file name="checkmark.png"/><file name="circled_checkmark.png"/><file name="DCC.tvp"/><file name="default.tvp"/><file name="error.png"/><file name="EULA.txt"/><file name="Finance.tvp"/><file name="info.png"/><file name="install_bg.png"/><file name="install_bg_rtl.png"/><file name="nv3d.chm"/><file name="nv3dARA.chm"/><file name="nv3dCHS.chm"/><file name="nv3dCHT.chm"/><file name="nv3dCSY.chm"/><file name="nv3dDAN.chm"/><file name="nv3dDEU.chm"/><file name="nv3dELL.chm"/><file name="nv3dENG.chm"/><file name="nv3dESM.chm"/><file name="nv3dESN.chm"/><file name="nv3dFIN.chm"/><file name="nv3dFRA.chm"/><file name="nv3dHEB.chm"/><file name="nv3dHUN.chm"/><file name="nv3dITA.chm"/><file name="nv3dJPN.chm"/><file name="nv3dKOR.chm"/><file name="nv3dNLD.chm"/><file name="nv3dNOR.chm"/><file name="nv3dPLK.chm"/><file name="nv3dPTB.chm"/><file name="nv3dPTG.chm"/><file name="nv3dRUS.chm"/><file name="nv3dSKY.chm"/><file name="nv3dSLV.chm"/><file name="nv3dSVE.chm"/><file name="nv3dTHA.chm"/><file name="nv3dTRK.chm"/><file name="nvAppBar.exe"/><file name="nvcolor.exe"/><file name="nvcoproc.bin"/><file name="NVCPAR.HLP"/><file name="NVCPCS.HLP"/><file name="NVCPDA.HLP"/><file name="NVCPDE.HLP"/><file name="NVCPEL.HLP"/><file name="NVCPENG.HLP"/><file name="NVCPES.HLP"/><file name="NVCPESM.HLP"/><file name="NVCPFI.HLP"/><file name="NVCPFR.HLP"/><file name="NVCPHE.HLP"/><file name="NVCPHU.HLP"/><file name="NVCPIT.HLP"/><file name="NVCPJA.HLP"/><file name="NVCPKO.HLP"/><file name="nvcpl.chm"/><file name="nvcpl.cpl"/><file name="nvcpl.dll"/><file name="nvcpl.hlp"/><file name="nvcplARA.chm"/><file name="nvcplCHS.chm"/><file name="nvcplCHT.chm"/><file name="nvcplCSY.chm"/><file name="nvcplDAN.chm"/><file name="nvcplDEU.chm"/><file name="nvcplELL.chm"/><file name="nvcplENG.chm"/><file name="nvcplESM.chm"/><file name="nvcplESN.chm"/><file name="nvcplFIN.chm"/><file name="nvcplFRA.chm"/><file name="nvcplHEB.chm"/><file name="nvcplHUN.chm"/><file name="nvcplITA.chm"/><file name="nvcplJPN.chm"/><file name="nvcplKOR.chm"/><file name="nvcplNLD.chm"/><file name="nvcplNOR.chm"/><file name="nvcplPLK.chm"/><file name="nvcplPTB.chm"/><file name="nvcplPTG.chm"/><file name="nvcplRUS.chm"/><file name="nvcplSKY.chm"/><file name="nvcplSLV.chm"/><file name="nvcplSVE.chm"/><file name="nvcplTHA.chm"/><file name="nvcplTRK.chm"/><file name="nvcplui.exe"/><file name="nvcpluir.dll"/><file name="NVCPNL.HLP"/><file name="NVCPNO.HLP"/><file name="NVCPPL.HLP"/><file name="NVCPPT.HLP"/><file name="NVCPPTB.HLP"/><file name="NVCPRU.HLP"/><file name="NVCPSK.HLP"/><file name="NVCPSL.HLP"/><file name="NVCPSV.HLP"/><file name="NVCPTH.HLP"/><file name="NVCPTR.HLP"/><file name="NVCPZHC.HLP"/><file name="NVCPZHT.HLP"/><file name="nvDispS.dll"/><file name="nvDispSR.dll"/><file name="nvdsp.chm"/><file name="nvdspARA.chm"/><file name="nvdspCHS.chm"/><file name="nvdspCHT.chm"/><file name="nvdspCSY.chm"/><file name="nvdspDAN.chm"/><file name="nvdspDEU.chm"/><file name="nvdspELL.chm"/><file name="nvdspENG.chm"/><file name="nvdspESM.chm"/><file name="nvdspESN.chm"/><file name="nvdspFIN.chm"/><file name="nvdspFRA.chm"/><file name="nvdspHEB.chm"/><file name="nvdspHUN.chm"/><file name="nvdspITA.chm"/><file name="nvdspJPN.chm"/><file name="nvdspKOR.chm"/><file name="nvdspNLD.chm"/><file name="nvdspNOR.chm"/><file name="nvdspPLK.chm"/><file name="nvdspPTB.chm"/><file name="nvdspPTG.chm"/><file name="nvdspRUS.chm"/><file name="nvdspSKY.chm"/><file name="nvdspSLV.chm"/><file name="nvdspSVE.chm"/><file name="nvdspTHA.chm"/><file name="nvdspTRK.chm"/><file name="nvGameS.dll"/><file name="nvGameSR.dll"/><file name="NvGpuUtilization.exe"/><file name="NVI2.dll"/><file name="NVI2SystemService32.sys"/><file name="NVI2SystemService64.sys"/><file name="NVI2UI.dll"/><file name="nView.dll"/><file name="nvlic.chm"/><file name="nvlicARA.chm"/><file name="nvlicCHS.chm"/><file name="nvlicCHT.chm"/><file name="nvlicCSY.chm"/><file name="nvlicDAN.chm"/><file name="nvlicDEU.chm"/><file name="nvlicELL.chm"/><file name="nvlicENG.chm"/><file name="nvlicESM.chm"/><file name="nvlicESN.chm"/><file name="nvlicFIN.chm"/><file name="nvlicFRA.chm"/><file name="nvlicHEB.chm"/><file name="nvlicHUN.chm"/><file name="nvlicITA.chm"/><file name="nvlicJPN.chm"/><file name="nvlicKOR.chm"/><file name="nvlicNLD.chm"/><file name="nvlicNOR.chm"/><file name="nvlicPLK.chm"/><file name="nvlicPTB.chm"/><file name="nvlicPTG.chm"/><file name="nvlicRUS.chm"/><file name="nvlicSKY.chm"/><file name="nvlicSLV.chm"/><file name="nvlicSVE.chm"/><file name="nvlicTHA.chm"/><file name="nvlicTRK.chm"/><file name="nvmccs.dll"/><file name="nvmccsrs.dll"/><file name="nvMccsS.dll"/><file name="nvMccsSR.dll"/><file name="nvmctray.dll"/><file name="nvmob.chm"/><file name="nvmobARA.chm"/><file name="nvmobCHS.chm"/><file name="nvmobCHT.chm"/><file name="nvmobCSY.chm"/><file name="nvmobDAN.chm"/><file name="nvmobDEU.chm"/><file name="nvmobELL.chm"/><file name="nvmobENG.chm"/><file name="nvmobESM.chm"/><file name="nvmobESN.chm"/><file name="nvmobFIN.chm"/><file name="nvmobFRA.chm"/><file name="nvmobHEB.chm"/><file name="nvmobHUN.chm"/><file name="nvmobITA.chm"/><file name="nvmobJPN.chm"/><file name="nvmobKOR.chm"/><file name="nvMoblS.dll"/><file name="nvMoblSR.dll"/><file name="nvmobNLD.chm"/><file name="nvmobNOR.chm"/><file name="nvmobPLK.chm"/><file name="nvmobPTB.chm"/><file name="nvmobPTG.chm"/><file name="nvmobRUS.chm"/><file name="nvmobSKY.chm"/><file name="nvmobSLV.chm"/><file name="nvmobSVE.chm"/><file name="nvmobTHA.chm"/><file name="nvmobTRK.chm"/><file name="nvnt4cpl.dll"/><file name="NVPrxy32.dll"/><file name="NVPrxy64.dll"/><file name="NVRSAR.dll"/><file name="NVRSCS.dll"/><file name="NVRSDA.dll"/><file name="NVRSDE.dll"/><file name="NVRSEL.dll"/><file name="NVRSENG.dll"/><file name="NVRSES.dll"/><file name="NVRSESM.dll"/><file name="NVRSFI.dll"/><file name="NVRSFR.dll"/><file name="NVRSHE.dll"/><file name="NVRSHU.dll"/><file name="NVRSIT.dll"/><file name="NVRSJA.dll"/><file name="NVRSKO.dll"/><file name="NVRSNL.dll"/><file name="NVRSNO.dll"/><file name="NVRSPL.dll"/><file name="NVRSPT.dll"/><file name="NVRSPTB.dll"/><file name="NVRSRU.dll"/><file name="NVRSSK.dll"/><file name="NVRSSL.dll"/><file name="NVRSSV.dll"/><file name="NVRSTH.dll"/><file name="NVRSTR.dll"/><file name="NVRSZHC.dll"/><file name="NVRSZHT.dll"/><file name="nvShell.dll"/><file name="nvst3.chm"/><file name="nvst3ARA.chm"/><file name="nvst3CHS.chm"/><file name="nvst3CHT.chm"/><file name="nvst3CSY.chm"/><file name="nvst3DAN.chm"/><file name="nvst3DEU.chm"/><file name="nvst3ELL.chm"/><file name="nvst3ENG.chm"/><file name="nvst3ESM.chm"/><file name="nvst3ESN.chm"/><file name="nvst3FIN.chm"/><file name="nvst3FRA.chm"/><file name="nvst3HEB.chm"/><file name="nvst3HUN.chm"/><file name="nvst3ITA.chm"/><file name="nvst3JPN.chm"/><file name="nvst3KOR.chm"/><file name="nvst3NLD.chm"/><file name="nvst3NOR.chm"/><file name="nvst3PLK.chm"/><file name="nvst3PTB.chm"/><file name="nvst3PTG.chm"/><file name="nvst3RUS.chm"/><file name="nvst3SKY.chm"/><file name="nvst3SLV.chm"/><file name="nvst3SVE.chm"/><file name="nvst3THA.chm"/><file name="nvst3TRK.chm"/><file name="nvsvc32.exe"/><file name="nvSvS.dll"/><file name="nvSvSR.dll"/><file name="nvTUICpl.cpl"/><file name="nvViTvS.dll"/><file name="nvViTvSR.dll"/><file name="NVWCPAR.chm"/><file name="NVWCPCS.chm"/><file name="NVWCPDA.chm"/><file name="NVWCPDE.chm"/><file name="NVWCPEL.chm"/><file name="NVWCPENG.chm"/><file name="NVWCPENU.chm"/><file name="NVWCPES.chm"/><file name="NVWCPESM.chm"/><file name="NVWCPFI.chm"/><file name="NVWCPFR.chm"/><file name="NVWCPHE.chm"/><file name="NVWCPHU.chm"/><file name="NVWCPIT.chm"/><file name="NVWCPJA.chm"/><file name="NVWCPKO.chm"/><file name="NVWCPNL.chm"/><file name="NVWCPNO.chm"/><file name="NVWCPPL.chm"/><file name="NVWCPPT.chm"/><file name="NVWCPPTB.chm"/><file name="NVWCPRU.chm"/><file name="NVWCPSK.chm"/><file name="NVWCPSL.chm"/><file name="NVWCPSV.chm"/><file name="NVWCPTH.chm"/><file name="NVWCPTR.chm"/><file name="NVWCPZHC.chm"/><file name="NVWCPZHT.chm"/><file name="nvwddi.dll"/><file name="nvwdmcpl.dll"/><file name="nvwimg.dll"/><file name="nvwks.chm"/><file name="nvwksARA.chm"/><file name="nvwksCHS.chm"/><file name="nvwksCHT.chm"/><file name="nvwksCSY.chm"/><file name="nvwksDAN.chm"/><file name="nvwksDEU.chm"/><file name="nvwksELL.chm"/><file name="nvwksENG.chm"/><file name="nvwksESM.chm"/><file name="nvwksESN.chm"/><file name="nvwksFIN.chm"/><file name="nvwksFRA.chm"/><file name="nvwksHEB.chm"/><file name="nvwksHUN.chm"/><file name="nvwksITA.chm"/><file name="nvwksJPN.chm"/><file name="nvwksKOR.chm"/><file name="nvwksNLD.chm"/><file name="nvwksNOR.chm"/><file name="nvwksPLK.chm"/><file name="nvwksPTB.chm"/><file name="nvwksPTG.chm"/><file name="nvwksRUS.chm"/><file name="nvwksSKY.chm"/><file name="nvwksSLV.chm"/><file name="nvwksSVE.chm"/><file name="nvwksTHA.chm"/><file name="nvwksTRK.chm"/><file name="NVWRSAR.dll"/><file name="NVWRSCS.dll"/><file name="NVWRSDA.dll"/><file name="NVWRSDE.dll"/><file name="NVWRSEL.dll"/><file name="NVWRSENG.dll"/><file name="NVWRSENU.dll"/><file name="NVWRSES.dll"/><file name="NVWRSESM.dll"/><file name="NVWRSFI.dll"/><file name="NVWRSFR.dll"/><file name="NVWRSHE.dll"/><file name="NVWRSHU.dll"/><file name="NVWRSIT.dll"/><file name="NVWRSJA.dll"/><file name="NVWRSKO.dll"/><file name="NVWRSNL.dll"/><file name="NVWRSNO.dll"/><file name="NVWRSPL.dll"/><file name="NVWRSPT.dll"/><file name="NVWRSPTB.dll"/><file name="NVWRSRU.dll"/><file name="NVWRSSK.dll"/><file name="NVWRSSL.dll"/><file name="NVWRSSV.dll"/><file name="NVWRSTH.dll"/><file name="NVWRSTR.dll"/><file name="NVWRSZHC.dll"/><file name="NVWRSZHT.dll"/><file name="nvWsS.dll"/><file name="nvWsSR.dll"/><file name="nwiz.exe"/><file name="oemdspif.dll"/><file name="presentations_bg.png"/><file name="presentations_bg_rtl.png"/><file name="radio_btn_selected.png"/><file name="radio_btn_unselected.png"/><file name="setup.cfg"/><file name="setup.exe"/><file name="splash.png"/><file name="splash_rtl.png"/><file name="theme.cfg"/><file name="uninstall_bg.png"/><file name="uninstall_bg_rtl.png"/><file name="warning.png"/></manifest>
+	<phases>
+		<standard phase="createDirectories">
+			<createDirectory target="${{NvidiaProgramFiles}}"/>
+			<createDirectory target="${{InstallLocation}}"/>
+			<createDirectory target="${{NvidiaProgramFiles}}\Display"/>
+			<createDirectory target="${{SharedWindowsDirectory}}\help\nvcpl"/>
+		</standard>
+		<standard phase="clearOtherRegistryData" onError="ignore" when="uninstall">
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Uxd"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\NvTray"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NvTray"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi\Policies" valueName="ContextUIPolicy"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi\Policies"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\Policies" valueName="ContextUIPolicy"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\Policies" valueName="CplGroupUIPolicy"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\Policies" valueName="TaskbarUIPolicy"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\Policies"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\DisplayPosPersist"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVHotkey"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray\NvCpl.dll" valueName="FullPath"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray\NvCpl.dll"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayBrightness"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayColorControlEnable"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayContrast"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayGamma"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayHue"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlayMode3"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverlaySaturation"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="Overscan720Level"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverscanFSVMLevel"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="OverscanOverlayLevel"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="VideoBusMasterMode"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="VMDVC"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay" valueName="VMGamma"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults\Overlay"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults" valueName="NvCplSLIConfig"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\Defaults"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\SessionStartup"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\SessionStartupAfterReboot"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\State" valueName="PageUpdateOrdinal"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak\State"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="NvCplPhysxAuto"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="OptimusProfilesInstalled"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="EnableCPLPersistance"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvSvc\State" valueName="RegistryModesUpdateHasOccurred"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvSvc\State"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvSvc" valueName="CustomCtrlCode"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvSvc"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\Hybrid\Current" valueName="Mode"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid\Current"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\Startup"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\CoProcManager"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\Persistence"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\OEM" valueName="WhiteList"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\OEM"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global" valueName="PersistenceIdentifier"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global" valueName="PersistenceVersion"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\GridLicensing"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi\Policies" valueName="CplInfoUIPolicy"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi\Policies"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVHotkey"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak\State" valueName="PageUpdateOrdinal"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak\State"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak" valueName="Gestalt"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak" valueName="SedonaHasRun"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak" valueName="SLiNoVlinkNotification"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="NvCplFirstBootAfterDriverInstallation"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="NvCplFirstInstallInitDone"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DisableApplyColorsAtStartup"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak\Devices"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\MediaCenterTray"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\Hybrid"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvSvc"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\CoProcManager"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\Startup"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\UserLoggedIn"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\NVIDIA Control Panel"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NVHotkey"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\MediaCenterTray"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\Hybrid"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NvSvc"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvMediaCenter"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvCplDaemon"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvSvc"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVHotkey"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVDeployClient"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVRotateSysTray"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NvCplCleanup"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvExportOEMDefaults"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvCplDaemon"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvRegisterMCTrayNview"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvRegisterMCTray"/>
+			<deleteRegistryKeyTree keyName="HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\DontShowMeThisDialogAgain"/>
+		</standard>
+		<standard phase="clearOtherRegistryDatax86" onError="ignore" when="uninstall" platform="x86">
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVHotkey"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NvSvc"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid\Current"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Hybrid"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\Startup"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\CoProcManager"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVHotkey"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\MediaCenterTray"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\Hybrid"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global\NvSvc"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\CoProcManager"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\Startup"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\NVIDIA Control Panel"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NvCplApi"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NVHotkey"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NVTweak"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\MediaCenterTray"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\Hybrid\Action"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\Hybrid"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global\NvSvc"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvMediaCenter"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvCplDaemon"/>
+			<deleteRegistry keyName="HKLM\Software\Microsoft\Windows\CurrentVersion\Run" valueName="NvSvc"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVHotkey"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVDeployClient"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NVRotateSysTray"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" valueName="NvCplCleanup"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvExportOEMDefaults"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvCplDaemon"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvRegisterMCTrayNview"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvRegisterMCTray"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Installer2" valueName="CPLInstallerInvoked"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Installer2"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistryKeyTree keyName="HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\DontShowMeThisDialogAgain"/>
+		</standard>
+		<standard phase="deleteSettingsData" onError="ignore" when="uninstall">
+			<deleteDirectoryTree target="${{CommonAppData}}\NVIDIA Corporation\Drs"/>
+			<deleteDirectoryTree target="${{NvidiaProgramFiles}}\Drs"/>
+		</standard>
+		<standard phase="deleteNVFolderOn32Bit" onError="ignore" when="uninstall" platform="x86">
+			<deleteDirectoryTree target="${{SystemDirectory}}\NV"/>
+		</standard>
+		<standard phase="deleteNVFolderOn64Bit" onError="ignore" when="uninstall" platform="amd64">
+			<deleteDirectoryTree target="${{SystemDirectory}}\NV"/>
+		</standard>
+		<standard phase="deleteOtherComponents" onError="ignore" when="uninstall">
+			<deleteFile target="${{NvidiaCommonAppData}}\nvapps.xml"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\nvwsapps.xml"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\coproc.dat"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\NvSetnative"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\Resource.dat"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\Resource.old"/>
+			<deleteFile target="${{NvidiaCommonAppData}}\UnsupportedResolutions.dat"/>
+			<deleteDirectory target="${{NvidiaCommonAppData}}"/>
+			<deleteFile target="${{SystemDirectory}}\nvapps.xml"/>
+			<deleteFile target="${{SystemDirectory}}\nvwsapps.xml"/>
+		</standard>
+		<standard phase="deleteSedonaClient" onError="ignore" when="uninstall" condition="deleteCPLClient">
+			<deleteDirectoryTree target="${{InstallLocation}}"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NVIDIA Control Panel"/>
+			<deleteRegistryTree keyName="${{NvidiaSoftwareKey}}\NVControlPanel2\RegisteredServers\Overrides"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NVControlPanel2\RegisteredServers"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel\RegisteredServers2" valueName="Dummy"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NVControlPanel\RegisteredServers2"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="InstalledClientDll"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="HelpFile"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="Client"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="InstalledClient"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NVControlPanel2"/>
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel\RegisteredServers2" valueName="Dummy"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\NVControlPanel\RegisteredServers2"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\NVControlPanel"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\NVIDIA Control Panel"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2\RegisteredServers" valueName="Overrides"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2\RegisteredServers"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2" valueName="InstalledClientDll"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2" valueName="HelpFile"/>
+			<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2" valueName="Client"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\NVControlPanel2"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\don't load" valueName="nvcpl.cpl"/>
+			<deleteRegistryKeyTree keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\ControlPanel\NameSpace\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}"/>
+			<deleteRegistryKeyTree keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}"/>
+		</standard>
+		<custom phase="checkRegisteredServers" action="checkRegisteredServers" when="uninstall"/>
+		<standard phase="deleteSedonaServerBinaries" onError="ignore" when="uninstall">
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="InstalledDisplayServers"/>
+		</standard>
+		<custom phase="removeOldARPEntry" action="RemoveOldARPEntry" onError="ignore" when="install"/>
+		<if filter="minVista">
+			<custom phase="waitCplProcesses" action="waitForProcess" onError="ignore" when="install">
+				<properties>
+					<string name="process" value="NvXDSync.exe"/>
+					<int name="timeout" value="10000"/>
+					<bool name="force" value="true"/>
+				</properties>
+			</custom>
+			<standard phase="stopCplServiceMinVista" onError="ignore" when="install">
+				<controlService name="${{serviceName}}" command="129"/>
+			</standard>
+			<standard phase="waitForCplServiceStop" onError="ignore" when="install">
+				<waitForService name="${{serviceName}}" state="1" timeOut="40000"/>
+			</standard>
+			<else>
+				<standard phase="stopCplServicePreVista" onError="ignore" when="install">
+					<stopService name="${{serviceName}}" timeOut="40000"/>
+				</standard>
+			</else>
+		</if>
+		<if filter="minWin7">
+			<custom phase="stopNvSmartMax" action="stopNvSmartMax" onError="ignore" when="install"/>
+		</if>
+		<if filter="minVista">
+			<standard phase="deleteNvStartedOnInstall" onerror="ignore" when="always">
+				<deleteFile target="${{NvidiaCommonAppData}}\NvStarted"/>
+			</standard>
+		</if>
+		<standard phase="deletePersistenceVersion">
+			<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global" valueName="PersistenceVersion"/>
+		</standard>
+		<standard phase="deleteNVFolderOn32Bit" onError="ignore" when="install" platform="x86">
+			<deleteDirectoryTree target="${{SystemDirectory}}\NV"/>
+		</standard>
+		<standard phase="deleteNVFolderOn64Bit" onError="ignore" when="install" platform="amd64">
+			<deleteDirectoryTree target="${{SystemDirectory}}\NV"/>
+		</standard>
+		<custom phase="checkOverInstallReboot" action="checkOverInstallReboot" when="install"/>
+		<custom phase="decideCplFileList" action="decideCplFileList" when="install"/>
+		<custom phase="decideDLLRegisterList" action="decideDLLRegisterList" when="install"/>
+		<custom phase="decideRegisterNvXDSync" action="decideRegisterNvXDSync" when="install"/>
+		<standard phase="cleanUpHistoricCPLFilesX86" platform="x86" onError="ignore" when="install">
+			<deleteFile target="${{SystemDirectory}}\easyupdatusapiu.dll"/>
+		</standard>
+		<standard phase="cleanUpHistoricCPLFiles" onError="ignore" when="install">
+			<deleteFile target="${{SystemDirectory}}\easyupdatusapiu64.dll"/>
+			<deleteFile target="${{SystemDirectory}}\nvhotkey.dll"/>
+		</standard>
+		<standard phase="copyClientFiles" when="install">
+			<copyFile target="${{InstallLocation}}\nvcplui.exe" source="nvcplui.exe"/>
+			<copyFile target="${{InstallLocation}}\nvcpluir.dll" source="nvcpluir.dll"/>
+			<copyFile target="${{InstallLocation}}\NvGpuUtilization.exe" source="NvGpuUtilization.exe"/>
+		</standard>
+		<standard phase="copyCPLFilesX86" platform="x86">
+			<copyFile target="${{SystemDirectory}}\oemdspif.dll" source="oemdspif.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvwddi.dll" source="nvwddi.dll"/>
+		</standard>
+		<standard phase="copyCPLFiles">
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsvs.dll" source="nvsvs.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsvsr.dll" source="nvsvsr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvmccss.dll" source="nvmccss.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvmccssr.dll" source="nvmccssr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvdisps.dll" source="nvdisps.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvdispsr.dll" source="nvdispsr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvgames.dll" source="nvgames.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvgamesr.dll" source="nvgamesr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvmobls.dll" source="nvmobls.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvmoblsr.dll" source="nvmoblsr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvvitvs.dll" source="nvvitvs.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvvitvsr.dll" source="nvvitvsr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvwss.dll" source="nvwss.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvwssr.dll" source="nvwssr.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvxdapix.dll" source="nvxdapix.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvxdbat.dll" source="nvxdbat.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvxdplcy.dll" source="nvxdplcy.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvcplui.dll" source="nvcplui.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvui.dll" source="nvui.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvuir.dll" source="nvuir.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvlicensings.dll" source="nvlicensings.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvLicensingSR.dll" source="nvLicensingSR.dll"/>
+			<copyFile target="${{nvxdSyncDestinationPath}}" source="nvxdsync.exe"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvtray.exe" source="nvtray.exe"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsmartmax.dll" source="nvsmartmax.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsmartmax64.dll" source="nvsmartmax64.dll"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsmartmaxapp.exe" source="nvsmartmaxapp.exe"/>
+			<copyFile target="${{NvidiaProgramFiles}}\Display\nvsmartmaxapp64.exe" source="nvsmartmaxapp64.exe"/>
+			<copyFile target="${{SystemDirectory}}\nvmctray.dll" source="nvmctray.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvcpl.dll" source="nvcpl.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvsvc.dll" source="nvsvc.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvsvcr.dll" source="nvsvcr.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvcolor.exe" source="nvcolor.exe"/>
+			<copyFile target="${{SystemDirectory}}\nvtmmhyb.dll" source="nvtmmhyb.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvcoproc.bin" source="nvcoproc.bin"/>
+			<copyFile target="${{SystemDirectory}}\nvvsvc.exe" source="nvvsvc.exe"/>
+			<copyFile target="${{SystemDirectory}}\nvsvc32.exe" source="nvsvc32.exe"/>
+			<copyFile target="${{SystemDirectory}}\nvsvc64.dll" source="nvsvc64.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvsvc64.exe" source="nvsvc64.exe"/>
+			<copyFile target="${{SystemDirectory}}\nvrsar.dll" source="nvrsar.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrscs.dll" source="nvrscs.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsda.dll" source="nvrsda.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsde.dll" source="nvrsde.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsel.dll" source="nvrsel.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrseng.dll" source="nvrseng.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrses.dll" source="nvrses.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsesm.dll" source="nvrsesm.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsfi.dll" source="nvrsfi.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsfr.dll" source="nvrsfr.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrshe.dll" source="nvrshe.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrshu.dll" source="nvrshu.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsit.dll" source="nvrsit.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsja.dll" source="nvrsja.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsko.dll" source="nvrsko.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsnl.dll" source="nvrsnl.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsno.dll" source="nvrsno.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrspl.dll" source="nvrspl.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrspt.dll" source="nvrspt.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsptb.dll" source="nvrsptb.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsru.dll" source="nvrsru.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrssk.dll" source="nvrssk.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrssl.dll" source="nvrssl.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrssv.dll" source="nvrssv.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrsth.dll" source="nvrsth.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrstr.dll" source="nvrstr.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrszhc.dll" source="nvrszhc.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvrszht.dll" source="nvrszht.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvwddi.dll" source="nvwddi.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvshext.dll" source="nvshext.dll"/>
+			<copyFile target="${{SystemDirectory}}\nv3dappshext.dll" source="nv3dappshext.dll"/>
+			<copyFile target="${{SystemDirectory}}\nv3dappshextr.dll" source="nv3dappshextr.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvwddi64.dll" source="nvwddi64.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvcpl32.dll" source="nvcpl32.dll"/>
+			<copyFile target="${{SystemDirectory}}\nvnt4cpl.dll" source="nvnt4cpl.dll"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpar.hlp" source="nvcpar.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpcs.hlp" source="nvcpcs.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpda.hlp" source="nvcpda.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpde.hlp" source="nvcpde.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpel.hlp" source="nvcpel.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpeng.hlp" source="nvcpeng.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpes.hlp" source="nvcpes.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpesm.hlp" source="nvcpesm.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpfi.hlp" source="nvcpfi.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpfr.hlp" source="nvcpfr.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcphe.hlp" source="nvcphe.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcphu.hlp" source="nvcphu.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpit.hlp" source="nvcpit.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpja.hlp" source="nvcpja.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpko.hlp" source="nvcpko.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl.hlp" source="nvcpl.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpnl.hlp" source="nvcpnl.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpno.hlp" source="nvcpno.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcppl.hlp" source="nvcppl.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcppt.hlp" source="nvcppt.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpptb.hlp" source="nvcpptb.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpru.hlp" source="nvcpru.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpsk.hlp" source="nvcpsk.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpsl.hlp" source="nvcpsl.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpsv.hlp" source="nvcpsv.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpth.hlp" source="nvcpth.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcptr.hlp" source="nvcptr.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpzhc.hlp" source="nvcpzhc.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpzht.hlp" source="nvcpzht.hlp"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3d.chm" source="nv3d.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dara.chm" source="nv3dara.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dchs.chm" source="nv3dchs.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dcht.chm" source="nv3dcht.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dcsy.chm" source="nv3dcsy.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3ddan.chm" source="nv3ddan.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3ddeu.chm" source="nv3ddeu.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dell.chm" source="nv3dell.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3deng.chm" source="nv3deng.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3desm.chm" source="nv3desm.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3desn.chm" source="nv3desn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dfin.chm" source="nv3dfin.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dfra.chm" source="nv3dfra.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dheb.chm" source="nv3dheb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dhun.chm" source="nv3dhun.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dita.chm" source="nv3dita.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3djpn.chm" source="nv3djpn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dkor.chm" source="nv3dkor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dnld.chm" source="nv3dnld.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dnor.chm" source="nv3dnor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dplk.chm" source="nv3dplk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dptb.chm" source="nv3dptb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dptg.chm" source="nv3dptg.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3drus.chm" source="nv3drus.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dsky.chm" source="nv3dsky.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dslv.chm" source="nv3dslv.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dsve.chm" source="nv3dsve.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dtha.chm" source="nv3dtha.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nv3dtrk.chm" source="nv3dtrk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpl.chm" source="nvcpl.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplara.chm" source="nvcplara.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplchs.chm" source="nvcplchs.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplcht.chm" source="nvcplcht.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplcsy.chm" source="nvcplcsy.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpldan.chm" source="nvcpldan.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpldeu.chm" source="nvcpldeu.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplell.chm" source="nvcplell.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpleng.chm" source="nvcpleng.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplesm.chm" source="nvcplesm.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplesn.chm" source="nvcplesn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplfin.chm" source="nvcplfin.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplfra.chm" source="nvcplfra.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplheb.chm" source="nvcplheb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplhun.chm" source="nvcplhun.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplita.chm" source="nvcplita.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpljpn.chm" source="nvcpljpn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplkor.chm" source="nvcplkor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplnld.chm" source="nvcplnld.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplnor.chm" source="nvcplnor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplplk.chm" source="nvcplplk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplptb.chm" source="nvcplptb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplptg.chm" source="nvcplptg.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplrus.chm" source="nvcplrus.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplsky.chm" source="nvcplsky.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplslv.chm" source="nvcplslv.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcplsve.chm" source="nvcplsve.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpltha.chm" source="nvcpltha.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvcpltrk.chm" source="nvcpltrk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdsp.chm" source="nvdsp.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspara.chm" source="nvdspara.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspchs.chm" source="nvdspchs.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspcht.chm" source="nvdspcht.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspcsy.chm" source="nvdspcsy.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspdan.chm" source="nvdspdan.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspdeu.chm" source="nvdspdeu.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspell.chm" source="nvdspell.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspeng.chm" source="nvdspeng.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspesm.chm" source="nvdspesm.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspesn.chm" source="nvdspesn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspfin.chm" source="nvdspfin.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspfra.chm" source="nvdspfra.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspheb.chm" source="nvdspheb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdsphun.chm" source="nvdsphun.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspita.chm" source="nvdspita.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspjpn.chm" source="nvdspjpn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspkor.chm" source="nvdspkor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspnld.chm" source="nvdspnld.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspnor.chm" source="nvdspnor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspplk.chm" source="nvdspplk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspptb.chm" source="nvdspptb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspptg.chm" source="nvdspptg.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdsprus.chm" source="nvdsprus.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspsky.chm" source="nvdspsky.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspslv.chm" source="nvdspslv.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdspsve.chm" source="nvdspsve.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdsptha.chm" source="nvdsptha.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvdsptrk.chm" source="nvdsptrk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmob.chm" source="nvmob.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobara.chm" source="nvmobara.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobchs.chm" source="nvmobchs.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobcht.chm" source="nvmobcht.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobcsy.chm" source="nvmobcsy.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobdan.chm" source="nvmobdan.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobdeu.chm" source="nvmobdeu.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobell.chm" source="nvmobell.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobeng.chm" source="nvmobeng.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobesm.chm" source="nvmobesm.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobesn.chm" source="nvmobesn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobfin.chm" source="nvmobfin.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobfra.chm" source="nvmobfra.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobheb.chm" source="nvmobheb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobhun.chm" source="nvmobhun.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobita.chm" source="nvmobita.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobjpn.chm" source="nvmobjpn.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobkor.chm" source="nvmobkor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobnld.chm" source="nvmobnld.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobnor.chm" source="nvmobnor.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobplk.chm" source="nvmobplk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobptb.chm" source="nvmobptb.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobptg.chm" source="nvmobptg.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobrus.chm" source="nvmobrus.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobsky.chm" source="nvmobsky.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobslv.chm" source="nvmobslv.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobsve.chm" source="nvmobsve.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobtha.chm" source="nvmobtha.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvmobtrk.chm" source="nvmobtrk.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwks.chm" source="nvwks.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksARA.chm" source="nvwksARA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksCHS.chm" source="nvwksCHS.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksCHT.chm" source="nvwksCHT.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksCSY.chm" source="nvwksCSY.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksDAN.chm" source="nvwksDAN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksDEU.chm" source="nvwksDEU.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksELL.chm" source="nvwksELL.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksENG.chm" source="nvwksENG.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksESM.chm" source="nvwksESM.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksESN.chm" source="nvwksESN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksFIN.chm" source="nvwksFIN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksFRA.chm" source="nvwksFRA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksHEB.chm" source="nvwksHEB.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksHUN.chm" source="nvwksHUN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksITA.chm" source="nvwksITA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksJPN.chm" source="nvwksJPN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksKOR.chm" source="nvwksKOR.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksNLD.chm" source="nvwksNLD.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksNOR.chm" source="nvwksNOR.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksPLK.chm" source="nvwksPLK.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksPTB.chm" source="nvwksPTB.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksPTG.chm" source="nvwksPTG.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksRUS.chm" source="nvwksRUS.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksSKY.chm" source="nvwksSKY.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksSLV.chm" source="nvwksSLV.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksSVE.chm" source="nvwksSVE.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksTHA.chm" source="nvwksTHA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvwksTRK.chm" source="nvwksTRK.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlic.chm" source="nvlic.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicARA.chm" source="nvlicARA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicCHS.chm" source="nvlicCHS.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicCHT.chm" source="nvlicCHT.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicCSY.chm" source="nvlicCSY.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicDAN.chm" source="nvlicDAN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicDEU.chm" source="nvlicDEU.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicELL.chm" source="nvlicELL.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicENG.chm" source="nvlicENG.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicESM.chm" source="nvlicESM.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicESN.chm" source="nvlicESN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicFIN.chm" source="nvlicFIN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicFRA.chm" source="nvlicFRA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicHEB.chm" source="nvlicHEB.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicHUN.chm" source="nvlicHUN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicITA.chm" source="nvlicITA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicJPN.chm" source="nvlicJPN.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicKOR.chm" source="nvlicKOR.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicNLD.chm" source="nvlicNLD.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicNOR.chm" source="nvlicNOR.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicPLK.chm" source="nvlicPLK.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicPTB.chm" source="nvlicPTB.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicPTG.chm" source="nvlicPTG.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicRUS.chm" source="nvlicRUS.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicSKY.chm" source="nvlicSKY.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicSLV.chm" source="nvlicSLV.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicSVE.chm" source="nvlicSVE.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicTHA.chm" source="nvlicTHA.chm"/>
+			<copyFile target="${{SharedWindowsDirectory}}\help\nvcpl\nvlicTRK.chm" source="nvlicTRK.chm"/>
+		</standard>
+		<standard phase="createShellExtension" when="install">
+			<addRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\ControlPanel\NameSpace\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="" value="NVIDIA Control Panel" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="" value="NVIDIA Control Panel" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="InfoTip" value="@${{InstallLocation}}\nvcpluir.dll,-2211" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="LocalizedString" value="@${{InstallLocation}}\nvcpluir.dll,-2210" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="System.ApplicationName" value="NVIDIA.ControlPanel" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}" valueName="System.ControlPanel.Category" value="1,2" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}\DefaultIcon" valueName="" value="${{InstallLocation}}\nvcplui.exe,-128" valueType="REG_SZ"/>
+			<addRegistry keyName="HKCR\CLSID\{0bbca823-e77d-419e-9a44-5adec2c8eeb0}\Shell\Open\Command" valueName="" value="${{InstallLocation}}\nvcplui.exe" valueType="REG_SZ"/>
+		</standard>
+		<if filter="minWin7">
+			<standard phase="createPolicyKey" when="install">
+				<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\NvCplApi\Policies" valueName="CplGroupUIPolicy" value="0" valueType="REG_DWORD"/>
+			</standard>
+			<else>
+				<standard phase="createDontLoad" when="install">
+					<addRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\don't load" valueName="nvcpl.cpl" value="" valueType="REG_SZ"/>
+				</standard>
+			</else>
+		</if>
+		<standard phase="createPolicyKey" when="install">
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="InstalledClient" value="${{InstallLocation}}\nvcplui.exe" valueType="REG_SZ"/>
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel2" valueName="InstalledClientDll" value="${{NvidiaProgramFiles}}\Display\nvui.dll" valueType="REG_SZ"/>
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\NVControlPanel\RegisteredServers2" valueName="Dummy" value="{00000000-0000-0000-0000-000000000001}" valueType="REG_SZ"/>
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="InstalledDisplayServers" value="${{NvidiaProgramFiles}}\Display\" valueType="REG_SZ"/>
+		</standard>
+		<custom phase="createPersistenceGUID" action="createPersistenceGUID"/>
+		<exe phase="registerNvXDSync" when="install" name="${{nvxdSyncDestinationPath}}" condition="registerNvXDSync">
+			<arg value="/regServer"/>
+		</exe>
+		<exe phase="unRegisterNvXDSync" when="uninstall" name="${{nvxdSyncDestinationPath}}" condition="unRegisterNvXDSync" onError="ignore">
+			<arg value="/unregserver"/>
+		</exe>
+		<custom phase="decideUnRegisterNvXDSync" action="decideUnRegisterNvXDSync" when="uninstall" onError="ignore"/>
+		<standard phase="registerDLLs">
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvlicensings.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvsvs.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvmccss.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvdisps.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvgames.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvmobls.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvvitvs.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvwss.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvxdapix.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvxdbat.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvxdplcy.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvcplui.dll"/>
+			<registerDll target="${{NvidiaProgramFiles}}\Display\nvui.dll"/>
+			<registerDll target="${{SystemDirectory}}\nvsvc64.dll"/>
+			<registerDll target="${{SystemDirectory}}\nvsvc.dll"/>
+			<registerDll target="${{SystemDirectory}}\nvshext.dll"/>
+			<registerDll target="${{SystemDirectory}}\nv3dappshext.dll"/>
+			<if filter="XP">
+				<registerDll target="${{SystemDirectory}}\nvcpl.dll"/>
+			</if>
+		</standard>
+		<custom phase="createAddRegActions" action="createAddRegActions" when="install"/>
+		<custom phase="checkForCplServiceBinary" action="checkForCplServiceBinary" when="install"/>
+		<standard phase="createCplService" condition="serviceBinaryInstalled" when="install">
+			<createService name="${{serviceName}}" type="16" target="${{SystemDirectory}}\${{cplServiceBinaryName}}" displayName="${{serviceDisplayName}}" description="${{serviceDescription}}" groupName="Video" startCode="2" errorControl="0" startNow="false"/>
+		</standard>
+		<standard phase="deleteCplService" onError="ignore" when="uninstall">
+			<deleteService name="${{serviceName}}"/>
+		</standard>
+		<exe phase="registerServiceBinary" name="${{SystemDirectory}}\${{cplServiceBinaryName}}" condition="serviceBinaryInstalled" when="install">
+			<arg value="-install"/>
+		</exe>
+		<exe phase="unRegisterServiceBinary" onError="ignore" name="${{SystemDirectory}}\${{cplServiceBinaryName}}" when="uninstall">
+			<arg value="-uninstall"/>
+		</exe>
+		<if filter="minVista">
+			<custom phase="decideCplServiceStart" action="decideCplServiceStart" when="install"/>
+			<standard phase="startCplService" condition="startService" when="install">
+				<startService name="${{serviceName}}" timeOut="40000"/>
+			</standard>
+		</if>
+		<if filter="minVista">
+			<custom phase="waitCplProcesses" action="waitForProcess" onError="ignore" when="uninstall">
+				<properties>
+					<string name="process" value="NvXDSync.exe"/>
+					<int name="timeout" value="10000"/>
+					<bool name="force" value="true"/>
+				</properties>
+			</custom>
+			<standard phase="waitForCplServiceStop" onError="ignore" when="uninstall">
+				<waitForService name="${{serviceName}}" state="1" timeOut="40000"/>
+			</standard>
+			<standard phase="stopCplServiceMinVista" onError="ignore" when="uninstall">
+				<controlService name="${{serviceName}}" command="129"/>
+			</standard>
+			<else>
+				<standard phase="stopCplServicePreVista" onError="ignore" when="uninstall">
+					<stopService name="${{serviceName}}" timeOut="40000"/>
+				</standard>
+			</else>
+		</if>
+	</phases>
+</nvi>

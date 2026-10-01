@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nvi disposition="default" hasDriver="true" installerMin="2.1002.146.1057" name="Display.Driver" timestamp="2016-07-10T23:32:51" title="${{title}}" version="${{version}}" versionText="${{version}}">
+	<filter min="6.2" name="minWin8"/>
+	<filter min="6.1" name="minWin7"/>
+	<filter min="6.0" name="minVista"/>
+	<strings>
+		<string name="version" value="382.69"/>
+		<string name="stereoInterfaceVersion" value="265"/>
+		<string name="cplServiceName" value="nvsvc"/>
+		<if filter="minVista">
+			<string name="driverServiceName" value="nvlddmkm"/>
+			<else>
+				<string name="driverServiceName" value="nv"/>
+			</else>
+		</if>
+		<string name="BlockFourPartInstallKBLink" value="&lt;a href=&quot;http://nvidia.custhelp.com/app/answers/detail/a_id/3814&quot;&gt;${{ViewDetails}}&lt;/a&gt;"/>
+	</strings>
+	<strings>
+		<localized locale="0x0409">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="This NVIDIA graphics driver is not compatible with this version of Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="This NVIDIA graphics driver requires ${RequiredOSName}. You are running ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="This graphics driver could not find compatible graphics hardware."/>
+			<string name="failedHardwareCompatibleCheck" value="This NVIDIA graphics driver not find compatible graphics hardware."/>
+			<string name="3DVisionControllerUninstallWarning" value="The NVIDIA 3D Vision Controller Driver currently installed is not compatible with this graphics driver and will be uninstalled. To use NVIDIA 3D Vision, you must also install the latest 3D Vision Controller Driver."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="You are installing an older driver version. The system may install a newer version when the computer is docked or undocked."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="View details"/>
+		</localized>
+		<localized locale="0x0401">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="برنامج تشغيل رسومات NVIDIA هذا غير متوافق مع هذا الإصدار من نظام التشغيل Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="برنامج تشغيل رسومات NVIDIA هذا يتطلب ${RequiredOSName}. أنت الآن تشغل ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="تعذر على برنامج تشغيل رسومات NVIDIA هذا العثور على برنامج رسومات متوافق."/>
+			<string name="failedHardwareCompatibleCheck" value="تعذر على برنامج تشغيل رسومات NVIDIA هذا العثور على برنامج رسومات متوافق."/>
+			<string name="3DVisionControllerUninstallWarning" value="برنامج تشغيل مراقب NVIDIA 3D Vision المثبت حالياً غير متوافق مع برنامج تشغيل الرسومات هذا وسيتم إلغاء التثبيت. لاستخدام NVIDIA 3D Vision، يجب عليك أيضاً تثبيت أحدث برنامج تشغيل مراقب ‎3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="تقوم بتثبيت نسخة أقدم من برنامج التشغيل. بمقدور النظام تثبيت نسخة أحدث عند قفل أو فتح الكمبيوتر."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="عرض التفاصيل"/>
+		</localized>
+		<localized locale="0x0405">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Tento ovladač grafiky NVIDIA není kompatibilní s touto verzí Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Tento ovladač grafiky vyžaduje ${RequiredOSName}. Máte spuštěn ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Tento ovladač grafiky nemohl najít kompatibilní hardware grafiky."/>
+			<string name="failedHardwareCompatibleCheck" value="Tento ovladač grafiky NVIDIA nemohl najít kompatibilní hardware grafiky."/>
+			<string name="3DVisionControllerUninstallWarning" value="Aktuálně nainstalovaný ovladač řídící jednotky NVIDIA 3D Vision není kompatibilní s tímto grafickým ovladačem a bude odinstalován. Chcete-li použít NVIDIA 3D Vision, musíte nainstalovat také poslední ovladač řídící jednotky NVIDIA 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Instalujete starší verzi ovladače. Systém může nainstalovat novější verzi, pokud počítač je nebo není v doku."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Zobrazit podrobnosti"/>
+		</localized>
+		<localized locale="0x0406">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Denne NVIDIA-grafikdriver er ikke kompatibel med denne version af Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Denne NVIDIA-grafikdriver kræver ${RequiredOSName}. Du kører ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Denne grafikdriver kunne ikke finde kompatibel grafikhardware."/>
+			<string name="failedHardwareCompatibleCheck" value="Denne NVIDIA grafikdriver kunne ikke finde kompatibel grafikhardware."/>
+			<string name="3DVisionControllerUninstallWarning" value="Den driver, som er installeret i øjeblikket til NVIDIA 3D Vision Controller, er ikke kompatibel med denne grafikdriver og vil blive afinstalleret. Hvis du vil benytte NVIDIA 3D Vision, skal du også installere den nyeste driver til 3D Vision Controller."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Du installerer en ældre driverversion. Systemet installerer måske en nyere version, når computeren er docket eller ikke docket."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Vis detaljer"/>
+		</localized>
+		<localized locale="0x0407">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Dieser NVIDIA Grafiktreiber ist mit dieser Windows-Version nicht kompatibel."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Der NVIDIA Grafiktreiber benötigt ${RequiredOSName}. Sie führen ${RunningOSName} aus."/>
+			<string name="failedHardwarePresentCheck" value="Der Grafiktreiber konnte keine kompatible Grafikhardware finden."/>
+			<string name="failedHardwareCompatibleCheck" value="Der NVIDIA Grafiktreiber konnte keine kompatible Grafikhardware finden."/>
+			<string name="3DVisionControllerUninstallWarning" value="Der momentan installierte NVIDIA 3D Vision Controller-Treiber ist mit diesem Grafiktreiber nicht kompatibel und wird deinstalliert. Um NVIDIA 3D Vision zu verwenden, muss auch der neueste 3D Vision Controller-Treiber installiert werden."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Sie installieren eine ältere Treiber-Version. Das System könnte eine neuere Version installieren, wenn der Computer angedockt oder entdockt wird."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Details anzeigen"/>
+		</localized>
+		<localized locale="0x0408">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Αυτό το πρόγραμμα οδήγησης γραφικών NVIDIA δεν είναι συμβατό με αυτή την έκδοση των Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Αυτό το πρόγραμμα οδήγησης γραφικών NVIDIA απαιτεί ${RequiredOSName}. Εκτελείται ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Αυτό το πρόγραμμα οδήγησης γραφικών δεν είναι δυνατό να βρει συμβατό υλισμικό γραφικών."/>
+			<string name="failedHardwareCompatibleCheck" value="Αυτό το πρόγραμμα οδήγησης γραφικών NVIDIA δεν είναι δυνατό να βρει συμβατό υλισμικό γραφικών."/>
+			<string name="3DVisionControllerUninstallWarning" value="Το πρόγραμμα οδήγησης ελεγκτή NVIDIA 3D Vision που είναι εγκατεστημένο αυτή τη στιγμή δεν είναι συμβατό με αυτό το πρόγραμμα οδήγησης γραφικών και θα καταργηθεί η εγκατάστασή του. Για να χρησιμοποιήσετε το NVIDIA 3D Vision, πρέπει να εγκαταστήσετε και το πιο πρόσφατο πρόγραμμα οδήγησης ελεγκτή 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Εγκαθιστάτε μια παλαιότερη έκδοση του προγράμματος οδήγησης. Το σύστημα μπορεί να εγκαταστήσει μια νεότερη έκδοση όταν ο υπολογιστής βρίσκεται στη βάση του ή δεν βρίσκεται στη βάση του."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Προβολή λεπτομερειών"/>
+		</localized>
+		<localized locale="0x0809">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="This NVIDIA graphics driver is not compatible with this version of Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="This NVIDIA graphics driver requires ${RequiredOSName}. You are running ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="This graphics driver could not find compatible graphics hardware."/>
+			<string name="failedHardwareCompatibleCheck" value="This NVIDIA graphics driver not find compatible graphics hardware."/>
+			<string name="3DVisionControllerUninstallWarning" value="The NVIDIA 3D Vision Controller Driver currently installed is not compatible with this graphics driver and will be uninstalled. To use NVIDIA 3D Vision, you must also install the latest 3D Vision Controller Driver."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="You are installing an older driver version. The system may install a newer version when the computer is docked or undocked."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="View details"/>
+		</localized>
+		<localized locale="0x040a">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Este controlador gráfico de NVIDIA no es compatible con esta versión de Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Este controlador gráfico de NVIDIA necesita ${RequiredOSName}. Está ejecutando ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Este controlador gráfico no pudo encontrar hardware gráfico compatible."/>
+			<string name="failedHardwareCompatibleCheck" value="Este controlador gráfico de NVIDIA no pudo encontrar hardware gráfico compatible."/>
+			<string name="3DVisionControllerUninstallWarning" value="El controlador de NVIDIA 3D Vision instalado actualmente no es compatible con este controlador gráfico y será desinstalado. Para utilizar NVIDIA 3D Vision, también debe instalar el controlador más reciente de 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Está instalando una versión anterior del instalador.El sistema puede instalar una versión más reciente cuando el equipo esté conectado o desconectado."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Ver detalles"/>
+		</localized>
+		<localized locale="0x080a">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Este controlador de gráficos de NVIDIA no es compatible con esta versión de Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Este controlador de gráficos de NVIDIA necesita ${RequiredOSName}. Está ejecutando ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Este controlador de gráficos no pudo encontrar hardware gráfico compatible."/>
+			<string name="failedHardwareCompatibleCheck" value="Este controlador de gráficos de NVIDIA no pudo encontrar hardware gráfico compatible."/>
+			<string name="3DVisionControllerUninstallWarning" value="El controlador de NVIDIA 3D Vision instalado actualmente no es compatible con este controlador de gráficos y será desinstalado. Para utilizar NVIDIA 3D Vision, también debe instalar el controlador más reciente de 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Está instalando una versión anterior del controlador.El sistema puede instalar una versión más reciente cuando el equipo esté conectado o desconectado.."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Ver detalles"/>
+		</localized>
+		<localized locale="0x040b">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Tämä NVIDIA-grafiikkaohjain ei ole yhteensopiva tämän Windows-version kanssa."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Tämä NVIDIA-grafiikkaohjain vaatii käyttöjärjestelmän ${RequiredOSName} Käytössä on käyttöjärjestelmä ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Tämä grafiikkaohjain ei löytänyt yhteensopivaa grafiikkalaitteistoa."/>
+			<string name="failedHardwareCompatibleCheck" value="Tämä NVIDIA-grafiikkaohjain ei löytänyt yhteensopivaa grafiikkalaitteistoa."/>
+			<string name="3DVisionControllerUninstallWarning" value="Tietokoneeseen asennettu NVIDIA 3D Vision -ohjain ei ole yhteensopiva tämän grafiikkaohjaimen kanssa ja sen asennus poistetaan. Jotta voisit käyttää NVIDIA 3D Visionia, sinun on asennettava myös viimeisin 3D Vision -ohjain."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Asennat vanhempaa ohjainversiota. Tämä järjestelmä voi asentaa uudemman version, kun tietokone on telakoitu tai poistettu telakasta."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Näytä tiedot"/>
+		</localized>
+		<localized locale="0x040c">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Ce pilote graphique NVIDIA n'est pas compatible avec cette version de Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Ce pilote graphique NVIDIA nécessite ${RequiredOSName}.  Vous utilisez ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Ce pilote graphique n'a pas trouvé de matériel graphique compatible."/>
+			<string name="failedHardwareCompatibleCheck" value="Ce pilote graphique n'a pas trouvé de matériel graphique compatible."/>
+			<string name="3DVisionControllerUninstallWarning" value="Le pilote du contrôleur NVIDIA 3D Vision actuellement installé n'est pas compatible avec ce pilote graphique ; il va être désinstallé. Pour utiliser NVIDIA 3D Vision, vous devez également installer le pilote du contrôleur 3D Vision le plus récent."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Vous installez une version antérieure du pilote. Le système peut installer une version plus récente lorsque vous ancrez ou détachez le système.."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Afficher les détails"/>
+		</localized>
+		<localized locale="0x040d">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="מנהל התקן זה מתוצרת NVIDIA עבור נתונים גרפיים אינו תואם  לגרסה זו של מערכת ההפעלה Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="מנהל התקן זה מתוצרת NVIDIA עבור נתונים גרפיים נזקק ל-${RequiredOSName} אתה משתמש ב- ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="מנהל התקן זה לניהול עיבוד נתונים גרפיים לא הצליח לאתר חומרה תואמת לעיבוד נתונים גרפיים"/>
+			<string name="failedHardwareCompatibleCheck" value="מנהל התקן זה מתוצרת NVIDIAלניהול עיבוד נתונים גרפיים לא הצליח לאתר חומרה תואמת לעיבוד נתונים גרפיים"/>
+			<string name="3DVisionControllerUninstallWarning" value="מנהל ההתקן של בקר NVIDIA 3D Visionהמותקן במערכת אינו תואם למנהל התקן גרפי זה והתקנתו תוסר. בכדי להשתמש ב- NVIDIA 3D Vision, עליך להתקין גם את מנהל ההתקן העדכני ביותר עבור בקר ‎3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="אתה מתקין גרסה ישנה יותר של מנהל ההתקן. המערכת עשויה להתקין גרסה חדשה יותר בעת עגינת המחשב או שחרור העגינה של המחשב."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="הצג פרטים"/>
+		</localized>
+		<localized locale="0x040e">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Az NVIDIA grafikus illesztőprogram nem kompatibilis a Windows ezen verziójával."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Az NVIDIA grafikus illesztőprogram a következő operációs rendszert igényli: ${RequiredOSName}. A jelenleg futó operációs rendszer: ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="A grafikus illesztőprogram nem talált kompatibilis grafikus hardvert."/>
+			<string name="failedHardwareCompatibleCheck" value="Az NVIDIA grafikus illesztőprogram nem talált kompatibilis grafikus hardvert."/>
+			<string name="3DVisionControllerUninstallWarning" value="A telepített NVIDIA 3D Vision vezérlő illesztőprogram nem kompatibilis ezzel a grafikus illesztőprogrammal, és el lesz távolítva. Az NVIDIA 3D Vision használatához a legújabb 3D Vision vezérlő illesztőprogramot is telepítenie kell."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Egy régebbi illesztőprogram-verziót telepít. A rendszer egy újabb verziót telepíthet, amikor a számítógépet dokkolja vagy eltávolítja a dokkból."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Részletek megtekintése"/>
+		</localized>
+		<localized locale="0x0410">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Il driver grafico NVIDIA in uso non è compatibile con questa versione di Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Il driver grafico NVIDIA in uso richiede ${RequiredOSName}. Si sta eseguendo ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Il driver grafico in uso non ha rilevato hardware grafici compatibili."/>
+			<string name="failedHardwareCompatibleCheck" value="Il driver grafico NVIDIA in uso non ha rilevato hardware grafici compatibili."/>
+			<string name="3DVisionControllerUninstallWarning" value="Il driver del controller NVIDIA 3D Vision installato non è compatibile con questo driver grafico e, di conseguenza, verrà disinstallato. Per utilizzare NVIDIA 3D Vision, occorre installare l’ultima versione del driver del controller di 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Si sta installando una versione del driver precedente. È possibile che il sistema installi una versione più recente quando il computer è collegato a una dock station o meno."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Visualizza dettagli"/>
+		</localized>
+		<localized locale="0x0411">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="この NVIDIA グラフィックス ドライバーには、このバージョンの Windows との互換性がありません。"/>
+			<string name="substitutedFailedInfPlatformCheck" value="この NVIDIA グラフィックス ドライバーには ${RequiredOSName} が必要ですが、${RunningOSName} が実行されています。"/>
+			<string name="failedHardwarePresentCheck" value="このグラフィックス ドライバーと互換性のあるグラフィックス ハードウェアが見つかりませんでした。"/>
+			<string name="failedHardwareCompatibleCheck" value="この NVIDIA ドライバーと互換性のあるグラフィックス ハードウェアが見つかりませんでした。"/>
+			<string name="3DVisionControllerUninstallWarning" value="現在インストールされている NVIDIA 3D Vision コントローラー ドライバーは、このグラフィックス ドライバーとの互換性がないため、アンインストールされます。NVIDIA 3D Vision を使用するには、最新の 3D Vision コントローラー ドライバーもインストールする必要があります。"/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="古いバージョンのドライバーをインストールしています。コンピューターをドッキングまたはドッキング解除したときに、新しいバージョンがインストールされる場合があります。."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="詳細の表示"/>
+		</localized>
+		<localized locale="0x0412">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="이 NVIDIA 그래픽 드라이버는 이 Windows 버전과 호환되지 않습니다."/>
+			<string name="substitutedFailedInfPlatformCheck" value="이 NVIDIA 그래픽 드라이버에는 ${RequiredOSName}이(가) 필요합니다. ${RunningOSName}이(가) 실행 중입니다."/>
+			<string name="failedHardwarePresentCheck" value="이 그래픽 드라이버는 호환되는 그래픽 하드웨어를 찾지 못했습니다."/>
+			<string name="failedHardwareCompatibleCheck" value="이 NVIDIA 그래픽 드라이버는 호환되는 그래픽 하드웨어를 찾지 못했습니다."/>
+			<string name="3DVisionControllerUninstallWarning" value="현재 설치된 NVIDIA 3D Vision 컨트롤러 드라이버는 이 그래픽 드라이버와 호환되지 않으므로 제거됩니다. NVIDIA 3D Vision을 사용하려면 최신 NVIDIA 3D Vision 컨트롤러 드라이버를 설치해야 합니다."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="이전 버전 드라이버를 설치 중입니다. 컴퓨터의 도킹 여부에 상관없이 시스템에 새로운 버전을 설치할 수 있습니다.."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="자세히 보기"/>
+		</localized>
+		<localized locale="0x0413">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Dit NVIDIA grafisch stuurprogramma is niet compatibel met deze versie van Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Dit NVIDIA grafisch stuurprogramma vereist ${RequiredOSName}. U bent ${RunningOSName} aan het uitvoeren."/>
+			<string name="failedHardwarePresentCheck" value="Dit grafisch stuurprogramma kon geen compatibele grafische hardware vinden."/>
+			<string name="failedHardwareCompatibleCheck" value="Dit grafisch stuurprogramma kon geen compatibele grafische hardware vinden."/>
+			<string name="3DVisionControllerUninstallWarning" value="Het momenteel geïnstalleerde NVIDIA 3D Vision controllerstuurprogramma is niet compatibel met dit grafische stuurprogramma en de installatie wordt ongedaan gemaakt. Om NVIDIA 3D Vision te gebruiken, moet u ook het laatste 3D Vision controllerstuurprogramma installeren."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="U bent een oudere versie van het stuurprogramma aan het installeren. Het systeem kan een nieuwere versie installeren wanneer de computer wordt gedokt of ontdokt."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Details weergeven"/>
+		</localized>
+		<localized locale="0x0414">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Denne NVIDIA-grafikkdriveren er ikke kompatibel med denne Windows-versjonen."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Denne NVIDIA-grafikkdriveren krever ${RequiredOSName}. Du kjører ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Denne grafikkdriveren finner ikke kompatibel grafikkmaskinvare."/>
+			<string name="failedHardwareCompatibleCheck" value="Denne NVIDIA-grafikkdriveren finner ikke kompatibel grafikkmaskinvare."/>
+			<string name="3DVisionControllerUninstallWarning" value="Kontrollerdriveren for NVIDIA 3D Vision som er installert, er ikke kompatibel med denne grafikkdriveren og vil bli avinstallert. Du må installere den nyeste kontrollerdriveren for 3D Vision for å bruke NVIDIA 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Du installerer en eldre driverversjon. Systemet kan installere en nyere versjon når datamaskinen er forankret eller ikke forankret."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Vis detaljer"/>
+		</localized>
+		<localized locale="0x0415">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Ten sterownik graficzny NVIDIA nie jest zgodny z tą wersją systemu Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Ten sterownik graficzny NVIDIA wymaga systemu ${RequiredOSName}. Obecnie uruchomiony jest system ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Ten sterownik graficzny nie mógł odnaleźć zgodnego sprzętu graficznego."/>
+			<string name="failedHardwareCompatibleCheck" value="Ten sterownik graficzny NVIDIA nie mógł odnaleźć zgodnego sprzętu graficznego."/>
+			<string name="3DVisionControllerUninstallWarning" value="Obecnie zainstalowany sterownik kontrolera NVIDIA 3D Vision nie jest zgodny z tym sterownikiem karty graficznej i zostanie odinstalowany. Aby używać rozwiązania NVIDIA 3D Vision, należy również zainstalować najnowszy sterownik kontrolera NVIDIA 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Instalowana jest starsza wersja sterownika. System może zainstalować nowszą wersję, gdy komputer zostanie zadokowany lub oddokowany."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Wyświetl szczegóły"/>
+		</localized>
+		<localized locale="0x0816">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Este controlador gráfico da NVIDIA não é compatível com esta versão do Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Este controlador gráfico da NVIDIA requer o ${RequiredOSName}. Está a utilizar o ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Este controlador gráfico não conseguiu localizar hardware gráfico compatível."/>
+			<string name="failedHardwareCompatibleCheck" value="Este controlador gráfico da NVIDIA não conseguiu localizar hardware gráfico compatível."/>
+			<string name="3DVisionControllerUninstallWarning" value="O controlador NVIDIA 3D Vision presentemente instalado não é compatível com este controlador gráfico e será desinstalado. Para utilizar o NVIDIA 3D Vision, tem também de instalar o controlador 3D Vision mais recente."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Está a instalar uma versão de controlador mais antiga. O sistema poderá instalar uma versão mais recente quando o computador é ancorado ou não ancorado."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Ver detalhes"/>
+		</localized>
+		<localized locale="0x0416">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Este driver de gráficos NVIDIA não é compatível com esta versão do Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Este driver de gráficos NVIDIA exige ${RequiredOSName}. Você está executando ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Este driver de gráficos não encontrou hardware de gráficos compatível."/>
+			<string name="failedHardwareCompatibleCheck" value="Este driver de gráficos NVIDIAnão encontrou hardware de gráficos compatível."/>
+			<string name="3DVisionControllerUninstallWarning" value="O driver de controle do NVIDIA 3D Vision instalado não é compatível com o driver de gráficos e será desinstalado. Para usar o NVIDIA 3D Vision é preciso instalar o driver de controle mais recente do 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Você está instalando uma versão de driver mais antiga. O sistema pode instalar uma versão mais atual quando o computador estiver encaixado ou não."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Exibir detalhes"/>
+		</localized>
+		<localized locale="0x0419">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Этот графический драйвер NVIDIA несовместим с данной версией Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Для этого графического драйвера NVIDIA требуется ${RequiredOSName}. Работает ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Этот графический драйвер не обнаружил совместимого графического оборудования."/>
+			<string name="failedHardwareCompatibleCheck" value="Этот графический драйвер NVIDIA не обнаружил совместимого графического оборудования."/>
+			<string name="3DVisionControllerUninstallWarning" value="Установленный драйвер контроллера NVIDIA 3D Vision несовместим с этим графическим драйвером и поэтому будет удален. Для использования NVIDIA 3D Vision необходимо также установить последнюю версию драйвера контроллера 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Вы устанавливаете устаревшую версию драйвера. Система может установить более новую версию, когда компьютер подключен или отключен.."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Просмотр сведений"/>
+		</localized>
+		<localized locale="0x041b">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Grafický ovládač NVIDIA nie je kompatibilný s touto verziou systému Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Tento grafický ovládač NVIDIA vyžaduje systém ${RequiredOSName}. Na vašom počítači je nainštalovaný systém ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Pre tento grafický ovládač sa nepodarilo nájsť kompatibilný grafický hardvér."/>
+			<string name="failedHardwareCompatibleCheck" value="Pre tento grafický ovládač NVIDIA sa nepodarilo nájsť kompatibilný grafický hardvér."/>
+			<string name="3DVisionControllerUninstallWarning" value="Aktuálne nainštalovaný ovládač NVIDIA 3D Vision Controller Driver nie je kompatibilný s týmto grafickým ovládačom a bude odinštalovaný. Ak chcete používať softvér NVIDIA 3D Vision, musíte nainštalovať aj najnovší ovládač 3D Vision Controller Driver."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Inštalujete staršiu verziu ovládača. Keď sa počítač bude nachádzať v doku alebo mimo doku, bude môcť systém nainštalovať novšiu verziu."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Zobraziť podrobnosti"/>
+		</localized>
+		<localized locale="0x0424">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Ta grafični gonilnik NVIDIA ni združljiv s to različico programa Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Ta grafični gonilnik NVIDIA zahteva ${RequiredOSName}. Vi uporabljate ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Ta grafični gonilnik ni mogel najti združljive grafične strojne opreme."/>
+			<string name="failedHardwareCompatibleCheck" value="Ta grafični gonilnik ni mogel najti združljive grafične strojne opreme."/>
+			<string name="3DVisionControllerUninstallWarning" value="Gonilnik za krmilnik NVIDIA 3D Vision, ki je trenutno nameščen, ni združljiv s tem grafičnim gonilnikom in bo odstranjen. Če želite uporabiti NVIDIA 3D Vision, morate namestiti tudi najnovejši gonilnik za krmilnik 3D Vision."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Nameščate starejšo različico gonilnika.  Sistem bo morda namestil novejšo različico, ko bo računalnik nameščen v priklopno postajo ali pa ne ."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Ogled podrobnosti"/>
+		</localized>
+		<localized locale="0x041d">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Denna NVIDIA-grafikdrivrutin inte är kompatibel med denna version av Windows."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Denna NVIDIA-grafikdrivrutin kräver ${RequiredOSName}. Du kör ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Denna grafikdrivrutin kunde inte hitta kompatibel grafikmaskinvara."/>
+			<string name="failedHardwareCompatibleCheck" value="Denna NVIDIA  grafikdrivrutin kunde inte hitta kompatibel grafikmaskinvara."/>
+			<string name="3DVisionControllerUninstallWarning" value="Den installerade NVIDIA 3D Vision Controller-drivrutinen är inte kompatibel med denna grafikdrivrutin och kommer därför att avinstalleras. Om du vill använda NVIDIA 3D Vision måste du också installera den senaste 3D Vision Controller-drivrutinen."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Du installerar en äldre drivrutinsversion. Systemet kan installera en nyare version när datorn är dockad eller frånkopplad."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Visa information"/>
+		</localized>
+		<localized locale="0x041e">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="โปรแกรมควบคุมการ์ดกราฟิกของ NVIDIA ไม่เข้ากันกับ Windows รุ่นนี้"/>
+			<string name="substitutedFailedInfPlatformCheck" value="โปรแกรมควบคุมกราฟิกของ NVIDIA กำหนดให้ต้องมี ${RequiredOSName} คุณกำลังใช้ ${RunningOSName}"/>
+			<string name="failedHardwarePresentCheck" value="โปรแกรมควบคุมกราฟิกนี้หาไม่พบฮาร์ดแวร์กราฟิกที่เข้ากันได้"/>
+			<string name="failedHardwareCompatibleCheck" value="โปรแกรมควบคุมกราฟิกของ NVIDIA นี้ไม่พบฮาร์ดแวร์กราฟิกที่เข้ากันได้"/>
+			<string name="3DVisionControllerUninstallWarning" value="โปรแกรมควบคุมของตัวควบคุม NVIDIA 3D Vision ที่มีติดตั้งอยู่ในปัจจุบันไม่สามารถเข้ากันได้กับโปรแกรมควบคุมกราฟิกรุ่นนี้ และจะถูกถอนการติดตั้ง ในการใช้ NVIDIA 3D Vision คุณต้องติดตั้งโปรแกรมควบคุมรุ่นล่าสุดของตัวควบคุม 3D Vision"/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="คุณกำลังติดตั้งไดรเวอร์เวอร์ชันที่เก่ากว่า ระบบอาจติดตั้งเวอร์ชันที่ใหม่กว่าเมื่อต่อหรือยกเลิกการต่อกับคอมพิวเตอร์."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="ดูรายละเอียด"/>
+		</localized>
+		<localized locale="0x041f">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="Bu NVIDIA grafik sürücüsü, Windows'un bu sürümüyle uyumlu değildir."/>
+			<string name="substitutedFailedInfPlatformCheck" value="Bu NVIDIA grafik sürücüsü ${RequiredOSName} gerektirir. Sizin işletim sisteminizse ${RunningOSName}."/>
+			<string name="failedHardwarePresentCheck" value="Bu grafik sürücüsü, uyumlu grafik donanımı bulamadı."/>
+			<string name="failedHardwareCompatibleCheck" value="Bu NVIDIA grafik sürücüsü, uyumlu grafik donanımı bulamadı."/>
+			<string name="3DVisionControllerUninstallWarning" value="NVIDIA 3D Vision Denetleyici Sürücüsü şu anda kurulu durumda ancak bu grafik sürücüsüyle uyumlu değil ve kaldırılacak. NVIDIA 3D Vision'ı kullanmak için, en son 3D Vision Denetleyici Sürücüsü sürümünü de kurmalısınız."/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="Daha eski bir sürücü sürümünü kurmaktasınız. Bilgisayar takma istasyonuna takıldığında veya çıkartıldığında sistem, daha yeni bir sürüm kurabilir."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="Ayrıntıları Görüntüle"/>
+		</localized>
+		<localized locale="0x0804">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="此 NVIDIA 驱动程序与此 Windows 版本不兼容。"/>
+			<string name="substitutedFailedInfPlatformCheck" value="此 NVIDIA 图形驱动程序要求 ${RequiredOSName}。您正在运行 ${RunningOSName}。"/>
+			<string name="failedHardwarePresentCheck" value="此图形驱动程序无法找到兼容的图形硬件。"/>
+			<string name="failedHardwareCompatibleCheck" value="此 NVIDIA 图形驱动程序无法找到兼容的图形硬件。"/>
+			<string name="3DVisionControllerUninstallWarning" value="当前安装的 NVIDIA 3D Vision 控制器驱动程序与此图形驱动程序不兼容，且将被卸载。要使用 NVIDIA 3D Vision，您还必须安装最新的 3D Vision 控制器驱动程序。"/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="您正在安装老版本的驱动程序。系统可在计算机定位或未定位时安装新版本的驱动程序。."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="查看详细信息"/>
+		</localized>
+		<localized locale="0x0404">
+			<string name="title" value="Forceware Graphics Driver"/>
+			<string name="failedInfPlatformCheck" value="此 NVIDIA 圖形驅動程式與這個 Windows 版本不相容。"/>
+			<string name="substitutedFailedInfPlatformCheck" value="此 NVIDIA 圖形驅動程式需要 ${RequiredOSName}。您正在執行 ${RunningOSName}。"/>
+			<string name="failedHardwarePresentCheck" value="此圖形驅動程式找不到相容的圖形硬體。"/>
+			<string name="failedHardwareCompatibleCheck" value="此 NVIDIA 圖形驅動程式找不到相容的圖形硬體。"/>
+			<string name="3DVisionControllerUninstallWarning" value="目前所安裝的「3D Vision 控制器驅動程式」與這個圖形驅動程式不相容，因此將被解除安裝。若要使用 NVIDIA 3D Vision，您也必須安裝最新的「3D Vision 控制器驅動程式」。"/>
+			<string name="ExternalGraphicsDowngradeCheckWarning" value="您正在安裝舊版的驅動程式。不論電腦在定位或是卸除狀態，系統都可以安裝新的版本."/>
+			<string name="arpDisplayName" value="NVIDIA ${{title}} ${{version}}"/>
+			<string name="ViewDetails" value="檢視詳細資料"/>
+		</localized>
+	</strings>
+	<description/>
+	<interfaces>
+		<interface name="stereoInterface" version="${{stereoInterfaceVersion}}"/>
+	</interfaces>
+	<constraints>
+		<custom level="critical" name="InfPlatformCheck" text="${{failedInfPlatformCheck}}"/>
+		<device level="critical" name="HardwarePresentCheck" text="${{failedHardwarePresentCheck}}"/>
+		<custom level="warn" name="3DVisionControllerInstalledCheck" text="${{3DVisionControllerUninstallWarning}}"/>
+		<custom level="warn" name="ExternalGraphicsDowngradeCheck" text="${{ExternalGraphicsDowngradeCheckWarning}}"/>
+		<custom level="critical" name="AllowInstallCheck" text="${{failedHardwarePresentCheck}} ${{BlockFourPartInstallKBLink}}"/>
+		<custom level="critical" name="BlockTH1Install" text="${{failedInfPlatformCheck}}"/>
+	</constraints>
+	<dependencies>
+		<package package="Display.3DVision" type="uninstalls"/>
+	</dependencies>
+	<extensions>
+		<extension file="DisplayDriverExt.DLL"/>
+	</extensions>
+	<properties>
+		<bool name="FixedInstallLocation" value="true"/>
+		<bool name="SkipCPLInstall"/>
+		<string name="ArpDisplayName" value="${{arpDisplayName}}"/>
+		<string name="DriverServiceName" value="${{driverServiceName}}"/>
+	</properties>
+	<manifest>
+		<file name="nv4_dispi.inf"/><file name="nv4_disp.dll"/><file name="nv4_mini.sys"/><file name="DisplayDriver.nvi"/><file name="license.txt"/><file name="DisplayDriverExt.dll"/><file name="nvopencl32.dll"/><file name="dbInstaller.exe"/><file name="NvCplSetupInt.exe"/><file name="video.tpi"/><file name="nvdrsdb.bi_"/><file name="NvStereoUtilityOGL.exe"/><file name="nvcuda32.dll"/><file name="SWI.XML"/><file name="nvdispgenco32.dll"/><file name="nvinfo.pb"/><file name="nvapi.dll"/><file name="nvencodeapi.dll"/><file name="nvdata.data"/><file name="nvcompiler32.dl_"/><file name="nvcuvid32.dll"/><file name="opencl32.dl_"/><file name="nvoglnt.dll"/><file name="nvdispco32.dll"/></manifest>
+	<phases>
+		<standard phase="removeImplicitDirectories" when="uninstall">
+			<deleteDirectory target="${{NvidiaProgramFiles}}\coprocmanager"/>
+			<deleteDirectory target="${{NvidiaProgramFilesX86}}\coprocmanager"/>
+		</standard>
+		<environment onError="ignore" phase="GetEnvVariablesWhileInstall" when="install">
+			<getVariable type="user" value="TempDirectory" variableName="TEMP"/>
+		</environment>
+		<standard onError="ignore" phase="removeDXCacheWhileInstall" when="install">
+			<deleteDirectoryTree target="${{@TempDirectory}}\NVIDIA Corporation\NV_Cache"/>
+			<deleteDirectory target="${{@TempDirectory}}\NVIDIA Corporation"/>
+		</standard>
+		<if filter="minVista">
+			<standard onError="ignore" phase="stopCplServiceMinVista" when="install">
+				<controlService command="129" name="${{cplServiceName}}"/>
+			</standard>
+			<else>
+				<standard onError="ignore" phase="stopCplServicePreVista" when="install">
+					<stopService name="${{cplServiceName}}" timeOut="0"/>
+				</standard>
+			</else>
+		</if>
+		<device action="removePhantoms" condition="RemoveDisplayPhantoms &amp;&amp; Global:IsSetupInitiated" phase="removeDisplayPhantoms" when="install">
+			<inf name="*.inf"/>
+			<hwid name="PCI\VEN_10DE¤"/>
+		</device>
+		<device autoTick="200" deviceProgress="150" fixedProgress="10" phase="installAllDrivers">
+			<inf name="*.inf"/>
+			<hwid name="PCI\VEN_10DE¤"/>
+		</device>
+		<confirm phase="Confirm-install" when="install">
+			<fileExists target="${{SystemDirectory}}\nvinfo.pb"/>
+		</confirm>
+		<confirm phase="Confirm-install" platform="x86" when="install">
+			<fileExists target="${{SystemDirectory}}\nvapi.dll"/>
+		</confirm>
+		<confirm phase="Confirm-install" platform="amd64" when="install">
+			<fileExists target="${{SystemDirectory}}\nvapi64.dll"/>
+		</confirm>
+		<standard condition="ICafeLogoSupported" onError="ignore" phase="copyLogo" when="install">
+			<copyFile source="logo.png" target="${{NvidiaProgramFiles}}\Drs\logo.png"/>
+		</standard>
+		<custom action="decideOpenCLCopy" phase="decideOpenCLCopy" when="install">
+			<properties>
+				<string name="OpenCLLocation" value="${{NvidiaProgramFiles}}\OpenCL"/>
+			</properties>
+		</custom>
+		<standard condition="CopyOpenCL32" phase="copyOpenCL32" platform="x86" when="install">
+			<copyFile source="${{NvidiaProgramFiles}}\OpenCL\OpenCL.dll" target="${{SystemDirectory}}\OpenCL.dll"/>
+		</standard>
+		<standard condition="CopyOpenCL64" phase="copyOpenCL64" when="install">
+			<copyFile source="${{NvidiaProgramFiles}}\OpenCL\OpenCL64.dll" target="${{SystemDirectory}}\OpenCL.dll"/>
+		</standard>
+		<setPropertyIf boolProperty="CheckNVSMIPathExist" onError="ignore" phase="checkNVSMIPathExist" value="true" when="install">
+			<directory check="exists" name="${{NvidiaProgramFiles}}\NVSMI"/>
+		</setPropertyIf>
+		<standard condition="CheckNVSMIPathExist" onError="ignore" phase="addNvsmiToReg" when="install">
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVSMI" type="REG_SZ" value="${{NvidiaProgramFiles}}\NVSMI" valueName="NVSMIPATH"/>
+		</standard>
+		<if filter="minWin8">
+			<custom action="SetRebootForWin8KFilter" phase="SetRebootForWin8KFilter" when="install"/>
+		</if>
+		<custom action="SetResolution" phase="changeDisplayResolution" when="install"/>
+		<custom action="RemoveOldARPEntry" onError="ignore" phase="removeOldARPEntry" when="install"/>
+		<standard condition="IsOSXP" onError="ignore" phase="copyStereoUtility" platform="x86">
+			<createDirectory target="${{NvidiaProgramFilesX86}}\3D Vision"/>
+			<copyFile source="NVStereoUtilityOGL.exe" target="${{NvidiaProgramFilesX86}}\3D Vision\NVStereoUtilityOGL.exe"/>
+		</standard>
+		<custom action="updateCPLInstallPhaseApp" phase="updateCPLInstallPhaseApp" when="install">
+			<properties>
+				<string name="CPLSearchPath" value="${{SubPackageDirectory}}"/>
+			</properties>
+		</custom>
+		<custom action="removeCPLInstallData" phase="removeCPLInstallData"/>
+		<standard onError="ignore" phase="deleteVulkanRegistryKeys" when="uninstall">
+			<if filter="minVista">
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\Vulkan" valueName="Installed"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\Vulkan" valueName="Version"/>
+				<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\Vulkan"/>
+			</if>
+		</standard>
+		<if filter="minVista">
+			<custom action="uninstallVulkan" onError="ignore" phase="VulkanUninstall"/>
+		</if>
+		<exe autoTick="200" condition="!SkipCPLInstall" name="*setup*.exe" phase="cplInstall" progress="500" when="install">
+			<arg value="-n"/>
+			<arg value="-s"/>
+			<arg value="Display.ControlPanel"/>
+			<success value="0"/>
+			<success rebootNeeded="true" value="1"/>
+		</exe>
+		<if filter="minVista">
+			<custom action="InstallVulkan" onError="ignore" phase="vulkanInstall" when="install"/>
+		</if>
+		<custom action="checkRemoveOptimusFilters" onError="ignore" phase="checkRemoveOptimusFilters" when="install"/>
+		<standard onError="ignore" phase="deleteComponents" when="uninstall">
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvModes.dat"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvModes.001"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvdrsdb0.bin"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvdrsdb1.bin"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvdrssel.bin"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvdrswr.ilk"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvdrswr.lk"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\DRS\nvAppTimestamps"/>
+			<deleteDirectory target="${{CommonAppData}}\NVIDIA Corporation\DRS"/>
+			<deleteDirectory target="${{CommonAppData}}\NVIDIA Corporation"/>
+			<deleteFile target="${{CommonAppData}}\nvModes.dat"/>
+			<deleteFile target="${{CommonAppData}}\nvModes.001"/>
+			<deleteFile target="${{SystemDirectory}}\nvdrsdb0.bin"/>
+			<deleteFile target="${{SystemDirectory}}\nvdrsdb1.bin"/>
+			<deleteFile target="${{SystemDirectory}}\nvdrssel.bin"/>
+			<deleteFile target="${{SystemDirectory}}\nvdrswr.ilk"/>
+			<deleteFile target="${{SystemDirectory}}\nvdrswr.lk"/>
+			<deleteFile target="${{SystemDirectory}}\nvAppTimestamps"/>
+		</standard>
+		<custom action="DeleteMiscellaneousData" onError="ignore" phase="deleteMisc" when="uninstall"/>
+		<standard onError="ignore" phase="deleteRegistryKeys" when="uninstall">
+			<if filter="minWin7">
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.XResolution"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.YResolution"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.BitsPerPel"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.VRefresh"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.Flags"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.XPanning"/>
+				<deleteRegistry keyName="${{NvidiaSoftwareKey}}\Global\NVTweak" valueName="DefaultSettings.YPanning"/>
+				<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global\NVTweak"/>
+				<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NvBackend" valueName="IsFRLSupported"/>
+				<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\NvBackend"/>
+				<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+			</if>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\DRSPath"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\NVSMI"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserClassesKey}}"/>
+		</standard>
+		<standard onError="ignore" phase="removeDXCacheWhileUninstall" when="uninstall">
+			<deleteDirectoryTree target="${{@TempDirectory}}\NVIDIA Corporation\NV_Cache"/>
+			<deleteDirectory target="${{@TempDirectory}}\NVIDIA Corporation"/>
+		</standard>
+		<environment onError="ignore" phase="GetEnvVariablesWhileUninstall" when="uninstall">
+			<getVariable type="user" value="TempDirectory" variableName="TEMP"/>
+		</environment>
+		<standard onError="ignore" phase="removeOpenGLCache" when="uninstall">
+			<deleteDirectoryTree target="${{RoamingUserAppData}}\NVIDIA\GLCache"/>
+			<deleteDirectoryTree target="${{SystemDirectory}}\config\systemprofile\AppData\Roaming\NVIDIA\GLCache"/>
+			<deleteDirectory target="${{RoamingUserAppData}}\NVIDIA"/>
+			<deleteDirectory target="${{SystemDirectory}}\config\systemprofile\AppData\Roaming\NVIDIA"/>
+		</standard>
+		<standard onError="ignore" phase="removeComputeCache" when="uninstall">
+			<deleteDirectoryTree target="${{RoamingUserAppData}}\NVIDIA\ComputeCache"/>
+			<deleteDirectoryTree target="${{SystemDirectory}}\config\systemprofile\AppData\Roaming\NVIDIA\ComputeCache"/>
+		</standard>
+		<standard onError="ignore" phase="removeOpenCLFolder" when="uninstall">
+			<deleteDirectory target="${{NvidiaProgramFiles}}\OpenCL"/>
+		</standard>
+		<standard condition="RemoveOpenCL32" onError="ignore" phase="removeOpenCL32" platform="x86" when="uninstall">
+			<deleteFile target="${{SystemDirectory}}\OpenCL.dll"/>
+		</standard>
+		<standard condition="RemoveOpenCL64" onError="ignore" phase="removeOpenCL64" when="uninstall">
+			<deleteFile target="${{SystemDirectory}}\OpenCL.dll"/>
+		</standard>
+		<custom action="decideOpenCLRemoval" onError="ignore" phase="decideOpenCLRemoval" when="uninstall">
+			<properties>
+				<string name="OpenCLRegistryKey" value="HKLM\Software\Khronos\OpenCL\Vendors"/>
+				<string name="OpenCLRegistryValueName" value="${{SystemDirectory}}\nvopencl.dll"/>
+			</properties>
+		</custom>
+	</phases>
+</nvi>
