@@ -61,6 +61,26 @@ def main():
         run(['ld','-m','elf_i386','-T',str(src/linker),*objects,'-o',str(elf)])
         run(['objcopy','-O','binary','-j','.text',str(elf),str(binary)])
         compare(stem,binary.read_bytes(),args.package/'Display.Driver'/module,va)
+    # The 10-3-26 update adds a matched trained-link policy and HDMI recovery.
+    for stem, asmfile, cfile, va, module, extra, data in [
+        ('dp-trained-mini', 'dp-trained/mini-hooks.s', 'dp-trained/dp-policy.c', 0xd073a0, 'nv4_mini.sys', ['-fno-jump-tables','-fno-tree-switch-conversion'], False),
+        ('dp-trained-disp', 'dp-trained/disp-hooks.s', 'dp-trained/dp-policy.c', 0x356780, 'nv4_disp.dll', ['-fno-jump-tables','-fno-tree-switch-conversion'], False),
+        ('hdmi-recovery-mini', 'hdmi-recovery/scdc-mini.s', 'hdmi-recovery/scdc-recovery.c', 0xd075c0, 'nv4_mini.sys', ['-DFAULT=0'], True),
+        ('hdmi-recovery-disp', 'hdmi-recovery/scdc-disp.s', None, 0x356a00, 'nv4_disp.dll', [], True),
+    ]:
+        obj=out/(stem+'.o'); elf=out/(stem+'.elf'); binary=out/(stem+'.bin')
+        run(['as','--32',str(src/asmfile),'-o',str(obj)])
+        objects=[str(obj)]
+        if cfile:
+            cobj=out/(stem+'-c.o')
+            run(['gcc',*flags,*extra,'-c',str(src/cfile),'-o',str(cobj)])
+            objects.append(str(cobj))
+        linker=out/(stem+'.ld')
+        linker.write_text('SECTIONS { . = '+hex(va)+'; .text : { *(.text*) '+('*(.data*)' if data else '')+' } /DISCARD/ : { *(.note*) *(.comment*) *(.eh_frame*) } }\ndelay_native = 0x478650;')
+        run(['ld','-m','elf_i386','-T',str(linker),*objects,'-o',str(elf)])
+        require('There are no relocations' in subprocess.check_output(['readelf','-r',str(elf)],text=True), 'Unexpected inserted relocations')
+        run(['objcopy','-O','binary','-j','.text',str(elf),str(binary)])
+        compare(stem,binary.read_bytes(),args.package/'Display.Driver'/module,va)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 

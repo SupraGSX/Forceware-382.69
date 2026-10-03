@@ -1,6 +1,6 @@
 # How Forceware 382.69 was built from NVIDIA 368.81 for Windows XP
 
-Forceware 382.69 applies binary patches, selected firmware resources and installer changes to **NVIDIA 368.81 for Windows XP 32-bit**. **382.69 is this project's custom release number.**
+Forceware 382.69 applies binary patches, selected firmware resources and installer changes to **NVIDIA 368.81 for Windows XP 32-bit**. **382.69 is this project's custom release number.** This guide describes the **10-3-26** update.
 
 NVIDIA's proprietary source is unavailable; the supplied source consists of our Python patcher and C/assembly routines. This guide explains the final implementation and how to reproduce it.
 
@@ -13,13 +13,13 @@ The changes enable the tested Pascal P4000/GTX 1080 Ti configurations, expand de
 | [rebuild.py](rebuild.py) | Reconstructs the package from the exact stock installer and two supplied firmware-donor modules. |
 | [patches.json](patches.json) | Input hashes, output hashes, byte guards, edits, firmware extraction instructions and the complete package/CPL file inventory. |
 | [sources/](sources/) | Readable C/assembly for the added routines, link scripts and the NVAPI version-reporting patch generator. |
-| [verify_sources.py](verify_sources.py) | Compiles 12 code blocks and compares their bytes with the reconstructed driver. |
+| [verify_sources.py](verify_sources.py) | Compiles 16 code blocks and compares their bytes with the reconstructed driver. |
 | [templates/](templates/) | Final INF, installer configuration and text files used during reconstruction. |
-| [desktop-gpus.json](desktop-gpus.json) | All 58 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
+| [desktop-gpus.json](desktop-gpus.json) | All 50 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
-A verified rebuild matched **580 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; all 12 compiled source blocks matched the released instructions.
+A verified rebuild matched **582 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; all 16 compiled source blocks matched the released instructions.
 
 Compression, timestamps and tool versions can change archive hashes while preserving identical driver files. The reproduction check is the exact extracted payload.
 
@@ -80,7 +80,7 @@ build-38269/
   work/
 ```
 
-`rebuild-result.json` should report 582 package files, 580 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
+`rebuild-result.json` should report 584 package files, 582 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
 
 ### 2.3 Optionally rebuild the added machine code from source
 
@@ -93,7 +93,7 @@ python3 verify_sources.py \
   --out source-check
 ```
 
-This checks 12 compiled blocks at their locations in the rebuilt PE files, including the inactive HDMI bridge retained in the final image.
+This checks 16 compiled blocks at their locations in the rebuilt PE files, including the inactive HDMI bridge retained in the final image.
 
 Other compiler versions may emit different instructions; investigate mismatches before substituting them. The manifest defines the tested binary result.
 
@@ -122,7 +122,7 @@ Two changes repaired this:
 
 The allocated objects use the existing XP acceleration path. Source: [display-root.s](sources/display-root.s); the manifest contains the mask and PE edits.
 
-The GP100 bit was not added; its INF entry does not establish working support.
+The GP100 bit was not added. GP100, GP107 and GP108 are excluded from the current INF.
 
 ## 5. GP102 required a coherent firmware/host-interface repair
 
@@ -216,36 +216,29 @@ The updated path reads 15 bytes, checks the flag, and conditionally reads and va
 
 The automatic configuration table contained six RBR/HBR lane/rate combinations. The final table preserves those six entries and adds **HBR2 ×4 and HBR3 ×4**. Six existing relocated table pointers are updated, the scan length changes from 72 to 96 bytes, and the default preference value changes from `0x654321` to `0x65432178`.
 
-Capacity follows successful training. The original fallbacks remain; higher-rate one- and two-lane automatic entries were not added.
+Capacity follows successful training. Higher-rate one- and two-lane automatic entries were not added; the unsafe guessed-link fallbacks are removed as described below.
 
-### 7.5 Admit 8-bit-capable modes and choose depth per mode
+### 7.5 Select a matched trained link and validate depth
 
-A 10-bit-capable monitor introduced a separate problem. The driver could reject a high-refresh mode because it calculated the entire mode ceiling using the monitor's maximum depth, even when the timing would fit at 8 bits per color.
+Miniport hook `0x44C737` reads the successful-training bitmap at output+`0x2D00`, bounds it by receiver limits, and returns the highest-capacity **matched rate/lane pair**. Empty results return 0/0. The display selector at `0x47E50` validates that pair instead of guessing another configuration.
 
-The final change separates candidate-mode admission from actual output-depth selection:
+Miniport candidate-mode calculations at `0x443D49` and `0x457EEE` use at most 8 bits per color for admission. Actual mode selection at display VA `0x492A9` retains the requested depth when it fits; higher depths fall back to 8 bits when that fits, otherwise the mode fails. The calculation retains 8b/10b coding and the existing 0.5% clock margin. Unknown depth codes and arithmetic overflow fail closed.
 
-1. Miniport calculations at `0x443D49` and `0x457EEE` use at most 8 bits per color for the candidate-mode ceiling, preserving the existing link-derived limit and lower-depth handling.
-2. The display DLL at `0x492A9` retains a requested 10-bit output if the selected timing fits the known link capacity. Otherwise it selects 8-bit output through the normal configuration path.
+Hooks at `0x492E5` and `0x4A0E8` remove the old guessed-link fallbacks. The existing hardware training/error paths remain in use. A previously successful probe cannot guarantee a changed cable or receiver will retrain.
 
-With pixel clock in 10-kHz units, the retained 0.5% margin is expressed as:
+Source: [dp-policy.c](sources/dp-trained/dp-policy.c), [miniport adapter](sources/dp-trained/mini-hooks.s), [display adapters](sources/dp-trained/disp-hooks.s). Detailed policy: [DisplayPort update](templates/package/Documentation/DisplayPort-update.md).
 
-```text
-keep 10 bpc if:
-  (clock + floor(clock / 200)) * 30 <= rate_code * lanes * 21600
-otherwise choose 8 bpc
-```
+GTX 980 Ti tests confirmed normal native 3440x1440/100 on HBR2 x4 with RGB10, native 60 Hz on restricted HBR x4 with automatic RGB8 fallback, and 1080p on restricted RBR x4 with RGB10. Over-budget timings were rejected. These tests exercise real lower link rates, not a separate older DP1.1 GPU.
 
-This applies to recognized rate codes 6/10/20/30 and lane counts 1/2/4. The tested automatic path selected at most 10 bpc; arbitrary 12/14/16-bit advertisements were not validated. Source: [dp-depth-select.s](sources/dp-depth-select.s) and [dp-capacity-depth.s](sources/dp-capacity-depth.s).
+## 8. Correct Control Panel classification, Customize and scaling
 
-## 8. Restore the Customize button
+The older Control Panel treated output bits 8–15 as analog TV. The 368.81 driver placed a digital DisplayPort output in that range, so the UI misclassified a PC display and restricted Customize. The 355.98 comparison used a different bit position for the same connection.
 
-The Control Panel could apply a legacy television restriction to the direct DisplayPort setup. Its backend returned an ambiguous fallback connector type, 8, which the Customize-specific predicate rejected alongside explicit analog TV types 2/3/4.
+The current `nvcpl.dll` patches central mask/type/index conversions to interpret bits 0–7 as CRT and bits 8–31 as digital outputs. The earlier Customize-only bypass in `nvDispS.dll` is removed; the original eligibility predicate now receives the corrected classification.
 
-In `nvDispS.dll`, replace `74 13` with `90 90` at **file offset `0x65BE7`**, preferred VA `0x100667E7`.
+A second DFP mask at `nvcpl.dll` VA `0x10119EA7` changes from `FFFF0000` to `FFFFFF00`. This allows the scaling-cache refresh to run for the current output, so fixed-aspect settings persist after Apply, reopening the panel and rebooting. Custom-mode create/test/save/delete and scaling/no-scaling selection were exercised on DisplayPort. This does not establish every monitor or differing-aspect black-bar geometry.
 
-This removes fallback type 8 from that restriction. Explicit TV types 2/3/4, the shared connector classifier and timing validation remain intact.
-
-The patched UI created, tested, saved and deleted a 3440×1440/75-Hz mode without an EDID override or reboot. Restoring the original DLL reproduced the disabled button.
+The exact guarded edits are in `patches.json`; this is a targeted repair of the observed conversions, not a global replacement of every similar constant.
 
 ## 9. HDMI identification, SCDC and clock policy
 
@@ -259,7 +252,7 @@ The 55-byte routine at miniport VA `0x8742B0` skips Forum blocks only in that le
 
 In the display DLL, the patch at `0x4111F` queries HDMI status. A positive GPU/output-and-sink HDMI result retains single-link TMDS behavior; other connections retain the original 165-MHz DVI comparison.
 
-The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
+The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. GP107 remains in that internal family check but is excluded from the installable INF. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
 
 - Valid digital EDID, checksum/bounds checks and legacy HDMI identity.
 - Sink-advertised TMDS limits and source/board/resource-manager restrictions.
@@ -278,15 +271,25 @@ Capabilities pass through control `0x00730293` with marker `0xA0000000`; existin
 
 The driver uses its existing sink/SCDC and source-programming machinery. A 567-byte inactive capability bridge remains in the image and source verification; the active hooks use the final policy above.
 
-On the tested monitor path, SCDC became readable after selecting the connected input. EDID readability alone did not establish SCDC availability; input selection was not isolated sufficiently to make this a universal monitor rule. Physical high-rate results are in section 12.
+### 9.4 Recover from failed high-rate setup
+
+The display hook at `0x49681` arms a GPU/connector-specific transaction before a positively identified HDMI mode above 340 MHz. Private ARM/END commands are intercepted at miniport `0x79C502` before the existing capability setters. State occupies an owned 32-slot table, with generation tracking and a non-blocking atomic lock.
+
+Miniport hook `0x6E3171` retries an armed SCDC setup write at most three times, with native 2 ms delays. A successful acknowledgement is latched. Later SCDC read failures do not invalidate an established link. Outside the transaction, the original single-write behavior remains.
+
+Display cleanup at `0x49892` consumes the mode-local marker and transaction result; `0x4988D` preserves the marker on an existing failure edge. Hook `0x49C35` propagates failure into XP's mode-enable path. In injected-failure tests, XP selected safe 640x480 output before the test helper intervened. This is not restoration of the exact prior mode. NVAPI TryCustomDisplay can still report success when XP substitutes that safe mode; applications must inspect the actual mode.
+
+Source: [recovery policy](sources/hdmi-recovery/scdc-recovery.c), [miniport hooks](sources/hdmi-recovery/scdc-mini.s), [display hooks](sources/hdmi-recovery/scdc-disp.s). The distributed build uses `FAULT=0`. See [HDMI recovery implementation](templates/package/Documentation/HDMI-SCDC-recovery.md).
+
+SCDC availability is not equivalent to EDID readability or input selection. Later reads sometimes failed while the picture remained normal; the cause is unresolved. Hotplug, resume and alternate mode-update paths were not separately validated by these tests.
 
 ## 10. Build a normal full installer and expand the INF
 
 The complete stock installer supplies setup, HD Audio, PhysX, nView and the other retained components.
 
-The desktop INF work retained the selected legacy desktop entries and added/retained 58 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile GPUs and GP108 are excluded.
+The desktop INF work retained the selected legacy desktop entries and added/retained 50 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile, GP100, GP107 and GP108 GPUs are excluded.
 
-Relative to the stock XP matching sections, there are **39 additional IDs/aliases**, covering 29 additional model names plus desktop GTX 950/960 OEM variants. See [desktop-gpus.json](desktop-gpus.json) and the [final INF](templates/package/Display.Driver/nv4_dispi.inf).
+Additional models are listed in the [README](README.md); exact device and subsystem matches are in [desktop-gpus.json](desktop-gpus.json) and the [final INF](templates/package/Display.Driver/nv4_dispi.inf).
 
 The installer was also adjusted to:
 
@@ -321,14 +324,16 @@ HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bu
 
 | Area | Evidence | Boundary |
 |---|---|---|
-| Normal installation | Full setup/reboot succeeded; installed core/CPL hashes matched; GPU device error code 0. | Not a test of every INF-listed board. |
+| Normal installation | Earlier full setup/reboot succeeded; the current increment retains the installer flow. Runtime files were boot-tested and the rebuilt package verified by extraction. | Complete setup UI was not rerun for this update; not every INF-listed board was tested. |
 | Hardware D3D9 | HAL device with hardware vertex processing, explicit VS3/PS3 programs, 64 draws and complete small-render-target readbacks. | Not a benchmark, exhaustive shader test or full-VRAM test. |
 | Native use | P4000 native XP acceleration and games were user-reported working; final package installation was also user-tested. | Keep user reports distinct from instrumented clone results. |
 | DisplayPort | P4000 and GTX 1080 Ti: HBR3 ×4; 144-Hz RGB10 and 175-Hz RGB8 state/receiver checks; automatic return to RGB10. | Separate physical 175-Hz picture confirmation remained unavailable in the recorded trial. |
 | HDMI | Final-build normal picture at 3440×1440/~100 Hz, 543.5 MHz; expected SCDC configuration observed. | 594-MHz custom timing produced no visible picture; high-rate error-counter interpretation remained unresolved. |
-| Customize | UI create/test/save/delete path worked without an EDID override or reboot; original-DLL negative control reproduced the disabled state. | Shared connector classification was not comprehensively rewritten. |
+| Control Panel | Corrected DisplayPort classification, custom-mode workflow and persistent scaling selections were checked against 355.98. | Targeted conversions; not every output path or differing-aspect geometry. |
+| DP update | GTX 980 Ti: normal 3440x1440/100 HBR2 x4 RGB10, native 60 Hz HBR x4 RGB8 fallback, and 1080p RBR x4 RGB10; accelerated checks pass. | Lower-rate tests use this GPU, not a separate DP1.1 board. |
+| HDMI recovery | Three failed setup writes produce 640x480 fallback; two failures then success retain the high mode. Normal 3440x1440/100 at 543.5 MHz and 1080p pass accelerated checks. | Latest recovery changes tested on GTX 980 Ti; no separate Pascal/hotplug/resume regression for this increment. |
 | Topology/EDID | Workstation page, Manage EDID and the required API path were exercised. | Not a claim that all workstation-only features are enabled. |
-| Rebuild | 580 outer files and 469 CPL members match; 12 source blocks compile to exact bytes. | Archive-level byte identity and fresh hardware execution are separate checks. |
+| Rebuild | 582 outer files and 469 CPL members match; 16 source blocks compile to exact bytes. | Archive-level byte identity and fresh hardware execution are separate checks. |
 
 For a new system, verify installed hashes, low-resolution output and hardware D3D9 first. Use bounded high-rate trials with a known fallback, check actual link/depth and receiver status, and confirm the physical picture. Then test intended games, audio, hotplug and longer sessions.
 
@@ -388,31 +393,37 @@ Addresses described as **VA** are preferred-image addresses, not live load addre
 | `nvWsS.dll` | VA `0x1011658B` → `0x10257FE7` | Workstation/topology predicate. |
 | `nv4_disp.dll` | VA `0x48280` | DP rate acceptance. |
 | `nv4_mini.sys` | VA `0x44DFF4`, `0x443704` | Full training and extended DPCD capability discovery. |
-| `nv4_disp.dll` | VA `0x492A9` | Automatic 10-to-8-bit depth selection. |
+| `nv4_disp.dll` | VA `0x47E50`, `0x492A9`, `0x492E5`, `0x4A0E8` | Matched trained-link selection, depth fallback and insufficient-capacity rejection. |
+| `nv4_mini.sys` | VA `0x44C737` | Return one successfully trained rate/lane pair. |
 | `nv4_mini.sys` | VA `0x443D49`, `0x457EEE` | Candidate-mode bandwidth ceiling. |
-| `nvDispS.dll` | File `0x65BE7` | Customize-only fallback connector predicate. |
+| `nvcpl.dll` | Central mask/type conversions; VA `0x10119EA7` | Digital-output classification and scaling-cache refresh; original Customize gate restored. |
 | `nv4_mini.sys` | VA `0x8742B0` | Preserve legacy HDMI summary identity. |
 | `nv4_disp.dll` | VA `0x4111F` | HDMI-aware preservation of the stock DVI rule. |
 | `nv4_mini.sys` | VA `0x4567A6`, `0x45889E`, `0x79C57A` | Early/late HDMI policy and resolved-connector handling. |
+| `nv4_mini.sys` | VA `0x79C502`, `0x6E3171` | HDMI setup transaction and bounded native-write retries. |
+| `nv4_disp.dll` | VA `0x49681`, `0x4988D/92`, `0x49C35` | Arm, consume and propagate HDMI mode failure. |
 | `nvapi.dll` | File `0x183FDE`, `0x870B9`, `0x294E40` | Public version reporting. |
 
 Key final SHA-256 values:
 
 ```text
 nv4_mini.sys
-b56cd23ebb028a19fb449e1c2000e88c46057970f54c4806deefdeeca625c966
+1399a96e80d03ae0ce53bf13dafbaf752df4569b5e4271e24966c5e47b524ef6
 
 nv4_disp.dll
-6aee73ba8938f9a4fdda682a4ecfe5fe2b369ef78886d0806368fcc94f094306
+28544e763088d1c3fc56a72770e14cd1318274b47f8c65c409eb288eda067297
 
 nvapi.dll
 d0af05448a70b7cc3302cb496b92f0225ccf1c0b56870ce0abcc6913f067c2a0
 
+nvcpl.dll (inside Control Panel)
+ea3fdd329d2273ccd81343af9dc1036835683941e4bf2429544256d7413fb787
+
 nvDispS.dll (inside Control Panel)
-2f2a40c58eb557509acb2b1d94f813a1c9dbe384466978e0cc8867af51abba87
+246fed8b2c0247f5b1e177b6cac1f16bda9574b1d8dceed69ca36ab78fd6f936
 
 nvWsS.dll (inside Control Panel)
 f08267e58a8c50bda39d3b47396224e85c3426a88b3a8b500fb028a09b690b2b
 ```
 
-The published installer described by this guide has SHA-256 `fd42a0a8d7c57c6ad977e64ae7664785fe30361b85fac400e8e6344f70f32019`. Repacked archives need not match that whole-file hash; the exact component hashes and verified member inventories are the reproduction checks.
+The matching release is **Forceware 382.69 (10-3-26)**. Repacked archives need not match the release EXE hash; the exact component hashes and verified member inventories are the reproduction checks.
