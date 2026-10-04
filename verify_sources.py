@@ -8,6 +8,7 @@ import argparse
 import json
 from pathlib import Path
 import struct
+import sys
 import subprocess
 from rebuild import require, pe_read, digest
 
@@ -81,6 +82,24 @@ def main():
         require('There are no relocations' in subprocess.check_output(['readelf','-r',str(elf)],text=True), 'Unexpected inserted relocations')
         run(['objcopy','-O','binary','-j','.text',str(elf),str(binary)])
         compare(stem,binary.read_bytes(),args.package/'Display.Driver'/module,va)
+    gpdir=out/'gp107'; gpdir.mkdir()
+    manifest=json.loads((src.parent/'patches.json').read_text())
+    mini=args.package/'Display.Driver/nv4_mini.sys'; data=mini.read_bytes()
+    spec=next(r for r in manifest['files'] if r['path']=='Display.Driver/nv4_mini.sys')
+    require(digest(data)==spec['sha256'], 'GP107 miniport hash mismatch')
+    for item in spec['firmware']:
+        if item['label'].startswith('GP107 '):
+            blob=data[item['target_offset']:item['target_offset']+item['size']]
+            require(digest(blob)==item['sha256'], 'GP107 resource mismatch')
+            (gpdir/(item['label'][6:]+'.bin')).write_bytes(blob)
+    with (out/'compiler.log').open('a') as log:
+        subprocess.run(['as','--32',str(src/'gp107/gp107.s'),'-o','gp107.o'],cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
+        subprocess.run(['ld','-m','elf_i386','-T',str(src/'gp107/gp107.ld'),'gp107.o','-o','gp107.elf'],cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
+        subprocess.run(['objcopy','-O','binary','-j','.text','gp107.elf','gp107.bin'],cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
+    require('There are no relocations' in subprocess.check_output(['readelf','-r',str(gpdir/'gp107.elf')],text=True), 'Unexpected GP107 relocations')
+    compare('gp107', (gpdir/'gp107.bin').read_bytes(), mini, 0xd07c40)
+    opengl = subprocess.check_output([sys.executable, str(src/'opengl-display-class.py'), '--verify', str(args.package/'Display.Driver/nvoglnt.dll')], text=True)
+    (out/'opengl-verification.json').write_text(opengl)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 

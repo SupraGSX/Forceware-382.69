@@ -27,6 +27,66 @@
     "install_section": "Section008"
   },
   {
+    "device": "1392",
+    "subsystem": "861E1043",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_861E1043",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_46",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1392",
+    "subsystem": "86D91043",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_86D91043",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_47",
+    "install_section": "Section012"
+  },
+  {
+    "device": "139B",
+    "subsystem": "107A1025",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_107A1025",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_48",
+    "install_section": "Section012"
+  },
+  {
+    "device": "139B",
+    "subsystem": "364917AA",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_364917AA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_49",
+    "install_section": "Section012"
+  },
+  {
+    "device": "139B",
+    "subsystem": "8A751AFA",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_8A751AFA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_51",
+    "install_section": "Section012"
+  },
+  {
+    "device": "139B",
+    "subsystem": "C24819DA",
+    "die": "GM107",
+    "name": "NVIDIA GeForce GTX 750 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_C24819DA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_50",
+    "install_section": "Section012"
+  },
+  {
     "device": "139D",
     "die": "GM107",
     "name": "NVIDIA GeForce GTX 750 Ti",
@@ -90,6 +150,56 @@
     "install_section": "Section012"
   },
   {
+    "device": "13D8",
+    "subsystem": "11981462",
+    "die": "GM204",
+    "name": "NVIDIA GeForce GTX 960",
+    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11981462",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_52",
+    "install_section": "Section012"
+  },
+  {
+    "device": "13D8",
+    "subsystem": "11991462",
+    "die": "GM204",
+    "name": "NVIDIA GeForce GTX 960",
+    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11991462",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_53",
+    "install_section": "Section012"
+  },
+  {
+    "device": "13D8",
+    "subsystem": "B28219DA",
+    "die": "GM204",
+    "name": "NVIDIA GeForce GTX 960",
+    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28219DA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_54",
+    "install_section": "Section012"
+  },
+  {
+    "device": "13D8",
+    "subsystem": "B28419DA",
+    "die": "GM204",
+    "name": "NVIDIA GeForce GTX 960",
+    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28419DA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_55",
+    "install_section": "Section012"
+  },
+  {
+    "device": "13D8",
+    "subsystem": "B28619DA",
+    "die": "GM204",
+    "name": "NVIDIA GeForce GTX 960",
+    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28619DA",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_56",
+    "install_section": "Section012"
+  },
+  {
     "device": "13F0",
     "die": "GM204",
     "name": "Quadro M5000",
@@ -142,6 +252,16 @@
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_15",
     "install_section": "Section008"
+  },
+  {
+    "device": "1427",
+    "subsystem": "D0031458",
+    "die": "GM206",
+    "name": "NVIDIA GeForce GTX 950",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1427&SUBSYS_D0031458",
+    "coverage": "Desktop subsystem-specific alias; untested",
+    "inf_string": "XPP_GPU_57",
+    "install_section": "Section012"
   },
   {
     "device": "1430",
@@ -342,123 +462,66 @@
     "install_section": "Section012"
   },
   {
-    "device": "1392",
-    "subsystem": "861E1043",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750 Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_861E1043",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_46",
+    "device": "1C81",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C81",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_39",
     "install_section": "Section012"
   },
   {
-    "device": "1392",
-    "subsystem": "86D91043",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750 Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_86D91043",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_47",
+    "device": "1C82",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C82",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_40",
     "install_section": "Section012"
   },
   {
-    "device": "139B",
-    "subsystem": "107A1025",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750 Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_107A1025",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_48",
+    "device": "1C83",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C83",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_41",
     "install_section": "Section012"
   },
   {
-    "device": "139B",
-    "subsystem": "364917AA",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_364917AA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_49",
+    "device": "1CB1",
+    "die": "GP107",
+    "name": "Quadro P1000",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB1",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_42",
     "install_section": "Section012"
   },
   {
-    "device": "139B",
-    "subsystem": "C24819DA",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750 Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_C24819DA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_50",
+    "device": "1CB2",
+    "die": "GP107",
+    "name": "Quadro P600",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB2",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_43",
     "install_section": "Section012"
   },
   {
-    "device": "139B",
-    "subsystem": "8A751AFA",
-    "die": "GM107",
-    "name": "NVIDIA GeForce GTX 750Ti",
-    "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_8A751AFA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_51",
+    "device": "1CB3",
+    "die": "GP107",
+    "name": "Quadro P400",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB3",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_44",
     "install_section": "Section012"
   },
   {
-    "device": "13D8",
-    "subsystem": "11981462",
-    "die": "GM204",
-    "name": "NVIDIA GeForce GTX 960",
-    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11981462",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_52",
-    "install_section": "Section012"
-  },
-  {
-    "device": "13D8",
-    "subsystem": "11991462",
-    "die": "GM204",
-    "name": "NVIDIA GeForce GTX 960",
-    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11991462",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_53",
-    "install_section": "Section012"
-  },
-  {
-    "device": "13D8",
-    "subsystem": "B28219DA",
-    "die": "GM204",
-    "name": "NVIDIA GeForce GTX 960",
-    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28219DA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_54",
-    "install_section": "Section012"
-  },
-  {
-    "device": "13D8",
-    "subsystem": "B28419DA",
-    "die": "GM204",
-    "name": "NVIDIA GeForce GTX 960",
-    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28419DA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_55",
-    "install_section": "Section012"
-  },
-  {
-    "device": "13D8",
-    "subsystem": "B28619DA",
-    "die": "GM204",
-    "name": "NVIDIA GeForce GTX 960",
-    "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28619DA",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_56",
-    "install_section": "Section012"
-  },
-  {
-    "device": "1427",
-    "subsystem": "D0031458",
-    "die": "GM206",
-    "name": "NVIDIA GeForce GTX 950",
-    "hardware_id": "PCI\\VEN_10DE&DEV_1427&SUBSYS_D0031458",
-    "coverage": "Desktop subsystem-specific alias; untested",
-    "inf_string": "XPP_GPU_57",
+    "device": "1CB6",
+    "die": "GP107",
+    "name": "Quadro P620",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB6",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_45",
     "install_section": "Section012"
   }
 ]

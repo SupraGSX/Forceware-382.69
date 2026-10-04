@@ -6,6 +6,8 @@ The manifest contains file patches; firmware is read from the supplied donors.
 """
 import argparse
 import array
+import datetime
+import re
 import hashlib
 import json
 from pathlib import Path
@@ -93,7 +95,7 @@ def inventory(root):
     return {str(p.relative_to(root)): digest(p.read_bytes()) for p in sorted(root.rglob('*')) if p.is_file()}
 
 
-def repack(executable, source, tree, destination, archive, log, outer=False):
+def repack(executable, source, tree, destination, archive, log, outer=False, release_title="Forceware 382.69"):
     run7z(executable, ['a', '-t7z', '-m0=lzma2', '-mx=5', '-md=32m', '-mmt=4', str(archive), '.'], log, tree)
     start = source.find(b';!@Install@!')
     end = source.find(b"7z\xbc\xaf\x27\x1c", start)
@@ -103,6 +105,7 @@ def repack(executable, source, tree, destination, archive, log, outer=False):
         config = config.replace('DisplayDriver\\\\368.81\\\\WinXP\\\\International', 'Forceware 382.69')
         config = config.replace('NVIDIA Display Driver v368.81 - International Package', 'Forceware 382.69 - Custom XP 32-bit Driver')
         config = config.replace('NVIDIA Display Driver v368.81 - International', 'Forceware 382.69')
+        config = config.replace('Forceware 382.69', release_title)
     b = bytearray(source[:start] + config.encode('utf-8') + archive.read_bytes())
     op = struct.unpack_from('<I', b, 60)[0]+24
     struct.pack_into('<II', b, op+96+32, 0, 0)
@@ -120,6 +123,12 @@ def main():
     args = cli.parse_args()
     here = Path(__file__).resolve().parent
     manifest = json.loads((here/'patches.json').read_text())
+    build_date = datetime.datetime.strptime(manifest['build_date'], '%m/%d/%Y').date()
+    release_title = manifest['release_title']
+    require(release_title == 'Forceware 382.69 ('+str(build_date.month)+'-'+str(build_date.day)+'-'+str(build_date.year)+')', 'Release title/date mismatch')
+    inf = (here/'templates/package/Display.Driver/nv4_dispi.inf').read_text(encoding='cp1252')
+    match = re.search(r'^DriverVer\s*=\s*([^,]+),\s*10\.18\.13\.8269\s*$', inf, re.M)
+    require(match is not None and match.group(1) == manifest['build_date'], 'Display INF date/build date mismatch')
     stock = check(args.stock.read_bytes(), manifest['inputs']['stock'], 'stock installer')
     donors = {k: check(getattr(args, k).read_bytes(), manifest['inputs'][k], k+' donor') for k in ['quadro', 'geforce']}
     root = args.out.resolve()
@@ -183,12 +192,12 @@ def main():
     actual = inventory(package)
     require({k: v for k, v in actual.items() if k in expected} == expected, 'Final package payload mismatch')
     require(set(actual) == {r['path'] for r in manifest['files'] if r['tree'] == 'package'}, 'Unexpected package files')
-    exe = root/'Forceware 382.69.exe'
-    repack(args.sevenzip, stock, package, exe, scratch/'package.7z', scratch/'pack-outer.log', outer=True)
+    exe = root/(release_title+'.exe')
+    repack(args.sevenzip, stock, package, exe, scratch/'package.7z', scratch/'pack-outer.log', outer=True, release_title=release_title)
     outer_check = scratch/'package-check'
     run7z(args.sevenzip, ['x', '-y', '-o'+str(outer_check), str(exe)], scratch/'check-outer.log')
     require(inventory(outer_check) == actual, 'Final EXE extraction mismatch')
-    report = {'package_files': len(actual), 'exact_release_file_hash_matches': len(expected),
+    report = {'build_date': manifest['build_date'], 'release_title': release_title, 'package_files': len(actual), 'exact_release_file_hash_matches': len(expected),
               'exact_control_panel_file_hash_matches': len(expected_cpl),
               'regenerated_files': ['Display.Driver/NvCplSetupInt.exe', 'SHA256SUMS.txt'],
               'exe_sha256': digest(exe.read_bytes()), 'exe_bytes': exe.stat().st_size,
