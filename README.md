@@ -2,20 +2,21 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Forceware 382.69**.
 
-**Build: 10-5-2026**
+**GP107 Test 2 — EXPERIMENTAL / UNSTABLE — 10-5-2026**
 
 Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
 
 **Additional desktop INF entries over stock 368.81**
 
 - GeForce GTX 970, 980, 980 Ti; GTX TITAN X (Maxwell).
+- GeForce GTX 1050/1050 Ti and Quadro P400/P600/P620/P1000 (experimental GP107 entries).
 - GeForce GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti; TITAN X (Pascal), TITAN Xp.
 - Quadro M4000, M5000, M6000, M6000 24GB; P2000, P2200, P4000, P5000, P6000.
 - Additional desktop OEM variants of GTX 950 and GTX 960.
 
-Mobile, GP100, GP107 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See [the complete Maxwell/Pascal INF list](desktop-gpus.json).
+Mobile, GP100 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See [the complete Maxwell/Pascal INF list](desktop-gpus.json).
 
-Experimental GP107 support is suspended because end users still report Code 10. GP107 entries are removed from the display INF; experimental code and internal name records are retained for further development.
+Previous GP107 builds still produced Code 10. This unstable test restores GP107 INF entries and changes its inferred `+0x62D` capability flag from `0` to `1`. It is not a confirmed Code 10 fix. See [test instructions](templates/package/Documentation/GP107-experimental.md).
 
 **Included fixes**
 
@@ -29,9 +30,9 @@ Experimental GP107 support is suspended because end users still report Code 10. 
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
+Based on the October 5 stable build, retaining its CUDA/OpenCL/GPU PhysX, OpenGL and display fixes. Only the GP107 flag operand and checksum change in the miniport; the other runtime files are unchanged.
 
-[Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest)
+[Download the experimental installer](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-gp107-test2)
 
 When updating an existing driver installation, select **Custom (Advanced) → Perform a clean installation**, then restart. This ensures the revised display files replace the earlier build.
 

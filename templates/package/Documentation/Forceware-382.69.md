@@ -2,20 +2,21 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Forceware 382.69**.
 
-**Build: 10-4-2026 — GP107 support is experimental**
+**GP107 Test 2 — EXPERIMENTAL / UNSTABLE — 10-5-2026**
 
 Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
 
 **Additional desktop INF entries over stock 368.81**
 
 - GeForce GTX 970, 980, 980 Ti; GTX TITAN X (Maxwell).
+- GeForce GTX 1050/1050 Ti and Quadro P400/P600/P620/P1000 (experimental GP107 entries).
 - GeForce GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti; TITAN X (Pascal), TITAN Xp.
 - Quadro M4000, M5000, M6000, M6000 24GB; P2000, P2200, P4000, P5000, P6000.
 - Additional desktop OEM variants of GTX 950 and GTX 960.
 
-Mobile, GP100, GP107 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See ListDevices.txt for the complete Maxwell/Pascal INF list.
+Mobile, GP100 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See ListDevices.txt for the complete Maxwell/Pascal INF list.
 
-GP107 display INF entries are withheld following reported Code 10 failures. Experimental code and internal name records are retained for further development.
+GP107 display INF entries are restored only for this unstable Test 2. Earlier builds still produced Code 10; this change is not hardware-validated.
 
 **Included fixes**
 
@@ -29,7 +30,7 @@ GP107 display INF entries are withheld following reported Code 10 failures. Expe
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
+This experiment uses the October 5 stable fixes and changes only the GP107 +0x62D flag operand and miniport checksum. See GP107-experimental.md for instructions.
 
 
 Display driver version: 6.14.13.8269; INF version: 10.18.13.8269. HD Audio, PhysX and other component versions are unchanged. This is a custom distribution, not an official NVIDIA 382.69 release.

@@ -148,16 +148,16 @@ gp107_gfxp:
  xor eax,eax
  ret 8
 
-# Retain XP's original feature initialization; the 376.84 GP107 delta omits
-# GP104 flag +626. Matching the neighboring XP flag ordering maps it to +62D.
-# This is an inferred field mapping and remains a hardware-validation target.
+# GP107 Test 2: retain the flag enabled by original_gp104_caps.
+# Test 1 cleared +62D using an inferred donor-to-XP mapping. This test
+# sets it to 1; the field semantics and GP107 hardware result remain unverified.
 gp107_caps:
  push esi
  mov esi,[esp+12]
  push esi
  push dword ptr [esp+12]
  call original_gp104_caps
- mov byte ptr [esi+0x62d],0
+ mov byte ptr [esi+0x62d],1
  pop esi
  ret 8
 

@@ -132,7 +132,12 @@ def main():
     manifest = json.loads((here/'patches.json').read_text())
     build_date = datetime.datetime.strptime(manifest['build_date'], '%m/%d/%Y').date()
     release_title = manifest['release_title']
-    require(release_title == 'Forceware 382.69 ('+str(build_date.month)+'-'+str(build_date.day)+'-'+str(build_date.year)+')', 'Release title/date mismatch')
+    variant = manifest.get('release_variant', '')
+    require(variant in ['', 'GP107 Test 2 (Experimental)'], 'Unknown release variant')
+    expected_title = 'Forceware 382.69 ('+str(build_date.month)+'-'+str(build_date.day)+'-'+str(build_date.year)+')'
+    if variant:
+        expected_title = 'Forceware 382.69 - '+variant
+    require(release_title == expected_title, 'Release title/date mismatch')
     inf = (here/'templates/package/Display.Driver/nv4_dispi.inf').read_text(encoding='cp1252')
     match = re.search(r'^DriverVer\s*=\s*([^,]+),\s*10\.18\.13\.8269\s*$', inf, re.M)
     require(match is not None and match.group(1) == manifest['build_date'], 'Display INF date/build date mismatch')

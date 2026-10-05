@@ -721,6 +721,13 @@ HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplEnableSRS1564,%REG_DWORD%
 %NVIDIA% = NVIDIA_Devices,NTx86.5.1,NTx86.6.0
 
 [NVIDIA_Devices.NTx86.5.1]
+%XPP_GPU_45% = Section012, PCI\VEN_10DE&DEV_1CB6
+%XPP_GPU_44% = Section012, PCI\VEN_10DE&DEV_1CB3
+%XPP_GPU_43% = Section012, PCI\VEN_10DE&DEV_1CB2
+%XPP_GPU_42% = Section012, PCI\VEN_10DE&DEV_1CB1
+%XPP_GPU_41% = Section012, PCI\VEN_10DE&DEV_1C83
+%XPP_GPU_40% = Section012, PCI\VEN_10DE&DEV_1C82
+%XPP_GPU_39% = Section012, PCI\VEN_10DE&DEV_1C81
 %NVIDIA_DEV.06C0%           = Section001, PCI\VEN_10DE&DEV_06C0                 
 %NVIDIA_DEV.06C4%           = Section002, PCI\VEN_10DE&DEV_06C4                 
 %NVIDIA_DEV.06CD%           = Section001, PCI\VEN_10DE&DEV_06CD                 
@@ -2603,6 +2610,13 @@ HKR,,MultiFunctionSupported,%REG_DWORD%,1
 HKR,,UseBestResolution,%REG_DWORD%,1
 
 [Strings]
+XPP_GPU_45 = "Quadro P620"
+XPP_GPU_44 = "Quadro P400"
+XPP_GPU_43 = "Quadro P600"
+XPP_GPU_42 = "Quadro P1000"
+XPP_GPU_41 = "NVIDIA GeForce GTX 1050"
+XPP_GPU_40 = "NVIDIA GeForce GTX 1050 Ti"
+XPP_GPU_39 = "NVIDIA GeForce GTX 1050"
 XPP_GPU_0 = "NVIDIA GeForce GTX 750 Ti"
 XPP_GPU_1 = "NVIDIA GeForce GTX 750"
 XPP_GPU_2 = "NVIDIA GeForce GTX 745"

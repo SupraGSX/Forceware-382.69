@@ -1,27 +1,23 @@
-# GP107 experimental initialization
+# GP107 Test 2 — experimental / unstable
 
-The 10-5-2026 build retains experimental GP107 code and internal name records but removes all seven GP107 display INF entries. GTX 1050 Ti testers reported Code 10 with the earlier experimental builds; GP107 initialization is not working reliably enough for inclusion.
+Based on **Forceware 382.69 (10-5-2026)**. Previous GP107 builds still produced Code 10 for testers. This release tests one capability-flag hypothesis and is not a confirmed fix.
 
-Excluded desktop entries: GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3), and P620 (1CB6). Mobile GPUs, GP100 and GP108 also remain excluded. Existing PhysX installer entries are retained separately.
+## Change
 
-## Implementation
+The GP107 callback first calls XP's original GP104 capability initializer, which sets byte `+0x62D` to `1`. The previous experimental code then cleared that byte to `0`, using an inferred correspondence with the newer driver. Test 2 changes the explicit write to `1`, preserving the inherited value. Removing that write would leave the same flag state.
 
-The XP driver already has a GP107 identity but lacks its family registration. A hook at preferred VA `0x46F7AA` preserves the original GP106 registration and then registers GP107 index `0x3B` through a separate 82-pointer table. Registration failure is propagated. Existing GP106 class/engine tables and semantically matching XP GP104 callbacks are retained; the GPU identity is not changed.
+Only this instruction operand and the required PE checksum change in `nv4_mini.sys` relative to the October 5 stable binary. No firmware, memory-security checks, graphics-context constants, resource selectors, internal GPU-name tables or other runtime modules change. The meaning of the flag and its effect on GP107 hardware remain unverified.
 
-The appended block starts at `0xD07C40`. Its FECS/GPCCS constructors and graphics constructor use intact matched GP107 signatures and an 87,842-byte graphics bundle from the pinned 376.84 x86 donor. The existing ACR, SEC2, VPR and boot-descriptor adaptation remain unchanged. Donor firmware instructions and signatures are not edited.
+Restored desktop INF IDs: GTX 1050 (`1C81`, `1C83`), GTX 1050 Ti (`1C82`), Quadro P1000 (`1CB1`), P600 (`1CB2`), P400 (`1CB3`) and P620 (`1CB6`). Mobile, GP100 and GP108 remain excluded. Internal compute records and the PhysX installer GPU list are unchanged.
 
-GP107 context values are applied through independently mapped XP callbacks and XP field offsets. Newer Windows object offsets are not copied. The capability flag at XP offset `0x62D` is an inferred mapping and remains a hardware-validation target. The additional GP107 graphics-bundle directory types also need hardware validation.
+## Test procedure
 
-The complete stock-to-final byte and firmware recipe is in `patches.json`. `sources/gp107/gp107.s` and `gp107.ld` rebuild the inserted code. `verify_sources.py` checks the compiled block, resource hashes, and final miniport hash. The OpenGL patch remains in `nvoglnt.dll`, independently of this miniport addition.
+1. Keep a recoverable XP installation and the previous driver available. Use the GP107 card as the primary display GPU; for passthrough, it must be the VM's primary VGA device.
+2. Run this experimental installer. For any existing driver installation, choose **Custom (Advanced) → Perform a clean installation**, then restart.
+3. Confirm the installed `WINDOWS/system32/drivers/nv4_mini.sys` SHA-256 is `98876708f9d31ae410608a2edbc89166cfd8a33aaed68a5c7ccf8598e3155bc7`. The display version remains 6.14.13.8269 and date October 5, 2026, so the hash distinguishes this experiment from stable.
+4. Report the exact GPU model/PCI ID and Device Manager status. If it starts, check dxdiag DirectDraw/Direct3D acceleration, then OpenGL and normal applications. If it still fails, record Code 10 or any changed symptom; do not infer the failed initialization stage from Code 10 alone.
+5. If necessary, return to Safe Mode and roll back the driver.
 
-## Evidence and limits
+The October 5 stable base passed installation, CUDA, OpenCL, Direct3D, OpenGL and GPU PhysX checks on GTX 1080 Ti. Those results do not validate this GP107 change. This experimental installer has no GP107 hardware pass. The patched miniport passed 166 offline execution checks at its preferred and relocated addresses, covering registration, constructors, the enabled flag, resource pointers and GP106 preservation. Those checks do not execute a GPU, firmware or the Windows kernel. Source-to-binary checks separately verify the assembled instruction bytes.
 
-The exact GP107 miniport previously passed 166 offline i386 execution checks across its preferred and relocated addresses: registration, original selector, failure propagation, XP constructor calls, stack balance, firmware pointers, context constants and GP106 preservation. The registration allocator was substituted; these checks do not execute a GPU, firmware or the Windows kernel. They do not prove GP107 startup or cure a reported Code 10.
-
-The exact OpenGL DLL passed glxgears and four GPU Caps Viewer demos on primary GTX 1080 Ti, plus D3D9 draw/readback checks. The combined package has not acquired a new GP107 hardware pass merely by including both changes.
-
-Nouveau at Linux commit `adc218676eef25575469234709c2d87185ca223a` assigns GP104 and GP107 the same display/FIFO/MMU/framebuffer/ACR/SEC2 constructors in `drivers/gpu/drm/nouveau/nvkm/engine/device/base.c`, with GP107-specific GR setup and context values in `engine/gr/gp107.c` and `engine/gr/ctxgp107.c`. Mesa commit `f1f246cfda65eff82fba3be1caf2d23bdeda60cc`, `src/nouveau/codegen/nv50_ir_target.cpp`, selects the common GM107 compiler family for Maxwell and Pascal. These references guided comparison; Linux layouts or code were not copied into the XP driver.
-
-## First hardware checks
-
-Use a recoverable XP installation and keep the preceding driver available. Make the test GPU the primary VGA device. Install normally, reboot, and confirm Device Manager's driver date is October 4, 2026. Check device status before trying dxdiag DirectDraw/Direct3D tests, OpenGL demos, and familiar games. If startup fails, use Safe Mode to revert the driver. Record the card model/PCI ID, device status and any stop code. File hashes distinguish exact binaries if the date alone is insufficient.
+The earlier GP107 implementation, matched donor resources and source references are described in `REBUILDING.md`. Nouveau and Mesa guided the earlier comparison; private Linux and Windows object layouts are not assumed identical.

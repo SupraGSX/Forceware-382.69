@@ -460,5 +460,68 @@
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_38",
     "install_section": "Section012"
+  },
+  {
+    "device": "1C81",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C81",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_39",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1C82",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050 Ti",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C82",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_40",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1C83",
+    "die": "GP107",
+    "name": "NVIDIA GeForce GTX 1050",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1C83",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_41",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1CB1",
+    "die": "GP107",
+    "name": "Quadro P1000",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB1",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_42",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1CB2",
+    "die": "GP107",
+    "name": "Quadro P600",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB2",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_43",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1CB3",
+    "die": "GP107",
+    "name": "Quadro P400",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB3",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_44",
+    "install_section": "Section012"
+  },
+  {
+    "device": "1CB6",
+    "die": "GP107",
+    "name": "Quadro P620",
+    "hardware_id": "PCI\\VEN_10DE&DEV_1CB6",
+    "coverage": "Experimental GP107 initialization; hardware validation pending",
+    "inf_string": "XPP_GPU_45",
+    "install_section": "Section012"
   }
 ]

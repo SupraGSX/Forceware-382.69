@@ -1,21 +1,16 @@
-Forceware 382.69 - custom NVIDIA Windows XP 32-bit driver
-Build: 10-5-2026 (display INF date: 10/05/2026)
+Forceware 382.69 - GP107 Test 2 (Experimental)
+EXPERIMENTAL / UNSTABLE — GP107 hardware startup is unverified.
+Display INF date: 10/05/2026; display version: 6.14.13.8269.
 
-Launch Forceware 382.69 (10-5-2026).exe, follow the normal NVIDIA installer, and restart.
-Alternatively, extract the package and run setup.exe.
-When upgrading an earlier 382.69 build, choose Custom (Advanced), select
-Perform a clean installation, and restart to replace all display files.
+Based on the October 5 stable driver with its existing fixes. This test changes
+one GP107 capability flag from 0 to 1 and restores seven GP107 display INF IDs.
+Previous builds still returned Code 10. This is not a confirmed fix.
+
+Launch this EXE, or extract it and run setup.exe. When updating any existing
+driver installation, choose Custom (Advanced), select Perform a clean
+installation, and restart. Keep a recovery route and the previous driver.
+
+Use the GP107 card as the primary display GPU. See
+Documentation/GP107-experimental.md for the expected miniport hash and tests.
+Mobile, GP100 and GP108 GPUs remain excluded.
 This is a modified, unsigned 368.81-based package, not an official NVIDIA release.
-
-Includes Pascal initialization/3D, the OpenGL display-class fix,
-and internal GPU-name corrections for CUDA, OpenCL and GPU PhysX,
-improved DisplayPort link/depth selection,
-HDMI identification/SCDC/clock-limit and setup recovery fixes, and integrated
-Control Panel Customize, DisplayPort scaling and topology/EDID support.
-No separate add-on is required.
-
-Mobile, GP100, GP107 and GP108 GPUs are excluded from the display INF.
-See Documentation/Forceware-382.69.md for features and compatibility limits.
-
-GP107 display INF entries are withheld following reported Code 10 failures.
-Experimental GP107 initialization and internal name records remain in the binary.
