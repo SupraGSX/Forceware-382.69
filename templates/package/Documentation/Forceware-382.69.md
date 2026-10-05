@@ -9,18 +9,17 @@ Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom
 **Additional desktop INF entries over stock 368.81**
 
 - GeForce GTX 970, 980, 980 Ti; GTX TITAN X (Maxwell).
-- GeForce GTX 1050 and 1050 Ti (experimental GP107 support).
 - GeForce GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti; TITAN X (Pascal), TITAN Xp.
 - Quadro M4000, M5000, M6000, M6000 24GB; P2000, P2200, P4000, P5000, P6000.
-- Quadro P400, P600, P620 and P1000 (experimental GP107 support).
 - Additional desktop OEM variants of GTX 950 and GTX 960.
 
-Mobile, GP100 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See ListDevices.txt for the complete Maxwell/Pascal INF list.
+Mobile, GP100, GP107 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See ListDevices.txt for the complete Maxwell/Pascal INF list.
 
-GP107 startup and rendering have not been verified on hardware.
+GP107 display INF entries are withheld following reported Code 10 failures. Experimental code and internal name records are retained for further development.
 
 **Included fixes**
 
+- CUDA, OpenCL and GPU PhysX initialization corrected through missing internal GPU-name records; verified on GTX 1080 Ti.
 - OpenGL display-class initialization fixed, verified on GTX 1080 Ti.
 - DisplayPort HBR2/HBR3 training and extended capability detection, with mode selection based on a successfully trained link and automatic 8-bit fallback when needed.
 - HDMI 2.0 identification, SCDC scrambling/high-speed clock-ratio handling, and bounded setup retries with safe-mode recovery on failure.
@@ -30,7 +29,7 @@ GP107 startup and rendering have not been verified on hardware.
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-4-2026 build combines the OpenGL fix and experimental GP107 initialization. Direct3D 9 and five OpenGL rendering checks passed on GTX 1080 Ti. GP107 hardware validation remains pending.
+The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
 
 
 Display driver version: 6.14.13.8269; INF version: 10.18.13.8269. HD Audio, PhysX and other component versions are unchanged. This is a custom distribution, not an official NVIDIA 382.69 release.
@@ -41,4 +40,4 @@ See [DisplayPort policy](DisplayPort-update.md) and [HDMI setup recovery](HDMI-S
 
 See [OpenGL initialization](OpenGL-update.md) for the added class recognition and validation.
 
-Build date: `10/04/2026` in the display INF. See [GP107 details](GP107-experimental.md).
+Build date: `10/05/2026` in the display INF and rebuilt display metadata. See [GP107 details](GP107-experimental.md).

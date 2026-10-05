@@ -1,6 +1,6 @@
 # How Forceware 382.69 was built from NVIDIA 368.81 for Windows XP
 
-Forceware 382.69 applies binary patches, selected firmware resources and installer changes to **NVIDIA 368.81 for Windows XP 32-bit**. **382.69 is this project's custom release number.** This guide describes the **10-4-2026 build with the OpenGL fix and experimental GP107 initialization**.
+Forceware 382.69 applies binary patches, selected firmware resources and installer changes to **NVIDIA 368.81 for Windows XP 32-bit**. **382.69 is this project's custom release number.** This guide describes the **10-5-2026 build with CUDA/OpenCL/GPU PhysX name-table corrections and GP107 excluded from the display INF**.
 
 NVIDIA's proprietary source is unavailable; the supplied source consists of our Python patcher and C/assembly routines. This guide explains the final implementation and how to reproduce it.
 
@@ -16,13 +16,15 @@ The changes enable the tested Pascal P4000/GTX 1080 Ti configurations, fix the r
 | [verify_sources.py](verify_sources.py) | Compiles 17 code blocks and independently verifies the OpenGL display-class patch against the reconstructed driver. |
 | [sources/opengl-display-class.py](sources/opengl-display-class.py) | Guarded recipe for adding the missing OpenGL display class to the preceding Forceware ICD. |
 | [templates/](templates/) | Final INF, installer configuration and text files used during reconstruction. |
-| [desktop-gpus.json](desktop-gpus.json) | All 57 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
+| [desktop-gpus.json](desktop-gpus.json) | All 50 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
-A verified rebuild matched **584 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; all 17 compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
+A verified rebuild matched **585 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; all 17 compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
 
 Compression, timestamps and tool versions can change archive hashes while preserving identical driver files. The reproduction check is the exact extracted payload.
+
+When updating an existing driver installation, use the NVIDIA installer's **Custom (Advanced) → Perform a clean installation** option and restart. An upgrade test retained the preceding `nv4_disp.dll`; clean installation replaced it with the expected package hash.
 
 ## 2. Rebuild instructions
 
@@ -75,13 +77,13 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-4-2026).exe
+  Forceware 382.69 (10-5-2026).exe
   Forceware 382.69/
   rebuild-result.json
   work/
 ```
 
-`rebuild-result.json` should report 586 package files, 584 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
+`rebuild-result.json` should report 587 package files, 585 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
 
 ### 2.3 Optionally rebuild the added machine code from source
 
@@ -100,7 +102,9 @@ Other compiler versions may emit different instructions; investigate mismatches 
 
 ### Build identification
 
-Each new package revision must declare its intended release date in `patches.json` as `build_date` (MM/DD/YYYY) and in the display INF's `DriverVer`. The release title and EXE carry that same date. Update these together when creating a new build; preserve historical dates when reproducing an existing build. `rebuild.py` rejects mismatched dates. Display version remains 6.14.13.8269; unchanged audio and other component dates/versions are retained.
+Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/05/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+
+These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
 
 ### 2.4 Install and validate separately
 
@@ -196,7 +200,7 @@ The OpenGL ICD requires a separate display-class list from the display DLL. `nvo
 
 The 378.78 x86 OpenGL driver uses the same old entries with `0x9870` prepended. The XP patch adds that twelve-entry list at preferred VA `0x6A45F7A0`, changes creation and teardown lookups at `0x69E96249`/`0x69E963CB` to the new pointer/count, and updates `.rdata` virtual size and the PE checksum. Existing relocation records remain valid. The original eleven entries and selector are preserved; no newer context offsets or shader code are copied.
 
-Use [opengl-display-class.py](sources/opengl-display-class.py) to independently check the final ICD, or to apply this increment to an exact preceding Forceware ICD. `rebuild.py` already includes the complete stock-to-final patch through `patches.json`.
+Use [verify_sources.py](verify_sources.py) to independently check the final dated ICD; it normalizes the verified build metadata before invoking [opengl-display-class.py](sources/opengl-display-class.py). The latter can also apply the OpenGL increment to its exact preceding Forceware ICD. `rebuild.py` already includes the complete stock-to-final patch through `patches.json`.
 
 On a primary GTX 1080 Ti, the installed file-based candidate renders glxgears and GPU Caps Viewer 1.37 Simple Mesh, Furry Cube, Illuminated Torus and Tessellation. The four GPU Caps processes exit cleanly, and 64 D3D9 HAL/HWVP VS3/PS3 draw/readbacks still pass. The combined 10-4-2026 package was subsequently installed through Windows PnP, rebooted and passed the same five OpenGL rendering checks and all 64 D3D9 draw/readbacks on GTX 1080 Ti. Installed file hashes and the October 4 driver date were verified. The complete NVIDIA installer UI and other GPU models were not retested. See [OpenGL implementation](templates/package/Documentation/OpenGL-update.md).
 
@@ -204,7 +208,7 @@ On a primary GTX 1080 Ti, the installed file-based candidate renders glxgears an
 
 The GP107 addition retains the existing GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with its own 82-pointer table. Matched XP callbacks, GP107 context constants and intact 376.84 graphics resources are installed through the added block at `0xD07C40`. Existing firmware/secure initialization and other GPU family tables are preserved. Newer-driver private offsets are not reused.
 
-See [GP107 implementation and limitations](templates/package/Documentation/GP107-experimental.md) and [assembly source](sources/gp107/gp107.s). The exact miniport passes offline execution checks; GP107 hardware startup and 3D are still unverified.
+See [GP107 implementation and limitations](templates/package/Documentation/GP107-experimental.md) and [assembly source](sources/gp107/gp107.s). The experimental block passed offline execution checks; testers subsequently reported GP107 Code 10, so its display INF entries are withheld.
 
 ## 6. Topology and EDID management required two separate changes
 
@@ -273,7 +277,7 @@ The 55-byte routine at miniport VA `0x8742B0` skips Forum blocks only in that le
 
 In the display DLL, the patch at `0x4111F` queries HDMI status. A positive GPU/output-and-sink HDMI result retains single-link TMDS behavior; other connections retain the original 165-MHz DVI comparison.
 
-The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. GP107 retains that internal family check and is now included experimentally in the INF. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
+The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. GP107 retains that internal family check but is excluded from the display INF. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
 
 - Valid digital EDID, checksum/bounds checks and legacy HDMI identity.
 - Sink-advertised TMDS limits and source/board/resource-manager restrictions.
@@ -304,11 +308,21 @@ Source: [recovery policy](sources/hdmi-recovery/scdc-recovery.c), [miniport hook
 
 SCDC availability is not equivalent to EDID readability or input selection. Later reads sometimes failed while the picture remained normal; the cause is unresolved. Hotplug, resume and alternate mode-update paths were not separately validated by these tests.
 
+## 9a. Correct CUDA, OpenCL and GPU PhysX GPU-name lookup
+
+The reproduced GTX 1080 Ti failure was a missing internal GPU name, not a missing CUDA compiler or PhysX implementation. RM command `0x20800111` reached short-name lookup `0x557A80`; PCI ID `1B06` was absent from the 640-record table, so lookup returned `0x56`. CUDA initialization returned 100, OpenCL found no platform, and FluidMark used CPU PhysX.
+
+The final table retains all 640 original records and appends accurate names for ten IDs: `1B02`, `1B06`, `1B83`, `1C04`, `1C06`, `1C31`, `1C83`, `1CB1`, `1CB2`, `1CB3`. Seven table references and three loop bounds are changed, with 1,300 additional HIGHLOW relocation entries for the copied pointers. Unknown devices remain rejected; existing successful lookups are unchanged.
+
+[sources/gpu-names.py](sources/gpu-names.py) independently reconstructs the name-only correction from the exact 10-4 miniport. Its separate [internal GPU list](sources/compute-gpus.json) retains GP107 while [desktop-gpus.json](desktop-gpus.json) describes current INF eligibility. `patches.json` contains the complete stock-to-final edits, including subsequent build metadata. The GP107 code/resources and PhysX installer IDs remain intact, but the main display INF excludes GP107 following reported Code 10 failures.
+
+On GTX 1080 Ti the name-only correction passed CUDA context create/synchronize/destroy, OpenCL kernel compilation/execution with 8,192 checked GPU results, GPU PhysX FluidMark rendering, and 64 hardware D3D9 draw/readbacks. The isolated native lookup harness passed 4,872 calls including original records and preferred/relocated images. Other listed GPUs were checked statically, not individually hardware-tested. See [compute update](templates/package/Documentation/Compute-update.md).
+
 ## 10. Build a normal full installer and expand the INF
 
 The complete stock installer supplies setup, HD Audio, PhysX, nView and the other retained components.
 
-The desktop INF work retained the selected legacy desktop entries and added/retained 57 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile, GP100 and GP108 GPUs are excluded; GP107 support is experimental.
+The desktop INF work retained the selected legacy desktop entries and added/retained 50 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile, GP100, GP107 and GP108 GPUs are excluded. Experimental GP107 initialization and its internal names remain in the binary; the normal display INF no longer matches those cards.
 
 Additional models are listed in the [README](README.md); exact device and subsystem matches are in [desktop-gpus.json](desktop-gpus.json) and the [final INF](templates/package/Display.Driver/nv4_dispi.inf).
 
@@ -345,18 +359,19 @@ HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bu
 
 | Area | Evidence | Boundary |
 |---|---|---|
-| Normal installation | The combined 10-4-2026 display package installed through Windows PnP and rebooted on GTX 1080 Ti with healthy device status; installed hashes and build date matched. Earlier full setup/reboot also succeeded. | Complete setup UI was not rerun for this update; not every INF-listed board was tested. |
-| Hardware D3D9 | HAL device with hardware vertex processing, explicit VS3/PS3 programs, 64 draws and complete small-render-target readbacks. | Not a benchmark, exhaustive shader test or full-VRAM test. |
-| OpenGL | Combined 10-4-2026 build: glxgears, Simple Mesh, Furry Cube, Illuminated Torus and Tessellation rendered and exited cleanly on GTX 1080 Ti. | Functional checks, not a conformance suite or validation of every Pascal GPU. |
-| GP107 | Registration, constructors and resource mapping passed 166 offline execution checks. | GPU startup and rendering remain experimental and unverified on GP107 hardware. |
-| Native use | P4000 native XP acceleration and games were user-reported working; final package installation was also user-tested. | Keep user reports distinct from instrumented clone results. |
+| Normal installation | The 10-5-2026 EXE extracted, completed the full NVIDIA clean-install workflow and rebooted on GTX 1080 Ti. Installed hashes, healthy device status and October 5 driver date matched. | An upgrade retained the preceding display DLL; use Custom → Perform a clean installation. Other boards were not individually retested. |
+| Hardware D3D9 | 10-5-2026 files: HAL device with hardware vertex processing, explicit VS3/PS3 programs, 64 draws and complete small-render-target readbacks passed. | Not a benchmark, exhaustive shader test or full-VRAM test. |
+| OpenGL | 10-5-2026 files: glxgears and GL4 Tessellation rendered and exited cleanly on GTX 1080 Ti. The preceding 10-4 build also passed Simple Mesh, Furry Cube and Illuminated Torus. | Functional checks, not a conformance suite or validation of every Pascal GPU. |
+| GP107 | Testers reported Code 10 with the experimental builds; its display INF entries are removed. | Experimental implementation remains in the binary; no working GP107 claim. |
+| Compute/GPU PhysX | 10-5-2026 files passed CUDA context operations, an OpenCL kernel with 8,192 checked results and a 60-second fullscreen 1080p GPU PhysX benchmark with clean exit. The native lookup harness passed 4,872 calls. | Functional checks, not CUDA/OpenCL conformance testing. Other listed GPUs were not hardware-tested. |
+| Native use | Earlier packages: P4000 native XP acceleration, games and package installation were user-reported working. | The October 5 build was tested in a clone with primary GPU passthrough. |
 | DisplayPort | P4000 and GTX 1080 Ti: HBR3 ×4; 144-Hz RGB10 and 175-Hz RGB8 state/receiver checks; automatic return to RGB10. | Separate physical 175-Hz picture confirmation remained unavailable in the recorded trial. |
 | HDMI | Final-build normal picture at 3440×1440/~100 Hz, 543.5 MHz; expected SCDC configuration observed. | 594-MHz custom timing produced no visible picture; high-rate error-counter interpretation remained unresolved. |
 | Control Panel | Corrected DisplayPort classification, custom-mode workflow and persistent scaling selections were checked against 355.98. | Targeted conversions; not every output path or differing-aspect geometry. |
 | DP update | GTX 980 Ti: normal 3440x1440/100 HBR2 x4 RGB10, native 60 Hz HBR x4 RGB8 fallback, and 1080p RBR x4 RGB10; accelerated checks pass. | Lower-rate tests use this GPU, not a separate DP1.1 board. |
 | HDMI recovery | Three failed setup writes produce 640x480 fallback; two failures then success retain the high mode. Normal 3440x1440/100 at 543.5 MHz and 1080p pass accelerated checks. | Latest recovery changes tested on GTX 980 Ti; no separate Pascal/hotplug/resume regression for this increment. |
 | Topology/EDID | Workstation page, Manage EDID and the required API path were exercised. | Not a claim that all workstation-only features are enabled. |
-| Rebuild | 584 outer files and 469 CPL members match; 17 source blocks compile to exact bytes. | Archive-level byte identity and fresh hardware execution are separate checks. |
+| Rebuild | 585 outer files and 469 CPL members match; 17 source blocks compile to exact bytes. | Archive-level byte identity and fresh hardware execution are separate checks. |
 
 For a new system, verify installed hashes, low-resolution output and hardware D3D9 first. Use bounded high-rate trials with a known fallback, check actual link/depth and receiver status, and confirm the physical picture. Then test intended games, audio, hotplug and longer sessions.
 
@@ -432,25 +447,25 @@ Key final SHA-256 values:
 
 ```text
 nv4_mini.sys
-46536fa6eaa9aad6f88a7f0eaa38e9eb472e93efe1928cc7b01870f4cbd8e647
+bb795828c84e831d1871f48c64d06bb084d2a21fb3be4a3795a4d61cd20ef21f
 
 nv4_disp.dll
-28544e763088d1c3fc56a72770e14cd1318274b47f8c65c409eb288eda067297
+f36737cec914652abb0179a89469d4a2e292afbe886ee691d728cafbecfd58a8
 
 nvoglnt.dll
-b521916052e15c6f6dfc83d574d47374afac6405244855b4ad7ad8944516e9e4
+3dc936ae4362052a276679f905371d8512462720a7c02a13286682b8e6e24774
 
 nvapi.dll
-d0af05448a70b7cc3302cb496b92f0225ccf1c0b56870ce0abcc6913f067c2a0
+bd924b40af20a30366f7b14f5c29c9f2e438fa2175cb348ef54cffafe36391cb
 
 nvcpl.dll (inside Control Panel)
-ea3fdd329d2273ccd81343af9dc1036835683941e4bf2429544256d7413fb787
+8fe12682598b38074dca7131308edd04f499efee5f5554cfd4bea18c02b0ec0e
 
 nvDispS.dll (inside Control Panel)
-246fed8b2c0247f5b1e177b6cac1f16bda9574b1d8dceed69ca36ab78fd6f936
+727e3fdb64ab903fff830171a54f3b8d96f6cedeeea185918a3724a928a728e5
 
 nvWsS.dll (inside Control Panel)
-f08267e58a8c50bda39d3b47396224e85c3426a88b3a8b500fb028a09b690b2b
+98b8a029377b0145a016de59aee026672c8aaaeebc0b2194c86b52cbaa278c69
 ```
 
-The matching release is **Forceware 382.69 (10-4-2026)**. It combines the OpenGL fix and experimental GP107 miniport; GP107 hardware validation remains pending. Repacked archives need not match the release EXE hash; the exact component hashes and verified member inventories are the reproduction checks.
+The matching build is **Forceware 382.69 (10-5-2026)**. It adds the compute-name correction and consistent display dates, and excludes GP107 from normal display installation. Repacked archives need not match the release EXE hash; the exact component hashes and verified member inventories are the reproduction checks.

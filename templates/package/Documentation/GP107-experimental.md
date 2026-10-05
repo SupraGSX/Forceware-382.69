@@ -1,8 +1,8 @@
 # GP107 experimental initialization
 
-Forceware 382.69 (10-4-2026) combines the OpenGL display-class fix with the GP107 experimental miniport implementation. GP107 startup and rendering remain unverified on hardware; these INF entries are installation coverage, not a claim that every card works.
+The 10-5-2026 build retains experimental GP107 code and internal name records but removes all seven GP107 display INF entries. GTX 1050 Ti testers reported Code 10 with the earlier experimental builds; GP107 initialization is not working reliably enough for inclusion.
 
-The restored desktop entries are GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3), and P620 (1CB6). Mobile GPUs, GP100 and GP108 remain excluded.
+Excluded desktop entries: GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3), and P620 (1CB6). Mobile GPUs, GP100 and GP108 also remain excluded. Existing PhysX installer entries are retained separately.
 
 ## Implementation
 

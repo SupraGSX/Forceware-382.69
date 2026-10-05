@@ -2,25 +2,24 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Forceware 382.69**.
 
-**Stable release: 10-4-2026 — GP107 support is experimental**
+**Build: 10-5-2026**
 
 Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
 
 **Additional desktop INF entries over stock 368.81**
 
 - GeForce GTX 970, 980, 980 Ti; GTX TITAN X (Maxwell).
-- GeForce GTX 1050 and 1050 Ti (experimental GP107 support).
 - GeForce GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti; TITAN X (Pascal), TITAN Xp.
 - Quadro M4000, M5000, M6000, M6000 24GB; P2000, P2200, P4000, P5000, P6000.
-- Quadro P400, P600, P620 and P1000 (experimental GP107 support).
 - Additional desktop OEM variants of GTX 950 and GTX 960.
 
-Mobile, GP100 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See [the complete Maxwell/Pascal INF list](desktop-gpus.json).
+Mobile, GP100, GP107 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See [the complete Maxwell/Pascal INF list](desktop-gpus.json).
 
-GP107 startup and rendering have not been verified on hardware.
+Experimental GP107 support is suspended because end users still report Code 10. GP107 entries are removed from the display INF; experimental code and internal name records are retained for further development.
 
 **Included fixes**
 
+- CUDA, OpenCL and GPU PhysX initialization corrected through missing internal GPU-name records; verified on GTX 1080 Ti.
 - OpenGL display-class initialization fixed, verified on GTX 1080 Ti.
 - DisplayPort HBR2/HBR3 training and extended capability detection, with mode selection based on a successfully trained link and automatic 8-bit fallback when needed.
 - HDMI 2.0 identification, SCDC scrambling/high-speed clock-ratio handling, and bounded setup retries with safe-mode recovery on failure.
@@ -30,9 +29,11 @@ GP107 startup and rendering have not been verified on hardware.
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-4-2026 build combines the OpenGL fix and experimental GP107 initialization. Direct3D 9 and five OpenGL rendering checks passed on GTX 1080 Ti. GP107 hardware validation remains pending.
+The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
 
 [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest)
+
+When updating an existing driver installation, select **Custom (Advanced) → Perform a clean installation**, then restart. This ensures the revised display files replace the earlier build.
 
 **Source and rebuilding**
 
@@ -44,4 +45,4 @@ The project's original code and documentation are licensed under [GPL-3.0-only](
 
 NVIDIA binaries, firmware, vendor-derived installer files and NVIDIA-derived portions of the patch data retain their existing terms. This project does not relicense NVIDIA's material.
 
-Build date: `10/04/2026` in the display INF. See [GP107 details](templates/package/Documentation/GP107-experimental.md).
+Build date: `10/05/2026` in the display INF and rebuilt display metadata. See [GP107 details](templates/package/Documentation/GP107-experimental.md).

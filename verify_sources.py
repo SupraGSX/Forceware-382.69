@@ -5,6 +5,8 @@ Requires GNU as/ld/objcopy and GCC with -m32 freestanding compilation support.
 This verifies instruction bytes, not a new hardware test.
 """
 import argparse
+import importlib.util
+import datetime
 import json
 from pathlib import Path
 import struct
@@ -98,7 +100,16 @@ def main():
         subprocess.run(['objcopy','-O','binary','-j','.text','gp107.elf','gp107.bin'],cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
     require('There are no relocations' in subprocess.check_output(['readelf','-r',str(gpdir/'gp107.elf')],text=True), 'Unexpected GP107 relocations')
     compare('gp107', (gpdir/'gp107.bin').read_bytes(), mini, 0xd07c40)
-    opengl = subprocess.check_output([sys.executable, str(src/'opengl-display-class.py'), '--verify', str(args.package/'Display.Driver/nvoglnt.dll')], text=True)
+    loader = importlib.util.spec_from_file_location('build_date', src/'build-date.py')
+    metadata = importlib.util.module_from_spec(loader); loader.loader.exec_module(metadata)
+    icd_record = next(r for r in manifest['files'] if r['path']=='Display.Driver/nvoglnt.dll')
+    icd = (args.package/'Display.Driver/nvoglnt.dll').read_bytes()
+    require(digest(icd)==icd_record['sha256'], 'Dated ICD hash mismatch')
+    from rebuild import checksum
+    metadata.verify(icd, datetime.datetime.strptime(manifest['build_date'], '%m/%d/%Y').date(), icd_record['build_metadata'], checksum)
+    normalized = out/'opengl-before-build-date.dll'
+    normalized.write_bytes(metadata.restore(icd, icd_record['build_metadata']))
+    opengl = subprocess.check_output([sys.executable, str(src/'opengl-display-class.py'), '--verify', str(normalized)], text=True)
     (out/'opengl-verification.json').write_text(opengl)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))

@@ -7,6 +7,8 @@ The manifest contains file patches; firmware is read from the supplied donors.
 import argparse
 import array
 import datetime
+import importlib.util
+import os
 import re
 import hashlib
 import json
@@ -95,7 +97,10 @@ def inventory(root):
     return {str(p.relative_to(root)): digest(p.read_bytes()) for p in sorted(root.rglob('*')) if p.is_file()}
 
 
-def repack(executable, source, tree, destination, archive, log, outer=False, release_title="Forceware 382.69"):
+def repack(executable, source, tree, destination, archive, log, outer=False, release_title="Forceware 382.69", build_date=None):
+    epoch = int(datetime.datetime.combine(build_date, datetime.time(12), datetime.timezone.utc).timestamp())
+    for item in [*tree.rglob('*'), tree]:
+        os.utime(item, (epoch, epoch))
     run7z(executable, ['a', '-t7z', '-m0=lzma2', '-mx=5', '-md=32m', '-mmt=4', str(archive), '.'], log, tree)
     start = source.find(b';!@Install@!')
     end = source.find(b"7z\xbc\xaf\x27\x1c", start)
@@ -108,9 +113,11 @@ def repack(executable, source, tree, destination, archive, log, outer=False, rel
         config = config.replace('Forceware 382.69', release_title)
     b = bytearray(source[:start] + config.encode('utf-8') + archive.read_bytes())
     op = struct.unpack_from('<I', b, 60)[0]+24
+    struct.pack_into('<I', b, op-16, epoch)
     struct.pack_into('<II', b, op+96+32, 0, 0)
     struct.pack_into('<I', b, op+64, checksum(b, op+64))
     destination.write_bytes(b)
+    os.utime(destination, (epoch, epoch))
 
 
 def main():
@@ -129,6 +136,12 @@ def main():
     inf = (here/'templates/package/Display.Driver/nv4_dispi.inf').read_text(encoding='cp1252')
     match = re.search(r'^DriverVer\s*=\s*([^,]+),\s*10\.18\.13\.8269\s*$', inf, re.M)
     require(match is not None and match.group(1) == manifest['build_date'], 'Display INF date/build date mismatch')
+    loader = importlib.util.spec_from_file_location('build_date', here/'sources/build-date.py')
+    metadata = importlib.util.module_from_spec(loader)
+    loader.loader.exec_module(metadata)
+    for path in ['package/Display.Driver/DisplayDriver.nvi', 'cpl/DisplayControlPanel.nvi']:
+        text = (here/'templates'/path).read_text()
+        require('timestamp="'+build_date.isoformat()+'T12:00:00"' in text, 'Installer component date mismatch: '+path)
     stock = check(args.stock.read_bytes(), manifest['inputs']['stock'], 'stock installer')
     donors = {k: check(getattr(args, k).read_bytes(), manifest['inputs'][k], k+' donor') for k in ['quadro', 'geforce']}
     root = args.out.resolve()
@@ -178,11 +191,13 @@ def main():
                 require(len(before) == len(after) and result[off:off+len(before)] == before, 'Patch byte guard: '+record['path'])
                 result[off:off+len(before)] = after
         check(result, record['sha256'], record['path'])
+        if 'build_metadata' in record:
+            metadata.verify(result, build_date, record['build_metadata'], checksum)
         target.write_bytes(result)
     expected_cpl = {r['path']: r['sha256'] for r in manifest['files'] if r['tree'] == 'cpl'}
     require(inventory(cpl) == expected_cpl, 'Control Panel payload mismatch')
     repack(args.sevenzip, (upstream/'Display.Driver/NvCplSetupInt.exe').read_bytes(), cpl,
-           package/'Display.Driver/NvCplSetupInt.exe', scratch/'cpl.7z', scratch/'pack-cpl.log')
+           package/'Display.Driver/NvCplSetupInt.exe', scratch/'cpl.7z', scratch/'pack-cpl.log', build_date=build_date)
     inner_check = scratch/'cpl-check'
     run7z(args.sevenzip, ['x', '-y', '-o'+str(inner_check), str(package/'Display.Driver/NvCplSetupInt.exe')], scratch/'check-cpl.log')
     require(inventory(inner_check) == expected_cpl, 'Repacked Control Panel mismatch')
@@ -193,7 +208,7 @@ def main():
     require({k: v for k, v in actual.items() if k in expected} == expected, 'Final package payload mismatch')
     require(set(actual) == {r['path'] for r in manifest['files'] if r['tree'] == 'package'}, 'Unexpected package files')
     exe = root/(release_title+'.exe')
-    repack(args.sevenzip, stock, package, exe, scratch/'package.7z', scratch/'pack-outer.log', outer=True, release_title=release_title)
+    repack(args.sevenzip, stock, package, exe, scratch/'package.7z', scratch/'pack-outer.log', outer=True, release_title=release_title, build_date=build_date)
     outer_check = scratch/'package-check'
     run7z(args.sevenzip, ['x', '-y', '-o'+str(outer_check), str(exe)], scratch/'check-outer.log')
     require(inventory(outer_check) == actual, 'Final EXE extraction mismatch')
@@ -201,6 +216,7 @@ def main():
               'exact_control_panel_file_hash_matches': len(expected_cpl),
               'regenerated_files': ['Display.Driver/NvCplSetupInt.exe', 'SHA256SUMS.txt'],
               'exe_sha256': digest(exe.read_bytes()), 'exe_bytes': exe.stat().st_size,
+              'build_metadata_files_verified': sum('build_metadata' in r for r in manifest['files']),
               'all_extraction_checks_pass': True, 'runtime_test_performed': False}
     (root/'rebuild-result.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
