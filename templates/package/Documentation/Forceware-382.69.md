@@ -26,10 +26,12 @@ GP107 display INF entries are withheld following reported Code 10 failures. Expe
 - HDMI/DVI handling with GPU/monitor-aware limits and a 594 MHz HDMI ceiling.
 - Corrected DisplayPort identification, restored **Customize**, and improved scaling/fixed-aspect-ratio settings in NVIDIA Control Panel.
 - **View system topology** and EDID loading unlocked.
+- DisplayPort startup preparation and restoration of saved lane settings after display sleep.
+- Windows Server 2003 x86 installation compatibility; GeForce Experience is omitted there.
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
+The 10-6-2026 build continues the October 5 stable release with Server 2003 x86 installer compatibility, improved DisplayPort startup, and DisplayPort sleep/wake restoration. GP107 remains excluded from the display INF.
 
 
 Display driver version: 6.14.13.8269; INF version: 10.18.13.8269. HD Audio, PhysX and other component versions are unchanged. This is a custom distribution, not an official NVIDIA 382.69 release.
@@ -40,4 +42,4 @@ See [DisplayPort policy](DisplayPort-update.md) and [HDMI setup recovery](HDMI-S
 
 See [OpenGL initialization](OpenGL-update.md) for the added class recognition and validation.
 
-Build date: `10/05/2026` in the display INF and rebuilt display metadata. See [GP107 details](GP107-experimental.md).
+Build date: `10/06/2026` in the display INF and rebuilt display metadata. See [GP107 details](GP107-experimental.md).

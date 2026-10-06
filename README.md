@@ -2,7 +2,7 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Forceware 382.69**.
 
-**Build: 10-5-2026**
+**Build: 10-6-2026**
 
 Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
 
@@ -26,10 +26,12 @@ Experimental GP107 support is suspended because end users still report Code 10. 
 - HDMI/DVI handling with GPU/monitor-aware limits and a 594 MHz HDMI ceiling.
 - Corrected DisplayPort identification, restored **Customize**, and improved scaling/fixed-aspect-ratio settings in NVIDIA Control Panel.
 - **View system topology** and EDID loading unlocked.
+- DisplayPort startup preparation and restoration of saved lane settings after display sleep.
+- Windows Server 2003 x86 installation compatibility; GeForce Experience is omitted there.
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-5-2026 build adds the CUDA/OpenCL/GPU PhysX correction and consistent display build dates, and removes GP107 display INF entries.
+The 10-6-2026 build continues the October 5 stable release with Server 2003 x86 installer compatibility, improved DisplayPort startup, and DisplayPort sleep/wake restoration. GP107 remains excluded from the display INF.
 
 [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest)
 
@@ -45,4 +47,4 @@ The project's original code and documentation are licensed under [GPL-3.0-only](
 
 NVIDIA binaries, firmware, vendor-derived installer files and NVIDIA-derived portions of the patch data retain their existing terms. This project does not relicense NVIDIA's material.
 
-Build date: `10/05/2026` in the display INF and rebuilt display metadata. See [GP107 details](templates/package/Documentation/GP107-experimental.md).
+Build date: `10/06/2026` in the display INF and rebuilt display metadata. See [GP107 details](templates/package/Documentation/GP107-experimental.md).

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<nvi name="Display.ControlPanel" title="${{title}}" version="${{version}}" versionText="${{version}}" timestamp="2026-10-05T12:00:00" installerMin="2.265.1.0" disposition="critical" hidden="true">
+<nvi name="Display.ControlPanel" title="${{title}}" version="${{version}}" versionText="${{version}}" timestamp="2026-10-06T12:00:00" installerMin="2.265.1.0" disposition="critical" hidden="true">
 	<filter name="XP" min="5.1" max="5"/>
 	<filter name="XP32" min="5.1" max="5" platform="x86"/>
 	<filter name="XP64" min="5.1" max="5" platform="amd64"/>

@@ -7,7 +7,7 @@ Signature   = "$Windows NT$"
 Provider    = %NVIDIA%
 ClassGUID   = {4D36E968-E325-11CE-BFC1-08002BE10318}
 Class       = Display
-DriverVer   = 10/05/2026, 10.18.13.8269
+DriverVer   = 10/06/2026, 10.18.13.8269
 ; Modified package: original catalog no longer applies.
 [nv_CplInstaller]
 Default_addreg = nv_CplInstaller_addreg

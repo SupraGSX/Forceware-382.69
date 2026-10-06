@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nvi name="Display.GFExperience" title="${{title}}" version="2.11.4.0" versionText="${{ProductVersion}}" timestamp="2016-06-14T05:36:23" disposition="default" installerMin="2.1002.181.1535" additionalSpaceRequiredMB="100" continueOnFailure="true">
+	<filter name="minVista" min="6.0"/>
+	<filter name="minWin7" min="6.1"/>
+	<filter name="Win7" min="6.1" max="6.1"/>
+	<filter name="XP32" min="5.1" max="5.1" platform="x86"/>
+	<filter name="Server2003x86" min="5.2" max="5.2" platform="x86"/>
+	<filter name="XP64" min="5.1" max="5" platform="amd64"/>
+	<filter name="Vista32" min="6.0" max="6.0" platform="x86"/>
+	<filter name="maxWin7RTM" max="6.1" maxServicePack="0"/>
+	<filter name="minWin7SP1" min="6.1" minServicePack="1"/>
+	<filter name="64BitPlatform" platform="amd64"/>
+	<constraints>
+		<if filter="Server2003x86">
+			<os max="5.1" level="silent" text="GeForce Experience is not included on Windows Server 2003."/>
+		</if>
+		<custom name="CheckNvGpu" level="silent" text="${{NvGpuRequired}}"/>
+		<reject tests="SAFEMODE" level="silent" text="${{InstallSafeModeBlockedMessage}}"/>
+		<if filter="XP32">
+			<os minServicePack="3" level="error" text="${{ErrorXPServicePack3Required}}"/>
+		</if>
+		<if filter="XP64">
+			<os minServicePack="2" level="error" text="${{ErrorXPServicePack2Required}}"/>
+		</if>
+		<if filter="Vista32">
+			<os minServicePack="1" level="error" text="${{ErrorVistaServicePack1Required}}"/>
+		</if>
+	</constraints>
+	<dependencies>
+		<package type="uninstalls" package="iCafeUpdate"/>
+		<package type="requires" package="Update.Core"/>
+		<package type="requires" package="Network.Service"/>
+		<if filter="maxWin7RTM">
+			<package type="requires" package="MS.NET40"/>
+		</if>
+		<if filter="minWin7SP1">
+			<package type="requires" package="MS.NET45"/>
+		</if>
+		<if filter="minVista">
+			<package type="requires" package="GfExperienceService"/>
+		</if>
+		<package type="after" package="Display.Update"/>
+		<package type="uninstalls" package="GFExperience.NvStreamC"/>
+	</dependencies>
+	<extensions>
+		<extension file="GFExperienceExt.dll"/>
+	</extensions>
+	<properties>
+		<bool name="FixedInstallLocation" value="true"/>
+		<string name="InstallLocation" value="${{GeForceExperienceX86Path}}"/>
+		<string name="ArpDisplayName" value="${{arpDisplayName}}"/>
+		<string name="CPLExtension" value="${{CPLExtensionDllName}}"/>
+		<bool name="SelfUpdateInstall" value="${{SelfUpdateInstallValue}}"/>
+		<bool name="CreateDesktopShortcut" value="true"/>
+		<bool name="LaunchGFExperience" value="true"/>
+		<string name="MinFinishOptionSupportDriver" value="319.98"/>
+		<string name="SettingType" value="${{SettingType}}"/>
+		<string name="AlsoDeselect" value="MS.NET40"/>
+		<bool name="IsGFExperienceComponent" value="true"/>
+		<string name="CloseClientEventId" value="${{CloseClientEventId}}"/>
+		<string name="ClientLoadedEventId" value="${{ClientLoadedEventId}}"/>
+		<string name="GFExperienceProcessName" value="${{GFExperienceExeName}}"/>
+		<int name="CloseClientStageTimeoutMs" value="${{CloseClientStageTimeOutMs}}"/>
+		<bool name="DesktopShortcutExists" value="false"/>
+		<bool name="UseNewVersionScheme" value="true"/>
+		<string name="EULAFileName" value="EULA.txt"/>
+		<bool name="IsDebugBuild" value="false"/>
+	</properties>
+	<manifest>
+		<file name="${{CPLExtensionDllName}}"/>
+		<file name="GFExperience.nvi"/>
+		<file name="GFExperienceExt.dll"/>
+		<file name="EULA.txt"/>
+		<file name="Licenses.txt"/>
+		<file name="account_tos.txt"/>
+		<file name="7z.exe"/>
+		<file name="dbghelp.dll"/>
+		<file name="ExtensionLoader.dll"/>
+		<file name="flame.Accounts.dll"/>
+		<file name="flame.core.dll"/>
+		<file name="GalaSoft.MvvmLight.WPF4.dll"/>
+		<file name="GalaSoft.MvvmLight.Extras.WPF4.dll"/>
+		<file name="GFExperience.exe"/>
+		<file name="GFExperience.exe.config"/>
+		<file name="GFExperience.WebService.dll"/>
+		<file name="GFExperience.Rewards.dll"/>
+		<file name="GFExperienceControls.dll"/>
+		<file name="GFExperienceCore.dll"/>
+		<file name="GridService.dll"/>
+		<file name="InstallerService.dll"/>
+		<file name="InstallerUIExtension.dll"/>
+		<file name="log4net.dll"/>
+		<file name="log4net.xml"/>
+		<file name="Microsoft.Practices.ServiceLocation.dll"/>
+		<file name="Microsoft.WindowsAPICodePack.dll"/>
+		<file name="Microsoft.WindowsAPICodePack.Shell.dll"/>
+		<file name="Microsoft.Practices.Prism.dll"/>
+		<file name="Microsoft.Practices.Prism.Interactivity.dll"/>
+		<file name="Microsoft.Practices.Prism.MefExtensions.dll"/>
+		<file name="Microsoft.Practices.Prism.UnityExtensions.dll"/>
+		<file name="Microsoft.Practices.EnterpriseLibrary.Logging.dll"/>
+		<file name="Microsoft.Practices.EnterpriseLibrary.Common.dll"/>
+		<file name="Microsoft.Practices.EnterpriseLibrary.Validation.dll"/>
+		<file name="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.dll"/>
+		<file name="Microsoft.Practices.Unity.dll"/>
+		<file name="Microsoft.Practices.Unity.Configuration.dll"/>
+		<file name="Microsoft.Practices.Unity.Interception.dll"/>
+		<file name="MsgPack.dll"/>
+		<file name="Nvidia.GameServices.Contracts.dll"/>
+		<file name="Nvidia.GameServices.dll"/>
+		<file name="Nvidia.GameServices.json"/>
+		<file name="msvcp120.dll"/>
+		<file name="msvcp120d.dll"/>
+		<file name="msvcr120.dll"/>
+		<file name="msvcr120d.dll"/>
+		<file name="boost_chrono-vc120-mt-gd-1_58.dll"/>
+		<file name="boost_date_time-vc120-mt-gd-1_58.dll"/>
+		<file name="boost_regex-vc120-mt-gd-1_58.dll"/>
+		<file name="boost_system-vc120-mt-gd-1_58.dll"/>
+		<file name="boost_thread-vc120-mt-1_58.dll"/>
+		<file name="boost_thread-vc120-mt-gd-1_58.dll"/>
+		<file name="icudtd53.dll"/>
+		<file name="icuind53.dll"/>
+		<file name="icuucd53.dll"/>
+		<file name="boost_chrono-vc120-mt-1_58.dll"/>
+		<file name="boost_date_time-vc120-mt-1_58.dll"/>
+		<file name="boost_regex-vc120-mt-1_58.dll"/>
+		<file name="boost_system-vc120-mt-1_58.dll"/>
+		<file name="icudt53.dll"/>
+		<file name="icuin53.dll"/>
+		<file name="icuuc53.dll"/>
+		<file name="NVIDIA.Win32Api.dll"/>
+		<file name="NVIDIA.UpdateService.dll"/>
+		<file name="NVIDIA.Settings.dll"/>
+		<file name="NVIDIA.Settings.Properties.dll"/>
+		<file name="NVIDIA.GFExperience.Resources.Localization.dll"/>
+		<file name="Security.Cryptography.dll"/>
+		<file name="ShadowPlay.dll"/>
+		<file name="NvGFTrayPlugin32.dll"/>
+		<file name="NvGFTrayPluginr32.dll"/>
+		<file name="NvGFTrayPluginXP32.dll"/>
+		<file name="NvGFTrayPluginrXP32.dll"/>
+		<file name="NvGFTrayPlugin64.dll"/>
+		<file name="NvGFTrayPluginr64.dll"/>
+		<file name="NvGFTrayPluginXP64.dll"/>
+		<file name="NvGFTrayPluginrXP64.dll"/>
+		<file name="LaunchGFExperience.exe"/>
+		<file name="spinner.gif"/>
+		<file name="splash.png"/>
+		<file name="System.Reactive.Core.dll"/>
+		<file name="System.Reactive.Interfaces.dll"/>
+		<file name="System.Reactive.Linq.dll"/>
+		<file name="System.Reactive.PlatformServices.dll"/>
+		<file name="System.Reactive.Providers.dll"/>
+		<file name="System.Reactive.Runtime.Remoting.dll"/>
+		<file name="System.Reactive.Windows.Threading.dll"/>
+		<file name="System.Windows.interactivity.dll"/>
+		<file name="System.ComponentModel.Composition.dll"/>
+		<file name="System.ComponentModel.Composition.Registration.dll"/>
+		<file name="System.Runtime.dll"/>
+		<file name="System.Threading.Tasks.dll"/>
+		<file name="System.Reflection.Context.dll"/>
+		<file name="System.Web.Mvc.dll"/>
+		<file name="ReactiveUI.dll"/>
+		<file name="ReactiveUI.Xaml.dll"/>
+		<file name="Touchstone.Resources.dll"/>
+		<file name="Touchstone.Accounts.dll"/>
+		<file name="Touchstone.Infrastructure.dll"/>
+		<file name="Touchstone.ExternalAuthentication.dll"/>
+		<file name="Interop.Shell32.dll"/>
+		<file name="Newtonsoft.Json.dll"/>
+		<file name="Yeast.Core.dll"/>
+		<file name="en-us\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="en-us\Touchstone.Resources.resources.dll"/>
+		<file name="cs-CZ\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="cs-CZ\Touchstone.Resources.resources.dll"/>
+		<file name="da-DK\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="da-DK\Touchstone.Resources.resources.dll"/>
+		<file name="de-DE\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="de-DE\Touchstone.Resources.resources.dll"/>
+		<file name="el-GR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="el-GR\Touchstone.Resources.resources.dll"/>
+		<file name="en-GB\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="en-GB\Touchstone.Resources.resources.dll"/>
+		<file name="es-ES\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="es-ES\Touchstone.Resources.resources.dll"/>
+		<file name="es-MX\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="es-MX\Touchstone.Resources.resources.dll"/>
+		<file name="fi-FI\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="fi-FI\Touchstone.Resources.resources.dll"/>
+		<file name="fr-FR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="fr-FR\Touchstone.Resources.resources.dll"/>
+		<file name="hu-HU\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="hu-HU\Touchstone.Resources.resources.dll"/>
+		<file name="it-IT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="it-IT\Touchstone.Resources.resources.dll"/>
+		<file name="ja-JP\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="ja-JP\Touchstone.Resources.resources.dll"/>
+		<file name="ko-KR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="ko-KR\Touchstone.Resources.resources.dll"/>
+		<file name="nb-NO\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="nb-NO\Touchstone.Resources.resources.dll"/>
+		<file name="nl-NL\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="nl-NL\Touchstone.Resources.resources.dll"/>
+		<file name="pl-PL\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="pl-PL\Touchstone.Resources.resources.dll"/>
+		<file name="pt-BR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="pt-BR\Touchstone.Resources.resources.dll"/>
+		<file name="pt-PT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="pt-PT\Touchstone.Resources.resources.dll"/>
+		<file name="ru-RU\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="ru-RU\Touchstone.Resources.resources.dll"/>
+		<file name="sk-SK\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="sk-SK\Touchstone.Resources.resources.dll"/>
+		<file name="sl-SI\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="sl-SI\Touchstone.Resources.resources.dll"/>
+		<file name="sv-SE\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="sv-SE\Touchstone.Resources.resources.dll"/>
+		<file name="th-TH\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="th-TH\Touchstone.Resources.resources.dll"/>
+		<file name="Xml.Schema.Linq.dll"/>
+		<file name="tr-TR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="tr-TR\Touchstone.Resources.resources.dll"/>
+		<file name="zh-CHS\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="zh-CHS\Touchstone.Resources.resources.dll"/>
+		<file name="zh-CHT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+		<file name="zh-CHT\Touchstone.Resources.resources.dll"/>
+		<file name="support*.dat"/>
+		<file name="ar-AE\NVIDIA.GFExperience.Resources.Localization.resources.dll"/><file name="ar-AE\Touchstone.Resources.resources.dll"/><file name="he-IL\NVIDIA.GFExperience.Resources.Localization.resources.dll"/><file name="he-IL\Touchstone.Resources.resources.dll"/></manifest>
+	<phases>
+		<standard phase="createCrashDumpGenerationKeys">
+			<addRegistry keyName="${{crashDumpKey}}\${{GFExperienceExeName}}"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{GFExperienceExeName}}" valueName="DumpFolder" type="REG_EXPAND_SZ" value="%PROGRAMDATA%\NVIDIA Corporation\CrashDumps"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{GFExperienceExeName}}" valueName="DumpCount" type="REG_DWORD" value="15"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{GFExperienceExeName}}" valueName="DumpType" type="REG_DWORD" value="1"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{LaunchGFExperienceExeName}}"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{LaunchGFExperienceExeName}}" valueName="DumpFolder" type="REG_EXPAND_SZ" value="%PROGRAMDATA%\NVIDIA Corporation\CrashDumps"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{LaunchGFExperienceExeName}}" valueName="DumpCount" type="REG_DWORD" value="15"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{LaunchGFExperienceExeName}}" valueName="DumpType" type="REG_DWORD" value="1"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{BackendProcessName}}"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{BackendProcessName}}" valueName="DumpFolder" type="REG_EXPAND_SZ" value="%PROGRAMDATA%\NVIDIA Corporation\CrashDumps"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{BackendProcessName}}" valueName="DumpCount" type="REG_DWORD" value="15"/>
+			<addRegistry keyName="${{crashDumpKey}}\${{BackendProcessName}}" valueName="DumpType" type="REG_DWORD" value="1"/>
+			<if filter="64BitPlatform">
+				<addRegistry keyName="${{crashDumpKey}}\WLMerger.exe"/>
+				<addRegistry keyName="${{crashDumpKey}}\WLMerger.exe" valueName="DumpFolder" type="REG_EXPAND_SZ" value="%PROGRAMDATA%\NVIDIA Corporation\CrashDumps"/>
+				<addRegistry keyName="${{crashDumpKey}}\WLMerger.exe" valueName="DumpCount" type="REG_DWORD" value="15"/>
+				<addRegistry keyName="${{crashDumpKey}}\WLMerger.exe" valueName="DumpType" type="REG_DWORD" value="1"/>
+			</if>
+		</standard>
+		<standard phase="deleteJarvisStateFiles" when="uninstall">
+			<deleteDirectoryTree target="${{LocalUserAppData}}\NVIDIA\NVGS"/>
+		</standard>
+		<custom phase="CloseSteam" action="CloseSteam" when="install" onError="ignore" progress="500" autoTick="200" condition="CloseSteam"/>
+		<standard phase="DeleteOldStartMenuShortcut" when="install" onError="ignore">
+			<deleteShortcutLink linkName="${{GFExperienceLinkName}}" location="startMenu" linkGroup="${{NVIDIAProgramGroup}}\${{title}}"/>
+			<deleteShortcutGroup location="startMenu" linkGroup="${{NVIDIAProgramGroup}}\${{title}}"/>
+		</standard>
+		<exe phase="stopNvtmruInstances" name="${{NVIDIAUpdateCoreX86Path}}\NvTmru.exe" when="install" onError="ignore">
+			<arg value="--shutdown"/>
+			<success value="0"/>
+		</exe>
+		<custom phase="deleteGFExperienceEventSource" action="DeleteGFExperienceEventSource" when="install" onError="ignore">
+			<properties>
+				<string name="EventSourceName" value="${{GFExperienceEventSourceName}}"/>
+			</properties>
+		</custom>
+		<custom phase="decidePreGalaxSettingsRemoval" action="DecidePreGalaxSettingsRemoval" when="install" onError="ignore"/>
+		<standard phase="cleanupPreGalxSettings" when="install" condition="RemovePreGalaxSettings" onError="ignore">
+			<deleteDirectoryTree target="${{LocalUserAppData}}\NVIDIA\${{GFExperienceExeName}}¤"/>
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\${{GeForceExperienceName}}\globalsettings.config"/>
+		</standard>
+		<custom phase="decideGFClientLogRemoval" action="decideGFClientLogRemoval" when="install" onError="ignore"/>
+		<standard phase="cleanupGFClientLogFiles" when="install" condition="RemoveGFClientLogs" onError="ignore">
+			<deleteFile target="${{CommonAppData}}\NVIDIA Corporation\${{GeForceExperienceName}}\Logs\GfeClientLog.log"/>
+		</standard>
+		<standard phase="cleanUpHistoricBinaries" onError="ignore" when="install">
+			<deleteFile target="${{NVIDIAUpdateCoreX86Path}}\Oahu.dll"/>
+			<deleteFile target="${{NVIDIAUpdateCoreX86Path}}\Oaremote_plugin.dll"/>
+			<deleteFile target="${{NVIDIAUpdateCoreX86Path}}\NvTmru.exe"/>
+			<deleteDirectory target="${{NVIDIAUpdateCoreX86Path}}"/>
+			<deleteDirectoryTree target="${{NvidiaProgramFilesX86}}\GeForce Experience"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\en-US"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\cs-CZ"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\da-DK"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\de-DE"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\el-GR"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\en-GB"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\es-ES"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\es-MX"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\fi-FI"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\fr-FR"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\hu-HU"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\it-IT"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\ja-JP"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\ko-KR"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\nb-NO"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\nl-NL"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\pl-PL"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\pt-BR"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\pt-PT"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\ru-RU"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\sk-SK"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\sl-SI"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\sv-SE"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\th-TH"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\tr-TR"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\zh-CHS"/>
+			<deleteDirectoryTree target="${{GeForceExperienceX86Path}}\zh-CHT"/>
+		</standard>
+		<standard phase="createGeforceExperienceFolders">
+			<createDirectory target="${{GeForceExperienceX86Path}}"/>
+			<createDirectory target="${{GeForceExperienceX86Path}}\en-US"/>
+		</standard>
+		<if filter="minVista">
+			<standard phase="copyx86OnlySpecificBinaries" platform="x86only">
+				<copyFile target="${{UpdateCorePath}}\NvGFTrayPlugin.dll" source="NvGFTrayPlugin32.dll"/>
+				<copyFile target="${{UpdateCorePath}}\NvGFTrayPluginr.dll" source="NvGFTrayPluginr32.dll"/>
+			</standard>
+			<standard phase="copyAmd64SpecificBinaries" platform="amd64">
+				<copyFile target="${{UpdateCorePath}}\NvGFTrayPlugin.dll" source="NvGFTrayPlugin64.dll"/>
+				<copyFile target="${{UpdateCorePath}}\NvGFTrayPluginr.dll" source="NvGFTrayPluginr64.dll"/>
+			</standard>
+			<else>
+				<standard phase="copyx86WinXPOnlySpecificBinaries" platform="x86only">
+					<copyFile target="${{UpdateCorePath}}\NvGFTrayPlugin.dll" source="NvGFTrayPluginXP32.dll"/>
+					<copyFile target="${{UpdateCorePath}}\NvGFTrayPluginr.dll" source="NvGFTrayPluginrXP32.dll"/>
+				</standard>
+				<standard phase="copyAmd64WinXPSpecificBinaries" platform="amd64">
+					<copyFile target="${{UpdateCorePath}}\NvGFTrayPlugin.dll" source="NvGFTrayPluginXP64.dll"/>
+					<copyFile target="${{UpdateCorePath}}\NvGFTrayPluginr.dll" source="NvGFTrayPluginrXP64.dll"/>
+				</standard>
+			</else>
+		</if>
+		<standard phase="copyGeForceExperienceBinaries" platform="x86">
+			<copyFile target="7z.exe"/>
+			<copyFile target="dbghelp.dll"/>
+			<copyFile target="ExtensionLoader.dll"/>
+			<copyFile target="flame.Accounts.dll"/>
+			<copyFile target="flame.core.dll"/>
+			<copyFile target="GalaSoft.MvvmLight.WPF4.dll"/>
+			<copyFile target="GalaSoft.MvvmLight.Extras.WPF4.dll"/>
+			<copyFile target="GFExperience.exe"/>
+			<copyFile target="GFExperience.exe.config"/>
+			<copyFile target="GFExperience.WebService.dll"/>
+			<copyFile target="GFExperience.Rewards.dll"/>
+			<copyFile target="GFExperienceControls.dll"/>
+			<copyFile target="GFExperienceCore.dll"/>
+			<copyFile target="GridService.dll"/>
+			<copyFile target="InstallerService.dll"/>
+			<copyFile target="InstallerUIExtension.dll"/>
+			<copyFile target="log4net.dll"/>
+			<copyFile target="log4net.xml"/>
+			<copyFile target="Microsoft.Practices.ServiceLocation.dll"/>
+			<copyFile target="Microsoft.WindowsAPICodePack.dll"/>
+			<copyFile target="Microsoft.WindowsAPICodePack.Shell.dll"/>
+			<copyFile target="Microsoft.Practices.Prism.dll"/>
+			<copyFile target="Microsoft.Practices.Prism.Interactivity.dll"/>
+			<copyFile target="Microsoft.Practices.Prism.MefExtensions.dll"/>
+			<copyFile target="Microsoft.Practices.Prism.UnityExtensions.dll"/>
+			<copyFile target="Microsoft.Practices.EnterpriseLibrary.Logging.dll"/>
+			<copyFile target="Microsoft.Practices.EnterpriseLibrary.Common.dll"/>
+			<copyFile target="Microsoft.Practices.EnterpriseLibrary.Validation.dll"/>
+			<copyFile target="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.dll"/>
+			<copyFile target="Microsoft.Practices.Unity.Configuration.dll"/>
+			<copyFile target="Microsoft.Practices.Unity.dll"/>
+			<copyFile target="Microsoft.Practices.Unity.Interception.dll"/>
+			<copyFile target="MsgPack.dll"/>
+			<copyFile target="Nvidia.GameServices.Contracts.dll"/>
+			<copyFile target="Nvidia.GameServices.dll"/>
+			<copyFile target="Nvidia.GameServices.json"/>
+			<copyFile target="msvcp120.dll"/>
+			<copyFile target="msvcp120d.dll"/>
+			<copyFile target="msvcr120.dll"/>
+			<copyFile target="msvcr120d.dll"/>
+			<copyFile target="NVIDIA.Win32Api.dll"/>
+			<copyFile target="NVIDIA.UpdateService.dll"/>
+			<copyFile target="NVIDIA.Settings.dll"/>
+			<copyFile target="NVIDIA.Settings.Properties.dll"/>
+			<copyFile target="NVIDIA.GFExperience.Resources.Localization.dll"/>
+			<copyFile target="${{LaunchGFExperienceExeName}}"/>
+			<copyFile target="Security.Cryptography.dll"/>
+			<copyFile target="ShadowPlay.dll"/>
+			<copyFile target="spinner.gif"/>
+			<copyFile target="splash.png"/>
+			<copyFile target="System.Reactive.Core.dll"/>
+			<copyFile target="System.Reactive.Interfaces.dll"/>
+			<copyFile target="System.Reactive.Linq.dll"/>
+			<copyFile target="System.Reactive.PlatformServices.dll"/>
+			<copyFile target="System.Reactive.Providers.dll"/>
+			<copyFile target="System.Reactive.Runtime.Remoting.dll"/>
+			<copyFile target="System.Reactive.Windows.Threading.dll"/>
+			<copyFile target="System.Windows.interactivity.dll"/>
+			<copyFile target="System.ComponentModel.Composition.dll"/>
+			<copyFile target="System.ComponentModel.Composition.Registration.dll"/>
+			<copyFile target="System.Reflection.Context.dll"/>
+			<copyFile target="System.Threading.Tasks.dll"/>
+			<copyFile target="System.Runtime.dll"/>
+			<copyFile target="System.Web.Mvc.dll"/>
+			<copyFile target="ReactiveUI.dll"/>
+			<copyFile target="ReactiveUI.Xaml.dll"/>
+			<copyFile target="Touchstone.Resources.dll"/>
+			<copyFile target="Touchstone.Accounts.dll"/>
+			<copyFile target="Touchstone.Infrastructure.dll"/>
+			<copyFile target="Touchstone.ExternalAuthentication.dll"/>
+			<copyFile target="Interop.Shell32.dll"/>
+			<copyFile target="Newtonsoft.Json.dll"/>
+			<copyFile target="Xml.Schema.Linq.dll"/>
+			<copyFile target="Yeast.Core.dll"/>
+			<copyFile target="EULA.txt"/>
+			<copyFile target="Licenses.txt"/>
+			<copyFile target="account_tos.txt"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-US\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="en-US\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-US\Touchstone.Resources.resources.dll" source="en-US\Touchstone.Resources.resources.dll"/>
+			<copyFile target="boost_chrono-vc120-mt-gd-1_58.dll"/>
+			<copyFile target="boost_date_time-vc120-mt-gd-1_58.dll"/>
+			<copyFile target="boost_regex-vc120-mt-gd-1_58.dll"/>
+			<copyFile target="boost_system-vc120-mt-gd-1_58.dll"/>
+			<copyFile target="boost_thread-vc120-mt-1_58.dll"/>
+			<copyFile target="boost_thread-vc120-mt-gd-1_58.dll"/>
+			<copyFile target="icudtd53.dll"/>
+			<copyFile target="icuind53.dll"/>
+			<copyFile target="icuucd53.dll"/>
+			<copyFile target="boost_chrono-vc120-mt-1_58.dll"/>
+			<copyFile target="boost_date_time-vc120-mt-1_58.dll"/>
+			<copyFile target="boost_regex-vc120-mt-1_58.dll"/>
+			<copyFile target="boost_system-vc120-mt-1_58.dll"/>
+			<copyFile target="icudt53.dll"/>
+			<copyFile target="icuin53.dll"/>
+			<copyFile target="icuuc53.dll"/>
+		</standard>
+		<standard phase="copyGeForceExperienceInternationalFiles" platform="x86">
+			<copyFile target="${{GeForceExperienceX86Path}}\cs-CZ\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="cs-CZ\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\cs-CZ\Touchstone.Resources.resources.dll" source="cs-CZ\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\da-DK\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="da-DK\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\da-DK\Touchstone.Resources.resources.dll" source="da-DK\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\de-DE\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="de-DE\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\de-DE\Touchstone.Resources.resources.dll" source="de-DE\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\el-GR\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="el-GR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\el-GR\Touchstone.Resources.resources.dll" source="el-GR\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-GB\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="en-GB\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-GB\Touchstone.Resources.resources.dll" source="en-GB\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-US\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="en-US\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\en-US\Touchstone.Resources.resources.dll" source="en-US\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\es-ES\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="es-ES\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\es-ES\Touchstone.Resources.resources.dll" source="es-ES\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\es-MX\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="es-MX\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\es-MX\Touchstone.Resources.resources.dll" source="es-MX\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\fi-FI\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="fi-FI\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\fi-FI\Touchstone.Resources.resources.dll" source="fi-FI\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\fr-FR\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="fr-FR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\fr-FR\Touchstone.Resources.resources.dll" source="fr-FR\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\hu-HU\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="hu-HU\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\hu-HU\Touchstone.Resources.resources.dll" source="hu-HU\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\it-IT\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="it-IT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\it-IT\Touchstone.Resources.resources.dll" source="it-IT\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ja-JP\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="ja-JP\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ja-JP\Touchstone.Resources.resources.dll" source="ja-JP\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ko-KR\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="ko-KR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ko-KR\Touchstone.Resources.resources.dll" source="ko-KR\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\nb-NO\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="nb-NO\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\nb-NO\Touchstone.Resources.resources.dll" source="nb-NO\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\nl-NL\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="nl-NL\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\nl-NL\Touchstone.Resources.resources.dll" source="nl-NL\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pl-PL\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="pl-PL\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pl-PL\Touchstone.Resources.resources.dll" source="pl-PL\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pt-BR\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="pt-BR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pt-BR\Touchstone.Resources.resources.dll" source="pt-BR\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pt-PT\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="pt-PT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\pt-PT\Touchstone.Resources.resources.dll" source="pt-PT\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ru-RU\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="ru-RU\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\ru-RU\Touchstone.Resources.resources.dll" source="ru-RU\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sk-SK\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="sk-SK\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sk-SK\Touchstone.Resources.resources.dll" source="sk-SK\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sl-SI\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="sl-SI\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sl-SI\Touchstone.Resources.resources.dll" source="sl-SI\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sv-SE\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="sv-SE\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\sv-SE\Touchstone.Resources.resources.dll" source="sv-SE\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\th-TH\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="th-TH\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\th-TH\Touchstone.Resources.resources.dll" source="th-TH\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\tr-TR\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="tr-TR\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\tr-TR\Touchstone.Resources.resources.dll" source="tr-TR\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\zh-CHS\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="zh-CHS\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\zh-CHS\Touchstone.Resources.resources.dll" source="zh-CHS\Touchstone.Resources.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\zh-CHT\NVIDIA.GFExperience.Resources.Localization.resources.dll" source="zh-CHT\NVIDIA.GFExperience.Resources.Localization.resources.dll"/>
+			<copyFile target="${{GeForceExperienceX86Path}}\zh-CHT\Touchstone.Resources.resources.dll" source="zh-CHT\Touchstone.Resources.resources.dll"/>
+		</standard>
+		<if filter="minVista">
+			<exe phase="startNVTrayIconVer1" name="${{NvTrayExePath}}" dir="${{NvDisplayDirPath}}" when="uninstall" onError="ignore" flags="nowait,disassociate,noelevate" condition="RestartNVTrayVer1"/>
+			<custom phase="waitForNVTrayShutdown" action="WaitForNVTrayShutdown" when="uninstall" onError="ignore" condition="RestartNVTrayVer1" progress="20" autoTick="150">
+				<properties>
+					<string name="NVTrayProcessName" value="${{NVTrayProcessName}}"/>
+					<int name="PollIncrementsMs" value="100"/>
+					<int name="MaxTimeOutMs" value="3000"/>
+				</properties>
+			</custom>
+			<exe phase="stopNVTrayIconVer1" name="${{SystemDirectory}}\Rundll32.exe" dir="${{SystemDirectory}}" when="uninstall" onError="ignore" flags="disassociate" condition="RestartNVTrayVer1" progress="25" autoTick="200">
+				<arg value="${{NvuidllPath}}"/>
+				<arg value=",StopNotificationIcon" quote="none"/>
+			</exe>
+			<exe phase="restartNVTrayIconVer2" name="${{NvTrayExePath}}" dir="${{NvDisplayDirPath}}" when="uninstall" onError="ignore" flags="nowait,disassociate,noelevate" condition="RestartNVTrayVer2">
+				<arg value="-nvupdt"/>
+			</exe>
+			<custom phase="checkNVTrayRestartMethod" action="CheckNVTrayRestartMethod" when="uninstall">
+				<properties>
+					<string name="NvuidllPath" value="${{NvuidllPath}}"/>
+					<string name="NvtrayPath" value="${{NvTrayExePath}}"/>
+					<string name="MinNvtrayVersionForVer2Restart" value="${{MinNvtrayVersionForVer2Restart}}"/>
+				</properties>
+			</custom>
+			<else>
+				<exe phase="startXPNVTrayIcon" name="${{SystemDirectory}}\Rundll32.exe" dir="${{SystemDirectory}}" when="uninstall" onError="ignore" flags="disassociate,noelevate" condition="StartGFTrayXP" progress="25" autoTick="200">
+					<arg value="${{NvGFTrayPluginPath}}"/>
+					<arg value=",NvRestartTrayIcon" quote="none"/>
+				</exe>
+				<custom phase="allowProcessesBreakawayFromJob" action="AllowProcessesBreakawayFromJob" onError="ignore" condition="StartGFTrayXP" when="uninstall">
+					<properties>
+						<string name="JobName" value="ARP Job"/>
+					</properties>
+				</custom>
+				<custom phase="checkForGFTrayStartXP" action="CheckForTrayStartXP" onError="ignore" when="uninstall">
+					<properties>
+						<string name="NvGFTrayPluginPath" value="${{NvGFTrayPluginPath}}"/>
+						<bool name="CheckForCPLPresence" value="true"/>
+					</properties>
+				</custom>
+			</else>
+		</if>
+		<standard phase="clearSelfUpdateSuccess" when="install">
+			<deleteRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="SelfUpdateInstall"/>
+		</standard>
+		<standard phase="cleanUpApplicationKeys" when="uninstall" onError="ignore">
+			<deleteRegistryKeyTree keyName="${{NvidiaSoftwareKey}}\Global\GFEClient"/>
+			<deleteRegistryKeyTree keyName="${{GFExperienceGlobalRegKey}}"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaSoftwareKey}}"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\GFEClient"/>
+			<deleteRegistryKeyTree keyName="${{NvidiaPerUserSoftwareKey}}\Global\GFExperience"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\Global"/>
+			<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+		</standard>
+		<if filter="minVista">
+			<standard phase="resetNvupdtPathForVistaPlusOnly" when="uninstall">
+				<addRegistry keyName="${{NvidiaSoftwareKey}}\NvTray\${{NvUpdtRegKey}}" valueName="FullPath" type="REG_SZ" value="${{UpdateCorePath}}\NvUpdt.dll"/>
+			</standard>
+			<else>
+				<standard phase="resetNvupdtPathForXPOnly" when="uninstall">
+					<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray\${{NvUpdtRegKey}}" valueName="FullPath" type="REG_SZ" value="${{UpdateCorePath}}\NvUpdt.dll"/>
+				</standard>
+			</else>
+		</if>
+		<if filter="minVista">
+			<standard phase="updateNvupdtPathForVistaPlusOnly" when="install">
+				<addRegistry keyName="${{NvidiaSoftwareKey}}\NvTray\${{NvUpdtRegKey}}" valueName="FullPath" type="REG_SZ" value="${{UpdateCorePath}}\NvGFTrayPlugin.dll"/>
+			</standard>
+			<else>
+				<standard phase="updateNvupdtPathForXPOnly" when="install">
+					<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\MediaCenterTray\${{NvUpdtRegKey}}" valueName="FullPath" type="REG_SZ" value="${{UpdateCorePath}}\NvGFTrayPlugin.dll"/>
+				</standard>
+			</else>
+		</if>
+		<exe phase="stopNvBackendInstance" name="${{BackendExePath}}" when="install" progress="15" autoTick="100" onError="ignore">
+			<arg value="--shutdown"/>
+			<success value="0"/>
+		</exe>
+		<exe phase="startNvBackendInstance" name="${{BackendExePath}}" when="uninstall" flags="nowait,disassociate,noelevate" onError="ignore" condition="StartBackend"/>
+		<custom phase="decideBackendStart" action="DecideBackendStart" when="uninstall" onError="ignore" condition="!Global:RebootRequired &amp;&amp; !Update.Core:MarkedForUninstall">
+			<properties>
+				<string name="ProcessName" value="${{BackendProcessName}}"/>
+			</properties>
+		</custom>
+		<standard phase="setInstalledValueToOne">
+			<addRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="FullPath" type="REG_SZ" value="${{GeForceExperienceX86Path}}\${{LaunchGFExperienceExeName}}"/>
+			<addRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="Installed" type="REG_DWORD" value="1"/>
+			<addRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="Version" type="REG_SZ" value="${{ProductVersion}}"/>
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\GFEClient" valueName="FullPath" type="REG_SZ" value="${{GeForceExperienceX86Path}}\${{LaunchGFExperienceExeName}}"/>
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\GFEClient" valueName="Installed" type="REG_DWORD" value="1"/>
+		</standard>
+		<standard phase="setBetaFlag" when="install" condition="Beta">
+			<addRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="Beta" type="REG_DWORD" value="1"/>
+		</standard>
+		<exe phase="ForceBetaSelfUpdates" name="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}" condition="Beta" when="install" progress="50" autoTick="500" onError="ignore">
+			<arg value="-forceSelfUpdateBeta"/>
+			<arg value="${{ValidClientLaunchFlag}}"/>
+		</exe>
+		<standard phase="clearBetaFlag" when="install" condition="!Beta">
+			<deleteRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="Beta"/>
+		</standard>
+		<standard phase="SetNVUpdateInstalledValueToZero" when="install">
+			<addRegistry keyName="${{NvidiaSoftwareKey}}\Global\nvUpdate" valueName="Installed" type="REG_DWORD" value="0"/>
+		</standard>
+		<custom phase="hideDisplayUpdateARPEntry" action="HideDisplayUpdateARPEntry" when="install"/>
+		<setPropertyIf phase="markForRebootIfBackendRunning" boolProperty="Global:RebootRequired" value="true" when="uninstall" condition="!Global:RebootRequired">
+			<process name="${{BackendProcessName}}" check="exists"/>
+		</setPropertyIf>
+		<exe phase="stopNvBackendInstance" name="${{BackendExePath}}" when="uninstall" progress="15" autoTick="100" onError="ignore">
+			<arg value="--shutdown"/>
+			<success value="0"/>
+		</exe>
+		<if filter="minWin7">
+			<standard phase="cleanUpFRLKeys" when="uninstall" onError="ignore">
+				<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NvBackend" valueName="FRLState"/>
+				<deleteRegistry keyName="${{NvidiaPerUserSoftwareKey}}\NvBackend" valueName="IsFRLSupported"/>
+				<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}\NvBackend"/>
+				<deleteRegistryKey keyName="${{NvidiaPerUserSoftwareKey}}"/>
+			</standard>
+			<custom phase="disableFRL" action="DisableFRL" when="uninstall" onError="ignore"/>
+		</if>
+		<if filter="minVista">
+			<custom phase="checkNVTrayRestartMethod" action="CheckNVTrayRestartMethod" when="install">
+				<properties>
+					<string name="NvuidllPath" value="${{NvuidllPath}}"/>
+					<string name="NvtrayPath" value="${{NvTrayExePath}}"/>
+					<string name="MinNvtrayVersionForVer2Restart" value="${{MinNvtrayVersionForVer2Restart}}"/>
+				</properties>
+			</custom>
+			<exe phase="stopNVTrayIconVer1" name="${{SystemDirectory}}\Rundll32.exe" dir="${{SystemDirectory}}" when="install" condition="RestartNVTrayVer1" progress="25" autoTick="200">
+				<arg value="${{NvuidllPath}}"/>
+				<arg value=",StopNotificationIcon" quote="none"/>
+			</exe>
+			<custom phase="waitForNVTrayShutdown" action="WaitForNVTrayShutdown" when="install" condition="RestartNVTrayVer1" progress="20" autoTick="150">
+				<properties>
+					<string name="NVTrayProcessName" value="${{NVTrayProcessName}}"/>
+					<int name="PollIncrementsMs" value="100"/>
+					<int name="MaxTimeOutMs" value="3000"/>
+				</properties>
+			</custom>
+		</if>
+		<standard phase="deleteLocalAppDataFiles" when="uninstall">
+			<deleteDirectoryTree target="${{LocalUserAppData}}\NVIDIA\${{GFExperienceExeName}}¤"/>
+			<deleteDirectory target="${{LocalUserAppData}}\NVIDIA Corporation¤"/>
+			<deleteFile target="${{LocalUserAppData}}\NVIDIA\accounts"/>
+			<deleteDirectoryTree target="${{LocalUserAppData}}\NVIDIA\ShareConnect"/>
+		</standard>
+		<standard phase="deleteCommonAppDataFiles" when="uninstall" condition="!Global:GeforceExperience3Installer">
+			<deleteDirectoryTree target="${{CommonAppData}}\NVIDIA Corporation\${{GeForceExperienceName}}"/>
+			<deleteDirectory target="${{CommonAppData}}\NVIDIA Corporation"/>
+		</standard>
+		<custom phase="BuildCustomSettings" action="BuildCustomSettings" condition="!SelfUpdateInstall" when="install" progress="20" autoTick="200">
+			<properties>
+				<string name="SettingsFilePath" value="${{GeForceExperienceX86Path}}\CustomizedSettings.xml"/>
+			</properties>
+		</custom>
+		<exe phase="ApplyCustomSettings" name="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}" condition="ApplySettings &amp;&amp; !MS.NET40:RequiresReboot" when="install" flags="noelevate" progress="50" autoTick="500">
+			<arg value="-configuration:&quot;${{GeForceExperienceX86Path}}\CustomizedSettings.xml&quot;"/>
+			<arg value="${{ValidClientLaunchFlag}}"/>
+			<success value="0"/>
+			<success value="3010" rebootNeeded="true"/>
+		</exe>
+		<exe phase="ApplyCustomSettingsIgnoreError" name="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}" onError="ignore" condition="ApplySettings &amp;&amp; MS.NET40:RequiresReboot" when="install" flags="noelevate" progress="50" autoTick="500">
+			<arg value="-configuration:&quot;${{GeForceExperienceX86Path}}\CustomizedSettings.xml&quot;"/>
+			<arg value="${{ValidClientLaunchFlag}}"/>
+			<success value="0"/>
+			<success value="3010" rebootNeeded="true"/>
+		</exe>
+		<standard phase="cleanSettingsFile" onError="ignore" condition="ApplySettings" when="always">
+			<deleteFile target="${{GeForceExperienceX86Path}}\CustomizedSettings.xml"/>
+		</standard>
+		<custom phase="DecideSettingsRemoval" action="DecideSettingsRemoval" when="install" progress="10" autoTick="200"/>
+		<exe phase="RemoveCustomSettings" name="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}" condition="RemoveSettings &amp;&amp; !MS.NET40:RequiresReboot" when="install" flags="noelevate" progress="50" autoTick="500">
+			<arg value="-clearSettings:${{SettingType}}"/>
+			<arg value="${{ValidClientLaunchFlag}}"/>
+			<success value="0"/>
+			<success value="3010" rebootNeeded="true"/>
+		</exe>
+		<exe phase="RemoveCustomSettingsIgnoreError" name="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}" onError="ignore" condition="RemoveSettings &amp;&amp; MS.NET40:RequiresReboot" when="install" flags="noelevate" progress="50" autoTick="500">
+			<arg value="-clearSettings:${{SettingType}}"/>
+			<arg value="${{ValidClientLaunchFlag}}"/>
+			<success value="0"/>
+			<success value="3010" rebootNeeded="true"/>
+		</exe>
+		<custom phase="notifyPreviousClientVersion" action="NotifyPreviousClientVersion" when="install" progress="10" autoTick="200" onError="ignore">
+			<properties>
+				<string name="ApplicationPath" value="${{GeForceExperienceX86Path}}\${{GFExperienceExeName}}"/>
+				<string name="PreviousVersionArg" value="-previousversion"/>
+				<int name="MaxTimeOutMs" value="2000"/>
+			</properties>
+		</custom>
+		<standard phase="createStartMenuShortcut">
+			<createShortcutGroup location="startMenu" linkGroup="${{NVIDIAProgramGroup}}"/>
+			<createShortcutLink location="startMenu" targetPath="${{LaunchGFExperienceExeName}}" linkGroup="${{NVIDIAProgramGroup}}" linkName="${{GFExperienceLinkName}}" startIn="${{GeForceExperienceX86Path}}" runAsAdmin="false"/>
+		</standard>
+		<custom phase="checkIfDesktopShortcutExists" action="CheckIfDesktopShortcutExists" when="install">
+			<properties>
+				<string name="LinkName" value="${{GFExperienceLinkName}}"/>
+			</properties>
+		</custom>
+		<standard phase="modifyDesktopShortcutIfExists" when="install" condition="DesktopShortcutExists">
+			<createShortcutLink location="desktop" targetPath="${{LaunchGFExperienceExeName}}" linkName="${{GFExperienceLinkName}}" startIn="${{GeForceExperienceX86Path}}" runAsAdmin="false"/>
+		</standard>
+		<standard phase="setShowEULAValueToOne" when="installClose" condition="Global:SkipEula">
+			<addRegistry keyName="${{GFExperienceGlobalRegKey}}" valueName="ShowEULA" type="REG_DWORD" value="1"/>
+		</standard>
+		<standard phase="createDesktopShortcut" when="installClose" condition="CreateDesktopShortcut">
+			<createShortcutLink location="desktop" targetPath="${{LaunchGFExperienceExeName}}" linkName="${{GFExperienceLinkName}}" startIn="${{GeForceExperienceX86Path}}" runAsAdmin="false"/>
+		</standard>
+		<custom phase="decideDeleteDesktopShortcut" action="DecideDeleteDesktopShortcut" when="installClose"/>
+		<standard phase="deleteDesktopShortcut" when="installClose" condition="DeleteDesktopShortcut">
+			<deleteShortcutLink location="desktop" targetPath="${{LaunchGFExperienceExeName}}" linkName="${{GFExperienceLinkName}}"/>
+		</standard>
+		<standard phase="deleteDesktopShortcut" when="uninstall">
+			<deleteShortcutLink location="desktop" targetPath="${{LaunchGFExperienceExeName}}" linkName="${{GFExperienceLinkName}}"/>
+		</standard>
+		<exe phase="LaunchGFExperienceUserInstall" when="installClose" flags="noelevate" comment="LaunchGFExperienceUserInstall" name="${{InstallLocation}}\${{LaunchGFExperienceExeName}}" dir="${{InstallLocation}}" condition="!SelfUpdateInstall &amp;&amp; LaunchGFExperience"/>
+		<exe phase="LaunchGFExperienceUpdateInstall" when="installClose" flags="noelevate" comment="LaunchGFExperienceUpdateInstall" name="${{InstallLocation}}\${{LaunchGFExperienceExeName}}" dir="${{InstallLocation}}" condition="SelfUpdateInstall &amp;&amp; LaunchGFExperience">
+			<arg value="-UpdateInitiated"/>
+			<arg value="-showClientReleaseHighlight"/>
+		</exe>
+		<standard phase="setClientSetOnReboot" when="installClose" condition="LaunchGFExperienceOnNextBoot">
+			<addRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvGFExperience" type="REG_SZ" value="&quot;${{InstallLocation}}\${{LaunchGFExperienceExeName}}&quot; -shellexecute -UpdateInitiated -showClientReleaseHighlight"/>
+		</standard>
+		<standard phase="deleteClientSetOnReboot" when="uninstall" onError="ignore">
+			<deleteRegistry keyName="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" valueName="NvGFExperience"/>
+		</standard>
+		<custom phase="CloseSteam" action="CloseSteam" onError="ignore" when="uninstall" progress="500" autoTick="200" condition="CloseSteam"/>
+		<custom phase="closeClient" action="CloseClient" onError="ignore" when="uninstall" progress="500" autoTick="200"/>
+	</phases>
+	<finishOptions>
+		<option name="CreateDesktopShortcut" text="${{CreateDesktopShortcut}}" property="CreateDesktopShortcut" condition="DecideCreateDesktopShortcut"/>
+		<option name="LaunchGFExperience" text="${{LaunchGFExperience}}" property="LaunchGFExperience" condition="DecideLaunchGFExperience"/>
+	</finishOptions>
+	<strings>
+		<string name="crashDumpKey" value="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps"/>
+		<string name="RedirectBaseUrl" value="http://www.nvidia.com/content/drivers/redirect.asp"/>
+		<string name="URLLanguageIdentifierToken" value="?language=${{AbbrevLangName}}"/>
+		<string name="SystemRequirementsUrl" value="${{RedirectBaseUrl}}${{URLLanguageIdentifierToken}}${{SystemRequirementsPage}}"/>
+		<string name="SystemRequirementsPage" value="&amp;page=gfe_geforceweb_system_reqs"/>
+		<string name="SystemRequirementsLink" value="&lt;a href=&quot;${{SystemRequirementsUrl}}&quot;&gt;${{SystemRequirements}}&lt;/a&gt;"/>
+		<string name="arpDisplayName" value="${{title}} ${{ProductVersion}}"/>
+		<string name="GeForceExperienceName" value="GeForce Experience"/>
+		<string name="UpdateCorePath" value="${{NvidiaProgramFiles}}\Update Core"/>
+		<string name="UpdateCoreX86Path" value="${{NvidiaProgramFilesX86}}\Update Core"/>
+		<string name="NVIDIAUpdateCoreX86Path" value="${{NvidiaProgramFilesX86}}\NVIDIA Update Core"/>
+		<string name="GeForceExperienceX86Path" value="${{NvidiaProgramFilesX86}}\${{title}}"/>
+		<string name="GFExperienceEventSourceName" value="GFExperience Service"/>
+		<string name="title" value="NVIDIA GeForce Experience"/>
+		<string name="NVTrayProcessName" value="nvtray.exe"/>
+		<string name="NvDisplayDirPath" value="${{NvidiaProgramFiles}}\Display"/>
+		<string name="NvTrayExePath" value="${{NvDisplayDirPath}}\${{NVTrayProcessName}}"/>
+		<string name="NvuidllPath" value="${{NvDisplayDirPath}}\nvui.dll"/>
+		<string name="NvGFTrayPluginPath" value="${{UpdateCorePath}}\NvGFTrayPlugin.dll"/>
+		<string name="NVIDIAProgramGroup" value="NVIDIA Corporation"/>
+		<string name="GFExperienceLinkName" value="${{GeForceExperienceName}}"/>
+		<string name="GFExperienceExeName" value="GFExperience.exe"/>
+		<string name="LaunchGFExperienceExeName" value="LaunchGFExperience.exe"/>
+		<string name="CloseClientEventId" value="Global\{44D6541F-2B6B-4E72-8CBB-EA5E380822BC}"/>
+		<string name="ClientLoadedEventId" value="Global\{21A439FE-D098-4788-AFE5-D48E51DCC2D3}"/>
+		<string name="CloseClientStageTimeOutMs" value="20000"/>
+		<string name="DisplayVersion" value="2.11.4.0"/>
+		<string name="CPLExtensionDllName" value="DisplayCplExt.dll"/>
+		<string name="SelfUpdateInstallValue" value="false"/>
+		<string name="LearnMoreLink" value="&lt;a href=&quot;${{NVIDIAGFExperienceUrl}}&quot;&gt;${{LearnMore}}&lt;/a&gt;"/>
+		<string name="NVIDIAGFExperienceAboutPage" value="&amp;page=gfe_geforceweb_home"/>
+		<string name="NVIDIAGFExperienceUrl" value="${{RedirectBaseUrl}}${{URLLanguageIdentifierToken}}${{NVIDIAGFExperienceAboutPage}}"/>
+		<string name="MinNvtrayVersionForVer2Restart" value="310.19"/>
+		<string name="CPLPackageIdentifier" value="Display.ControlPanel"/>
+		<string name="SettingType" value="client"/>
+		<string name="BackendExePath" value="${{NvidiaProgramFilesX86}}\Update Core\NvBackend.exe"/>
+		<string name="BackendProcessName" value="NvBackend.exe"/>
+		<string name="NvUpdtRegKey" value="0_nvupdt.dll"/>
+		<string name="GFExperienceGlobalRegKey" value="${{NvidiaSoftwareKey}}\Global\GFExperience"/>
+		<string name="ValidClientLaunchFlag" value="-validClientInitiation"/>
+	</strings>
+	<strings>
+		<localized locale="0x0409">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} cannot be installed in safe mode."/>
+			<string name="SystemRequirements" value="system requirements"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} requires Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} requires Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} requires Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installation options"/>
+			<string name="CreateDesktopShortcut" value="Create desktop shortcut for ${{title}}"/>
+			<string name="LaunchGFExperience" value="Launch ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA Installer has paused"/>
+			<string name="UninstallerPaused" value="NVIDIA Uninstaller has paused"/>
+			<string name="CloseSteamInstall" value="${{title}} cannot be installed while Steam is running. Click Next to quit Steam and continue."/>
+			<string name="CloseSteamUninstall" value="${{title}} cannot be uninstalled while Steam is running. Click Next to quit Steam and continue."/>
+		</localized>
+		<localized locale="0x0401">
+			<string name="InstallSafeModeBlockedMessage" value="لا يمكن تثبيت ${{title}} في وضع آمن."/>
+			<string name="SystemRequirements" value="متطلبات النظام"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="يتطلب ${{title}} نظام Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="يتطلب ${{title}} نظام Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="يتطلب ${{title}} نظام Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="خيارات التثبيت"/>
+			<string name="CreateDesktopShortcut" value="إنشاء اختصار سطح المكتب لـ ${{title}}"/>
+			<string name="LaunchGFExperience" value="تشغيل ${{title}}"/>
+			<string name="InstallerPaused" value="توقف مثبت NVIDIA مؤقتاً"/>
+			<string name="UninstallerPaused" value="توقفت أداة إلغاء تثبيت NVIDIA مؤقتا"/>
+			<string name="CloseSteamInstall" value="لا يمكن تثبيتلا يمكن تثبيت ${{title}} أثناء تشغيل Steam. انقر فوق &quot;التالي&quot; للخروج من Steam والمتابعة."/>
+			<string name="CloseSteamUninstall" value="لا يمكن تثبيت ${{title}} أثناء تشغيل Steam. انقر فوق &quot;التالي&quot; للخروج من Steam والمتابعة."/>
+		</localized>
+		<localized locale="0x0405">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} nemůže být nainstalován v nouzovém režimu."/>
+			<string name="SystemRequirements" value="systémové požadavky"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} vyžaduje Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}}  vyžaduje Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} vyžaduje Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Možnosti instalace"/>
+			<string name="CreateDesktopShortcut" value="Vytvořit zástupce na ploše pro ${{title}}"/>
+			<string name="LaunchGFExperience" value="Spustit ${{title}}"/>
+			<string name="InstallerPaused" value="Instalační aplikace NVIDIA byla přerušena"/>
+			<string name="UninstallerPaused" value="Odinstalační aplikace NVIDIA byla přerušena"/>
+			<string name="CloseSteamInstall" value="${{title}} nelze nainstalovat, pokud je spuštěna aplikace Steam. Kliknutím na tlačítko Další ukončíte aplikaci Steam a můžete pokračovat."/>
+			<string name="CloseSteamUninstall" value="${{title}} nelze odinstalovat, pokud je spuštěna aplikace Steam. Kliknutím na tlačítko Další ukončíte aplikaci Steam a můžete pokračovat."/>
+		</localized>
+		<localized locale="0x0406">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} kan ikke installeres i sikker tilstand."/>
+			<string name="SystemRequirements" value="systemkrav"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} kræver Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} kræver Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} kræver Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installationsvalg"/>
+			<string name="CreateDesktopShortcut" value="Opret skrivebordsgenvej for ${{title}}"/>
+			<string name="LaunchGFExperience" value="Start ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA Installationsprogram er midlertidigt afbrudt"/>
+			<string name="UninstallerPaused" value="NVIDIA Afinstallationsprogram er midlertidigt afbrudt"/>
+			<string name="CloseSteamInstall" value="${{title}} kan ikke installeres, imens Steam kører. Klik på Næste for at afslutte Steam og fortsætte."/>
+			<string name="CloseSteamUninstall" value="${{title}} kan ikke afinstalleres, imens Steam kører. Klik på Næste for at afslutte Steam og fortsætte."/>
+		</localized>
+		<localized locale="0x0407">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} kann im abgesicherten Modus nicht installiert werden."/>
+			<string name="SystemRequirements" value="Systemanforderungen"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} erfordert Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} erfordert Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} erfordert Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installationsoptionen"/>
+			<string name="CreateDesktopShortcut" value="Desktopverknüpfung für ${{title}} anlegen"/>
+			<string name="LaunchGFExperience" value="Starten von ${{title}}"/>
+			<string name="InstallerPaused" value="Das NVIDIA Installationsprogramm hat angehalten"/>
+			<string name="UninstallerPaused" value="Das NVIDIA Deinstallationsprogramm hat angehalten"/>
+			<string name="CloseSteamInstall" value="${{title}} kann nicht installiert werden, während Steam läuft. Klicken Sie auf Weiter, um Steam zu beenden und fortzufahren."/>
+			<string name="CloseSteamUninstall" value="${{title}} kann nicht deinstalliert werden, während Steam läuft. Klicken Sie auf Weiter, um Steam zu beenden und fortzufahren."/>
+		</localized>
+		<localized locale="0x0408">
+			<string name="InstallSafeModeBlockedMessage" value="Δεν είναι δυνατή η εγκατάσταση ${{title}} σε ασφαλή λειτουργία."/>
+			<string name="SystemRequirements" value="απαιτήσεις συστήματος"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="Το ${{title}} απαιτεί Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="Το ${{title}} απαιτεί Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="Το ${{title}} απαιτεί Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Επιλογές εγκατάστασης"/>
+			<string name="CreateDesktopShortcut" value="Δημιουργία συντόμευσης επιφάνειας εργασίας για ${{title}}"/>
+			<string name="LaunchGFExperience" value="Εκκίνηση ${{title}}"/>
+			<string name="InstallerPaused" value="Το πρόγραμμα εγκατάστασης NVIDIA τέθηκε σε παύση"/>
+			<string name="UninstallerPaused" value="Το πρόγραμμα κατάργησης εγκατάστασης NVIDIA τέθηκε σε παύση"/>
+			<string name="CloseSteamInstall" value="Δεν είναι δυνατό να εγκατασταθεί το ${{title}} ενώ εκτελείται το Steam. Κάντε κλικ στο Επόμενο για να τερματίσετε το Steam και συνεχίστε."/>
+			<string name="CloseSteamUninstall" value="Δεν είναι δυνατό να καταργηθεί η εγκατάσταση του ${{title}} ενώ εκτελείται το Steam. Κάντε κλικ στο Επόμενο για να τερματίσετε το Steam και συνεχίστε."/>
+		</localized>
+		<localized locale="0x0809">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} cannot be installed in safe mode."/>
+			<string name="SystemRequirements" value="system requirements"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} requires Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} requires Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} requires Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installation options"/>
+			<string name="CreateDesktopShortcut" value="Create desktop shortcut for ${{title}}"/>
+			<string name="LaunchGFExperience" value="Launch ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA Installer has paused"/>
+			<string name="UninstallerPaused" value="NVIDIA Uninstaller has paused"/>
+			<string name="CloseSteamInstall" value="${{title}} cannot be installed while Steam is running. Click Next to quit Steam and continue."/>
+			<string name="CloseSteamUninstall" value="${{title}} cannot be uninstalled while Steam is running. Click Next to quit Steam and continue."/>
+		</localized>
+		<localized locale="0x040a">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} no puede instalarse en el modo seguro."/>
+			<string name="SystemRequirements" value="Requisitos del sistema"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} requiere Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} requiere Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} requiere Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Opciones de instalación"/>
+			<string name="CreateDesktopShortcut" value="Crear acceso directo en el escritorio para ${{title}}"/>
+			<string name="LaunchGFExperience" value="Iniciar ${{title}}"/>
+			<string name="InstallerPaused" value="El instalador de NVIDIA ha pausado"/>
+			<string name="UninstallerPaused" value="El desinstalador de NVIDIA ha pausado"/>
+			<string name="CloseSteamInstall" value="${{title}} no se puede instalar mientras se esté ejecutando Steam. Haga clic en Siguiente para cerrar Steam y continuar."/>
+			<string name="CloseSteamUninstall" value="${{title}} no se puede desinstalar mientras se esté ejecutando Steam. Haga clic en Siguiente para cerrar Steam y continuar."/>
+		</localized>
+		<localized locale="0x080a">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} no puede instalarse en el modo seguro."/>
+			<string name="SystemRequirements" value="Requisitos del sistema"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} requiere Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} requiere Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} requiere Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Opciones de instalación"/>
+			<string name="CreateDesktopShortcut" value="Crear acceso directo de ${{title}} en el escritorio"/>
+			<string name="LaunchGFExperience" value="Ejecutar ${{title}}"/>
+			<string name="InstallerPaused" value="El instalador de NVIDIA se ha detenido"/>
+			<string name="UninstallerPaused" value="El desinstalador de NVIDIA se ha detenido"/>
+			<string name="CloseSteamInstall" value="${{title}} no se puede instalar mientras Steam se está ejecutando. Haga clic en Siguiente para salir de Steam y continuar."/>
+			<string name="CloseSteamUninstall" value="${{title}} no se puede desinstalar mientras Steam se está ejecutando.  Haga clic en Siguiente para salir de Steam y continuar."/>
+		</localized>
+		<localized locale="0x040b">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} -ohjelmaa ei voi asentaa vikasietotilassa."/>
+			<string name="SystemRequirements" value="järjestelmävaatimukset"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} vaatii Windows XP Service Pack 2:n."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} vaatii Windows XP Service Pack 3:n."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} vaatii Windows Vista Service Pack 1:n."/>
+			<string name="InstallOptions" value="Asennusvaihtoehdot"/>
+			<string name="CreateDesktopShortcut" value="Luo työpöydälle pikakuvakkeet kohteelle ${{title}}"/>
+			<string name="LaunchGFExperience" value="Käynnistä ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA-asennus on keskeytetty"/>
+			<string name="UninstallerPaused" value="NVIDIA-asennuksen poisto on keskeytetty"/>
+			<string name="CloseSteamInstall" value="${{title}} -ohjelmaa ei voi asentaa kun Steam on käynnissä. Lopeta Steam napsauttamalla Seuraava ja jatka."/>
+			<string name="CloseSteamUninstall" value="${{title}} -ohjelman asennusta ei voi poistaa kun Steam on käynnissä. Lopeta Steam napsauttamalla Seuraava ja jatka."/>
+		</localized>
+		<localized locale="0x040c">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}}ne peut pas être installé en mode sans échec."/>
+			<string name="SystemRequirements" value="configuration système"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} exige le Service Pack 2 Windows XP."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} exige le Service Pack 3 Windows XP."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} exige le Service Pack 1 Windows Vista."/>
+			<string name="InstallOptions" value="Options d'installation"/>
+			<string name="CreateDesktopShortcut" value="Créer un raccourci clavier pour ${{title}}"/>
+			<string name="LaunchGFExperience" value="Lancer ${{title}}"/>
+			<string name="InstallerPaused" value="Le programme d'installation NVIDIA a été mis en pause"/>
+			<string name="UninstallerPaused" value="Le programme de désinstallation NVIDIA a été mis en pause"/>
+			<string name="CloseSteamInstall" value="${{title}} ne peut pas être installé lorsque Steam est en cours d'exécution. Cliquez sur Suivant pour quitter Steam et continuer."/>
+			<string name="CloseSteamUninstall" value="${{title}} ne peut pas être désinstallé lorsque Steam est en cours d'exécution. Cliquez sur Suivant pour quitter Steam et continuer."/>
+		</localized>
+		<localized locale="0x040d">
+			<string name="InstallSafeModeBlockedMessage" value="לא ניתן להתקין את ${{title}} במצב בטוח."/>
+			<string name="SystemRequirements" value="דרישות מערכת"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="חבילת העדכון Service Pack 2 של מערכת Windows XP חייבת להיות מותקנת עבור ${{title}}."/>
+			<string name="ErrorXPServicePack3Required" value="חבילת העדכון Service Pack 3 של מערכת Windows XP חייבת להיות מותקנת עבור ${{title}}."/>
+			<string name="ErrorVistaServicePack1Required" value="חבילת העדכון Service Pack 1 של מערכת Windows Vista חייבת להיות מותקנת עבור ${{title}}."/>
+			<string name="InstallOptions" value="אפשרויות התקנה"/>
+			<string name="CreateDesktopShortcut" value="צור קיצור דרך בשולחן העבודה עבור ${{title}}"/>
+			<string name="LaunchGFExperience" value="הפעל את ${{title}}"/>
+			<string name="InstallerPaused" value="פעולת תכנת ההתקנה של NVIDIA הושהתה"/>
+			<string name="UninstallerPaused" value="פעולת תכנת הסרת ההתקנה של NVIDIA הושהתה"/>
+			<string name="CloseSteamInstall" value="לא ניתן להתקין את ${{title}} כאשר Steam פועלת. לחץ על 'הבא' כדי לצאת מ-Steam ולהמשיך."/>
+			<string name="CloseSteamUninstall" value="לא ניתן להסיר את ההתקנה של ${{title}} כאשר Steam פועלת. לחץ על 'הבא' כדי לצאת מ-Steam ולהמשיך."/>
+		</localized>
+		<localized locale="0x040e">
+			<string name="InstallSafeModeBlockedMessage" value="A(z) ${{title}} csökkentett módban nem telepíthető."/>
+			<string name="SystemRequirements" value="rendszerkövetelmények"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="A következőhöz a Windows XP Service Pack 2 szükséges: ${{title}}."/>
+			<string name="ErrorXPServicePack3Required" value="A következőhöz a Windows XP Service Pack 3 szükséges: ${{title}}."/>
+			<string name="ErrorVistaServicePack1Required" value="A következőhöz a Windows Vista Service Pack 1 szükséges: ${{title}}."/>
+			<string name="InstallOptions" value="Telepítési beállítások"/>
+			<string name="CreateDesktopShortcut" value="Asztali parancsikon létrehozása a következőhöz: ${{title}}"/>
+			<string name="LaunchGFExperience" value="${{title}} indítása"/>
+			<string name="InstallerPaused" value="Az NVIDIA telepítő működése szünetel"/>
+			<string name="UninstallerPaused" value="Az NVIDIA eltávolító működése szünetel"/>
+			<string name="CloseSteamInstall" value="Az ${{title}} nem telepíthető, miközben a Steam fut. Kattintson a Tovább gombra a Steam programból való kilépéshez és a folytatáshoz."/>
+			<string name="CloseSteamUninstall" value="Az ${{title}} nem távolítható el, miközben a Steam fut. Kattintson a Tovább gombra a Steam programból való kilépéshez és a folytatáshoz."/>
+		</localized>
+		<localized locale="0x0410">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} non può essere installato in modalità sicura."/>
+			<string name="SystemRequirements" value="requisiti di sistema"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} richiede Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} richiede Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} richiede Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Opzioni di installazione"/>
+			<string name="CreateDesktopShortcut" value="Crea un collegamento per ${{title}}"/>
+			<string name="LaunchGFExperience" value="Avvia ${{title}}"/>
+			<string name="InstallerPaused" value="Installazione NVIDIA in pausa"/>
+			<string name="UninstallerPaused" value="Disinstallazione NVIDIA in pausa"/>
+			<string name="CloseSteamInstall" value="${{title}}  non può essere installato mentre Steam è in esecuzione. Fare clic su Avanti per chiudere Steam e continuare."/>
+			<string name="CloseSteamUninstall" value="${{title}} non può essere disinstallato mentre Steam è in esecuzione. Fare clic su Avanti per chiudere Steam e continuare."/>
+		</localized>
+		<localized locale="0x0411">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} はセーフ モードでインストールできません。"/>
+			<string name="SystemRequirements" value="システム要件"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}}にはWindows XPサービスパック2が必要です。"/>
+			<string name="ErrorXPServicePack3Required" value="${{title}}にはWindows XPサービスパック3が必要です。"/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}}にはWindows VISTAサービスパック1が必要です。"/>
+			<string name="InstallOptions" value="インストール オプション"/>
+			<string name="CreateDesktopShortcut" value="デスクトップに${{title}}のショートカットを作成"/>
+			<string name="LaunchGFExperience" value="立ち上げ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA インストーラーが一時停止しました"/>
+			<string name="UninstallerPaused" value="NVIDIA アンインストーラーが一時停止しました"/>
+			<string name="CloseSteamInstall" value="Steam の実行中は ${{title}} をインストールできません。Steam を終了して続行するには、[次へ] をクリックしてください。"/>
+			<string name="CloseSteamUninstall" value="Steam の実行中は ${{title}} をアンインストールできません。Steam を終了して続行するには、[次へ] をクリックしてください。"/>
+		</localized>
+		<localized locale="0x0412">
+			<string name="InstallSafeModeBlockedMessage" value="안전 모드에서는 ${{title}}을(를) 설치할 수 없습니다."/>
+			<string name="SystemRequirements" value="시스템 요건"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}}는 Microsoft Windows XP Service Pack 2이 필요합니다."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}}는 Microsoft Windows XP Service Pack 3이 필요합니다."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}}는 Microsoft Windows Vista Service Pack 1이 필요합니다."/>
+			<string name="InstallOptions" value="설치 옵션"/>
+			<string name="CreateDesktopShortcut" value="바탕화면에 ${{title}} 바로가기를 만듭니다"/>
+			<string name="LaunchGFExperience" value="${{title}} 시작"/>
+			<string name="InstallerPaused" value="NVIDIA 설치 프로그램이 일시 중지되었습니다."/>
+			<string name="UninstallerPaused" value="NVIDIA 제거 프로그램이 일시 중지되었습니다."/>
+			<string name="CloseSteamInstall" value="Steam이 실행 중이어서 ${{title}}을(를) 설치할 수 없습니다. 다음을 클릭하여 Steam을 중지하고 계속하십시오."/>
+			<string name="CloseSteamUninstall" value="Steam이 실행 중이어서 ${{title}}을(를) 제거할 수 없습니다. 다음을 클릭하여 Steam을 중지하고 계속하십시오."/>
+		</localized>
+		<localized locale="0x0413">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} kan niet in veilige modus worden geïnstalleerd."/>
+			<string name="SystemRequirements" value="systeemvereisten"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} vereist Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} vereist Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} vereist Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installatieopties"/>
+			<string name="CreateDesktopShortcut" value="Maak bureaublad-snelkoppeling voor ${{title}}"/>
+			<string name="LaunchGFExperience" value="Start ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA-installatieprogramma is gepauzeerd"/>
+			<string name="UninstallerPaused" value="NVIDIA-uninstaller is gepauzeerd"/>
+			<string name="CloseSteamInstall" value="${{title}} kan niet worden geïnstalleerd terwijl Steam wordt uitgevoerd. Klik op volgende om Steam af te sluiten en verder te gaan."/>
+			<string name="CloseSteamUninstall" value="${{title}} kan niet worden verwijderd terwijl Steam wordt uitgevoerd. Klik op volgende om Steam af te sluiten en verder te gaan."/>
+		</localized>
+		<localized locale="0x0414">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} kan ikke installeres i sikkermodus."/>
+			<string name="SystemRequirements" value="systemkrav"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} krever Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} krever Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} krever Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installeringsalternativer"/>
+			<string name="CreateDesktopShortcut" value="Opprett skrivebordsnarvei for ${{title}}"/>
+			<string name="LaunchGFExperience" value="Start ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA-installeringsprogram har tatt pause"/>
+			<string name="UninstallerPaused" value="NVIDIA-avinstalleringsprogram har tatt pause"/>
+			<string name="CloseSteamInstall" value="${{title}} kan ikke installeres mens Steam kjører. Klikk neste for å avslutte Steam og fortsette."/>
+			<string name="CloseSteamUninstall" value="${{title}} kan ikke avinstalleres mens Steam kjører. Klikk neste for å avslutte Steam og fortsette."/>
+		</localized>
+		<localized locale="0x0415">
+			<string name="InstallSafeModeBlockedMessage" value="Nie można zainstalować programu ${{title}} w trybie awaryjnym."/>
+			<string name="SystemRequirements" value="wymagania systemowe"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} wymaga dodatku Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} wymaga dodatku Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} wymaga dodatku Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Opcje instalacji"/>
+			<string name="CreateDesktopShortcut" value="Utwórz na pulpicie skrót do ${{title}}"/>
+			<string name="LaunchGFExperience" value="Uruchom ${{title}}"/>
+			<string name="InstallerPaused" value="Program instalacyjny NVIDIA został wstrzymany"/>
+			<string name="UninstallerPaused" value="Dezinstalator NVIDIA został wstrzymany"/>
+			<string name="CloseSteamInstall" value="Nie można zainstalować ${{title}}, gdy uruchomiona jest usługa Steam. Kliknij Dalej, aby zamknąć usługę Steam i kontynuować."/>
+			<string name="CloseSteamUninstall" value="Nie można odinstalować ${{title}}, gdy uruchomiona jest usługa Steam. Kliknij Dalej, aby zamknąć usługę Steam i kontynuować."/>
+		</localized>
+		<localized locale="0x0816">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} em modo de segurança."/>
+			<string name="SystemRequirements" value="requisitos do sistema"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} exige o Service Pack 2 do Windows XP."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} exige o Service Pack 3 do Windows XP."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} exige o Service Pack 1 do Windows Vista."/>
+			<string name="InstallOptions" value="Opções de instalação"/>
+			<string name="CreateDesktopShortcut" value="Criar atalho no ambiente de trabalho para o ${{title}}"/>
+			<string name="LaunchGFExperience" value="Iniciar o ${{title}}"/>
+			<string name="InstallerPaused" value="O instalador da NVIDIA está em pausa"/>
+			<string name="UninstallerPaused" value="O desinstalador da NVIDIA está em pausa"/>
+			<string name="CloseSteamInstall" value="${{title}} não pode ser instalado enquanto o Steam estiver em execução. Clique em 'Seguinte' para sair do Steam e continuar."/>
+			<string name="CloseSteamUninstall" value="${{title}} não pode ser desinstalado enquanto o Steam estiver em execução. Clique em 'Seguinte' para sair do Steam e continuar."/>
+		</localized>
+		<localized locale="0x0416">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} não pode ser desinstalado no modo de segurança."/>
+			<string name="SystemRequirements" value="requisitos do sistema"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} exige Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} exige Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} exige Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Opções de instalação"/>
+			<string name="CreateDesktopShortcut" value="Criar atalho de área de trabalho para ${{title}}"/>
+			<string name="LaunchGFExperience" value="Abrir ${{title}}"/>
+			<string name="InstallerPaused" value="Instalador NVIDIA pausou"/>
+			<string name="UninstallerPaused" value="Desintalador NVIDIA pausou"/>
+			<string name="CloseSteamInstall" value="${{title}} não pode ser instalado enquanto o Steam estiver sendo executado. Clique em Avançar para sair do Steam e continuar."/>
+			<string name="CloseSteamUninstall" value="${{title}} não pode ser desinstalado enquanto o Steam estiver sendo executado. Clique em Avançar para sair do Steam e continuar."/>
+		</localized>
+		<localized locale="0x0419">
+			<string name="InstallSafeModeBlockedMessage" value="Установить ${{title}} в безопасном режиме невозможно."/>
+			<string name="SystemRequirements" value="cистемные требования"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="Для ${{title}} необходима версия Windows ХР с пакетом обновления 2."/>
+			<string name="ErrorXPServicePack3Required" value="Для ${{title}} необходима версия Windows XP с пакетом обновления 3."/>
+			<string name="ErrorVistaServicePack1Required" value="Для ${{title}} необходима версия Windows Vista с пакетом обновления 1."/>
+			<string name="InstallOptions" value="Параметры установки"/>
+			<string name="CreateDesktopShortcut" value="Создать ярлык на рабочем столе для ${{title}}"/>
+			<string name="LaunchGFExperience" value="Запустить ${{title}}"/>
+			<string name="InstallerPaused" value="Работа программы установки NVIDIA была приостановлена"/>
+			<string name="UninstallerPaused" value="Работа программы удаления NVIDIA была приостановлена"/>
+			<string name="CloseSteamInstall" value="Установить ${{title}} во время работы Steam невозможно. Нажмите «Далее», чтобы выйти из Steam и продолжить."/>
+			<string name="CloseSteamUninstall" value="Установить ${{title}} во время работы Steam невозможно. Нажмите «Далее», чтобы выйти из Steam и продолжить."/>
+		</localized>
+		<localized locale="0x041b">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} nie je možné nainštalovať v núdzovom režime."/>
+			<string name="SystemRequirements" value="systémové požiadavky"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} vyžaduje balík Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} vyžaduje balík Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} vyžaduje balík Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Možnosti inštalácie"/>
+			<string name="CreateDesktopShortcut" value="Vytvoriť na pracovnej ploche odkaz pre ${{title}}"/>
+			<string name="LaunchGFExperience" value="Spustiť ${{title}}"/>
+			<string name="InstallerPaused" value="Inštalátor NVIDIA sa pozastavil"/>
+			<string name="UninstallerPaused" value="Odinštalátor NVIDIA sa pozastavil"/>
+			<string name="CloseSteamInstall" value="Program ${{title}} nemožno nainštalovať, kým je spustený softvér Steam. Kliknutím na Ďalej ukončite Steam a pokračujte."/>
+			<string name="CloseSteamUninstall" value="Program ${{title}} nemožno odinštalovať, kým je spustený softvér Steam. Kliknutím na Ďalej ukončite Steam a pokračujte."/>
+		</localized>
+		<localized locale="0x0424">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} ni mogoče namestiti v varnem načinu."/>
+			<string name="SystemRequirements" value="zahteve za sistem"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} zahteva Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} zahteva Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} zahteva Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Namestitvene možnosti"/>
+			<string name="CreateDesktopShortcut" value="Ustvari bližnjico za namizje za ${{title}}"/>
+			<string name="LaunchGFExperience" value="Zaženi ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA Installer se je ustavil"/>
+			<string name="UninstallerPaused" value="Program za odstranitev aplikacije NVIDIA se je ustavil"/>
+			<string name="CloseSteamInstall" value="${{title}} ni mogoče namestiti, medtem ko Steam deluje. Kliknite Naslednji, da zaprete Steam in nadaljujte."/>
+			<string name="CloseSteamUninstall" value="${{title}}  ni mogoče odstraniti, medtem ko Steam deluje. Kliknite Naslednji, da zaprete Steam in nadaljujte."/>
+		</localized>
+		<localized locale="0x041d">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} kan inte installeras i säkert läge."/>
+			<string name="SystemRequirements" value="systemkrav"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} kräver Windows XP Service Pack 2."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} kräver Windows XP Service Pack 3."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} kräver Windows Vista Service Pack 1."/>
+			<string name="InstallOptions" value="Installationsalternativ"/>
+			<string name="CreateDesktopShortcut" value="Skapa skrivbordsgenväg för ${{title}}"/>
+			<string name="LaunchGFExperience" value="Starta ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIAs installationsprogram har pausat"/>
+			<string name="UninstallerPaused" value="NVIDIAs avinstallationsprogram har pasat"/>
+			<string name="CloseSteamInstall" value="${{title}} kan inte installeras medan Steam körs. Avsluta Steam genom att klicka på Nästa och fortsätt."/>
+			<string name="CloseSteamUninstall" value="${{title}} kan inte avinstalleras medan Steam körs. Avsluta Steam genom att klicka på Nästa och fortsätt."/>
+		</localized>
+		<localized locale="0x041e">
+			<string name="InstallSafeModeBlockedMessage" value="ระบบไม่สามารถติดตั้ง ${{title}} ในเซฟโหมดได้"/>
+			<string name="SystemRequirements" value="ข้อกำหนดของระบบ"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} ต้องใช้ Windows XP Service Pack 2"/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} ต้องใช้ Windows XP Service Pack 3"/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} ต้องใช้ Windows Vista Service Pack 1"/>
+			<string name="InstallOptions" value="ตัวเลือกการติดตั้ง"/>
+			<string name="CreateDesktopShortcut" value="สร้างทางลัดบนเดสก์ท็อปสำหรับ  ${{title}}"/>
+			<string name="LaunchGFExperience" value="เปิด  ${{title}}"/>
+			<string name="InstallerPaused" value="โปรแกรมติดตั้งของ NVIDIA หยุดชั่วคราว"/>
+			<string name="UninstallerPaused" value="โปรแกรมถอนการติดตั้งของ NVIDIA หยุดชั่วคราว"/>
+			<string name="CloseSteamInstall" value="ไม่สามารถติดตั้ง ${{title}} ขณะ Steam กำลังทำงาน คลิก ถัดไป เพื่อออกจาก Steam และดำเนินการต่อ"/>
+			<string name="CloseSteamUninstall" value="ไม่สามารถถอนการติดตั้ง ${{title}} ขณะ Steam กำลังทำงาน คลิก ถัดไป เพื่อออกจาก Steam และดำเนินการต่อ"/>
+		</localized>
+		<localized locale="0x041f">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}}, güvenli modda kaldırılamaz."/>
+			<string name="SystemRequirements" value="sistem gerekleri"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}}, Windows XP Service Pack 2 gerektiriyor."/>
+			<string name="ErrorXPServicePack3Required" value="${{title}}, Windows XP Service Pack 3 gerektiriyor."/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}}, Windows Vista Service Pack 1 gerektiriyor."/>
+			<string name="InstallOptions" value="Kurulum seçenekleri"/>
+			<string name="CreateDesktopShortcut" value="${{title}} için masaüstü kısayolu oluştur"/>
+			<string name="LaunchGFExperience" value="${{title}} uygulamasını çalıştır"/>
+			<string name="InstallerPaused" value="NVIDIA Kurulum programı duraklatıldı"/>
+			<string name="UninstallerPaused" value="NVIDIA Kaldırma programı duraklatıldı"/>
+			<string name="CloseSteamInstall" value="Steam çalışırken ${{title}} kurulumu yapılamaz. Steam'den çıkıp devam etmek için İleri düğmesine basın."/>
+			<string name="CloseSteamUninstall" value="Steam çalışırken ${{title}} kaldırma işlemi yapılamaz. Steam'den çıkıp devam etmek için İleri düğmesine basın."/>
+		</localized>
+		<localized locale="0x0804">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} 无法在安全模式下安装。"/>
+			<string name="SystemRequirements" value="系统要求"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} 要求安装 Windows XP Service Pack 2。"/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} 要求安装 Windows XP Service Pack 3。"/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} 要求安装 Windows Vista Service Pack 1。"/>
+			<string name="InstallOptions" value="安装选项"/>
+			<string name="CreateDesktopShortcut" value="为 ${{title}} 创建桌面快捷方式"/>
+			<string name="LaunchGFExperience" value="启动 ${{title}}"/>
+			<string name="InstallerPaused" value="NVIDIA 安装程序已暂停"/>
+			<string name="UninstallerPaused" value="NVIDIA 卸载程序已暂停"/>
+			<string name="CloseSteamInstall" value="Steam 运行时无法安装 ${{title}}。单击“下一步”退出 Steam 并继续。"/>
+			<string name="CloseSteamUninstall" value="Steam 运行时无法卸载 ${{title}}。单击“下一步”退出 Steam 并继续。"/>
+		</localized>
+		<localized locale="0x0404">
+			<string name="InstallSafeModeBlockedMessage" value="${{title}} 無法在安全模式中安裝。"/>
+			<string name="SystemRequirements" value="系統需求"/>
+			<string name="NvGpuRequired" value="${{title}} requires an NVIDIA GPU. Refer to the ${{SystemRequirementsLink}}."/>
+			<string name="ProductVersion" value="${{DisplayVersion}}"/>
+			<string name="ErrorXPServicePack2Required" value="${{title}} 需要 Windows XP Service Pack 2。"/>
+			<string name="ErrorXPServicePack3Required" value="${{title}} 需要 Windows XP Service Pack 3。"/>
+			<string name="ErrorVistaServicePack1Required" value="${{title}} 需要 Windows Vista Service Pack 1。"/>
+			<string name="InstallOptions" value="安裝選項"/>
+			<string name="CreateDesktopShortcut" value="建立 ${{title}} 的備份捷徑"/>
+			<string name="LaunchGFExperience" value="啟動 ${{title}}"/>
+			<string name="InstallerPaused" value="「NVIDIA 安裝程式」已暫停"/>
+			<string name="UninstallerPaused" value="「NVIDIA 解除安裝程式」已暫停"/>
+			<string name="CloseSteamInstall" value="在執行 Steam 期間，${{title}} 無法安裝。按一下「下一步」以退出 Steam 並繼續。"/>
+			<string name="CloseSteamUninstall" value="在執行 Steam 期間，${{title}} 無法解除安裝。按一下「下一步」以退出 Steam 並繼續。"/>
+		</localized>
+	</strings>
+	<forms>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0409">
+			<control name="header"/>
+			<control name="headText" style="header" x="137pt" y="63pt" width="294pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="90pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0406">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="40pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="107pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x040c">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="40pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="107pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0413">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="90pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0407">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="40pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="107pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0408">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="40pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="107pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0412">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="90pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0414">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="90pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0415">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="90pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseMenu" base="!PreInstallTemplate" locale="0x0419">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="137pt" y="63pt" width="294pt" height="40pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="137pt" y="107pt" width="294pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+		</form>
+		<form name="GFExperienceSteamCloseNoMenu" base="!PreInstallTemplate" locale="0x0409">
+			<control name="header"/>
+			<control name="headText" style="header" x="22pt" y="63pt" width="409pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="22pt" y="90pt" width="409pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+			<control name="back" hidden="true" disabled="true"/>
+		</form>
+		<form name="GFExperienceSteamCloseNoMenu" base="!PreInstallTemplate" locale="0x0419">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="22pt" y="63pt" width="409pt" height="23pt" text="${{InstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="22pt" y="90pt" width="409pt" height="50pt" text="${{CloseSteamInstall}}"/>
+			<control name="footer"/>
+			<control name="back" hidden="true" disabled="true"/>
+		</form>
+		<form name="GFExperienceSteamCloseUninstall" base="!UninstallTemplate" locale="0x0409">
+			<control name="header"/>
+			<control name="headText" style="header" x="22pt" y="63pt" width="409pt" height="23pt" text="${{UninstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="22pt" y="90pt" width="409pt" height="50pt" text="${{CloseSteamUninstall}}"/>
+			<control name="footer"/>
+			<control name="back" hidden="true" disabled="true"/>
+		</form>
+		<form name="GFExperienceSteamCloseUninstall" base="!UninstallTemplate" locale="0x0408">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="22pt" y="63pt" width="409pt" height="23pt" text="${{UninstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="22pt" y="90pt" width="409pt" height="50pt" text="${{CloseSteamUninstall}}"/>
+			<control name="footer"/>
+			<control name="back" hidden="true" disabled="true"/>
+		</form>
+		<form name="GFExperienceSteamCloseUninstall" base="!UninstallTemplate" locale="0x0419">
+			<control name="header"/>
+			<control name="headText" style="smallHeader" x="22pt" y="63pt" width="409pt" height="23pt" text="${{UninstallerPaused}}"/>
+			<control name="body"/>
+			<control name="labelText" style="label" x="22pt" y="90pt" width="409pt" height="50pt" text="${{CloseSteamUninstall}}"/>
+			<control name="footer"/>
+			<control name="back" hidden="true" disabled="true"/>
+		</form>
+	</forms>
+	<include name=".\support.dat" select="/nvi/*"/>
+</nvi>

@@ -1,6 +1,6 @@
 # GP107 experimental initialization
 
-The 10-5-2026 build retains experimental GP107 code and internal name records but removes all seven GP107 display INF entries. GTX 1050 Ti testers reported Code 10 with the earlier experimental builds; GP107 initialization is not working reliably enough for inclusion.
+The 10-6-2026 build retains experimental GP107 code and internal name records but removes all seven GP107 display INF entries. GTX 1050 Ti testers reported Code 10 with the earlier experimental builds; GP107 initialization is not working reliably enough for inclusion.
 
 Excluded desktop entries: GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3), and P620 (1CB6). Mobile GPUs, GP100 and GP108 also remain excluded. Existing PhysX installer entries are retained separately.
 

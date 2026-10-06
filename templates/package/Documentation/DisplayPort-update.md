@@ -4,7 +4,7 @@ This increment applies to the custom Forceware 382.69 XP32 binaries. It retains 
 
 ## Policy
 
-The receiver's advertised maximum is an upper bound, not proof that the GPU can use it. Miniport output+0x2D00 records each successful automatic training attempt. The new query adapter intersects those results with receiver rate/lane limits and exports one matched pair with the greatest payload capacity. It never combines independently derived rate and lane maxima. Empty results export 0/0.
+The receiver's advertised maximum is an upper bound, not proof that the GPU can use it. Miniport output+0x2D00 records each successful automatic training attempt. The query adapter intersects those results with receiver rate/lane limits and exports one matched pair with the greatest payload capacity. It never combines independently derived rate and lane maxima. Passive capability discovery can return the validated receiver ceiling while the training history is empty. Active mode preparation performs native probing and configuration as needed, then requires a recorded successful pair; an empty active result exports 0/0.
 
 The display driver's selector uses that pair directly, instead of choosing an unrecorded lower pair from its old static table. RGB payload calculation includes the existing 0.5% margin and 8b/10b link coding. It retains the requested 6/8/10/12/16-bit depth if it fits, otherwise reduces a higher depth to 8 bits if that fits. A timing that cannot fit is rejected. Overflow and unknown depth codes fail closed. The ordinary mode path returns through its existing failure cleanup; the secondary void DP escape helper exits without its old guessed-link fallback.
 
@@ -41,3 +41,11 @@ The implication is to distinguish advertised sink limits, attempted source progr
 ## Validation status
 
 The new normal build has user-confirmed normal 3440x1440/100 output on GTX980Ti/AW3423DW, HBR2x4, RGB10, with 64 D3D9 hardware shader draw/readbacks passing. The HBR-limited build has user-confirmed normal native 3440x1440/60 output at RGB8, and rejects 3440x1440/100 without leaving the supported 1024x768 desktop. The RBR-limited build has user-confirmed normal standard 1080p/59.94 output at RGB10, also passing all 64 hardware draw/readbacks. The RBR build rejects native 3440x1440/60 and retains 1024x768. Every bounded test returned safely without a VM reset. This is not a claim that a DP1.1 GPU, every board/sink or all DP1.4 features have been tested.
+
+## October 6 startup and wake update
+
+Capability discovery now distinguishes an untrained receiver ceiling from an active mode's successfully trained link. Active preparation uses native probing and, when an already-owned output prevents that probe, one native configuration attempt followed by a fresh query. Empty results remain failures. Existing matched-pair selection, source/receiver limits and RGB8 fallback stay in use.
+
+Link-status retraining now restores the configured lane count instead of using the receiver's current lane-register value after sleep. A traced receiver reset to one lane despite the driver retaining a four-lane configuration; the correction restores that saved configuration through native training. It does not force four lanes or a specific rate.
+
+Startup and 3440x1440/100 HBR3 x4 rendering were validated on GTX 1080 Ti. A ten-minute display-sleep test at 3440x1440/60 restored HBR3 x4 automatically with a normal picture and passing post-wake Direct3D/OpenGL checks. Other monitor/GPU combinations and whole-system suspend remain untested with this increment.

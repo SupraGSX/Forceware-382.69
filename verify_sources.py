@@ -32,6 +32,7 @@ def main():
         require(pe_read(data, va, len(blob)) == blob, 'Compiled source differs: '+name)
         records.append({'source':name,'bytes':len(blob),'sha256':digest(blob),'preferred_va':hex(va)})
     cases = [
+        ('dp-startup/disp-startup.s','nv4_disp.dll',0x356b00,[], 'prepare_query'),
         ('display-root.s','nv4_disp.dll',0x29fdc5,[], '_start'),
         ('sec2-bootdesc.S','nv4_mini.sys',0xd06920,['--defsym','original_copy=0x470d10'],'sec2_bootdesc_copy'),
         ('dp-api-rate.s','nv4_disp.dll',0x356600,[], '_start'),
@@ -43,7 +44,7 @@ def main():
         ('topology-predicate.s','nvWsS.dll',0x10257fe7,[], '_start'),
     ]
     for name, module, va, extra, entry in cases:
-        obj=out/(name+'.o'); target=out/(name+'.bin')
+        obj=out/(name+'.o'); target=out/(name+'.bin'); obj.parent.mkdir(parents=True,exist_ok=True)
         run(['as','--32',str(src/name),'-o',str(obj)])
         run(['ld','-m','elf_i386','--oformat=binary','-Ttext',hex(va),*extra,'-e',entry,'-o',str(target),str(obj)])
         path=args.cpl/module if module=='nvWsS.dll' else args.package/'Display.Driver'/module
@@ -66,6 +67,7 @@ def main():
         compare(stem,binary.read_bytes(),args.package/'Display.Driver'/module,va)
     # The 10-3-26 update adds a matched trained-link policy and HDMI recovery.
     for stem, asmfile, cfile, va, module, extra, data in [
+        ('dp-startup-mini', 'dp-startup/mini-startup.s', 'dp-startup/query-policy.c', 0xd68f00, 'nv4_mini.sys', ['-fno-jump-tables','-fno-tree-switch-conversion'], False),
         ('dp-trained-mini', 'dp-trained/mini-hooks.s', 'dp-trained/dp-policy.c', 0xd073a0, 'nv4_mini.sys', ['-fno-jump-tables','-fno-tree-switch-conversion'], False),
         ('dp-trained-disp', 'dp-trained/disp-hooks.s', 'dp-trained/dp-policy.c', 0x356780, 'nv4_disp.dll', ['-fno-jump-tables','-fno-tree-switch-conversion'], False),
         ('hdmi-recovery-mini', 'hdmi-recovery/scdc-mini.s', 'hdmi-recovery/scdc-recovery.c', 0xd075c0, 'nv4_mini.sys', ['-DFAULT=0'], True),
@@ -79,7 +81,7 @@ def main():
             run(['gcc',*flags,*extra,'-c',str(src/cfile),'-o',str(cobj)])
             objects.append(str(cobj))
         linker=out/(stem+'.ld')
-        linker.write_text('SECTIONS { . = '+hex(va)+'; .text : { *(.text*) '+('*(.data*)' if data else '')+' } /DISCARD/ : { *(.note*) *(.comment*) *(.eh_frame*) } }\ndelay_native = 0x478650;')
+        linker.write_text('SECTIONS { . = '+hex(va)+'; .text : { *(.text*) '+('*(.data*)' if data else '')+' } /DISCARD/ : { *(.note*) *(.comment*) *(.eh_frame*) } }\ndelay_native = 0x478650; best_pair = 0xd073d4;')
         run(['ld','-m','elf_i386','-T',str(linker),*objects,'-o',str(elf)])
         require('There are no relocations' in subprocess.check_output(['readelf','-r',str(elf)],text=True), 'Unexpected inserted relocations')
         run(['objcopy','-O','binary','-j','.text',str(elf),str(binary)])
@@ -111,6 +113,12 @@ def main():
     normalized.write_bytes(metadata.restore(icd, icd_record['build_metadata']))
     opengl = subprocess.check_output([sys.executable, str(src/'opengl-display-class.py'), '--verify', str(normalized)], text=True)
     (out/'opengl-verification.json').write_text(opengl)
+    # Minimal native link-check retraining fix: receiver lane register may reset.
+    wake = out/'dp-wake-lane-restore.o'
+    subprocess.run(['as','--32',str(src/'dp-wake-lane-restore.s'),'-o',str(wake)],check=True)
+    wakebin = out/'dp-wake-lane-restore.bin'
+    subprocess.run(['objcopy','-O','binary','-j','.text',str(wake),str(wakebin)],check=True)
+    compare('dp-wake-lane-restore', wakebin.read_bytes(), args.package/'Display.Driver/nv4_disp.dll', 0x19e23)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 
