@@ -41,6 +41,7 @@ def main():
         ('dp-depth-select.s','nv4_disp.dll',0x356680,[], '_start'),
         ('dp-capacity-depth.s','nv4_mini.sys',0xd06ae0,[], '_start'),
         ('hdmi-vendor-summary.s','nv4_mini.sys',0x8742b0,[], '_start'),
+        ('hdmi-vendor-priority.s','nv4_mini.sys',0xd69100,[], '_start'),
         ('topology-predicate.s','nvWsS.dll',0x10257fe7,[], '_start'),
     ]
     for name, module, va, extra, entry in cases:
@@ -119,6 +120,8 @@ def main():
     wakebin = out/'dp-wake-lane-restore.bin'
     subprocess.run(['objcopy','-O','binary','-j','.text',str(wake),str(wakebin)],check=True)
     compare('dp-wake-lane-restore', wakebin.read_bytes(), args.package/'Display.Driver/nv4_disp.dll', 0x19e23)
+    with (out/'display-updates.log').open('w') as log:
+        subprocess.run([sys.executable,str(src.parent/'verify_display_updates.py'),'--package',str(args.package.resolve()),'--cpl',str(args.cpl.resolve()),'--out',str(out/'display-updates')],stdout=log,stderr=subprocess.STDOUT,check=True)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 

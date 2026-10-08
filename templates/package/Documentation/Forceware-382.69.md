@@ -4,7 +4,7 @@ Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Force
 
 **Build: 10-4-2026 — GP107 support is experimental**
 
-Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
+Improved DisplayPort and HDMI handling, restored custom resolutions, and separate desktop Scaling and Overscan pages.
 
 **Additional desktop INF entries over stock 368.81**
 
@@ -24,14 +24,17 @@ GP107 display INF entries are withheld following reported Code 10 failures. Expe
 - DisplayPort HBR2/HBR3 training and extended capability detection, with mode selection based on a successfully trained link and automatic 8-bit fallback when needed.
 - HDMI 2.0 identification, SCDC scrambling/high-speed clock-ratio handling, and bounded setup retries with safe-mode recovery on failure.
 - HDMI/DVI handling with GPU/monitor-aware limits and a 594 MHz HDMI ceiling.
-- Corrected DisplayPort identification, restored **Customize**, and improved scaling/fixed-aspect-ratio settings in NVIDIA Control Panel.
+- Corrected DisplayPort identification and restored **Customize**.
+- Separate **Adjust desktop scaling** and **Adjust overscan** pages, with native per-option capability checks.
+- Automatic native HDMI scaling with consistent viewport sizing, current-EDID validation and a GPU/monitor-limited 594 MHz ceiling.
+- Automatic native DisplayPort scaling within the successfully trained link bandwidth, with safe fallback when the preferred timing does not fit.
 - **View system topology** and EDID loading unlocked.
 - DisplayPort startup preparation and restoration of saved lane settings after display sleep.
 - Windows Server 2003 x86 installation compatibility; GeForce Experience is omitted there.
 
 HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
 
-The 10-6-2026 build continues the October 5 stable release with Server 2003 x86 installer compatibility, improved DisplayPort startup, and DisplayPort sleep/wake restoration. GP107 remains excluded from the display INF.
+The 10-8-2026 build continues the October 6 stable release with improved HDMI vendor-block handling, separate Scaling/Overscan pages, and automatic native HDMI and DisplayPort scaling. GP107 remains excluded from the display INF.
 
 
 Display driver version: 6.14.13.8269; INF version: 10.18.13.8269. HD Audio, PhysX and other component versions are unchanged. This is a custom distribution, not an official NVIDIA 382.69 release.
@@ -42,4 +45,8 @@ See [DisplayPort policy](DisplayPort-update.md) and [HDMI setup recovery](HDMI-S
 
 See [OpenGL initialization](OpenGL-update.md) for the added class recognition and validation.
 
-Build date: `10/06/2026` in the display INF and rebuilt display metadata. See [GP107 details](GP107-experimental.md).
+Build date: `10/08/2026` in the display INF and rebuilt display metadata. See [GP107 details](GP107-experimental.md).
+
+Overscan resizing remains limited to timings supported by the native NVIDIA resize implementation. Automatic high-bandwidth HDMI scaling was verified at 543.5 MHz on GTX 1080 Ti; 594 MHz is the policy ceiling, not a claim of validation on every monitor.
+
+Automatic native DisplayPort scaling uses a validated preferred timing at the requested refresh; it does not automatically carry a higher desktop refresh into lower-resolution games. The tested automatic scaling mode is 60 Hz. Explicit higher-refresh native modes remain available when supported.

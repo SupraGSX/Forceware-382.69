@@ -1,34 +1,48 @@
-# How Forceware 382.69 was built from NVIDIA 368.81 for Windows XP
+<a id="how-forceware-38269-was-built-from-nvidia-36881-for-windows-xp"></a>
 
-Forceware 382.69 applies binary patches, selected firmware resources and installer changes to **NVIDIA 368.81 for Windows XP 32-bit**. **382.69 is this project's custom release number.** This guide describes the **10-6-2026 build**, continuing the October 5 stable release with Server 2003 x86 installer compatibility, DisplayPort startup preparation, and display sleep/wake restoration. GP107 remains excluded from the display INF.
+# Rebuilding Forceware 382.69
 
-NVIDIA's proprietary source is unavailable; the supplied source consists of our Python patcher and C/assembly routines. This guide explains the final implementation and how to reproduce it.
+This guide documents the **10-8-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
 
-The changes enable the tested Pascal P4000/GTX 1080 Ti configurations, fix the reproduced GTX 1080 Ti OpenGL initialization failure, expand desktop INF coverage, add DisplayPort HBR3 and depth negotiation, correct HDMI handling, and restore Control Panel functions.
+Start with the reconstruction commands, then use the implementation sections to review the changes by subsystem.
 
-## 1. What can be reproduced with this directory
+1. [Rebuild the package](#1-rebuild-the-package)
+2. [Pascal initialization and rendering](#2-pascal-initialization-and-rendering)
+3. [DisplayPort](#3-displayport)
+4. [HDMI](#4-hdmi)
+5. [Control Panel, scaling and EDID](#5-control-panel-scaling-and-edid)
+6. [Installer, GPU list and build identification](#6-installer-gpu-list-and-build-identification)
+7. [Validation and limits](#7-validation-and-limits)
+8. [Nouveau and Mesa findings](#8-nouveau-and-mesa-findings)
+9. [Address and hash reference](#9-address-and-hash-reference)
+
+<a id="2-rebuild-instructions"></a>
+
+## 1. Rebuild the package
+
+<a id="1-what-can-be-reproduced-with-this-directory"></a>
+
+### Package contents
 
 | File | Purpose |
 |---|---|
 | [rebuild.py](rebuild.py) | Reconstructs the package from the exact stock installer and two supplied firmware-donor modules. |
 | [patches.json](patches.json) | Input hashes, output hashes, byte guards, edits, firmware extraction instructions and the complete package/CPL file inventory. |
 | [sources/](sources/) | Readable C/assembly for the added routines, link scripts and the NVAPI version-reporting patch generator. |
-| [verify_sources.py](verify_sources.py) | Compiles 17 code blocks and independently verifies the OpenGL display-class patch against the reconstructed driver. |
+| [verify_sources.py](verify_sources.py) | Compiles the retained patch blocks and HDMI/DisplayPort scaling and Control Panel routines, then independently verifies the OpenGL display-class patch. |
 | [sources/opengl-display-class.py](sources/opengl-display-class.py) | Guarded recipe for adding the missing OpenGL display class to the preceding Forceware ICD. |
 | [templates/](templates/) | Final INF, installer configuration and text files used during reconstruction. |
 | [desktop-gpus.json](desktop-gpus.json) | All 50 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
-A verified rebuild matched **585 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; all 19 compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
+A verified rebuild matched **585 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; the retained and newly added compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
 
 Compression, timestamps and tool versions can change archive hashes while preserving identical driver files. The reproduction check is the exact extracted payload.
 
-When updating an existing driver installation, use the NVIDIA installer's **Custom (Advanced) → Perform a clean installation** option and restart. An upgrade test retained the preceding `nv4_disp.dll`; clean installation replaced it with the expected package hash.
+<a id="21-obtain-the-exact-original-inputs"></a>
 
-## 2. Rebuild instructions
-
-### 2.1 Obtain the exact original inputs
+### 1.1 Obtain the exact inputs
 
 Use the **32-bit international** packages. An x64 module or a different release is not an interchangeable donor.
 
@@ -48,7 +62,9 @@ Required SHA-256 values:
 
 The builder rejects incorrect input hashes. NVIDIA components retain their applicable licenses.
 
-### 2.2 Run the builder
+<a id="22-run-the-builder"></a>
+
+### 1.2 Run the builder
 
 Use Python 3.9 or newer and a `7z` command. The tested environment was Linux with Python 3.12 and 7-Zip.
 
@@ -77,7 +93,7 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-6-2026).exe
+  Forceware 382.69 (10-8-2026).exe
   Forceware 382.69/
   rebuild-result.json
   work/
@@ -85,7 +101,9 @@ build-38269/
 
 `rebuild-result.json` should report 587 package files, 585 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
 
-### 2.3 Optionally rebuild the added machine code from source
+<a id="23-optionally-rebuild-the-added-machine-code-from-source"></a>
+
+### 1.3 Verify the added machine code
 
 The byte-replay builder does not compile C. For an independent check of the readable source, install/use GNU `as`, `ld`, `objcopy`, and GCC with freestanding `-m32` compilation support. The successful comparison used GCC 13.3.0 and GNU Binutils 2.42.
 
@@ -96,31 +114,31 @@ python3 verify_sources.py \
   --out source-check
 ```
 
-This checks 19 compiled blocks at their locations in the rebuilt PE files, including the inactive HDMI bridge retained in the final image.
+This checks the compiled patch blocks at their locations in the rebuilt PE files, including the HDMI/DisplayPort scaling wrappers and separate Control Panel pages.
 
 Other compiler versions may emit different instructions; investigate mismatches before substituting them. The manifest defines the tested binary result.
 
-### Build identification
+<a id="24-install-and-validate-separately"></a>
 
-Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/06/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+### 1.4 Install and validate
 
-These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
-
-### 2.4 Install and validate separately
-
-Run the outer EXE and use the normal NVIDIA installer, or run `setup.exe` from the extracted folder. Restart. These are modified display files; original NVIDIA catalog signatures no longer authenticate the modified payload.
+Run the outer EXE or `setup.exe` from the extracted folder. When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart. These are modified display files; original NVIDIA catalog signatures no longer authenticate the modified payload.
 
 For QEMU testing, make the passed-through GPU the guest's primary VGA device. The tested configuration used `x-vga=on` with no emulated VGA.
 
-Validate installation and rendering before high-bandwidth modes, following section 12.
+Validate installation and rendering before high-bandwidth modes, following [section 7](#7-validation-and-limits).
 
-## 3. Existing Pascal support in 368.81
+<a id="3-existing-pascal-support-in-36881"></a>
+
+## 2. Pascal initialization and rendering
 
 XP 368.81 already contains substantial Pascal hardware and graphics-class support. Miniport routines at preferred VAs `0x6010F0`, `0x6F8A60` and `0x600EC0` correspond to Pascal page-pool, GPC/PES-mask and attribute-buffer operations. The display DLL recognizes graphics class `0xC197` and a Pascal channel-class path.
 
 The patches connect and correct this implementation. Windows 7 binaries supply selected firmware resources; XP retains its own operating-system interfaces and rendering/compiler machinery. Descriptive internal names here are inferred from disassembly and behavior, rather than NVIDIA source symbols.
 
-## 4. Expose the existing Pascal display paths
+<a id="4-expose-the-existing-pascal-display-paths"></a>
+
+### 2.1 Display-object selection
 
 In `nv4_disp.dll`, the class-selection logic failed to handle Pascal capability bit `0x80000`, preventing the required display objects from being allocated.
 
@@ -133,11 +151,15 @@ The allocated objects use the existing XP acceleration path. Source: [display-ro
 
 The GP100 bit was not added. GP100 and GP108 are excluded from the current INF.
 
-## 5. GP102 required a coherent firmware/host-interface repair
+<a id="5-gp102-required-a-coherent-firmwarehost-interface-repair"></a>
+
+### 2.2 GP102 firmware and host interface
 
 GP102 additionally requires compatible ACR, VPR and SEC2 resources and a host-side boot-descriptor adapter.
 
-### 5.1 Replace the selected ACR resource set
+<a id="51-replace-the-selected-acr-resource-set"></a>
+
+#### Replace the selected ACR resource set
 
 The failing path reached the selected authenticated-loader firmware and returned raw status `0x23`. Disassembly of that selected firmware identified a version comparison: the target GP102 required version 3, while the XP-selected firmware classified it as version 2.
 
@@ -151,7 +173,9 @@ cd7af91422cccf09eff250040e70d3f48430cfe7c07d7130efd82ee88c085b3c
 
 This removed the observed version failure without patching the firmware's validation result or altering its signed instructions.
 
-### 5.2 Replace the matched VPR resources
+<a id="52-replace-the-matched-vpr-resources"></a>
+
+#### Replace the matched VPR resources
 
 The matched VPR resources establish the protected-memory-region state expected by the XP verifier.
 
@@ -165,7 +189,9 @@ The VPR image hash is:
 
 The existing verifier and permission checks remain active.
 
-### 5.3 Use a matched SEC2 tuple
+<a id="53-use-a-matched-sec2-tuple"></a>
+
+#### Use a matched SEC2 tuple
 
 Use this matched Quadro 376.84 SEC2 tuple:
 
@@ -179,7 +205,9 @@ The image hash is `24fc5122aaf36722987ffc74b04d55ba476e62a72565c654d87406ed36148
 
 The final firmware combination is **ACR 376.84 + VPR 378.78 + SEC2 376.84**.
 
-### 5.4 Adapt the SEC2 boot descriptor at the correct boundary
+<a id="54-adapt-the-sec2-boot-descriptor-at-the-correct-boundary"></a>
+
+#### Adapt the SEC2 boot descriptor at the correct boundary
 
 The host and SEC2 bootloader use different descriptor layouts:
 
@@ -194,7 +222,9 @@ The adapter only activates when all observed compatibility guards match: Falcon 
 
 Source: [sec2-bootdesc.S](sources/sec2-bootdesc.S). Tests verified field placement, boundary protection, register/stack preservation, guard fallbacks and all 84 uploaded bytes. SEC2 queues and adapter initialization completed, allowing hardware D3D9/Shader Model 3 testing.
 
-### OpenGL display-parent recognition
+<a id="opengl-display-parent-recognition"></a>
+
+### 2.3 OpenGL display-parent recognition
 
 The OpenGL ICD requires a separate display-class list from the display DLL. `nvoglnt.dll` originally listed eleven classes, headed by its highest-priority entry `0x9770`, but omitted `0x9870`. On GTX 1080 Ti the resource manager advertises `0x9870`; the old selector finds no matching display class and skips the required parent object. A later child allocation fails, preventing graphics-context initialization and eventually causing an application exception.
 
@@ -202,50 +232,69 @@ The 378.78 x86 OpenGL driver uses the same old entries with `0x9870` prepended. 
 
 Use [verify_sources.py](verify_sources.py) to independently check the final dated ICD; it normalizes the verified build metadata before invoking [opengl-display-class.py](sources/opengl-display-class.py). The latter can also apply the OpenGL increment to its exact preceding Forceware ICD. `rebuild.py` already includes the complete stock-to-final patch through `patches.json`.
 
-On a primary GTX 1080 Ti, the installed file-based candidate renders glxgears and GPU Caps Viewer 1.37 Simple Mesh, Furry Cube, Illuminated Torus and Tessellation. The four GPU Caps processes exit cleanly, and 64 D3D9 HAL/HWVP VS3/PS3 draw/readbacks still pass. The combined 10-4-2026 package was subsequently installed through Windows PnP, rebooted and passed the same five OpenGL rendering checks and all 64 D3D9 draw/readbacks on GTX 1080 Ti. Installed file hashes and the October 4 driver date were verified. The complete NVIDIA installer UI and other GPU models were not retested. See [OpenGL implementation](templates/package/Documentation/OpenGL-update.md).
+GTX 1080 Ti tests passed glxgears and GPU Caps Viewer 1.37 Simple Mesh, Furry Cube, Illuminated Torus and Tessellation, with clean exits and preserved hardware D3D9 rendering. See [OpenGL implementation](templates/package/Documentation/OpenGL-update.md) and the [current validation table](#7-validation-and-limits).
 
-### GP107 registration and graphics contexts
+<a id="9a-correct-cuda-opencl-and-gpu-physx-gpu-name-lookup"></a>
+
+### 2.4 CUDA, OpenCL and GPU PhysX
+
+The reproduced GTX 1080 Ti failure was a missing internal GPU name, not a missing CUDA compiler or PhysX implementation. RM command `0x20800111` reached short-name lookup `0x557A80`; PCI ID `1B06` was absent from the 640-record table, so lookup returned `0x56`. CUDA initialization returned 100, OpenCL found no platform, and FluidMark used CPU PhysX.
+
+The final table retains all 640 original records and appends accurate names for ten IDs: `1B02`, `1B06`, `1B83`, `1C04`, `1C06`, `1C31`, `1C83`, `1CB1`, `1CB2`, `1CB3`. Seven table references and three loop bounds are changed, with 1,300 additional HIGHLOW relocation entries for the copied pointers. Unknown devices remain rejected; existing successful lookups are unchanged.
+
+[sources/gpu-names.py](sources/gpu-names.py) independently reconstructs the name-only correction from the exact 10-4 miniport. Its separate [internal GPU list](sources/compute-gpus.json) retains GP107 while [desktop-gpus.json](desktop-gpus.json) describes current INF eligibility. `patches.json` contains the complete stock-to-final edits, including subsequent build metadata. The GP107 code/resources and PhysX installer IDs remain intact, but the main display INF excludes GP107 following reported Code 10 failures.
+
+On GTX 1080 Ti the name-only correction passed CUDA context create/synchronize/destroy, OpenCL kernel compilation/execution with 8,192 checked GPU results, GPU PhysX FluidMark rendering, and 64 hardware D3D9 draw/readbacks. The isolated native lookup harness passed 4,872 calls including original records and preferred/relocated images. Other listed GPUs were checked statically, not individually hardware-tested. See [compute update](templates/package/Documentation/Compute-update.md).
+
+<a id="gp107-registration-and-graphics-contexts"></a>
+
+### 2.5 GP107 experiment and exclusion
 
 The GP107 addition retains the existing GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with its own 82-pointer table. Matched XP callbacks, GP107 context constants and intact 376.84 graphics resources are installed through the added block at `0xD07C40`. Existing firmware/secure initialization and other GPU family tables are preserved. Newer-driver private offsets are not reused.
 
 See [GP107 implementation and limitations](templates/package/Documentation/GP107-experimental.md) and [assembly source](sources/gp107/gp107.s). The experimental block passed offline execution checks; testers subsequently reported GP107 Code 10, so its display INF entries are withheld.
 
-## 6. Topology and EDID management required two separate changes
+<a id="7-displayport-negotiate-the-link-then-choose-a-compatible-output-depth"></a>
 
-- In `nvWsS.dll`, a guarded replacement for the local workstation-status predicate at preferred VA `0x1011658B` supplies the status expected by that UI path. The stub is at `0x10257FE7`; its source is [topology-predicate.s](sources/topology-predicate.s). This changes the Control Panel's workstation query, not the GPU's actual PCI identity or every product-class restriction in the driver.
-- In `nv4_disp.dll`, a branch displacement byte at **file offset** `0x19947` changes from `0x0A` to `0x1B`, allowing the GeForce product-class case through the existing SetEDID path. Other validation remains.
+## 3. DisplayPort
 
-Both changes are installed with the driver. UI visibility and EDID operations were tested separately.
+<a id="71-accept-the-higher-rate-codes"></a>
 
-## 7. DisplayPort: negotiate the link, then choose a compatible output depth
-
-### 7.1 Accept the higher rate codes
+### 3.1 Accept the higher rate codes
 
 At display DLL VA `0x48280`, XP's wrapper accepted rate codes 6 and 10, corresponding to RBR/HBR, but substituted the current value for codes 20/30. Consequently an API request could return success without actually changing the link rate.
 
 The new 24-byte stub at `0x356600` admits codes 20 and 30 while preserving the existing behavior for other values. The source is [dp-api-rate.s](sources/dp-api-rate.s).
 
-### 7.2 Select full link training
+<a id="72-select-full-link-training"></a>
+
+### 3.2 Select full link training
 
 The miniport must also select full training for HBR2/HBR3.
 
 The patch at miniport VA `0x44DFF4` routes HBR2/HBR3 through the existing full-training implementation. Its 20-byte stub is at `0x89B86A`; see [dp-full-training.s](sources/dp-full-training.s). The existing Pascal rate setter already understood these rates.
 
-### 7.3 Read extended receiver capabilities
+<a id="73-read-extended-receiver-capabilities"></a>
+
+### 3.3 Read extended receiver capabilities
 
 The XP code originally read 12 bytes of base DPCD data. It therefore missed the extended-capability flag at `0x0E`. The tested receiver advertised HBR2 in its base block, but HBR3 in its extended block at `0x2200`.
 
 The updated path reads 15 bytes, checks the flag, and conditionally reads and validates the extended block before calling the original parser. Failed or invalid extended reads retain the base capabilities. The 126-byte stub is at `0xD06A00`; see [dp-extended-caps.s](sources/dp-extended-caps.s).
 
-### 7.4 Extend automatic training choices
+<a id="74-extend-automatic-training-choices"></a>
+
+### 3.4 Extend automatic training choices
 
 The automatic configuration table contained six RBR/HBR lane/rate combinations. The final table preserves those six entries and adds **HBR2 ×4 and HBR3 ×4**. Six existing relocated table pointers are updated, the scan length changes from 72 to 96 bytes, and the default preference value changes from `0x654321` to `0x65432178`.
 
 Capacity follows successful training. Higher-rate one- and two-lane automatic entries were not added; the unsafe guessed-link fallbacks are removed as described below.
 
-### 7.5 Select a matched trained link and validate depth
+<a id="75-select-a-matched-trained-link-and-validate-depth"></a>
 
-Miniport hook `0x44C737` reads the successful-training bitmap at output+`0x2D00`, bounds it by receiver limits, and returns the highest-capacity **matched rate/lane pair**. In this candidate, passive discovery with no history returns validated receiver ceilings. Active mode preparation requests native probing if history is empty and returns 0/0 if no pair succeeds. The display selector at `0x47E50` validates the prepared pair instead of guessing another configuration.
+### 3.5 Select a matched trained link and validate depth
+
+Miniport hook `0x44C737` reads the successful-training bitmap at output+`0x2D00`, bounds it by receiver limits, and returns the highest-capacity **matched rate/lane pair**. Passive discovery with no history returns validated receiver ceilings. Active mode preparation requests native probing if history is empty and returns 0/0 if no pair succeeds. The display selector at `0x47E50` validates the prepared pair instead of guessing another configuration.
 
 Miniport candidate-mode calculations at `0x443D49` and `0x457EEE` use at most 8 bits per color for admission. Actual mode selection at display VA `0x492A9` retains the requested depth when it fits; higher depths fall back to 8 bits when that fits, otherwise the mode fails. The calculation retains 8b/10b coding and the existing 0.5% clock margin. Unknown depth codes and arithmetic overflow fail closed.
 
@@ -255,25 +304,65 @@ Source: [dp-policy.c](sources/dp-trained/dp-policy.c), [miniport adapter](source
 
 GTX 980 Ti tests confirmed normal native 3440x1440/100 on HBR2 x4 with RGB10, native 60 Hz on restricted HBR x4 with automatic RGB8 fallback, and 1080p on restricted RBR x4 with RGB10. Over-budget timings were rejected. These tests exercise real lower link rates, not a separate older DP1.1 GPU.
 
-## 8. Correct Control Panel classification, Customize and scaling
+<a id="displayport-startup-preparation"></a>
 
-The older Control Panel treated output bits 8–15 as analog TV. The 368.81 driver placed a digital DisplayPort output in that range, so the UI misclassified a PC display and restricted Customize. The 355.98 comparison used a different bit position for the same connection.
+### 3.6 Startup preparation
 
-The current `nvcpl.dll` patches central mask/type/index conversions to interpret bits 0–7 as CRT and bits 8–31 as digital outputs. The earlier Customize-only bypass in `nvDispS.dll` is removed; the original eligibility predicate now receives the corrected classification.
+Passive capability discovery and active mode preparation have different requirements. When the native training bitmap is empty, passive queries return validated receiver ceilings. These describe capabilities; they do not certify training. Active mode preparation requests the native GPU-eligible probe and accepts only a matched pair recorded as successfully trained. A failed active preparation supplies 0/0 so existing mode selection rejects insufficient capacity.
 
-A second DFP mask at `nvcpl.dll` VA `0x10119EA7` changes from `FFFF0000` to `FFFFFF00`. This allows the scaling-cache refresh to run for the current output, so fixed-aspect settings persist after Apply, reopening the panel and rebooting. Custom-mode create/test/save/delete and scaling/no-scaling selection were exercised on DisplayPort. This does not establish every monitor or differing-aspect black-bar geometry.
+- Query initialization at `0x44C6CD` preserves an exact private preparation marker across the native buffer clear.
+- Query hook `0x44C737` invokes the adapter at `0xD68F00`. Only marked active preparation with an empty low-byte training bitmap invokes native probe `0x443BF0`.
+- Display call sites `0x49272` and `0x4A05D` use the preparation helper at `0x356B00`; ordinary `0x47DD0` capability queries remain passive.
+- If an already-owned active output prevents probing and the query returns an empty pair, the display helper invokes existing `0x481A0` configuration once with default settings and matching-settings early return disabled. It then repeats the marked query. Only actual native training successes satisfy mode selection; a configuration error is never itself converted into a successful pair.
+- The native probe retains source eligibility, receiver bounds and normal output serialization. The preparation marker is consumed before exporting native flags, including the non-DP return hook at `0x44C992`.
+- No persistent state is placed in an existing object field. The miniport executable section grows by 512 bytes; the display helper uses its extended executable section. Existing HDMI transaction storage and GP107 tables are separate.
+- Nonempty training history and its existing hot-plug invalidation lifecycle remain in use. Mode selection still uses a matched rate/lane pair, validates payload, falls back to RGB8 when necessary, and rejects insufficient capacity.
 
-The exact guarded edits are in `patches.json`; this is a targeted repair of the observed conversions, not a global replacement of every similar constant.
+The policy test covers all 256 bitmap values against RBR/HBR/HBR2/HBR3 and one/two/four lanes for active and passive queries, invalid receiver values, failed preparation and depth fallback. Primary GTX 1080 Ti startup, HBR3 x4 at 3440x1440/100 and rendering tests passed. This does not identify the cause of every remote monitor report or establish all-monitor compatibility.
 
-## 9. HDMI identification, SCDC and clock policy
+<a id="displayport-receiver-reset-wake-correction"></a>
 
-### 9.1 Preserve HDMI identity
+### 3.7 Display sleep/wake recovery
+
+At display DLL preferred VA `0x19E23`, replace `0F B6 4C 24 17` (`movzx ecx, byte ptr [esp+0x17]`) with `B9 FF FF FF FF` (`mov ecx,-1`), then recalculate the PE checksum. Source: `sources/dp-wake-lane-restore.s`. The manifest guards exact input bytes and final file hashes.
+
+The link-status retraining caller reads DPCD `0x101`, the receiver's current lane count. During a traced ten-minute display sleep, that register reset to one lane while the native `0x782E` query still reported the saved HBR3 x4 configuration. Passing the receiver's value explicitly overrode the correct saved count. The existing default sentinel instead lets `0x481A0` use the configured lane count and rate. Native `0x7829` configuration and `0x731343` training still perform and validate the operation; failure reporting is preserved.
+
+Only this link-status retraining caller changes. It does not force four lanes or HBR3, alter manual mode selection, or rewrite HDMI handling. A repeated ten-minute test on GTX 1080 Ti and a direct DisplayPort monitor restored 3440x1440/60 on HBR3 x4 without a recovery modeset; the physical picture was confirmed normal and post-wake Direct3D/OpenGL rendering passed. Other monitor/GPU combinations and whole-system suspend were not validated by that test.
+
+The October 6 clean-install regression repeated the ten-minute display-sleep cycle without a debugger. The receiver again reset to one lane; both source and receiver returned to HBR3 x4 by the 20-second sample and retained all-lane equalization at 60 seconds. No intervening modeset or reboot was used. Post-wake Direct3D, OpenGL, CUDA and OpenCL checks passed. This repeat confirms hardware and rendering state; the earlier traced cycle supplied the physical-picture confirmation.
+
+<a id="automatic-native-displayport-scaling"></a>
+
+### 3.8 Native scaling
+
+Sources: [selector.c](sources/dp-scaling/selector.c) and the reused [trained-link policy](sources/dp-scaling/dp-policy.c). Compile the selector as freestanding x86 with `-Os -fno-pie -fno-stack-protector -fno-jump-tables -fno-tree-switch-conversion -fno-asynchronous-unwind-tables -fno-unwind-tables`. Link its text at `0xD69D40`, with `previous_selector=0xD694C6` and `native_cap=0xD699CE`. The resulting 1,937-byte block contains `dp_output_selector` at `0xD69F33`. `verify_display_updates.py` compiles and compares the complete block and both call targets.
+
+The wrapper calls the existing HDMI/stock policy first; [section 4.5](#45-native-scaling) documents the two shared mode/viewport call sites. It only replaces an eligible derived timing for a single DisplayPort output (native kind 2, protocol 8 or 9). The preferred progressive base DTD must agree with the current native dimensions, complete parsed timing, rounded requested refresh and table type. Some native DP objects retain only the base EDID, so a valid 128-byte base is accepted without inventing extension data.
+
+Admission uses the lower of the native output limit and RGB8 capacity of a genuinely trained rate/lane pair bounded by receiver capability, with the existing 0.5% margin. The mode setter retains its normal depth choice: keep the requested depth when it fits, reduce to 8 bits when required, or reject the mode. No DPCD, EDID, mode-list or forced-refresh override is introduced. Exact custom modes, closest-match requests, unsupported/ambiguous output types and insufficient bandwidth retain the previous result. The existing HDMI policy and its 594 MHz ceiling are unchanged.
+
+On GTX 1080 Ti over direct DisplayPort, ordinary 640×480/60 selected a native 3440×1440/60 signal at 319.75 MHz. Native Control Panel Apply produced the expected viewports: 1920×1440 for fixed aspect ratio, 3440×1440 for full-screen, and 640×480 for no scaling. Fullscreen hardware Direct3D draw/readback and OpenGL checks passed after restart. Real HBR-only training retained the native timing by reducing RGB10 to RGB8; real RBR-only training refused promotion and retained the prior valid lower-clock output. Explicit 3440×1440/175 remained functional at HBR3 ×4 and RGB8.
+
+Automatic promotion requires the matching preferred timing and does not transfer a high desktop refresh into lower-resolution games. This release retains the tested 60 Hz automatic scaling behavior on the tested display. It makes no universal claim for DisplayID-only preferred modes, MST, multi-display or all monitor/cable combinations.
+
+<a id="9-hdmi-identification-scdc-and-clock-policy"></a>
+
+## 4. HDMI
+
+<a id="91-preserve-hdmi-identity"></a>
+
+### 4.1 Preserve HDMI identity
 
 A legacy EDID summary stored successive vendor blocks in one slot. An HDMI Forum block, OUI `0xC45DD8`, could overwrite the legacy HDMI OUI `0x000C03`, causing the driver to report a non-HDMI connection.
 
-The 55-byte routine at miniport VA `0x8742B0` skips Forum blocks only in that legacy summary, along with blocks too short to contain an OUI. Raw EDID data and the separate capability parser remain intact. Source: [hdmi-vendor-summary.s](sources/hdmi-vendor-summary.s).
+The 55-byte hook at miniport VA `0x8742B0` now jumps to a 118-byte priority routine at `0xD69100`. A legacy HDMI vendor block must contain its three-byte OUI and two-byte physical address. The complete 31-byte summary slot is cleared before accepting HDMI, so a shorter HDMI block cannot inherit optional capability bytes from a longer preceding vendor. Payloads crossing the CTA data-block boundary or extension checksum are rejected. Once accepted, HDMI identity and payload cannot be replaced by unrelated vendor blocks. Forum-only and non-HDMI behavior is retained. Raw EDID data and the separate capability parser remain intact. Sources: [hdmi-vendor-summary.s](sources/hdmi-vendor-summary.s), [hdmi-vendor-priority.s](sources/hdmi-vendor-priority.s).
 
-### 9.2 Apply the HDMI/DVI policy
+The original CTA parser zeroes its 107-byte output before parsing; the display refresh path also clears that output before calling it. Reusing the HDMI identity therefore cannot carry it into the next monitor. Tests execute the extracted x86 parser: 88 cases cover vendor order, lengths, long-to-short replacement, malformed boundaries and HDMI-to-DVI refresh. All non-vendor summary bytes and native return statuses remain unchanged. In an XP clone, the reported LG EDID returns native HDMI=true and a 594 MHz policy ceiling; a no-HDMI control returns false and 165 MHz. This verifies identification and policy, not physical 4K60 output on that reported monitor.
+
+<a id="92-apply-the-hdmidvi-policy"></a>
+
+### 4.2 Apply the HDMI/DVI policy
 
 In the display DLL, the patch at `0x4111F` queries HDMI status. A positive GPU/output-and-sink HDMI result retains single-link TMDS behavior; other connections retain the original 165-MHz DVI comparison.
 
@@ -288,7 +377,9 @@ The shared default at `0x5BD79B` remains **165,000 kHz**, and the scrambling/hig
 
 Sources: [hdmi-policy.c](sources/hdmi-policy.c), [hdmi-hooks.s](sources/hdmi-hooks.s), [hdmi-protocol.s](sources/hdmi-protocol.s).
 
-### 9.3 Pass capabilities and update cached limits
+<a id="93-pass-capabilities-and-update-cached-limits"></a>
+
+### 4.3 Pass capabilities and update cached limits
 
 Hooks at `0x4567A6` and `0x45889E` refresh the policy around mode validation and EDID processing. A hook at `0x79C57A` handles the extension after the original handler resolves and class-checks the connector. The display DLL and miniport form a matched pair.
 
@@ -296,7 +387,9 @@ Capabilities pass through control `0x00730293` with marker `0xA0000000`; existin
 
 The driver uses its existing sink/SCDC and source-programming machinery. A 567-byte inactive capability bridge remains in the image and source verification; the active hooks use the final policy above.
 
-### 9.4 Recover from failed high-rate setup
+<a id="94-recover-from-failed-high-rate-setup"></a>
+
+### 4.4 Recover from failed high-rate setup
 
 The display hook at `0x49681` arms a GPU/connector-specific transaction before a positively identified HDMI mode above 340 MHz. Private ARM/END commands are intercepted at miniport `0x79C502` before the existing capability setters. State occupies an owned 32-slot table, with generation tracking and a non-blocking atomic lock.
 
@@ -308,17 +401,58 @@ Source: [recovery policy](sources/hdmi-recovery/scdc-recovery.c), [miniport hook
 
 SCDC availability is not equivalent to EDID readability or input selection. Later reads sometimes failed while the picture remained normal; the cause is unresolved. Hotplug, resume and alternate mode-update paths were not separately validated by these tests.
 
-## 9a. Correct CUDA, OpenCL and GPU PhysX GPU-name lookup
+<a id="automatic-native-hdmi-scaling"></a>
 
-The reproduced GTX 1080 Ti failure was a missing internal GPU name, not a missing CUDA compiler or PhysX implementation. RM command `0x20800111` reached short-name lookup `0x557A80`; PCI ID `1B06` was absent from the 640-record table, so lookup returned `0x56`. CUDA initialization returned 100, OpenCL found no platform, and FluidMark used CPU PhysX.
+### 4.5 Native scaling
 
-The final table retains all 640 original records and appends accurate names for ten IDs: `1B02`, `1B06`, `1B83`, `1C04`, `1C06`, `1C31`, `1C83`, `1CB1`, `1CB2`, `1CB3`. Seven table references and three loop bounds are changed, with 1,300 additional HIGHLOW relocation entries for the copied pointers. Unknown devices remain rejected; existing successful lookups are unchanged.
+The stock selector at `0x873140` remains in place. Callers `0x45B208` (mode selection) and `0xC748B0` (viewport query, IOCTL `0x232FB4`) both supply the verified `display+0x234` timing table. They now enter the DisplayPort wrapper at `0xD69F33`, which first calls the unchanged HDMI wrapper at `0xD694C6`. This prevents Control Panel Apply from sizing the viewport using a different output timing. Three other callers are unchanged.
 
-[sources/gpu-names.py](sources/gpu-names.py) independently reconstructs the name-only correction from the exact 10-4 miniport. Its separate [internal GPU list](sources/compute-gpus.json) retains GP107 while [desktop-gpus.json](desktop-gpus.json) describes current INF eligibility. `patches.json` contains the complete stock-to-final edits, including subsequent build metadata. The GP107 code/resources and PhysX installer IDs remain intact, but the main display INF excludes GP107 following reported Code 10 failures.
+Sources: [selector.c](sources/hdmi-scaling/selector.c), [sink.c](sources/hdmi-scaling/sink.c), [native-cap.s](sources/hdmi-scaling/native-cap.s). The verifier extracts the unchanged native selector bytes from the rebuilt miniport for the assembly adapter; no donor OS structure is substituted.
 
-On GTX 1080 Ti the name-only correction passed CUDA context create/synchronize/destroy, OpenCL kernel compilation/execution with 8,192 checked GPU results, GPU PhysX FluidMark rendering, and 64 hardware D3D9 draw/readbacks. The isolated native lookup harness passed 4,872 calls including original records and preferred/relocated images. Other listed GPUs were checked statically, not individually hardware-tested. See [compute update](templates/package/Documentation/Compute-update.md).
+The wrapper runs the stock selector first. Only derived preferred-timing results on a single validated HDMI output are eligible for promotion. It reparses the current complete EDID and applies the lowest of GPU/output, sink and 594 MHz limits. Above 340 MHz, a sufficient HDMI Forum TMDS rate and SCDC declaration are required. It checks the progressive base preferred DTD against native dimensions, clock, totals, porches, sync widths, polarities, current parsed table, type and requested refresh. Candidate computation uses scratch storage; failed checks leave the stock timing, status and flags intact. Exact/custom and closest-match paths stay native. Existing mode validation and paired-driver SCDC setup/recovery remain active.
 
-## 10. Build a normal full installer and expand the INF
+On a primary GTX 1080 Ti over HDMI, Full-screen, Aspect ratio, No scaling and rejecting changes produced the expected hardware viewports. Overscan cancel/commit/restore passed at 1080p. Automatic scaling from a 1600×900 source into a 3440×1440/100 signal reached 543.5 MHz with successful SCDC setup and a confirmed normal picture. A separate failure-control run rejected the high-clock change after bounded setup retries and returned to the prior low-clock desktop before the test helper's restore. The source size was not sent as a direct unsupported monitor timing.
+
+The executable policy tests cover the 594 MHz ceiling; physical automatic output at that exact clock was not validated. Broader monitor, deep-color, YCbCr, multi-display and connector combinations remain outside this hardware test. Reboot, fullscreen Direct3D and OpenGL regression checks passed with the normal driver and original EDID restored.
+
+## 5. Control Panel, scaling and EDID
+
+<a id="8-correct-control-panel-classification-customize-and-scaling"></a>
+
+### 5.1 Classification and custom resolutions
+
+The older Control Panel treated output bits 8–15 as analog TV. The 368.81 driver placed a digital DisplayPort output in that range, so the UI misclassified a PC display and restricted Customize. The 355.98 comparison used a different bit position for the same connection.
+
+The current `nvcpl.dll` patches central mask/type/index conversions to interpret bits 0–7 as CRT and bits 8–31 as digital outputs. The earlier Customize-only bypass in `nvDispS.dll` is removed; the original eligibility predicate now receives the corrected classification.
+
+A second DFP mask at `nvcpl.dll` VA `0x10119EA7` changes from `FFFF0000` to `FFFFFF00`. This allows the scaling-cache refresh to run for the current output, so fixed-aspect settings persist after Apply, reopening the panel and rebooting. Custom-mode create/test/save/delete and scaling/no-scaling selection were exercised on DisplayPort. The native viewport tests below establish the tested scaling geometry; other monitor combinations remain unverified.
+
+The exact guarded edits are in `patches.json`; this is a targeted repair of the observed conversions, not a global replacement of every similar constant.
+
+<a id="separate-scaling-and-overscan-pages"></a>
+
+### 5.2 Separate Scaling and Overscan pages
+
+`nvcpl.dll` retains native scaling enumeration but removes the later HDTV-format rejection at `0x1012BC63` and the TV exclusion at `0x101390D6`. Native option capabilities and `NoDFPCtrls` remain authoritative; HDMI identity and audio are unchanged.
+
+The Control Panel module `nvDispS.dll` creates an independent instance of the native XP page for **Adjust overscan**, using a cloned vtable at `0x108C3284`. The existing scaling instance stays independent. The wrapper at `0x108C3000` retains native creation, Apply, confirmation and cleanup; its page-info method supplies separate captions with native allocation ownership. All six child-dispatch sites use the instance-aware router. Digital page visibility uses a successful native display-type query; unsupported choices are not fabricated. Thirty new relocations accompany the appended code and cloned vtable, preserving all 98,847 existing relocations.
+
+Source: [sidebar.s](sources/control-panel/sidebar.s). The exact byte manifest includes admission changes, the appended section, native vtable copy, caption/dispatch hooks and relocation directory. `verify_display_updates.py` rebuilds and checks these instructions and required relocated pointers. Overscan resizing is only exposed for timings supported by the native resize implementation; a native ultrawide PC timing may have no resize controls.
+
+<a id="6-topology-and-edid-management-required-two-separate-changes"></a>
+
+### 5.3 Topology and EDID loading
+
+- In `nvWsS.dll`, a guarded replacement for the local workstation-status predicate at preferred VA `0x1011658B` supplies the status expected by that UI path. The stub is at `0x10257FE7`; its source is [topology-predicate.s](sources/topology-predicate.s). This changes the Control Panel's workstation query, not the GPU's actual PCI identity or every product-class restriction in the driver.
+- In `nv4_disp.dll`, a branch displacement byte at **file offset** `0x19947` changes from `0x0A` to `0x1B`, allowing the GeForce product-class case through the existing SetEDID path. Other validation remains.
+
+Both changes are installed with the driver. UI visibility and EDID operations were tested separately.
+
+## 6. Installer, GPU list and build identification
+
+<a id="10-build-a-normal-full-installer-and-expand-the-inf"></a>
+
+### 6.1 Full package and desktop INF
 
 The complete stock installer supplies setup, HD Audio, PhysX, nView and the other retained components.
 
@@ -340,7 +474,15 @@ The recipe updates PE section/image sizes, characteristics, pointers and checksu
 
 Modified-file signatures are invalidated; firmware authentication remains a separate, active mechanism.
 
-## 11. Apply the custom release number without breaking private interfaces
+<a id="server-2003-installer-compatibility"></a>
+
+### 6.2 Server 2003 compatibility
+
+`templates/package/GFExperience/GFExperience.nvi` restricts the XP32 filter to NT 5.1 and silently excludes optional GeForce Experience on NT 5.2 x86. This prevents applying XP's SP3 prerequisite to Server 2003 SP2. Windows XP keeps its SP3 requirement. This installer correction changes no display-platform check or runtime binary. Server 2003 R2 SP2 x86 installation, Control Panel and hardware Direct3D were verified on a primary GTX 1080 Ti. Server 2003 x64 is not covered.
+
+<a id="11-apply-the-custom-release-number-without-breaking-private-interfaces"></a>
+
+### 6.3 Release number and API reporting
 
 The requested public release label is 382.69. The final display file version is **6.14.13.8269**; the INF uses **10.18.13.8269**, following the original package's distinction between XP binary and INF version formats.
 
@@ -355,29 +497,35 @@ Source: [version-api.py](sources/version-api.py). Native controls and an XP inva
 
 HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bundled versions. The Control Panel application's own version remains distinct from the display-driver release.
 
-## 12. Validation: what passed and what remains unproven
+<a id="build-identification"></a>
+
+### 6.4 Build dates
+
+Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/08/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+
+These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
+
+<a id="12-validation-what-passed-and-what-remains-unproven"></a>
+
+## 7. Validation and limits
 
 | Area | Evidence | Boundary |
 |---|---|---|
-| Normal installation | The 10-6-2026 installer completed the NVIDIA clean-install workflow and rebooted on GTX 1080 Ti. Twelve installed hashes, device Code 0, NVAPI version and October 6 driver date matched the final package. | Use Custom → Perform a clean installation when upgrading. Other boards were not individually retested. |
-| Hardware D3D9 | 10-6-2026 files after display wake: HAL hardware vertex processing, VS3/PS3 programs, 64 draws and complete small-render-target readbacks passed. | Not a benchmark, exhaustive shader test or full-VRAM test. |
-| OpenGL | 10-6-2026 files after display wake: three display-list renders returned the correct foreground/background pixels with no GL errors. Earlier builds passed glxgears, GL4 Tessellation, Simple Mesh, Furry Cube and Illuminated Torus. | Functional checks, not a conformance suite or validation of every Pascal GPU. |
-| GP107 | Testers reported Code 10 with the experimental builds; its display INF entries are removed. | Experimental implementation remains in the binary; no working GP107 claim. |
-| Compute/GPU PhysX | 10-6-2026 files after display wake passed CUDA context operations and an OpenCL kernel with 8,192 checked results. The October 5 build passed a 60-second GPU PhysX benchmark with clean exit; compute code and the PhysX payload are unchanged. | GPU PhysX was not rerun in the October 6 test. These are functional checks, not conformance testing or coverage of every listed GPU. |
-| Native use | Earlier packages: P4000 native XP acceleration, games and package installation were user-reported working. | The October 6 build was tested in an XP clone with primary GPU passthrough. |
-| DisplayPort | P4000 and GTX 1080 Ti: HBR3 ×4; 144-Hz RGB10 and 175-Hz RGB8 state/receiver checks; automatic return to RGB10. | Separate physical 175-Hz picture confirmation remained unavailable in the recorded trial. |
-| HDMI | Earlier HDMI build: normal picture at 3440×1440/~100 Hz, 543.5 MHz, with the expected SCDC configuration observed. | 594-MHz custom timing produced no visible picture. HDMI was not physically retested for the October 6 DisplayPort changes. |
-| Control Panel | Corrected DisplayPort classification, custom-mode workflow and persistent scaling selections were checked against 355.98. | Targeted conversions; not every output path or differing-aspect geometry. |
-| DP update | GTX 980 Ti: normal 3440x1440/100 HBR2 x4 RGB10, native 60 Hz HBR x4 RGB8 fallback, and 1080p RBR x4 RGB10; accelerated checks pass. | Lower-rate tests use this GPU, not a separate DP1.1 board. |
-| HDMI recovery | Three failed setup writes produce 640x480 fallback; two failures then success retain the high mode. Normal 3440x1440/100 at 543.5 MHz and 1080p pass accelerated checks. | Latest recovery changes tested on GTX 980 Ti; no separate Pascal/hotplug/resume regression for this increment. |
-| Topology/EDID | Workstation page, Manage EDID and the required API path were exercised. | Not a claim that all workstation-only features are enabled. |
-| Rebuild | Final extraction verifies 587 package files, 469 CPL members and 63 dated display metadata records; all 20 source blocks compile to exact inserted bytes. | Archive verification and hardware execution are separate checks. |
+| Installation and package | October 8 NVIDIA clean install and restart on GTX 1080 Ti; 13 installed hashes, Code 0, NVAPI version and build date matched. Extraction verifies 587 package files, 469 CPL members and 63 dated metadata records. The retained and added source blocks compile to the inserted instructions. | Other boards were not individually retested. Original partitions are not exercised by clone testing. |
+| Direct3D and OpenGL | October 8: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three OpenGL display-list renders with correct pixels and no GL errors. Earlier builds passed glxgears and GPU Caps Viewer rendering tests. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
+| CUDA, OpenCL and GPU PhysX | October 6 files after display wake passed CUDA context operations and an OpenCL kernel with 8,192 checked results. October 5 passed a 60-second GPU PhysX benchmark with clean exit. Compute code and the PhysX payload are unchanged. | GPU PhysX was not repeated in the October 6 or October 8 checks; other models were not individually tested. |
+| DisplayPort | P4000/GTX 1080 Ti HBR3 ×4; GTX 980 Ti HBR2 ×4 at 3440×1440/100. Real HBR and RBR controls verified depth/capacity fallback. GTX 1080 Ti explicit 3440×1440/175 RGB8 had a confirmed normal picture. October 8 fullscreen 640×480 scaled to 1920×1440 inside native 3440×1440/60. The earlier ten-minute display-sleep test recovered the saved link and passed rendering. | Lower-rate tests used capable GPUs, not a separate DP1.1 board. High-refresh native-mode success does not imply automatic high-refresh scaling or whole-system suspend support. |
+| HDMI | October 7 automatic scaling reached 3440×1440/~100 at 543.5 MHz, with successful SCDC setup, correct viewport and a confirmed normal picture. Injected setup failures exercised bounded retries and safe output; later scaling controls restored the prior low-clock desktop. | The 594 MHz boundary passes executable policy tests, but physical automatic output at that exact clock remains unverified. Later sink/cable failures and all connector combinations are not covered. |
+| Control Panel and EDID | DisplayPort classification/custom-mode workflow compared with 355.98. October 8 Scaling/Overscan pages loaded; fixed-aspect Apply and native fullscreen viewport passed. Topology, Manage EDID and the required API path were exercised separately. | Overscan resizing is timing-dependent. Physical DVI and every workstation-only feature were not validated. |
+| Other GPUs | Earlier P4000 native XP acceleration, games and package installation were user-reported working. GP107 testers still reported Code 10, so its display INF entries remain excluded. | INF inclusion alone is not individual model validation. Experimental GP107 code remains in the binary without a working-support claim. |
 
 For a new system, verify installed hashes, low-resolution output and hardware D3D9 first. Use bounded high-rate trials with a known fallback, check actual link/depth and receiver status, and confirm the physical picture. Then test intended games, audio, hotplug and longer sessions.
 
 Unvalidated areas include full DP 1.4 DSC/HDR/MST functionality, arbitrary depths above 10 bpc, HDMI deep-color/YCbCr, physical DVI regression, full 8/11-GB VRAM access and whole-system suspend/resume. INF inclusion alone does not establish board compatibility.
 
-## 13. Nouveau and Mesa findings used to guide the work
+<a id="13-nouveau-and-mesa-findings-used-to-guide-the-work"></a>
+
+## 8. Nouveau and Mesa findings
 
 The hardware references were explicitly inspected at fixed revisions:
 
@@ -418,7 +566,9 @@ At the pinned Mesa revision, `src/nouveau/codegen/nv50_ir_target.cpp` selects `g
 
 This supported investigating compiler reuse; actual NVIDIA VS3/PS3 execution supplied the runtime evidence. The XP driver retains NVIDIA's compiler. [Mesa target selection](https://gitlab.freedesktop.org/mesa/mesa/-/blob/f1f246cfda65eff82fba3be1caf2d23bdeda60cc/src/nouveau/codegen/nv50_ir_target.cpp).
 
-## 14. Address and hash reference for reviewers
+<a id="14-address-and-hash-reference-for-reviewers"></a>
+
+## 9. Address and hash reference
 
 Addresses described as **VA** are preferred-image addresses, not live load addresses. The core XP modules use preferred image base `0x10000`; the Control Panel modules discussed here use `0x10000000`. The OpenGL ICD uses `0x69500000`. Use the PE section table to convert VA/RVA to file offset. Do not assume `file_offset = VA - image_base` for every file; the Control Panel and NVAPI layouts differ.
 
@@ -446,54 +596,26 @@ Addresses described as **VA** are preferred-image addresses, not live load addre
 Key final SHA-256 values:
 
 ```text
-nv4_mini.sys
-db994d61260dded70705b708e4a37a18996bbed7e61df66b0f58a0cfaa268b38
+Display.Driver/nv4_mini.sys
+02a4433a11e192bcac7051f8433510fd2ad4a21d0cfa0204520ba0a17d3fb800
 
-nv4_disp.dll
-36e5ca78e928c30e79dad780a3a8ead707b89477c0b5f4e21b1aae4387351392
+Display.Driver/nv4_disp.dll
+476cd4001c8a8f5778d984d77aaa124774811754fbc839b5590ed3758241e30a
 
-nvoglnt.dll
-20f537c82af15a4dba110aa9506eba2bb8fbad7bd00615ea3f4bdfc963466f22
+Display.Driver/nvoglnt.dll
+675ba45e88c1762b305054a41c395127033e359eccda49b0eaaca0152a73156d
 
-nvapi.dll
-98f8fafbbe1948eac2929fd37bfcd46dd0ce6e58ed4aafa0c7b58df326a158e2
+Display.Driver/nvapi.dll
+425f30b4af60d91333ba56475580c93b864e1ff17f8847b03cc4ab1c4431287f
 
-nvcpl.dll (inside Control Panel)
-b9cfad974ad1cdceb8f66a38782955541ba0077ff47a0a1058a848a9fd2e97ee
+nvcpl.dll
+ef7c582626bb18b4ce83723a484fa61dd5f78f1879c66ad70587ac237997af41
 
-nvDispS.dll (inside Control Panel)
-44358875b2f8e7f23c914627234da048276e5d4f394dc40836fc3a5ad37268e4
+nvDispS.dll
+8e6092376f755b4e14cdd02ff432f0d52bd723f298c4fd0e3974147074af5341
 
-nvWsS.dll (inside Control Panel)
-409c737f1d76f0ef742dd9ee2d7bcec6e42a5dc07744baee5e9622890663cdc6
+nvWsS.dll
+dd22dce74485a5fde43166e503c670d99b82a25310f3074aacb9cf645a86bfeb
 ```
 
-The matching build is **Forceware 382.69 (10-6-2026)**. It retains the October 5 compute/OpenGL/display fixes and GP107 exclusion, and adds the installer and DisplayPort corrections described below. Repacked archives need not match the release EXE hash; the exact component hashes and verified member inventories are the reproduction checks.
-
-## Server 2003 installer compatibility
-
-`templates/package/GFExperience/GFExperience.nvi` restricts the XP32 filter to NT 5.1 and silently excludes optional GeForce Experience on NT 5.2 x86. This prevents applying XP's SP3 prerequisite to Server 2003 SP2. Windows XP keeps its SP3 requirement. This installer correction changes no display-platform check or runtime binary. Server 2003 R2 SP2 x86 installation, Control Panel and hardware Direct3D were verified on a primary GTX 1080 Ti. Server 2003 x64 is not covered.
-
-## DisplayPort startup preparation
-
-Passive capability discovery and active mode preparation have different requirements. When the native training bitmap is empty, passive queries return validated receiver ceilings. These describe capabilities; they do not certify training. Active mode preparation requests the native GPU-eligible probe and accepts only a matched pair recorded as successfully trained. A failed active preparation supplies 0/0 so existing mode selection rejects insufficient capacity.
-
-- Query initialization at `0x44C6CD` preserves an exact private preparation marker across the native buffer clear.
-- Query hook `0x44C737` invokes the adapter at `0xD68F00`. Only marked active preparation with an empty low-byte training bitmap invokes native probe `0x443BF0`.
-- Display call sites `0x49272` and `0x4A05D` use the preparation helper at `0x356B00`; ordinary `0x47DD0` capability queries remain passive.
-- If an already-owned active output prevents probing and the query returns an empty pair, the display helper invokes existing `0x481A0` configuration once with default settings and matching-settings early return disabled. It then repeats the marked query. Only actual native training successes satisfy mode selection; a configuration error is never itself converted into a successful pair.
-- The native probe retains source eligibility, receiver bounds and normal output serialization. The preparation marker is consumed before exporting native flags, including the non-DP return hook at `0x44C992`.
-- No persistent state is placed in an existing object field. The miniport executable section grows by 512 bytes; the display helper uses its extended executable section. Existing HDMI transaction storage and GP107 tables are separate.
-- Nonempty training history and its existing hot-plug invalidation lifecycle remain in use. Mode selection still uses a matched rate/lane pair, validates payload, falls back to RGB8 when necessary, and rejects insufficient capacity.
-
-The policy test covers all 256 bitmap values against RBR/HBR/HBR2/HBR3 and one/two/four lanes for active and passive queries, invalid receiver values, failed preparation and depth fallback. Primary GTX 1080 Ti startup, HBR3 x4 at 3440x1440/100 and rendering tests passed. This does not identify the cause of every remote monitor report or establish all-monitor compatibility.
-
-## DisplayPort receiver-reset wake correction
-
-At display DLL preferred VA `0x19E23`, replace `0F B6 4C 24 17` (`movzx ecx, byte ptr [esp+0x17]`) with `B9 FF FF FF FF` (`mov ecx,-1`), then recalculate the PE checksum. Source: `sources/dp-wake-lane-restore.s`. The manifest guards exact input bytes and final file hashes.
-
-The link-status retraining caller reads DPCD `0x101`, the receiver's current lane count. During a traced ten-minute display sleep, that register reset to one lane while the native `0x782E` query still reported the saved HBR3 x4 configuration. Passing the receiver's value explicitly overrode the correct saved count. The existing default sentinel instead lets `0x481A0` use the configured lane count and rate. Native `0x7829` configuration and `0x731343` training still perform and validate the operation; failure reporting is preserved.
-
-Only this link-status retraining caller changes. It does not force four lanes or HBR3, alter manual mode selection, or rewrite HDMI handling. A repeated ten-minute test on GTX 1080 Ti and a direct DisplayPort monitor restored 3440x1440/60 on HBR3 x4 without a recovery modeset; the physical picture was confirmed normal and post-wake Direct3D/OpenGL rendering passed. Other monitor/GPU combinations and whole-system suspend were not validated by that test.
-
-The October 6 clean-install regression repeated the ten-minute display-sleep cycle without a debugger. The receiver again reset to one lane; both source and receiver returned to HBR3 x4 by the 20-second sample and retained all-lane equalization at 60 seconds. No intervening modeset or reboot was used. Post-wake Direct3D, OpenGL, CUDA and OpenCL checks passed. This repeat confirms hardware and rendering state; the earlier traced cycle supplied the physical-picture confirmation.
+These hashes identify the **10-8-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.

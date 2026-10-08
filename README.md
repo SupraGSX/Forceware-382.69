@@ -1,50 +1,43 @@
 # Forceware 382.69
 
-Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, released as **Forceware 382.69**.
+Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, with additional Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Build: 10-6-2026**
+**Build: 10-8-2026** · [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest) · [Rebuilding guide](REBUILDING.md)
 
-Improved DisplayPort and HDMI handling, with Control Panel fixes bringing custom resolutions and DisplayPort scaling closer to 355.98 behavior.
+## Install
 
-**Additional desktop INF entries over stock 368.81**
+Run the EXE and follow the NVIDIA installer. When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.
 
-- GeForce GTX 970, 980, 980 Ti; GTX TITAN X (Maxwell).
-- GeForce GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti; TITAN X (Pascal), TITAN Xp.
-- Quadro M4000, M5000, M6000, M6000 24GB; P2000, P2200, P4000, P5000, P6000.
-- Additional desktop OEM variants of GTX 950 and GTX 960.
+Windows Server 2003 x86 installation is also supported; optional GeForce Experience is omitted there. Bundled HD Audio, PhysX and nView components retain their existing versions.
 
-Mobile, GP100, GP107 and GP108 GPUs are excluded. These are INF additions, not individual validation of every model. See [the complete Maxwell/Pascal INF list](desktop-gpus.json).
+## Additional desktop GPUs
 
-Experimental GP107 support is suspended because end users still report Code 10. GP107 entries are removed from the display INF; experimental code and internal name records are retained for further development.
+The display INF adds these models and variants over stock 368.81:
 
-**Included fixes**
+- **GeForce Maxwell:** GTX 970, 980, 980 Ti and GTX TITAN X; additional desktop OEM variants of GTX 950 and 960.
+- **GeForce Pascal:** GTX 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti, TITAN X and TITAN Xp.
+- **Quadro:** M4000, M5000, M6000, M6000 24GB, P2000, P2200, P4000, P5000 and P6000.
 
-- CUDA, OpenCL and GPU PhysX initialization corrected through missing internal GPU-name records; verified on GTX 1080 Ti.
-- OpenGL display-class initialization fixed, verified on GTX 1080 Ti.
-- DisplayPort HBR2/HBR3 training and extended capability detection, with mode selection based on a successfully trained link and automatic 8-bit fallback when needed.
-- HDMI 2.0 identification, SCDC scrambling/high-speed clock-ratio handling, and bounded setup retries with safe-mode recovery on failure.
-- HDMI/DVI handling with GPU/monitor-aware limits and a 594 MHz HDMI ceiling.
-- Corrected DisplayPort identification, restored **Customize**, and improved scaling/fixed-aspect-ratio settings in NVIDIA Control Panel.
-- **View system topology** and EDID loading unlocked.
-- DisplayPort startup preparation and restoration of saved lane settings after display sleep.
-- Windows Server 2003 x86 installation compatibility; GeForce Experience is omitted there.
+Mobile, GP100, GP107 and GP108 GPUs are excluded. GP107 support remains suspended because of reported Code 10 failures. INF inclusion does not mean every model has been individually tested. See the [complete device list](desktop-gpus.json).
 
-HBR3 support does not imply full DP 1.4 DSC/HDR/MST support.
+## Improvements
 
-The 10-6-2026 build continues the October 5 stable release with Server 2003 x86 installer compatibility, improved DisplayPort startup, and DisplayPort sleep/wake restoration. GP107 remains excluded from the display INF.
+- **Rendering and compute:** Pascal initialization fixes, OpenGL display-class recognition, and corrected CUDA, OpenCL and GPU PhysX initialization.
+- **DisplayPort:** HBR2/HBR3 training, startup and display sleep/wake recovery, automatic 8-bit fallback when needed, and native scaling within the successfully trained link's bandwidth.
+- **HDMI:** Corrected vendor-block identification, GPU/monitor-aware HDMI/DVI limits, SCDC setup and failure recovery, and native scaling with a 594 MHz ceiling.
+- **Control Panel:** Corrected display classification, restored **Customize**, separate **Scaling** and **Overscan** pages, and unlocked **View system topology** with EDID loading.
 
-[Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest)
+## Compatibility notes
 
-When updating an existing driver installation, select **Custom (Advanced) → Perform a clean installation**, then restart. This ensures the revised display files replace the earlier build.
+- HBR3 support does not establish full DisplayPort 1.4 DSC, HDR or MST support.
+- Automatic native DisplayPort scaling requires a preferred timing matching the requested refresh. It was tested at 60 Hz and does not automatically carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh native modes remain available when supported.
+- Automatic HDMI scaling was verified at 543.5 MHz on GTX 1080 Ti. The 594 MHz ceiling is subject to GPU/monitor limits; physical output at that exact clock remains unverified.
+- Scaling choices follow native capability checks. Overscan resizing is available only for timings supported by NVIDIA's native resize implementation.
 
-**Source and rebuilding**
+See the [validation results and limits](REBUILDING.md#7-validation-and-limits) for tested configurations.
 
-[Read the build guide](REBUILDING.md) for the final patches, required NVIDIA inputs, reproduction commands and validation results. The repository includes the Python patcher, C/assembly routines and installer templates.
+## Source and license
 
-**License**
+The repository contains the patcher, C/assembly routines and installer templates. [REBUILDING.md](REBUILDING.md) documents the required NVIDIA inputs, reconstruction commands, implementation and validation. **382.69 is this project's custom release number**, based on NVIDIA 368.81.
 
-The project's original code and documentation are licensed under [GPL-3.0-only](LICENSE), with a narrow [NVIDIA integration exception](NVIDIA-EXCEPTION.txt). Distributed modifications to the covered code must remain under GPLv3 and include corresponding source.
-
-NVIDIA binaries, firmware, vendor-derived installer files and NVIDIA-derived portions of the patch data retain their existing terms. This project does not relicense NVIDIA's material.
-
-Build date: `10/06/2026` in the display INF and rebuilt display metadata. See [GP107 details](templates/package/Documentation/GP107-experimental.md).
+Original project code and documentation use [GPL-3.0-only](LICENSE), with a narrow [NVIDIA integration exception](NVIDIA-EXCEPTION.txt). Distributed modifications to the covered code must include corresponding source under GPLv3. NVIDIA binaries, firmware and vendor-derived material retain their existing terms.

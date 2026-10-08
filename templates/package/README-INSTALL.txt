@@ -1,7 +1,7 @@
 Forceware 382.69 - custom NVIDIA Windows XP 32-bit driver
-Build: 10-6-2026 (display INF date: 10/06/2026)
+Build: 10-8-2026 (display INF date: 10/08/2026)
 
-Launch Forceware 382.69 (10-6-2026).exe, follow the normal NVIDIA installer, and restart.
+Launch Forceware 382.69 (10-8-2026).exe, follow the normal NVIDIA installer, and restart.
 Alternatively, extract the package and run setup.exe.
 When upgrading an earlier 382.69 build, choose Custom (Advanced), select
 Perform a clean installation, and restart to replace all display files.
@@ -23,3 +23,10 @@ Experimental GP107 initialization and internal name records remain in the binary
 This build also adds Server 2003 x86 installer compatibility and DisplayPort
 startup and display-sleep recovery fixes. GeForce Experience is omitted on
 Server 2003; Windows XP retains its existing requirements.
+
+October 8: improved HDMI vendor-block handling, separate Scaling and Overscan
+pages, and automatic native HDMI/DisplayPort scaling. Overscan resizing remains
+subject to native timing support.
+
+Automatic DisplayPort scaling preserves matching preferred-timing refresh
+and checks trained-link bandwidth. It does not force maximum refresh.
