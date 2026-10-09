@@ -103,5 +103,5 @@ q=PE(dst);assert q.b[new_off:new_off+len(table)]==table and q.dirs[5][1]==len(or
 bias=0xb685c000-p.base
 for i in range(old_count):
  for d in (4,8):assert struct.unpack_from('<I',q.b,new_off+i*12+d)[0]+bias==struct.unpack_from('<I',table,i*12+d)[0]+bias
-manifest={'source_sha256':sha(p.b),'candidate_sha256':sha(b),'added_records':added,'old_records':old_count,'new_records':new_count,'preserved_legacy_records_byte_exact':True,'new_table_va':hex(new_va),'new_relocation_count':len(new_relocs),'changes':changes,'scope':'Internal GPU name correction, including retained experimental GP107 records; display INF eligibility is separate.'}
+manifest={'source_sha256':sha(p.b),'candidate_sha256':sha(b),'added_records':added,'old_records':old_count,'new_records':new_count,'preserved_legacy_records_byte_exact':True,'new_table_va':hex(new_va),'new_relocation_count':len(new_relocs),'changes':changes,'scope':'Internal GPU name correction, including GP107 records; display INF eligibility is separate.'}
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps(manifest,indent=2))

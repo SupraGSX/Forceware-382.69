@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "target": "Forceware 382.69 (10-8-2026), custom XP 32-bit distribution derived from 368.81",
+  "target": "Forceware 382.69 (10-9-2026), custom XP 32-bit distribution derived from 368.81",
   "inputs": {
     "stock": "eaaef0650b6c6a99a2ed70d5e15aaf5221570ae596ca51784ff5e6fc7e5482f1",
     "quadro": "84fcd8f31466956f40f1aebc833ef4b23c30b0077e61a842257b4076e4482633",
@@ -10,7 +10,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/DisplayDriver.nvi",
-      "sha256": "d522be3012577c056b4e5a66435c6e3e237d2366ca0aeb799441d55908a00bb8",
+      "sha256": "9cfa8e5e7217b1e4d351fc0014a9b9574c7c93a095b0a6d364d8ded6b1a55f27",
       "size": 54348,
       "source": "Display.Driver/DisplayDriver.nvi",
       "source_sha256": "a6bc438f244c8ae6808bd7992f2653470156e4ad2f48818da4ef6c98ee38e6bf",
@@ -20,7 +20,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/DisplayDriverExt.dll",
-      "sha256": "92f5c7c41ba8b0738970c4d21ee0b60e222eab7f5c109e0baa8bea037fadbe7a",
+      "sha256": "bf71120ee90207b3f0e8bbe0a9d9875cb6e26b7df84dfa06dbf21327db1f396d",
       "size": 1173440,
       "source": "Display.Driver/DisplayDriverExt.dll",
       "source_sha256": "3324ab9401e8d4bc8da057865db8431eebcdd8480b36085915414a2b0244f726",
@@ -70,6 +70,16 @@
           "offset": 360,
           "before": "e7d9",
           "after": "692b"
+        },
+        {
+          "offset": 280,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 360,
+          "before": "692b",
+          "after": "ea7c"
         }
       ],
       "build_metadata": {
@@ -78,7 +88,7 @@
           {
             "offset": 280,
             "before": "f0d38257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 424,
@@ -88,7 +98,7 @@
           {
             "offset": 360,
             "before": "264e1200",
-            "after": "692b1200"
+            "after": "ea7c1200"
           }
         ]
       }
@@ -103,7 +113,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/NvStereoUtilityOGL.exe",
-      "sha256": "4e0cb2010f61777a25fde73aad780264f9be8fafe0c9440b934f5eedeca27c09",
+      "sha256": "6471c49a8bca49806a439bb708edba01a7b7dc655c1c8587f2167d3ae1750d03",
       "size": 888320,
       "source": "Display.Driver/NvStereoUtilityOGL.exe",
       "source_sha256": "610607a9bcb2aedfd8b53f8f9644b5c878bfff54d799bfde1936e55b0c246a53",
@@ -148,6 +158,16 @@
           "offset": 304,
           "before": "d70a",
           "after": "585c"
+        },
+        {
+          "offset": 224,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 304,
+          "before": "585c0e",
+          "after": "daad0d"
         }
       ],
       "build_metadata": {
@@ -156,12 +176,12 @@
           {
             "offset": 224,
             "before": "3a8b7450",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 304,
             "before": "7f470e00",
-            "after": "585c0e00"
+            "after": "daad0d00"
           }
         ]
       }
@@ -178,7 +198,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/dbInstaller.exe",
-      "sha256": "00c85dad465aa0b1c036ed6b3a6ad203c232b10c919a8f7cbd60dfef626ade6d",
+      "sha256": "97f742e5cea95d776ec7186ffd2b36a5c9e3c6ac8a5f4bf552f403ebfc8f46e3",
       "size": 336384,
       "source": "Display.Driver/dbInstaller.exe",
       "source_sha256": "da44da5cf77043041c98c547fdfb0227109b8e75fe179181e9226a6afe274d91",
@@ -238,6 +258,16 @@
           "offset": 312,
           "before": "86bb05",
           "after": "070d06"
+        },
+        {
+          "offset": 232,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 312,
+          "before": "070d06",
+          "after": "895e05"
         }
       ],
       "build_metadata": {
@@ -246,12 +276,12 @@
           {
             "offset": 232,
             "before": "c8cd8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 312,
             "before": "cb410500",
-            "after": "070d0600"
+            "after": "895e0500"
           }
         ]
       }
@@ -268,7 +298,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nv4_disp.dll",
-      "sha256": "476cd4001c8a8f5778d984d77aaa124774811754fbc839b5590ed3758241e30a",
+      "sha256": "f778b29970addcf031e6a5972297f91692449929641a04f84e3523656d0543e6",
       "size": 3436032,
       "source": "Display.Driver/nv4_disp.dl_",
       "source_sha256": "817c05d8f9422bcaad124c39d25194aaed817f634d51286e4b4eb9aba8a7b94d",
@@ -464,6 +494,16 @@
           "offset": 328,
           "before": "8cd234",
           "after": "0d2435"
+        },
+        {
+          "offset": 248,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 328,
+          "before": "0d2435",
+          "after": "8f7534"
         }
       ],
       "build_metadata": {
@@ -472,12 +512,12 @@
           {
             "offset": 248,
             "before": "37d28257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 328,
             "before": "19173500",
-            "after": "0d243500"
+            "after": "8f753400"
           }
         ]
       }
@@ -485,8 +525,8 @@
     {
       "tree": "package",
       "path": "Display.Driver/nv4_dispi.inf",
-      "sha256": "620ef73f33234426cf8b8b4855903369190688ef11def5b10ab2af15cc425adb",
-      "size": 98864,
+      "sha256": "4462db6cda6be70d9681ba68c77081388eec993ba2ba7330044d543ce058a501",
+      "size": 99450,
       "source": "Display.Driver/nv4_dispi.inf",
       "source_sha256": "c3c4efc2c3e252a64be4da56e644e8345f7d0e1877e9f1bfc81194dee380ef70",
       "kind": "template",
@@ -495,8 +535,8 @@
     {
       "tree": "package",
       "path": "Display.Driver/nv4_mini.sys",
-      "sha256": "02a4433a11e192bcac7051f8433510fd2ad4a21d0cfa0204520ba0a17d3fb800",
-      "size": 14001376,
+      "sha256": "3268a60efe545a58a81418bb8d1fd31e9133b2756b33651057cae35be84cb78a",
+      "size": 14003136,
       "source": "Display.Driver/nv4_mini.sy_",
       "source_sha256": "361fbed9b779f1d4ad42c3b0c6e6a1157182bc8dfc57ab960022d6420c2edefe",
       "expand": true,
@@ -654,6 +694,24 @@
           "target_offset": 13599136,
           "descriptor_va": 6918296,
           "compressed_size": 33029
+        },
+        {
+          "donor": "quadro",
+          "label": "GP107 fecs-boot376",
+          "size": 512,
+          "sha256": "2f9b94177b2e77140950690614519238bb37174f52ea4e68989ab38fce43440b",
+          "target_offset": 14001568,
+          "descriptor_va": 6943116,
+          "compressed_size": 192
+        },
+        {
+          "donor": "quadro",
+          "label": "GP107 gpccs-boot376",
+          "size": 512,
+          "sha256": "7f78dd896c0efef9eac0c2db7e7f9f10682394b5a16478a306ab7188aeea9e39",
+          "target_offset": 14002080,
+          "descriptor_va": 7034960,
+          "compressed_size": 191
         }
       ],
       "edits": [
@@ -1051,20 +1109,95 @@
           "offset": 13999424,
           "before": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
           "after": "83f81e77285589c131c089e553bb400410400fa3cb73198d42ff83f8010f96c083fa040f94c209d00fb6c0eb0331c0c35b5dc35531d289e5575631f65383ec088975f08975ecbe0100000083fa05771a89d089d189f383e00183f80119c0d1e983e0fcd3e383c00aeb1583fa06b91e000000b814000000bb040000000f45c189f789d1d3e7857d08741f39450c721a395d10721589c10fafcb394df0730bc1e008894df009d88945ec4283fa08759c8b45ec5a595b5e5f5dc35589e557565383ec0c8b5d088b55108b450c8b7514e82dffffff85db746985c0746583fe037421770c31c94e0f95c18d4c0906eb1f83fe04741531c0b91000000083fe05740eeb41b90a000000eb05b90c0000008b750c0faf751031c069f66054000039de722289d831d28d0c49bfc8000000f7f731d201c389f0f7f139d80f93c00fb6c0eb0231c083c40c5b5e5f5dc35589e557565383ec0c8b750c8b7d108b5d14535756ff7508e852ffffff83c41085c0740c85dbb8020000000f45c3eb218d53fd83fa0277196a025756ff7508e82bffffff83c41085c00f95c00fb6c001c08d65f45b5e5f5dc35589e557565383ec0c8b75208b7d108b5d2485f6740485db750431c0eb2831c089068903ff7518ff751457ff750ce8e3feffff83c41085c074e08b4514893e8903b8010000008d65f45b5e5f5dc220005589e557565383ec7c8b45088b5d0c8b75108945b48b451485db0f94c28945a48b4518837da4008945b08b451c8945a00f94c008d07506837db400752a8b45a0897510895d0c89451c8b45b08945188b45a48945148b45b48945088d65f45b5e5f5de92cf5ffff31ff837db000897d8474088b45b08b008945845050ff75a0ff75b0ff75a45653ff75b4e804f5ffff5a5983f8020f85fa04000085f60f85f20400008b034883f83f760ab802000000e9e00400008b83e4fdffff8b93ccfdffff8945ac8b83c82a000085d274dd8d4aff80c9ff85d175d383bbc42a00000275ca83e80883f80177c28bb3fc2a00008bbb002b000089f089fae810fdffff85c074a9505756ffb3cc2a0000e831fdffff83c41089c28b45ac483ddfa50100778b85d274878b83f8fdffff8d488081f9800100000f8772ffffff83e07f0f8569ffffff80bbfcfdffff000f855cffffff80bb03feffff000f854fffffff80bb10feffff000f8942ffffffb90100000080bc0bfcfdffffff0f852fffffff4183f90775ec31c90fb6b40bfcfdffff4101f081f98000000075ed25ff0000008945a80f8506ffffff80bb0efeffff010f85f9feffff8a830ffeffff83e8033c010f87e8fefffff68314feffff020f84dbfeffff89d10fb6fabe1800000031d2c1e90889c80fafc769c060540000f7f6bec900000031d289459c69c0c8000000f7f689c68b459c39c673248d56016a025751894d9452895598e8adfcffff83c4108b55988b4d9485c0740489d6ebd58b45ac39c60f47f089759081fe744000000f8669feffff0fb78332feffff8a9337feffff8a8b36feffff89459c8b7d9c8855ac0fb68334feffff8d77ff8b7d908a9339feffff39fe0f8332feffff0fb6b343fefffff7c6e10000000f851ffeffff0fb6f98945980fb645ac89f9897d940fb6fa89fac1e104c1e20481e1000f000081e2000f000009d08945ac8b459809c1894d980f84e6fdffff837dac000f84dcfdffff8b45acc1e01009c1894d8c398bd4fdffff0f85c5fdffff8a8335feffff8a8b3afefffff7d683e6180fb69338feffff8845808a833cfeffff888d7bffffff8a8b3dfeffff884588888d7cffffff0fb68b3bfeffff0f8582fdffff80bb41feffff000f8575fdffff80bb42feffff000f8568fdffff8b75940fb64580c1e70881e7000f0000c1e60809d781e6000f0000897d9409c68975800f843ffdffff85ff0f8437fdffff0fb6857cffffff8b7d8889c283e70fc1e20489d683e23081e60003000009d709ce89b57cffffff0f840afdffff85ff0f8402fdffffc1e0020fb6957bffffff8b8d7cffffff89c681e60003000009d68d140e3955800f82dcfcffff8a558883e030c0ea040fb6d209c289d089558801f83945940f82befcffff8b45848945c031c08945c48d45c452ff7590508d45c0508d45c8506a0053ff75b4e889f6ffff5983f8020f858efcffff817dc4010009000f8581fcffff8b459c3945c80f8575fcffff8b458c3b45cc0f8569fcffff8b45b40fb740043945980f8259fcffff8b45b40fb740063945ac0f8249fcffff0fb745d08b55988945908b458001c23955900f8531fcffff8b55ac8b45940fb74dd601c239d10f851dfcffff0fb755d239f20f8511fcffff0fb755d48b857cffffff39c20f85fffbffff0fb755d88b458839c20f85f0fbffff0fb755da39fa0f85e4fbffff8a9343feffff89d0d0e889c683f60183e60189f03a45e00f85c7fbffffc0ea0283f20183e2013a55e10f85b5fbffff8b45900fafc88b45b40fb7700a69459c1027000089cad1ea01d031d2f7f139c60f858ffbffff8b1331c983c30439ca0f8480fbffff817b0801000900751c0fb7430439c6751431c08b7c832c397c85c875084083f80875f0eb064183c354ebcd8b45a88b5da88b7da4ff45a88b4485c8837da80889049f75e7837db00074088b45c08b7db08907837da0000f8424fbffff8b45a0c70001000900e916fbffff8d65f45b5e5f5dc218"
+        },
+        {
+          "offset": 272,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 292,
+          "before": "60a88a00e0e2",
+          "after": "e0ad8a0040e4"
+        },
+        {
+          "offset": 344,
+          "before": "e0a4d500c0030000873e",
+          "after": "c0abd500c0030000b929"
+        },
+        {
+          "offset": 920,
+          "before": "e0f10e0000b3c600e0f1",
+          "after": "bbf80e0000b3c600c0f8"
+        },
+        {
+          "offset": 4425990,
+          "before": "c784246802000078214365",
+          "after": "e915219200909090909090"
+        },
+        {
+          "offset": 13597885,
+          "before": "067dd0008946488d83307dd0",
+          "after": "e0a4d6008946488d8318a5d6"
+        },
+        {
+          "offset": 13597950,
+          "before": "7e9a80ff",
+          "after": "9e2c0600"
+        },
+        {
+          "offset": 13690072,
+          "before": "480ab900300ab9",
+          "after": "60aad6006daad6"
+        },
+        {
+          "offset": 13690204,
+          "before": "9008b9007808b900841b00006808b9007421b900b01b00005808b9009410b900b11b00004808b9004410b9",
+          "after": "81aad60095aad600841b0000b0aad600c5aad600b01b0000e1aad600eeaad600b11b000002abd6000fabd6"
+        },
+        {
+          "offset": 13690444,
+          "before": "f805b900cc0fb9",
+          "after": "23abd60030abd6"
+        },
+        {
+          "offset": 13690588,
+          "before": "8804b900a40db900821c00007804b9006004b9",
+          "after": "44abd60055abd600821c00006dabd60081abd6"
+        },
+        {
+          "offset": 13694584,
+          "before": "d4d8b800bcd8b8",
+          "after": "9cabd600a8abd6"
+        },
+        {
+          "offset": 14001376,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "after": "53568b74241056ff742410e816d8f9ff50e8000000005b81ebf6a4d6008d83a0a5d600898384a5d6008d8350a5d600894634585e5bc2080053568b74241056ff742410e808d8f9ff50e8000000005b81eb2ea5d6008d83a0a7d600898390a5d6008d8363a5d600894630585e5bc20800e800000000582d55a5d6000580a5d600c20400e800000000582d68a5d600058ca5d600c204002e8db426000000006690000200000000000000000000000200000000000000000000908db426"
+        },
+        {
+          "offset": 14002592,
+          "before": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "after": "5051e800000000582da7a9d60005c0a9d6008b4c241089416c5958e9c06d7aff568b74240c56ff74240ce8015d77ff50e800000000582dd5a9d60005eba9d6008986a4000000585ec208008b44240883e81183f80b7717e8000000005981e9fca9d6000fb6840113aad600c2080031c0c20800020204030104000201000302009c50b87821436581be540b000030010000750e83be580b0000077505b81732540689842470020000589de9c2de6dff"
+        },
+        {
+          "offset": 14002784,
+          "before": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "after": "51756164726f205036303030004e56494449412051756164726f205036303030004765466f726365204754582031303730205469004e5649444941204765466f726365204754582031303730205469004765466f72636520475458203130363020334742004e5649444941204765466f726365204754582031303630203347420051756164726f205035303030004e56494449412051756164726f2050353030300051756164726f205034303030004e56494449412051756164726f2050343030300051756164726f205032303030004e56494449412051756164726f205032303030004765466f726365204754582031303530004e5649444941204765466f726365204754582031303530004765466f726365204754582031303530205469004e5649444941204765466f7263652047545820313035302054690051756164726f2050363230004e56494449412051756164726f2050363230"
         }
       ],
       "build_metadata": {
-        "base_sha256": "8ff803cd247aaa2ed417e023b00b21690aac99c05dffbe3a7550d3dcbcd7beec",
+        "base_sha256": "deb40bef3f110bb3c2c5b54aeef40b8dfd2f358e54b0b079ab8343916c76d6d5",
         "edits": [
           {
             "offset": 272,
             "before": "3ed78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 352,
-            "before": "c07cd600",
-            "after": "873ed600"
+            "before": "7116d600",
+            "after": "b929d600"
           }
         ]
       }
@@ -1072,7 +1205,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvapi.dll",
-      "sha256": "425f30b4af60d91333ba56475580c93b864e1ff17f8847b03cc4ab1c4431287f",
+      "sha256": "778532459dfa51f8406bfefc9449034e62256484fec7aaf22a0fe15e0ec7e83a",
       "size": 3299840,
       "source": "Display.Driver/nvapi.dl_",
       "source_sha256": "705e775b2302fa0771f7ac62e89c6eb44f747fc31ed9646d941f597ea3abfbb7",
@@ -1158,6 +1291,16 @@
           "offset": 336,
           "before": "be4d33",
           "after": "409f32"
+        },
+        {
+          "offset": 256,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 336,
+          "before": "409f",
+          "after": "c1f0"
         }
       ],
       "build_metadata": {
@@ -1166,12 +1309,12 @@
           {
             "offset": 256,
             "before": "3fcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 336,
             "before": "7ad53200",
-            "after": "409f3200"
+            "after": "c1f03200"
           }
         ]
       }
@@ -1188,7 +1331,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvcuda32.dll",
-      "sha256": "d8605f50cbb96b366d1e0ee50c957ce0c7163fa96049ad75c92b811ff5461e6b",
+      "sha256": "596920c01835c69a11b460811cfc026e98fe1aae0e39b4556bf9ce20f40d2965",
       "size": 17540608,
       "source": "Display.Driver/nvcuda32.dl_",
       "source_sha256": "92f7ce5da72c5d5981c84bdcdd54e6bd528484224ad2c70751902100dfed98b4",
@@ -1294,6 +1437,26 @@
           "offset": 14201569,
           "before": "37",
           "after": "38"
+        },
+        {
+          "offset": 264,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 344,
+          "before": "f5c90b",
+          "after": "761d0c"
+        },
+        {
+          "offset": 13970917,
+          "before": "38",
+          "after": "39"
+        },
+        {
+          "offset": 14201569,
+          "before": "38",
+          "after": "39"
         }
       ],
       "build_metadata": {
@@ -1302,22 +1465,22 @@
           {
             "offset": 264,
             "before": "0fd28257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 13970912,
             "before": "4a756c2031302032303136",
-            "after": "4f63742020382032303236"
+            "after": "4f63742020392032303236"
           },
           {
             "offset": 14201564,
             "before": "4a756c2031302032303136",
-            "after": "4f63742020382032303236"
+            "after": "4f63742020392032303236"
           },
           {
             "offset": 344,
             "before": "07150c01",
-            "after": "f5c90b01"
+            "after": "761d0c01"
           }
         ]
       }
@@ -1325,7 +1488,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvcuvid32.dll",
-      "sha256": "db147a9ee56ccad27e9df5f2a92fc0b74e97e0770ad8074fda75d1bc063e5317",
+      "sha256": "9892150c2276682f8afe435107eee43c85a5f27b2c69feb983d658fa1867f79a",
       "size": 2992696,
       "source": "Display.Driver/nvcuvid32.dl_",
       "source_sha256": "afb80ce3976d56c8538b1053b597913fd83bc7b82e89fe018868cfbc3342e935",
@@ -1396,6 +1559,16 @@
           "offset": 336,
           "before": "5258",
           "after": "d3a9"
+        },
+        {
+          "offset": 256,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 336,
+          "before": "d3a92e",
+          "after": "55fb2d"
         }
       ],
       "build_metadata": {
@@ -1404,12 +1577,12 @@
           {
             "offset": 256,
             "before": "28ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 336,
             "before": "f7de2d00",
-            "after": "d3a92e00"
+            "after": "55fb2d00"
           }
         ]
       }
@@ -1426,7 +1599,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvdispco32.dll",
-      "sha256": "6c356e3b37bd14d8d02fd5c2a95a2d36a44703c9043e5bc2206ceb96cd047a37",
+      "sha256": "a06593791d190e7a138549c8cf0bb5c9c2b14c11cdb1f68576534ba3e0a46fc2",
       "size": 1075256,
       "source": "Display.Driver/nvdispco32.dll",
       "source_sha256": "995339bfdcdf2982cc15030f9cd9b97d87a54955944dd184420937866f210dbf",
@@ -1476,6 +1649,16 @@
           "offset": 360,
           "before": "afec10",
           "after": "303e11"
+        },
+        {
+          "offset": 280,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 360,
+          "before": "303e11",
+          "after": "b28f10"
         }
       ],
       "build_metadata": {
@@ -1484,7 +1667,7 @@
           {
             "offset": 280,
             "before": "56d48257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 424,
@@ -1494,7 +1677,7 @@
           {
             "offset": 360,
             "before": "cae11000",
-            "after": "303e1100"
+            "after": "b28f1000"
           }
         ]
       }
@@ -1502,7 +1685,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvdispgenco32.dll",
-      "sha256": "cb1e084a20e0b85f2ab639922b5f438e4dc603cae6b2eb5fab68b1a89c5fd9f0",
+      "sha256": "6450c86bb7c95fe66b64f8b779c90a7b826c8a85a6aa4dcf675c0df6694d3702",
       "size": 925752,
       "source": "Display.Driver/nvdispgenco32.dll",
       "source_sha256": "02cb138c514fb0d8ba1be5fed1892579df5e8cc12b2c8caad2644aca8121356c",
@@ -1552,6 +1735,16 @@
           "offset": 336,
           "before": "ed90",
           "after": "6ee2"
+        },
+        {
+          "offset": 256,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 336,
+          "before": "6ee2",
+          "after": "f033"
         }
       ],
       "build_metadata": {
@@ -1560,7 +1753,7 @@
           {
             "offset": 256,
             "before": "f8ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 400,
@@ -1570,7 +1763,7 @@
           {
             "offset": 336,
             "before": "a8380e00",
-            "after": "6ee20e00"
+            "after": "f0330e00"
           }
         ]
       }
@@ -1587,7 +1780,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvencodeapi.dll",
-      "sha256": "ad650e1466165171999ad9699ebfd54a44f26de83570ecdd830431de52e9923e",
+      "sha256": "285ec166a35467b564ca1d9d6556d8f75d20bcd4cec6580f8fa98ea4b4319ffb",
       "size": 394288,
       "source": "Display.Driver/nvencodeapi.dl_",
       "source_sha256": "2177047bbb95ee917f0152cc08019918753f79159358ae9ef417b884897ac6b3",
@@ -1653,6 +1846,16 @@
           "offset": 320,
           "before": "bb13",
           "after": "3c65"
+        },
+        {
+          "offset": 240,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 320,
+          "before": "3c65",
+          "after": "bdb6"
         }
       ],
       "build_metadata": {
@@ -1661,12 +1864,12 @@
           {
             "offset": 240,
             "before": "7bce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 320,
             "before": "b29a0600",
-            "after": "3c650600"
+            "after": "bdb60600"
           }
         ]
       }
@@ -1683,7 +1886,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvoglnt.dll",
-      "sha256": "675ba45e88c1762b305054a41c395127033e359eccda49b0eaaca0152a73156d",
+      "sha256": "4f17515352c43882c803f23c054d8ffc569843162fba0b3147d00080d9180e16",
       "size": 17526784,
       "source": "Display.Driver/nvoglnt.dl_",
       "source_sha256": "2cadb8c97201263c0e64cfd0098ddc1f7bd33d8437d27193197468999943c743",
@@ -1784,6 +1987,21 @@
           "offset": 12372709,
           "before": "37",
           "after": "38"
+        },
+        {
+          "offset": 280,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 360,
+          "before": "eea3",
+          "after": "6ff6"
+        },
+        {
+          "offset": 12372709,
+          "before": "38",
+          "after": "39"
         }
       ],
       "build_metadata": {
@@ -1792,17 +2010,17 @@
           {
             "offset": 280,
             "before": "f5d08257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 12372704,
             "before": "4a756c2031302032303136",
-            "after": "4f63742020382032303236"
+            "after": "4f63742020392032303236"
           },
           {
             "offset": 360,
             "before": "e2e40b01",
-            "after": "eea30b01"
+            "after": "6ff60b01"
           }
         ]
       }
@@ -1810,7 +2028,7 @@
     {
       "tree": "package",
       "path": "Display.Driver/nvopencl32.dll",
-      "sha256": "c7cd62560cd76ca13b17d8bcea91627ace4500b631cdd1a16509d41e2d2235d1",
+      "sha256": "ceccd6e2feff2b9a4dd23fe13b38b7714124b82f316e1fbace97fc8c39c995b2",
       "size": 17943552,
       "source": "Display.Driver/nvopencl32.dl_",
       "source_sha256": "938a7dde9cd1ff4d6308f8ebdb8be1a60c3583b60b9ce2bae841c23fed9010bc",
@@ -1916,6 +2134,26 @@
           "offset": 14609785,
           "before": "37",
           "after": "38"
+        },
+        {
+          "offset": 272,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 352,
+          "before": "50ac12",
+          "after": "d2ff11"
+        },
+        {
+          "offset": 14379253,
+          "before": "38",
+          "after": "39"
+        },
+        {
+          "offset": 14609785,
+          "before": "38",
+          "after": "39"
         }
       ],
       "build_metadata": {
@@ -1924,22 +2162,22 @@
           {
             "offset": 272,
             "before": "0fd28257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 14379248,
             "before": "4a756c2031302032303136",
-            "after": "4f63742020382032303236"
+            "after": "4f63742020392032303236"
           },
           {
             "offset": 14609780,
             "before": "4a756c2031302032303136",
-            "after": "4f63742020382032303236"
+            "after": "4f63742020392032303236"
           },
           {
             "offset": 352,
             "before": "63f71101",
-            "after": "50ac1201"
+            "after": "d2ff1101"
           }
         ]
       }
@@ -2711,8 +2949,8 @@
     {
       "tree": "package",
       "path": "Documentation/Forceware-382.69.md",
-      "sha256": "98709d150846490a01e83d9af48439b2541f10dd02364aa20bd74f223a2bdbf4",
-      "size": 4087,
+      "sha256": "788b87dbb49dcb34a22365b8ab94a508e09603ac996c521b809a325b6c31f225",
+      "size": 3807,
       "kind": "template",
       "template": "package/Documentation/Forceware-382.69.md"
     },
@@ -4762,8 +5000,8 @@
     {
       "tree": "package",
       "path": "ListDevices.txt",
-      "sha256": "90d30ee265761ba49e78ab1d2fd2f9d704f8b04648dcb678c3464d2768e467ac",
-      "size": 3026,
+      "sha256": "f08cdca3cd988a1fdf603d2aa8edae44216f05d74f35db0038ce73e58c73c720",
+      "size": 3367,
       "source": "ListDevices.txt",
       "source_sha256": "edc56b5e743020e71df0df13ca972c7052ff35c9793d72ff53da2372623498a2",
       "kind": "template",
@@ -6446,8 +6684,8 @@
     {
       "tree": "package",
       "path": "README-INSTALL.txt",
-      "sha256": "83dbadf57ad99e4cb532919df27a659d6e2d7744db8997aa5742b86411473c2e",
-      "size": 1694,
+      "sha256": "c56c057582829749baab7f91d4da2ad42b11e74f9c2898553c81461d9a7b0a87",
+      "size": 1241,
       "kind": "template",
       "template": "package/README-INSTALL.txt"
     },
@@ -6983,7 +7221,7 @@
     {
       "tree": "package",
       "path": "setup.cfg",
-      "sha256": "987765620d26fae36fb2e47e870974eb639f1b77dc26e78a296eccf9345df1e7",
+      "sha256": "a4782855020cbb69863a56d9f340d494a9456d917fcc7ecc4e5db91dcfb1ae19",
       "size": 30936,
       "source": "setup.cfg",
       "source_sha256": "d355caec5fa11b4f6e11fc166bfc2eeb35e416207e5bd27b4414e8b27020b895",
@@ -7542,7 +7780,7 @@
     {
       "tree": "cpl",
       "path": "DisplayControlPanel.nvi",
-      "sha256": "e7ebd9868429fe5020e7991de6c2dec42e47f91c15e385b21da0dcc42bed64f5",
+      "sha256": "a0c92198592c1c2010c4e2ec186c73cada34f52eeda6cafc048a99123fc523ab",
       "size": 74359,
       "source": "DisplayControlPanel.nvi",
       "source_sha256": "ca88c1293dd3b25ec4c5d90d6d8376db510b95b57638a76776c44c058cfa8ec2",
@@ -7885,7 +8123,7 @@
     {
       "tree": "cpl",
       "path": "NVRSAR.dll",
-      "sha256": "32598e7ffb6223c73331f6f76acc9a3304be77add6d1b526e88637ae5cbfa080",
+      "sha256": "a228e61b90bd8181c76628656c01d708ee385c6508314867bd3b04fa27d3343a",
       "size": 335872,
       "source": "NVRSAR.dll",
       "source_sha256": "5d9dd273f104325cea7c912f6b30e095536d00114c350d7a1c90a654b1bfe294",
@@ -7950,6 +8188,16 @@
           "offset": 256,
           "before": "3d99",
           "after": "beea"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "beea",
+          "after": "403c"
         }
       ],
       "build_metadata": {
@@ -7958,12 +8206,12 @@
           {
             "offset": 176,
             "before": "ddcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "97210500",
-            "after": "beea0500"
+            "after": "403c0500"
           }
         ]
       }
@@ -7971,7 +8219,7 @@
     {
       "tree": "cpl",
       "path": "NVRSCS.dll",
-      "sha256": "59acd47b3f83e3d2cdf5170b2f1828bd2281480a89e6a71bd7fa1dfeff123271",
+      "sha256": "0358b53f71973c7fd72ca561c20b5238585f2f64a1d39cc2f1895ce5d73d0b2e",
       "size": 249856,
       "source": "NVRSCS.dll",
       "source_sha256": "9c4eab91e9cda896205c2f3d03954a64eca842c6290e56ae34e5aacdaa2a3d57",
@@ -8036,6 +8284,16 @@
           "offset": 256,
           "before": "520d",
           "after": "d35e"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "d35e",
+          "after": "54b0"
         }
       ],
       "build_metadata": {
@@ -8044,12 +8302,12 @@
           {
             "offset": 176,
             "before": "decf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "ac950400",
-            "after": "d35e0400"
+            "after": "54b00400"
           }
         ]
       }
@@ -8057,7 +8315,7 @@
     {
       "tree": "cpl",
       "path": "NVRSDA.dll",
-      "sha256": "9832f4441aba1e9b887c87cf7ab0fd9f2c32ddfd1dca8f259c47797fe17ce424",
+      "sha256": "d5a8ecd87f99cae9208dd339e8d142b3e52d373420f347b2031c5d55eab773f3",
       "size": 253952,
       "source": "NVRSDA.dll",
       "source_sha256": "1095e6acd8785a8914d7a880f3af13c2eb3418ff834cdeb1ce1bb8ea39f45756",
@@ -8122,6 +8380,16 @@
           "offset": 256,
           "before": "54ef03",
           "after": "d54004"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "d540",
+          "after": "5692"
         }
       ],
       "build_metadata": {
@@ -8130,12 +8398,12 @@
           {
             "offset": 176,
             "before": "decf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "ae770400",
-            "after": "d5400400"
+            "after": "56920400"
           }
         ]
       }
@@ -8143,7 +8411,7 @@
     {
       "tree": "cpl",
       "path": "NVRSDE.dll",
-      "sha256": "06f80d56ec7c4d8e84fcfe82951958d8399785a4f527a3914fb97b7eeb96e2a1",
+      "sha256": "d4de03f291a22d5341b28b0ae47752985b635b19c5dc22b5c16c7da10547a759",
       "size": 278528,
       "source": "NVRSDE.dll",
       "source_sha256": "009542b723cf5b66ab3e9c2cdd0204703e3f50926744f830f1ab909463a2b384",
@@ -8208,6 +8476,16 @@
           "offset": 256,
           "before": "aa40",
           "after": "2b92"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "2b92",
+          "after": "ace3"
         }
       ],
       "build_metadata": {
@@ -8216,12 +8494,12 @@
           {
             "offset": 176,
             "before": "e0cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "06c90400",
-            "after": "2b920400"
+            "after": "ace30400"
           }
         ]
       }
@@ -8229,7 +8507,7 @@
     {
       "tree": "cpl",
       "path": "NVRSEL.dll",
-      "sha256": "b2fb7875f347cb1414544b846b029ba8d5208258a54cdee0e352f8715b59f7d9",
+      "sha256": "6b7c0303839c08a22605fbf9726557070ee10134cb310f353f839f837a108953",
       "size": 282624,
       "source": "NVRSEL.dll",
       "source_sha256": "8f774d593c7714057fed82b2be9b053d8b31895503646d227fdb8c269b71fd13",
@@ -8294,6 +8572,16 @@
           "offset": 256,
           "before": "906d",
           "after": "11bf"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "11bf04",
+          "after": "921005"
         }
       ],
       "build_metadata": {
@@ -8302,12 +8590,12 @@
           {
             "offset": 176,
             "before": "e0cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "ecf50400",
-            "after": "11bf0400"
+            "after": "92100500"
           }
         ]
       }
@@ -8315,7 +8603,7 @@
     {
       "tree": "cpl",
       "path": "NVRSENG.dll",
-      "sha256": "942a170107a793c53a2c3ac00ce7c0fd9c480a1ec80e0fae887ba77320b7f813",
+      "sha256": "f917a56c50e4a749299d9953de4cb4d2f42d16ac9261c67b76b7f7782a8bba4e",
       "size": 249856,
       "source": "NVRSENG.dll",
       "source_sha256": "df781bb5e0dd96394a42119bf883426bbb0bb5dcc948d51b6741a6d8ad4fd2df",
@@ -8380,6 +8668,16 @@
           "offset": 256,
           "before": "7f6f",
           "after": "00c1"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "00c1",
+          "after": "8212"
         }
       ],
       "build_metadata": {
@@ -8388,12 +8686,12 @@
           {
             "offset": 176,
             "before": "dfcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "dbf70300",
-            "after": "00c10400"
+            "after": "82120400"
           }
         ]
       }
@@ -8401,7 +8699,7 @@
     {
       "tree": "cpl",
       "path": "NVRSES.dll",
-      "sha256": "1badb917b68d26fd7cf546d8db09c95bf3493d2a833d3b3ca7099f6bca78cfa4",
+      "sha256": "216893c2934be90666ee2dcb4231aaac99f8aeaaae643872fd7532fdbf6d7987",
       "size": 282624,
       "source": "NVRSES.dll",
       "source_sha256": "0f3c433eb5bd0e62890f80ada4c0e287aff0cc536df2269a9247ea44302f4e47",
@@ -8466,6 +8764,16 @@
           "offset": 256,
           "before": "38e004",
           "after": "b93105"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "b93105",
+          "after": "3b8304"
         }
       ],
       "build_metadata": {
@@ -8474,12 +8782,12 @@
           {
             "offset": 176,
             "before": "e3cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "98680400",
-            "after": "b9310500"
+            "after": "3b830400"
           }
         ]
       }
@@ -8487,7 +8795,7 @@
     {
       "tree": "cpl",
       "path": "NVRSESM.dll",
-      "sha256": "4202ea83c988ee37b999d8219ab280cdec42adb8eef4dedde101db91fb5ac242",
+      "sha256": "c32410c6b78f3e5116e7c392be12ce583814ddf7dc05f2e29bbfaa5e86e31725",
       "size": 274432,
       "source": "NVRSESM.dll",
       "source_sha256": "d9e555ced5552b877cb65a37b1002a278e7d8814275c068abdf17dac7dbf90ac",
@@ -8552,6 +8860,16 @@
           "offset": 256,
           "before": "770905",
           "after": "f95a04"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "f95a",
+          "after": "7aac"
         }
       ],
       "build_metadata": {
@@ -8560,12 +8878,12 @@
           {
             "offset": 176,
             "before": "e4cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "d8910400",
-            "after": "f95a0400"
+            "after": "7aac0400"
           }
         ]
       }
@@ -8573,7 +8891,7 @@
     {
       "tree": "cpl",
       "path": "NVRSFI.dll",
-      "sha256": "75dd09b2f9275ca4093b4fe6c66836465702329a4c9de89e2f534b76468e557a",
+      "sha256": "f28123c252b39c213868dc8be862d1306ad7f6bafc22dd0727159e011d764833",
       "size": 249856,
       "source": "NVRSFI.dll",
       "source_sha256": "61bceed41b70efb1276de4217e8ac355d86ae241bb8aabaf3ddaabe911145ab5",
@@ -8638,6 +8956,16 @@
           "offset": 256,
           "before": "b1e003",
           "after": "323204"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "3232",
+          "after": "b383"
         }
       ],
       "build_metadata": {
@@ -8646,12 +8974,12 @@
           {
             "offset": 176,
             "before": "dfcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "0c690400",
-            "after": "32320400"
+            "after": "b3830400"
           }
         ]
       }
@@ -8659,7 +8987,7 @@
     {
       "tree": "cpl",
       "path": "NVRSFR.dll",
-      "sha256": "c33782e5ded728d3edee508f7a11dbcea752328602d1ff6b90b2b2e34275b53c",
+      "sha256": "2fde3d9cf3b42010899897b7c1117ede238a8c6a533cf3d682d5d5ed9c68a31f",
       "size": 286720,
       "source": "NVRSFR.dll",
       "source_sha256": "e31782bc2d62a4ad645ec27206225f5f7ae14f2b9c88fac491dccc3eff2b3427",
@@ -8724,6 +9052,16 @@
           "offset": 256,
           "before": "15f004",
           "after": "964105"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "964105",
+          "after": "189304"
         }
       ],
       "build_metadata": {
@@ -8732,12 +9070,12 @@
           {
             "offset": 176,
             "before": "dfcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "71780400",
-            "after": "96410500"
+            "after": "18930400"
           }
         ]
       }
@@ -8745,7 +9083,7 @@
     {
       "tree": "cpl",
       "path": "NVRSHE.dll",
-      "sha256": "19d225ad38941f7c7c48577b46dd33cab944c835be2f22c19740303c5fee5641",
+      "sha256": "65fc46339b0d23686f54239ff7a93f3b5fcfc87d31cb4920d949f044c0b184e2",
       "size": 335872,
       "source": "NVRSHE.dll",
       "source_sha256": "d49f40c9987dbb3d0e40d1c4688f59f3a65d6e7b2cfe278c149f9265c7f7271f",
@@ -8810,6 +9148,16 @@
           "offset": 256,
           "before": "50bf05",
           "after": "d11006"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "d11006",
+          "after": "536205"
         }
       ],
       "build_metadata": {
@@ -8818,12 +9166,12 @@
           {
             "offset": 176,
             "before": "e0cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "ad470500",
-            "after": "d1100600"
+            "after": "53620500"
           }
         ]
       }
@@ -8831,7 +9179,7 @@
     {
       "tree": "cpl",
       "path": "NVRSHU.dll",
-      "sha256": "83a18d541646d0a5218edba19783fe9e8c6e2e856b4d48828a0a0e145a8068d6",
+      "sha256": "15b9c5af722250a04757af2201d190cd1cad9e57ea8d3f0d4761f7ecea79863a",
       "size": 262144,
       "source": "NVRSHU.dll",
       "source_sha256": "487ffb59813a01f2888d872cad14834001c6517014456c4fd8e3e913a20a7b5e",
@@ -8896,6 +9244,16 @@
           "offset": 256,
           "before": "e963",
           "after": "6ab5"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "6ab5",
+          "after": "ec06"
         }
       ],
       "build_metadata": {
@@ -8904,12 +9262,12 @@
           {
             "offset": 176,
             "before": "e0cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "45ec0400",
-            "after": "6ab50400"
+            "after": "ec060400"
           }
         ]
       }
@@ -8917,7 +9275,7 @@
     {
       "tree": "cpl",
       "path": "NVRSIT.dll",
-      "sha256": "3e576a63f9becd3f4b05c8c91334b7f2ad904d4973e6ad42afc35f9b6a5bf0ce",
+      "sha256": "c493c17c36d33287d95dbbab83b11755c824e9ff1e29571c28ce262a1ad689c0",
       "size": 282624,
       "source": "NVRSIT.dll",
       "source_sha256": "c437bf6a39e05e2db27cbeedd196d29c0e62f60b1b298f2cc0c2e76d703ee49d",
@@ -8982,6 +9340,16 @@
           "offset": 256,
           "before": "374905",
           "after": "b99a04"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "b99a",
+          "after": "3aec"
         }
       ],
       "build_metadata": {
@@ -8990,12 +9358,12 @@
           {
             "offset": 176,
             "before": "e1cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "95d10400",
-            "after": "b99a0400"
+            "after": "3aec0400"
           }
         ]
       }
@@ -9003,7 +9371,7 @@
     {
       "tree": "cpl",
       "path": "NVRSJA.dll",
-      "sha256": "2213d55c5a41c2dd7e3b8c0f242e8e4c92069baadf80ad42f849693e648ff4b5",
+      "sha256": "e5b265e29b43ffb288e6e3d77f32a9605980a2088ce1127d6b09ffdecf127f60",
       "size": 274432,
       "source": "NVRSJA.dll",
       "source_sha256": "a05b9a62efd4c67fb7d18df3fb9c6372be23258b0e1d910a6bbda34d384a5ea3",
@@ -9068,6 +9436,16 @@
           "offset": 256,
           "before": "4f6b",
           "after": "d0bc"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "d0bc04",
+          "after": "510e05"
         }
       ],
       "build_metadata": {
@@ -9076,12 +9454,12 @@
           {
             "offset": 176,
             "before": "e1cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "acf30400",
-            "after": "d0bc0400"
+            "after": "510e0500"
           }
         ]
       }
@@ -9089,7 +9467,7 @@
     {
       "tree": "cpl",
       "path": "NVRSKO.dll",
-      "sha256": "2585aefe95e1ec5513b0d44103b35b6a6f814da3f21ffc46ec463098a60ee2e0",
+      "sha256": "dd9d53533bc8fa4526000db770350ec8799f1e027c226bac0f69bbab16c03542",
       "size": 266240,
       "source": "NVRSKO.dll",
       "source_sha256": "cf3eb287124d0e3630ebaf62fafce67de4ff2d202ee6bb5dfc345c5e798cc9ba",
@@ -9154,6 +9532,16 @@
           "offset": 256,
           "before": "9666",
           "after": "17b8"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "17b804",
+          "after": "980905"
         }
       ],
       "build_metadata": {
@@ -9162,12 +9550,12 @@
           {
             "offset": 176,
             "before": "e1cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "f3ee0400",
-            "after": "17b80400"
+            "after": "98090500"
           }
         ]
       }
@@ -9175,7 +9563,7 @@
     {
       "tree": "cpl",
       "path": "NVRSNL.dll",
-      "sha256": "d5b7beb085a2122b6955febf2dacdc744d3139ba9cf5f3cb86cdd7b6a1180d56",
+      "sha256": "8a5af9c21740d09ec4e35bcb7f6b4caaa1af22cf877dcf5131027026aec63d3e",
       "size": 274432,
       "source": "NVRSNL.dll",
       "source_sha256": "11ccaffc26c7d49585f7bd4dd1d3e3fb63fc583ff9f18406f04bd96da54da8b7",
@@ -9240,6 +9628,16 @@
           "offset": 256,
           "before": "cdaa",
           "after": "4efc"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "4efc",
+          "after": "d04d"
         }
       ],
       "build_metadata": {
@@ -9248,12 +9646,12 @@
           {
             "offset": 176,
             "before": "decf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "28330400",
-            "after": "4efc0400"
+            "after": "d04d0400"
           }
         ]
       }
@@ -9261,7 +9659,7 @@
     {
       "tree": "cpl",
       "path": "NVRSNO.dll",
-      "sha256": "985289e3b486bc4d1c52cd886227f2d5e3e7bcccfe2532e30cdcd70ba2833e61",
+      "sha256": "2db1e5434635fd31c072f8f1353626ae11494d3338bdef3b94166a9f0258c7b0",
       "size": 253952,
       "source": "NVRSNO.dll",
       "source_sha256": "93689fccc74343ada6f567a5efdbe74b36ff8b6309f87a5b889d6370e10f15a1",
@@ -9326,6 +9724,16 @@
           "offset": 256,
           "before": "fa77",
           "after": "7bc9"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "7bc9",
+          "after": "fd1a"
         }
       ],
       "build_metadata": {
@@ -9334,12 +9742,12 @@
           {
             "offset": 176,
             "before": "e2cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "59000400",
-            "after": "7bc90400"
+            "after": "fd1a0400"
           }
         ]
       }
@@ -9347,7 +9755,7 @@
     {
       "tree": "cpl",
       "path": "NVRSPL.dll",
-      "sha256": "ff72f113adfb2be8cabf1baaa07169390dccf25af8275b8cb81a35e50b6142fb",
+      "sha256": "db8c9f059401f79dcb996ea1c8366fafe04d5c5b2748492d9a1d1daf0443d8e7",
       "size": 258048,
       "source": "NVRSPL.dll",
       "source_sha256": "cc44c6fd61870dd9d967400acf7ff854e244c5054ed1c616d14ca6d7667393b2",
@@ -9412,6 +9820,16 @@
           "offset": 256,
           "before": "0614",
           "after": "8765"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "8765",
+          "after": "08b7"
         }
       ],
       "build_metadata": {
@@ -9420,12 +9838,12 @@
           {
             "offset": 176,
             "before": "e2cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "649c0400",
-            "after": "87650400"
+            "after": "08b70400"
           }
         ]
       }
@@ -9433,7 +9851,7 @@
     {
       "tree": "cpl",
       "path": "NVRSPT.dll",
-      "sha256": "153afafa9e6f2b34940de02725bd1ccfc5cdb4110491ce22b0c187542ba98d7b",
+      "sha256": "36657011adb1031428810e6d37e8b34179c064e57a8788b7af198a7ef2ef88c2",
       "size": 274432,
       "source": "NVRSPT.dll",
       "source_sha256": "410bcb7899cc2101a0852c484a37ccdbae2a250c78bc8e9ba3b48e99afe48df5",
@@ -9498,6 +9916,16 @@
           "offset": 256,
           "before": "4b49",
           "after": "cc9a"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "cc9a",
+          "after": "4dec"
         }
       ],
       "build_metadata": {
@@ -9506,12 +9934,12 @@
           {
             "offset": 176,
             "before": "e2cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "a9d10400",
-            "after": "cc9a0400"
+            "after": "4dec0400"
           }
         ]
       }
@@ -9519,7 +9947,7 @@
     {
       "tree": "cpl",
       "path": "NVRSPTB.dll",
-      "sha256": "c6d7547897094775d1f1476e42ba3d3450e1d5f5939e86e2cb573380f8cde9fc",
+      "sha256": "06509595d52c584fcd95e530d4a717d92f03842ba5e432191ceaa1ce82e8a5cf",
       "size": 270336,
       "source": "NVRSPTB.dll",
       "source_sha256": "a17c697e07cc662a82de9e5735f666192d16235893e187d01f81dca3198ac8b4",
@@ -9584,6 +10012,16 @@
           "offset": 256,
           "before": "4e9a",
           "after": "cfeb"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "cfeb",
+          "after": "513d"
         }
       ],
       "build_metadata": {
@@ -9592,12 +10030,12 @@
           {
             "offset": 176,
             "before": "e2cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "ad220400",
-            "after": "cfeb0400"
+            "after": "513d0400"
           }
         ]
       }
@@ -9605,7 +10043,7 @@
     {
       "tree": "cpl",
       "path": "NVRSRU.dll",
-      "sha256": "7fdebdcc4d6519411a39fd3e21d28be178a193a2f430cb22d9a3bd0d4c30d231",
+      "sha256": "29b7e5dd037a66a971e3a45133e3e15f7e7754476433ec3aafdad5afe509bf0c",
       "size": 270336,
       "source": "NVRSRU.dll",
       "source_sha256": "015c4320f71e491febb15a0d31dcc3a45245206b7039ff969936593d59ebc60b",
@@ -9670,6 +10108,16 @@
           "offset": 256,
           "before": "95b704",
           "after": "160905"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "160905",
+          "after": "985a04"
         }
       ],
       "build_metadata": {
@@ -9678,12 +10126,12 @@
           {
             "offset": 176,
             "before": "e3cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "f53f0400",
-            "after": "16090500"
+            "after": "985a0400"
           }
         ]
       }
@@ -9691,7 +10139,7 @@
     {
       "tree": "cpl",
       "path": "NVRSSK.dll",
-      "sha256": "b8d7ad99e203a600fa3159d396687c6d7878c2c7a39d7698ca74122c0845589e",
+      "sha256": "5224eaa0b77165db8eb213d038f20bab5abd93907cfc9a3015801f33890e92d6",
       "size": 258048,
       "source": "NVRSSK.dll",
       "source_sha256": "7c577b5b53e4c690c2cef30292266c1e9c772a3006b9025c77f564fe49132e17",
@@ -9756,6 +10204,16 @@
           "offset": 256,
           "before": "23e7",
           "after": "a538"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "a538",
+          "after": "268a"
         }
       ],
       "build_metadata": {
@@ -9764,12 +10222,12 @@
           {
             "offset": 176,
             "before": "e3cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "836f0400",
-            "after": "a5380400"
+            "after": "268a0400"
           }
         ]
       }
@@ -9777,7 +10235,7 @@
     {
       "tree": "cpl",
       "path": "NVRSSL.dll",
-      "sha256": "eb976db20312c3367647bf8a94555eb4f9d92470175acc89d05ea01be1d3cc1c",
+      "sha256": "b17b7096dcc8d5bb1325957aebc74c9286dd8d08e74c3b6cbcf804b3740ff7ac",
       "size": 258048,
       "source": "NVRSSL.dll",
       "source_sha256": "949d267dde337370e1678bd0521255adf18c85ccca7afcf0b13a08f99c910fc4",
@@ -9842,6 +10300,16 @@
           "offset": 256,
           "before": "ef8d",
           "after": "70df"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "70df",
+          "after": "f230"
         }
       ],
       "build_metadata": {
@@ -9850,12 +10318,12 @@
           {
             "offset": 176,
             "before": "e3cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "4f160400",
-            "after": "70df0400"
+            "after": "f2300400"
           }
         ]
       }
@@ -9863,7 +10331,7 @@
     {
       "tree": "cpl",
       "path": "NVRSSV.dll",
-      "sha256": "c867744ce43331251e5281499478d7f436fc7249f418e552018df16680cfe4c8",
+      "sha256": "24b0bd48d90209ab75c7406bc1baa50928980f312084c273152a780c5939e4da",
       "size": 253952,
       "source": "NVRSSV.dll",
       "source_sha256": "4e0eb7324a96c619a4d31ee44883cdf3d2c3ed25847407b9a025370d6ee73d10",
@@ -9928,6 +10396,16 @@
           "offset": 256,
           "before": "82c8",
           "after": "041a"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "041a",
+          "after": "856b"
         }
       ],
       "build_metadata": {
@@ -9936,12 +10414,12 @@
           {
             "offset": 176,
             "before": "e4cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "e3500400",
-            "after": "041a0400"
+            "after": "856b0400"
           }
         ]
       }
@@ -9949,7 +10427,7 @@
     {
       "tree": "cpl",
       "path": "NVRSTH.dll",
-      "sha256": "33e8391071e8651e5f841c72199446d54077021ec06bdd677d0664b2a2e4c351",
+      "sha256": "a040330edeffa7021302dc50a926a3b719f40618b8d24037a333778a8db82868",
       "size": 253952,
       "source": "NVRSTH.dll",
       "source_sha256": "7d373b8e15451a5a20c740a9141eb9b76a08e5ecc49479e1c9127dcdb620be4a",
@@ -10014,6 +10492,16 @@
           "offset": 256,
           "before": "7c9b04",
           "after": "feec03"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "feec03",
+          "after": "7f3e04"
         }
       ],
       "build_metadata": {
@@ -10022,12 +10510,12 @@
           {
             "offset": 176,
             "before": "e4cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "dd230400",
-            "after": "feec0300"
+            "after": "7f3e0400"
           }
         ]
       }
@@ -10035,7 +10523,7 @@
     {
       "tree": "cpl",
       "path": "NVRSTR.dll",
-      "sha256": "7e0e349c456e59fb7f0d5457a396fd32cbd2c031b653ed0cf7be06a667bce8b9",
+      "sha256": "ee2a1ff5a258020c2c244862e6a3de15c28d58e821a86c08a17b5706186817fb",
       "size": 258048,
       "source": "NVRSTR.dll",
       "source_sha256": "4329eac2a04f31af7a0594cf4cc3422ca28106586e07d26272163e8ebac64cec",
@@ -10100,6 +10588,16 @@
           "offset": 256,
           "before": "90f103",
           "after": "114304"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "1143",
+          "after": "9294"
         }
       ],
       "build_metadata": {
@@ -10108,12 +10606,12 @@
           {
             "offset": 176,
             "before": "e5cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "f1790400",
-            "after": "11430400"
+            "after": "92940400"
           }
         ]
       }
@@ -10121,7 +10619,7 @@
     {
       "tree": "cpl",
       "path": "NVRSZHC.dll",
-      "sha256": "bb9211d0408b7fc75d13fbdbb913311e48e968d8bf4164947b9eadab07b34350",
+      "sha256": "b262c014c42f19d12452f1453c3f8e26516bfa98b327cb12871f5b61b9b76177",
       "size": 229376,
       "source": "NVRSZHC.dll",
       "source_sha256": "9b5d2cf78875659f4225bb32e79dba4d1ce86073069ac53ee23dc0baa9271e66",
@@ -10186,6 +10684,16 @@
           "offset": 256,
           "before": "bec703",
           "after": "3f1904"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "3f19",
+          "after": "c06a"
         }
       ],
       "build_metadata": {
@@ -10194,12 +10702,12 @@
           {
             "offset": 176,
             "before": "ddcf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "17500400",
-            "after": "3f190400"
+            "after": "c06a0400"
           }
         ]
       }
@@ -10207,7 +10715,7 @@
     {
       "tree": "cpl",
       "path": "NVRSZHT.dll",
-      "sha256": "4009a10ddf2a246275b4017a24633e096f9414d227aa16af94f9b30ed4ae9053",
+      "sha256": "06d66f48f975444d1bcb283304c2a3e5dbf1d987e21179b3b8aa79d7b44c25ed",
       "size": 126976,
       "source": "NVRSZHT.dll",
       "source_sha256": "f514e88a3662a7414e71c3f5e352b316feb2dcc5b207ba3a6cb96ea6af40f412",
@@ -10272,6 +10780,16 @@
           "offset": 256,
           "before": "ea6f",
           "after": "6bc1"
+        },
+        {
+          "offset": 176,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 256,
+          "before": "6bc1",
+          "after": "ed12"
         }
       ],
       "build_metadata": {
@@ -10280,12 +10798,12 @@
           {
             "offset": 176,
             "before": "decf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 256,
             "before": "45f80100",
-            "after": "6bc10200"
+            "after": "ed120200"
           }
         ]
       }
@@ -11409,7 +11927,7 @@
     {
       "tree": "cpl",
       "path": "nvDispS.dll",
-      "sha256": "8e6092376f755b4e14cdd02ff432f0d52bd723f298c4fd0e3974147074af5341",
+      "sha256": "9d63b0e513e31fe98dbb23a4807336e5d3e3161d86695996b30c70e0b873277a",
       "size": 9348608,
       "source": "nvDispS.dll",
       "source_sha256": "ab0d93ce19b02976a551b6ea80c53363c59d0eaae70da846043fb79a0a02ff0c",
@@ -11559,6 +12077,16 @@
           "offset": 360,
           "before": "d8788f",
           "after": "5aca8e"
+        },
+        {
+          "offset": 280,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 360,
+          "before": "5aca8e",
+          "after": "db1b8f"
         }
       ],
       "build_metadata": {
@@ -11567,12 +12095,12 @@
           {
             "offset": 280,
             "before": "a8d88257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 360,
             "before": "fd098f00",
-            "after": "5aca8e00"
+            "after": "db1b8f00"
           }
         ]
       }
@@ -11580,7 +12108,7 @@
     {
       "tree": "cpl",
       "path": "nvDispSR.dll",
-      "sha256": "b00b0216438b4b0e0af238d85d8c84f813312ebff3f7b234a9de9dd0e368aacc",
+      "sha256": "109555b2752e9ca123fd3e501af7b87fb3d3adf9527e1ff30acd9bba4b7726dd",
       "size": 10807232,
       "source": "nvDispSR.dll",
       "source_sha256": "48b8723efe276f95bb5a373f5c9e1a3765aca43e616052110b8a633a4806c7d3",
@@ -12065,6 +12593,16 @@
           "offset": 280,
           "before": "7138",
           "after": "f289"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "f289",
+          "after": "73db"
         }
       ],
       "build_metadata": {
@@ -12073,12 +12611,12 @@
           {
             "offset": 200,
             "before": "3ed78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "2bc8a500",
-            "after": "f289a500"
+            "after": "73dba500"
           }
         ]
       }
@@ -12086,7 +12624,7 @@
     {
       "tree": "cpl",
       "path": "nvGameS.dll",
-      "sha256": "2730ffa2f7342f6657d2c7e31f8a07fe9824570b1105f9faad4beb1960053cdb",
+      "sha256": "a75f370207dd2384af5d3f5e86b3488ba030feb1ed3b5bdd5557d41aba775846",
       "size": 9887288,
       "source": "nvGameS.dll",
       "source_sha256": "73314e584d829167833d0a6a1dda0d1c83fcc6e1560514ccbb938a7b62b302af",
@@ -12151,6 +12689,16 @@
           "offset": 408,
           "before": "9f8a",
           "after": "20dc"
+        },
+        {
+          "offset": 328,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 408,
+          "before": "20dc",
+          "after": "a22d"
         }
       ],
       "build_metadata": {
@@ -12159,12 +12707,12 @@
           {
             "offset": 328,
             "before": "f0d88257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 408,
             "before": "0c1c9700",
-            "after": "20dc9700"
+            "after": "a22d9700"
           }
         ]
       }
@@ -12172,7 +12720,7 @@
     {
       "tree": "cpl",
       "path": "nvGameSR.dll",
-      "sha256": "5c66ee62a505c3b9c63f2caf6af1cbbd0c8043279a399232acfc2ef21e6b66b9",
+      "sha256": "ad8d1fe322010059bd915cd698824c96ab8e626bb33a6f7ca1058c8ca3cead22",
       "size": 11511232,
       "source": "nvGameSR.dll",
       "source_sha256": "52e81b3de6ce8a27d085981ee1f6fc308dd15b20ce272952b467b5bffb4ce7a5",
@@ -12657,6 +13205,16 @@
           "offset": 280,
           "before": "6115",
           "after": "e266"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "e266b0",
+          "after": "64b8af"
         }
       ],
       "build_metadata": {
@@ -12665,12 +13223,12 @@
           {
             "offset": 200,
             "before": "3fd78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "1ca5b000",
-            "after": "e266b000"
+            "after": "64b8af00"
           }
         ]
       }
@@ -12678,7 +13236,7 @@
     {
       "tree": "cpl",
       "path": "nvMccsS.dll",
-      "sha256": "b2b6c84e8de6176e62ed161529ec3c47014d477ee60f8cd5d6c0d5df8d377fef",
+      "sha256": "ce68f70774710d7cc2ddd816b1f92d44c7f9e7324c5bb44e7f1adbd9436524d4",
       "size": 266808,
       "source": "nvMccsS.dll",
       "source_sha256": "20d2cb3207957587fe69889b58e75ffa9742fb62e63131a74c0218c7897ffe12",
@@ -12743,6 +13301,16 @@
           "offset": 352,
           "before": "44f8",
           "after": "c649"
+        },
+        {
+          "offset": 272,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 352,
+          "before": "c649",
+          "after": "479b"
         }
       ],
       "build_metadata": {
@@ -12751,12 +13319,12 @@
           {
             "offset": 272,
             "before": "42d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 352,
             "before": "03880400",
-            "after": "c6490400"
+            "after": "479b0400"
           }
         ]
       }
@@ -12764,7 +13332,7 @@
     {
       "tree": "cpl",
       "path": "nvMccsSR.dll",
-      "sha256": "1c85636743868b13586e08f2d00ed7b5639678edf20b3b375915ee335a27c820",
+      "sha256": "c4a4823d140af0c02cc440ace9ec4651a7a486d6043b1a3944b8e4e5a246e9e5",
       "size": 465976,
       "source": "nvMccsSR.dll",
       "source_sha256": "2c01f1c24277c3c2895594773fbbd97c39a22e159d955a1b7a1ec9ca8132cce9",
@@ -13249,6 +13817,16 @@
           "offset": 280,
           "before": "9a68",
           "after": "1bba"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "1bba07",
+          "after": "9c0b08"
         }
       ],
       "build_metadata": {
@@ -13257,12 +13835,12 @@
           {
             "offset": 200,
             "before": "30d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "46f80700",
-            "after": "1bba0700"
+            "after": "9c0b0800"
           }
         ]
       }
@@ -13270,7 +13848,7 @@
     {
       "tree": "cpl",
       "path": "nvMoblS.dll",
-      "sha256": "d45a4500e5a3854bef404facdaf54259110eb7eb0d0944ea3d93d5746c35a96c",
+      "sha256": "4747af7e22e0e66d0f5d04126388752d130df740015ad62183840052d8a0c76f",
       "size": 2991552,
       "source": "nvMoblS.dll",
       "source_sha256": "15c395380318379b11ae526dd8e421a3965db9dd865dbfaa43ee9b968a969d3d",
@@ -13335,6 +13913,16 @@
           "offset": 360,
           "before": "05ca2d",
           "after": "861b2e"
+        },
+        {
+          "offset": 280,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 360,
+          "before": "861b",
+          "after": "076d"
         }
       ],
       "build_metadata": {
@@ -13343,12 +13931,12 @@
           {
             "offset": 280,
             "before": "d5d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 360,
             "before": "565a2e00",
-            "after": "861b2e00"
+            "after": "076d2e00"
           }
         ]
       }
@@ -13356,7 +13944,7 @@
     {
       "tree": "cpl",
       "path": "nvMoblSR.dll",
-      "sha256": "133203605856cb3ad15db4db3ded446f1e99b279ffd78cd1cae726760a8ddd28",
+      "sha256": "f91864e7cf7b51144e5ef6590c53008dd5497d999e2b8f26a8dcfe1bbf872a7b",
       "size": 2859456,
       "source": "nvMoblSR.dll",
       "source_sha256": "5cb0465b8cbea31c4d54c815b26c46497b484c197f20257004e88ffc8739ca99",
@@ -13841,6 +14429,16 @@
           "offset": 280,
           "before": "8a45",
           "after": "0b97"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "0b972c",
+          "after": "8de82b"
         }
       ],
       "build_metadata": {
@@ -13849,12 +14447,12 @@
           {
             "offset": 200,
             "before": "30d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "37d52b00",
-            "after": "0b972c00"
+            "after": "8de82b00"
           }
         ]
       }
@@ -13871,7 +14469,7 @@
     {
       "tree": "cpl",
       "path": "nvSvS.dll",
-      "sha256": "02d9b3964f44572218a5b341239ea792093b5162d889afae3331c616f24e35db",
+      "sha256": "260a04f531d447e1f575cd75864e0e7f73bd096fdcd2c288c766ed2d53c9ee36",
       "size": 3391544,
       "source": "nvSvS.dll",
       "source_sha256": "4b50970eb40bd5362a3a4f44befd00dfdfe939eafc3e12e1e81b4772b1e9b5a0",
@@ -13936,6 +14534,16 @@
           "offset": 368,
           "before": "8067",
           "after": "01b9"
+        },
+        {
+          "offset": 288,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 368,
+          "before": "01b9",
+          "after": "830a"
         }
       ],
       "build_metadata": {
@@ -13944,12 +14552,12 @@
           {
             "offset": 288,
             "before": "f8d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 368,
             "before": "f5f73300",
-            "after": "01b93400"
+            "after": "830a3400"
           }
         ]
       }
@@ -13957,7 +14565,7 @@
     {
       "tree": "cpl",
       "path": "nvSvSR.dll",
-      "sha256": "f0b0daefb234de20747ad9e92bc1507d3e31aa53974a73c2b062c04fa6e20558",
+      "sha256": "af0bd25c4d0debb000faee75d51decddc59b496fe38c8a8fe8170892e4b01df3",
       "size": 1929152,
       "source": "nvSvSR.dll",
       "source_sha256": "9c076943ca6ded31f31eeda1a58ba0e21ac069dc4d686d8d32ba43028d48dfae",
@@ -14022,6 +14630,16 @@
           "offset": 280,
           "before": "8a9e",
           "after": "0bf0"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "0bf01d",
+          "after": "8c411e"
         }
       ],
       "build_metadata": {
@@ -14030,12 +14648,12 @@
           {
             "offset": 200,
             "before": "39d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "3f2e1e00",
-            "after": "0bf01d00"
+            "after": "8c411e00"
           }
         ]
       }
@@ -14052,7 +14670,7 @@
     {
       "tree": "cpl",
       "path": "nvViTvS.dll",
-      "sha256": "fa793a3ee0f56bae6fa0792c5489655846ffd14655b3d296c4d1b739774b20e2",
+      "sha256": "d3c33e298609a96bf910b37340c98a915b0713bbe8609b8e3f65cc20e2b4dd4e",
       "size": 5707832,
       "source": "nvViTvS.dll",
       "source_sha256": "be102ef0fe4ab07a0474857fd27252e27cbc44e4b2247831c23a8602794941b0",
@@ -14117,6 +14735,16 @@
           "offset": 384,
           "before": "cfdc",
           "after": "512e"
+        },
+        {
+          "offset": 304,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 384,
+          "before": "512e",
+          "after": "d27f"
         }
       ],
       "build_metadata": {
@@ -14125,12 +14753,12 @@
           {
             "offset": 304,
             "before": "24d88257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 384,
             "before": "706d5700",
-            "after": "512e5700"
+            "after": "d27f5700"
           }
         ]
       }
@@ -14138,7 +14766,7 @@
     {
       "tree": "cpl",
       "path": "nvViTvSR.dll",
-      "sha256": "318f2072fd78574f86ace1323381b5f64221137b4f8f1220c9718c52de6a02b5",
+      "sha256": "1cb35ce325c89c5505e4c1a9f76a2a509e9c2c2625572d540c2301edba40794c",
       "size": 4108344,
       "source": "nvViTvSR.dll",
       "source_sha256": "65282927a7ce5aa1a3dd529a8b41155758a66664290bf9baa76157c593be580d",
@@ -14623,6 +15251,16 @@
           "offset": 280,
           "before": "4ec63e",
           "after": "cf173f"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "cf17",
+          "after": "5069"
         }
       ],
       "build_metadata": {
@@ -14631,12 +15269,12 @@
           {
             "offset": 200,
             "before": "30d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "fa553f00",
-            "after": "cf173f00"
+            "after": "50693f00"
           }
         ]
       }
@@ -14644,7 +15282,7 @@
     {
       "tree": "cpl",
       "path": "nvWsS.dll",
-      "sha256": "dd22dce74485a5fde43166e503c670d99b82a25310f3074aacb9cf645a86bfeb",
+      "sha256": "b1ba6f3bf4ad8642876c6e6e7f7dcdeba4f11bcc5a7042b06b2a2f24baf6c7c8",
       "size": 9614336,
       "source": "nvWsS.dll",
       "source_sha256": "ad8c1fd98dce391621a902a4c9785405ac7a09a5771819faedadcfcec57dbe6e",
@@ -14719,6 +15357,16 @@
           "offset": 376,
           "before": "e722",
           "after": "6874"
+        },
+        {
+          "offset": 296,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 376,
+          "before": "687493",
+          "after": "eac592"
         }
       ],
       "build_metadata": {
@@ -14727,12 +15375,12 @@
           {
             "offset": 296,
             "before": "e4d88257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 376,
             "before": "48b49200",
-            "after": "68749300"
+            "after": "eac59200"
           }
         ]
       }
@@ -14740,7 +15388,7 @@
     {
       "tree": "cpl",
       "path": "nvWsSR.dll",
-      "sha256": "fbbb4c3077d7d329f64feb4c99098e26b46b9a296f844196415effc3b66450b4",
+      "sha256": "031f6a82c0077f5220a9c5d07f3c914b1d2efa72becb2591ce82224095c03036",
       "size": 9230904,
       "source": "nvWsSR.dll",
       "source_sha256": "759f3996c8f5ef4162310f19b28461b9505c6e76b8c4caca91985a04c662452e",
@@ -15225,6 +15873,16 @@
           "offset": 280,
           "before": "94ec8c",
           "after": "153e8d"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "153e",
+          "after": "968f"
         }
       ],
       "build_metadata": {
@@ -15233,12 +15891,12 @@
           {
             "offset": 200,
             "before": "39d78257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "497c8d00",
-            "after": "153e8d00"
+            "after": "968f8d00"
           }
         ]
       }
@@ -15246,7 +15904,7 @@
     {
       "tree": "cpl",
       "path": "nvcolor.exe",
-      "sha256": "e8813536974ec8ac5dbd2466e88cb53e5327d8eecd63b69eed7862a45d10a8d4",
+      "sha256": "b4051db9898ad6e13a1a512c29ac4e96070d6056e539b9e88f26600c77e27f44",
       "size": 149952,
       "source": "nvcolor.exe",
       "source_sha256": "013ee233c722292c0b30bf46d38ec93066bbbda791331c9ca23569622df34cbc",
@@ -15321,6 +15979,16 @@
           "offset": 328,
           "before": "c574",
           "after": "46c6"
+        },
+        {
+          "offset": 248,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 328,
+          "before": "46c602",
+          "after": "c71703"
         }
       ],
       "build_metadata": {
@@ -15329,12 +15997,12 @@
           {
             "offset": 248,
             "before": "a9ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 328,
             "before": "eafb0200",
-            "after": "46c60200"
+            "after": "c7170300"
           }
         ]
       }
@@ -15369,7 +16037,7 @@
     {
       "tree": "cpl",
       "path": "nvcpl.dll",
-      "sha256": "ef7c582626bb18b4ce83723a484fa61dd5f78f1879c66ad70587ac237997af41",
+      "sha256": "e76790e8e20b876841048e75537611803cb04a39bd4cac4a3d9feab31dfa5d9d",
       "size": 15236544,
       "source": "nvcpl.dll",
       "source_sha256": "7f7622884813319fdd987c9c74abf2cbe2a7c3d118afbfd880dbab2e441ac4ce",
@@ -15489,6 +16157,16 @@
           "offset": 368,
           "before": "67b3e8",
           "after": "e804e9"
+        },
+        {
+          "offset": 288,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 368,
+          "before": "e804",
+          "after": "6956"
         }
       ],
       "build_metadata": {
@@ -15497,12 +16175,12 @@
           {
             "offset": 288,
             "before": "e7ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 368,
             "before": "ca3ae900",
-            "after": "e804e900"
+            "after": "6956e900"
           }
         ]
       }
@@ -16311,7 +16989,7 @@
     {
       "tree": "cpl",
       "path": "nvmccs.dll",
-      "sha256": "86071232860e129deb153ee38d4cba0e2623120680327a91165e1cc91ced609c",
+      "sha256": "eb1e3abcec3f6bcfe446348c965ada4bd8a7daeb12ac6e2df07373758d0b2f91",
       "size": 282168,
       "source": "nvmccs.dll",
       "source_sha256": "e01dbafa6849d417248653ce11420c9cf381e2c2bad43c159c0362772a71a607",
@@ -16376,6 +17054,16 @@
           "offset": 344,
           "before": "52e704",
           "after": "d33805"
+        },
+        {
+          "offset": 264,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 344,
+          "before": "d33805",
+          "after": "558a04"
         }
       ],
       "build_metadata": {
@@ -16384,12 +17072,12 @@
           {
             "offset": 264,
             "before": "ffce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 344,
             "before": "ce6e0400",
-            "after": "d3380500"
+            "after": "558a0400"
           }
         ]
       }
@@ -16397,7 +17085,7 @@
     {
       "tree": "cpl",
       "path": "nvmccsrs.dll",
-      "sha256": "5db8242e271dda66a6476858263059d86c9189b71a316d6faa8a477f7f31ce18",
+      "sha256": "7b1d38118dde670f2a928803eefdaaf90c19cea6b23a0f75f255ea1689042c13",
       "size": 53304,
       "source": "nvmccsrs.dll",
       "source_sha256": "ece3b6aa82a5eb2b75574ec4a63f4aa24d484f5a83d9bf016136cd61a8459c59",
@@ -16867,6 +17555,16 @@
           "offset": 280,
           "before": "6dac01",
           "after": "effd00"
+        },
+        {
+          "offset": 200,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 280,
+          "before": "effd00",
+          "after": "704f01"
         }
       ],
       "build_metadata": {
@@ -16875,12 +17573,12 @@
           {
             "offset": 200,
             "before": "00cf8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 280,
             "before": "ea330100",
-            "after": "effd0000"
+            "after": "704f0100"
           }
         ]
       }
@@ -16888,7 +17586,7 @@
     {
       "tree": "cpl",
       "path": "nvmctray.dll",
-      "sha256": "39e3e0d77dbfeff4e64dc9c5045cdc89b47a8acfa0a6b64eeffe3b9eaa82f8ba",
+      "sha256": "c834e8d3ea7aff132be20dbdf45d86c58ec63cdd805b98964dfa9c1f8781a8c4",
       "size": 383544,
       "source": "nvmctray.dll",
       "source_sha256": "66be6ed67aaaf48afc030c079d033245054a614f3747a0099221a27b83f97eb2",
@@ -16953,6 +17651,16 @@
           "offset": 328,
           "before": "3b7f",
           "after": "bcd0"
+        },
+        {
+          "offset": 248,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 328,
+          "before": "bcd0",
+          "after": "3e22"
         }
       ],
       "build_metadata": {
@@ -16961,12 +17669,12 @@
           {
             "offset": 248,
             "before": "f6ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 328,
             "before": "ae060600",
-            "after": "bcd00600"
+            "after": "3e220600"
           }
         ]
       }
@@ -17505,7 +18213,7 @@
     {
       "tree": "cpl",
       "path": "nvsvc32.exe",
-      "sha256": "72d28860a59197a8595c642b8e168f2a3f229e614c2907b79f049c93e17e2e5f",
+      "sha256": "507ccff0e0f7a186f5c1116df212927a93d3e9b18986069c47629993bf429c02",
       "size": 312768,
       "source": "nvsvc32.exe",
       "source_sha256": "8f8f3f610bfbf9c325bd06af2da101bfce19d1e176d253543ba33e3c2fdd1c74",
@@ -17580,6 +18288,16 @@
           "offset": 328,
           "before": "3924",
           "after": "ba75"
+        },
+        {
+          "offset": 248,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 328,
+          "before": "ba7505",
+          "after": "3cc704"
         }
       ],
       "build_metadata": {
@@ -17588,12 +18306,12 @@
           {
             "offset": 248,
             "before": "fbce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 328,
             "before": "b0ab0500",
-            "after": "ba750500"
+            "after": "3cc70400"
           }
         ]
       }
@@ -17601,7 +18319,7 @@
     {
       "tree": "cpl",
       "path": "nvwddi.dll",
-      "sha256": "cb958afffc6f45d956b35a6d6bf20401ef6368a1dd78213bbd65b15745767c86",
+      "sha256": "81a5d1a01c1f373a575a15376b310933ba9fa82b3d0bd34f73fa2d00e0b0414f",
       "size": 54272,
       "source": "nvwddi.dll",
       "source_sha256": "f0c51ceaaf57c1a24fc459e8a364278d772af387b28239575e38a462d3d5170f",
@@ -17671,6 +18389,16 @@
           "offset": 320,
           "before": "8454",
           "after": "05a6"
+        },
+        {
+          "offset": 240,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 320,
+          "before": "05a601",
+          "after": "87f700"
         }
       ],
       "build_metadata": {
@@ -17679,12 +18407,12 @@
           {
             "offset": 240,
             "before": "9acd8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 320,
             "before": "9bda0000",
-            "after": "05a60100"
+            "after": "87f70000"
           }
         ]
       }
@@ -17980,7 +18708,7 @@
     {
       "tree": "cpl",
       "path": "oemdspif.dll",
-      "sha256": "ae32857296ba5bef2cb74a3c21d4541b8f5bb22cf397bd214cdc5f968f993e3b",
+      "sha256": "5be84b65e4ae6f35c1bab875b8db5d96a7f8f5287d17a02c94b37effdd0486a8",
       "size": 139712,
       "source": "oemdspif.dll",
       "source_sha256": "16e8774c68af59da142b8c1df4481548585c981a192467cecd5038d7fec87634",
@@ -18055,6 +18783,16 @@
           "offset": 344,
           "before": "e827",
           "after": "6979"
+        },
+        {
+          "offset": 264,
+          "before": "c085c7",
+          "after": "40d7c8"
+        },
+        {
+          "offset": 344,
+          "before": "6979",
+          "after": "eaca"
         }
       ],
       "build_metadata": {
@@ -18063,12 +18801,12 @@
           {
             "offset": 264,
             "before": "f9ce8257",
-            "after": "c085c76a"
+            "after": "40d7c86a"
           },
           {
             "offset": 344,
             "before": "5daf0200",
-            "after": "69790200"
+            "after": "eaca0200"
           }
         ]
       }
@@ -18192,23 +18930,23 @@
     },
     {
       "tree": "package",
-      "path": "Documentation/GP107-experimental.md",
+      "path": "Documentation/GP107-support.md",
       "kind": "template",
-      "template": "package/Documentation/GP107-experimental.md",
-      "size": 3726,
-      "sha256": "607855ed2bd3c64fcc0da169d07d5288bf14fecf429b3ef71abcefa6aacd50a7"
+      "template": "package/Documentation/GP107-support.md",
+      "size": 3310,
+      "sha256": "0e289d23dd6edbe652e2d2a194b8a83e2ac36055828f63ec43307cb07057fc05"
     },
     {
       "tree": "package",
       "path": "Documentation/Compute-update.md",
       "kind": "template",
       "template": "package/Documentation/Compute-update.md",
-      "size": 1611,
-      "sha256": "8df09d955d46089ab1de510a3ef4b6ca0c61f7a37a63eccf3f608b65bf2149f9"
+      "size": 1570,
+      "sha256": "7ce63b1e1080a5471273d72990b0d61ea83d090402d81fcd7f3bb08f0aab289e"
     }
   ],
   "reproduction": "Runtime files and nested Control Panel members are exact; SFX archives and checksum listing are regenerated.",
-  "release_title": "Forceware 382.69 (10-8-2026)",
-  "build_date": "10/08/2026",
-  "revision": "Validated HDMI and DisplayPort scaling"
+  "release_title": "Forceware 382.69 (10-9-2026)",
+  "build_date": "10/09/2026",
+  "revision": "GP107 initialization and complete desktop GPU identification"
 }

@@ -42,8 +42,8 @@ register_gp107:
  mov eax,[edx+\off]
  mov [esi+\off],eax
  .endr
- set_callback 0x48,gp107_fecs
- set_callback 0x64,gp107_gpccs
+ set_callback 0x48,gp107_fecs_boot
+ set_callback 0x64,gp107_gpccs_boot
  set_callback 0x74,gp107_gr
  # Keep XP GP106's legacy-format class/engine tables: equivalent GP107 engine
  # counts/classes, excluding unrelated class additions in newer Windows RM.
@@ -53,7 +53,7 @@ register_gp107:
  .endr
  push esi
  push 0x3b
- call register_family
+ call gp107_register_finish
  pop edi
  pop esi
  pop ebx

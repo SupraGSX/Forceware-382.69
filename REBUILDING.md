@@ -2,7 +2,7 @@
 
 # Rebuilding Forceware 382.69
 
-This guide documents the **10-8-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
+This guide documents the **10-9-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
 
 Start with the reconstruction commands, then use the implementation sections to review the changes by subsystem.
 
@@ -32,7 +32,7 @@ Start with the reconstruction commands, then use the implementation sections to 
 | [verify_sources.py](verify_sources.py) | Compiles the retained patch blocks and HDMI/DisplayPort scaling and Control Panel routines, then independently verifies the OpenGL display-class patch. |
 | [sources/opengl-display-class.py](sources/opengl-display-class.py) | Guarded recipe for adding the missing OpenGL display class to the preceding Forceware ICD. |
 | [templates/](templates/) | Final INF, installer configuration and text files used during reconstruction. |
-| [desktop-gpus.json](desktop-gpus.json) | All 50 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
+| [desktop-gpus.json](desktop-gpus.json) | All 57 Maxwell/Pascal desktop INF records, including subsystem-qualified OEM entries. |
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
@@ -93,7 +93,7 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-8-2026).exe
+  Forceware 382.69 (10-9-2026).exe
   Forceware 382.69/
   rebuild-result.json
   work/
@@ -240,19 +240,23 @@ GTX 1080 Ti tests passed glxgears and GPU Caps Viewer 1.37 Simple Mesh, Furry Cu
 
 The reproduced GTX 1080 Ti failure was a missing internal GPU name, not a missing CUDA compiler or PhysX implementation. RM command `0x20800111` reached short-name lookup `0x557A80`; PCI ID `1B06` was absent from the 640-record table, so lookup returned `0x56`. CUDA initialization returned 100, OpenCL found no platform, and FluidMark used CPU PhysX.
 
-The final table retains all 640 original records and appends accurate names for ten IDs: `1B02`, `1B06`, `1B83`, `1C04`, `1C06`, `1C31`, `1C83`, `1CB1`, `1CB2`, `1CB3`. Seven table references and three loop bounds are changed, with 1,300 additional HIGHLOW relocation entries for the copied pointers. Unknown devices remain rejected; existing successful lookups are unchanged.
+The final table retains all 640 original records and appends accurate names for ten IDs: `1B02`, `1B06`, `1B83`, `1C04`, `1C06`, `1C31`, `1C83`, `1CB1`, `1CB2`, `1CB3`. Seven table references and three loop bounds are changed, with 1,300 additional HIGHLOW relocation entries for the copied pointers. Unknown devices remain rejected. Nine existing placeholder records are additionally corrected as described below.
 
-[sources/gpu-names.py](sources/gpu-names.py) independently reconstructs the name-only correction from the exact 10-4 miniport. Its separate [internal GPU list](sources/compute-gpus.json) retains GP107 while [desktop-gpus.json](desktop-gpus.json) describes current INF eligibility. `patches.json` contains the complete stock-to-final edits, including subsequent build metadata. The GP107 code/resources and PhysX installer IDs remain intact, but the main display INF excludes GP107 following reported Code 10 failures.
+[sources/gpu-names.py](sources/gpu-names.py) reconstructs the original name-table extension from the exact 10-4 miniport. The October 9 build also replaces nine existing generic names with accurate product names for `1B30`, `1B82`, `1B84`, `1BB0`, `1BB1`, `1C30`, `1C81`, `1C82` and `1CB6`. Only those records' two string pointers change; their existing HIGHLOW relocations are retained. [gpu-name-corrections.json](sources/gpu-name-corrections.json) lists the records, and `verify_sources.py` checks their final strings and relocations. Native lookup tests exercise all 650 records at preferred and relocated addresses. The [internal GPU list](sources/compute-gpus.json) and [display INF list](desktop-gpus.json) cover all 57 included desktop records; `patches.json` contains the complete stock-to-final recipe.
 
 On GTX 1080 Ti the name-only correction passed CUDA context create/synchronize/destroy, OpenCL kernel compilation/execution with 8,192 checked GPU results, GPU PhysX FluidMark rendering, and 64 hardware D3D9 draw/readbacks. The isolated native lookup harness passed 4,872 calls including original records and preferred/relocated images. Other listed GPUs were checked statically, not individually hardware-tested. See [compute update](templates/package/Documentation/Compute-update.md).
 
 <a id="gp107-registration-and-graphics-contexts"></a>
 
-### 2.5 GP107 experiment and exclusion
+### 2.5 GP107 initialization
 
-The GP107 addition retains the existing GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with its own 82-pointer table. Matched XP callbacks, GP107 context constants and intact 376.84 graphics resources are installed through the added block at `0xD07C40`. Existing firmware/secure initialization and other GPU family tables are preserved. Newer-driver private offsets are not reused.
+The GP107 addition retains GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with a separate 82-pointer table. Matched XP callbacks, GP107 context constants and intact 376.84 graphics resources are installed through the block at `0xD07C40`. Newer-driver private offsets are not reused.
 
-See [GP107 implementation and limitations](templates/package/Documentation/GP107-experimental.md) and [assembly source](sources/gp107/gp107.s). The experimental block passed offline execution checks; testers subsequently reported GP107 Code 10, so its display INF entries are withheld.
+The October 9 correction adds matched 512-byte FECS/GPCCS bootloaders through GP107-only constructor wrappers at `0xD6A4E0`. The existing GP107 application/signature resources and secure-validation path remain intact. XP's staged boot descriptor provides its original fields and zero-filled argument slots expected by these bootloaders. A separate GPU-limit callback at `0xD6A9EB` supplies GP107 architectural limits, including one PPC per GPC and three TPCs; native fuse discovery and topology generation remain unchanged. It replaces only slot `0xA4` of the otherwise preserved XP GPU constructor.
+
+The DisplayPort default hook at `0x448906` selects HBR2 and lower attempts only for architecture `0x130`, implementation `7`. This is a conservative GP107 workaround, not a repair of HBR3 signaling. Other chips retain the existing default; actual training, receiver checks and depth/bandwidth validation still govern admission.
+
+See [GP107 implementation and limits](templates/package/Documentation/GP107-support.md) and [assembly sources](sources/gp107/gp107.s). `verify_sources.py` checks the registration/context, graphics-boot, chip-limit and DisplayPort blocks. GTX 1050 Ti passed initialization and rendering/compute tests; the restored entries for other desktop GP107 boards remain untested individually.
 
 <a id="7-displayport-negotiate-the-link-then-choose-a-compatible-output-depth"></a>
 
@@ -366,7 +370,7 @@ The original CTA parser zeroes its 107-byte output before parsing; the display r
 
 In the display DLL, the patch at `0x4111F` queries HDMI status. A positive GPU/output-and-sink HDMI result retains single-link TMDS behavior; other connections retain the original 165-MHz DVI comparison.
 
-The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. GP107 retains that internal family check but is excluded from the display INF. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
+The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
 
 - Valid digital EDID, checksum/bounds checks and legacy HDMI identity.
 - Sink-advertised TMDS limits and source/board/resource-manager restrictions.
@@ -456,7 +460,7 @@ Both changes are installed with the driver. UI visibility and EDID operations we
 
 The complete stock installer supplies setup, HD Audio, PhysX, nView and the other retained components.
 
-The desktop INF work retained the selected legacy desktop entries and added/retained 50 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile, GP100, GP107 and GP108 GPUs are excluded. Experimental GP107 initialization and its internal names remain in the binary; the normal display INF no longer matches those cards.
+The desktop INF work retained the selected legacy desktop entries and added/retained 57 Maxwell/Pascal records. Subsystem-qualified desktop OEM aliases are kept specific rather than broadly matching device IDs also used by mobile products. Mobile, GP100 and GP108 GPUs are excluded. All seven eligible desktop GP107 IDs are included; GTX 1050 Ti has been hardware tested, while the remaining GP107 models have not.
 
 Additional models are listed in the [README](README.md); exact device and subsystem matches are in [desktop-gpus.json](desktop-gpus.json) and the [final INF](templates/package/Display.Driver/nv4_dispi.inf).
 
@@ -501,7 +505,7 @@ HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bu
 
 ### 6.4 Build dates
 
-Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/08/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/09/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
 
 These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
 
@@ -511,13 +515,13 @@ These dates identify the custom package, not a recompilation of NVIDIA's proprie
 
 | Area | Evidence | Boundary |
 |---|---|---|
-| Installation and package | October 8 NVIDIA clean install and restart on GTX 1080 Ti; 13 installed hashes, Code 0, NVAPI version and build date matched. Extraction verifies 587 package files, 469 CPL members and 63 dated metadata records. The retained and added source blocks compile to the inserted instructions. | Other boards were not individually retested. Original partitions are not exercised by clone testing. |
-| Direct3D and OpenGL | October 8: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three OpenGL display-list renders with correct pixels and no GL errors. Earlier builds passed glxgears and GPU Caps Viewer rendering tests. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
-| CUDA, OpenCL and GPU PhysX | October 6 files after display wake passed CUDA context operations and an OpenCL kernel with 8,192 checked results. October 5 passed a 60-second GPU PhysX benchmark with clean exit. Compute code and the PhysX payload are unchanged. | GPU PhysX was not repeated in the October 6 or October 8 checks; other models were not individually tested. |
-| DisplayPort | P4000/GTX 1080 Ti HBR3 ×4; GTX 980 Ti HBR2 ×4 at 3440×1440/100. Real HBR and RBR controls verified depth/capacity fallback. GTX 1080 Ti explicit 3440×1440/175 RGB8 had a confirmed normal picture. October 8 fullscreen 640×480 scaled to 1920×1440 inside native 3440×1440/60. The earlier ten-minute display-sleep test recovered the saved link and passed rendering. | Lower-rate tests used capable GPUs, not a separate DP1.1 board. High-refresh native-mode success does not imply automatic high-refresh scaling or whole-system suspend support. |
+| Installation and package | October 9 NVIDIA clean install and restart on GTX 1050 Ti; all 12 checked module hashes, Code 0, NVAPI version and build date matched. Extraction verifies 587 package files, 469 CPL members and 63 dated metadata records; 24 compiled source blocks match. Native tests passed 572 GP107 ABI checks, 102 chip identities at preferred/relocated addresses and 4,944 name-lookup calls. | Other boards were not retested with this package. Native code tests do not replace hardware validation. |
+| Direct3D and OpenGL | October 9 GTX 1050 Ti: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three NVIDIA OpenGL display-list renders with correct pixels and no GL errors. The same checks passed on GTX 1080 Ti with October 8. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
+| CUDA, OpenCL and GPU PhysX | October 9 GTX 1050 Ti clean install: CUDA context operations, an OpenCL GPU kernel with 8,192 checked results, and a 60-second fullscreen 1280×720 GPU PhysX benchmark with 30,000 particles, 10,226 simulations and clean shutdown. Correct GPU names were confirmed. | Enable GPU PhysX in Control Panel and the application. An earlier same-process CPU-to-GPU change froze FluidMark; fresh GPU-selected runs pass, but that transition's cause remains unproven. Other compute applications and GPU models were not individually retested. |
+| DisplayPort | P4000/GTX 1080 Ti HBR3 ×4; GTX 980 Ti HBR2 ×4 at 3440×1440/100. Real HBR and RBR controls verified depth/capacity fallback. GTX 1080 Ti explicit 3440×1440/175 RGB8 had a confirmed normal picture. October 8 fullscreen 640×480 scaled to 1920×1440 inside native 3440×1440/60. The earlier ten-minute GTX 1080 Ti display-sleep test recovered the saved link and passed rendering. The GP107 candidate passed GTX 1050 Ti HBR2 ×4 at native 3440×1440/60, receiver-lock checks and a 20-second display-sleep cycle. | Lower-rate tests used capable GPUs, not a separate DP1.1 board. High-refresh native-mode success does not imply automatic high-refresh scaling or whole-system suspend support. |
 | HDMI | October 7 automatic scaling reached 3440×1440/~100 at 543.5 MHz, with successful SCDC setup, correct viewport and a confirmed normal picture. Injected setup failures exercised bounded retries and safe output; later scaling controls restored the prior low-clock desktop. | The 594 MHz boundary passes executable policy tests, but physical automatic output at that exact clock remains unverified. Later sink/cable failures and all connector combinations are not covered. |
 | Control Panel and EDID | DisplayPort classification/custom-mode workflow compared with 355.98. October 8 Scaling/Overscan pages loaded; fixed-aspect Apply and native fullscreen viewport passed. Topology, Manage EDID and the required API path were exercised separately. | Overscan resizing is timing-dependent. Physical DVI and every workstation-only feature were not validated. |
-| Other GPUs | Earlier P4000 native XP acceleration, games and package installation were user-reported working. GP107 testers still reported Code 10, so its display INF entries remain excluded. | INF inclusion alone is not individual model validation. Experimental GP107 code remains in the binary without a working-support claim. |
+| Other GPUs | Earlier P4000 native XP acceleration, games and package installation were user-reported working. GTX 1050 Ti now passes initialization and rendering/compute checks with the corrected GP107 implementation. | INF inclusion alone is not individual model validation. Other GP107 boards have not been individually tested. GP107 defaults to HBR2; HBR3 physical output remains unresolved. |
 
 For a new system, verify installed hashes, low-resolution output and hardware D3D9 first. Use bounded high-rate trials with a known fallback, check actual link/depth and receiver status, and confirm the physical picture. Then test intended games, audio, hotplug and longer sessions.
 
@@ -545,6 +549,8 @@ Under `drivers/gpu/drm/nouveau/nvkm/engine/gr/`, the explicitly compared files w
 | Context accounting | Some bundle/page-pool dimensions remain shared. | Different token/attribute/alpha counts and graphics-preemption allocation parameters. |
 
 These details guided searches for distinctive register sequences in the Windows binaries and supported choosing 368.81. They did not justify treating a GP102 context as an unchanged GM200 context. [GM200 source](https://github.com/torvalds/linux/blob/adc218676eef25575469234709c2d87185ca223a/drivers/gpu/drm/nouveau/nvkm/engine/gr/gm200.c), [GP104 source](https://github.com/torvalds/linux/blob/adc218676eef25575469234709c2d87185ca223a/drivers/gpu/drm/nouveau/nvkm/engine/gr/gp104.c), [GP102 source](https://github.com/torvalds/linux/blob/adc218676eef25575469234709c2d87185ca223a/drivers/gpu/drm/nouveau/nvkm/engine/gr/gp102.c).
+
+GP107 retains those shared engine foundations but has distinct firmware and context accounting. `engine/gr/gp107.c` explicitly selects one PPC per GPC; `engine/gr/ctxgp107.c` supplies GP107 attribute/alpha and preemption constants. Together with `engine/device/base.c`, these were useful guides for identifying the matching Windows resource, limit-query and context callbacks. The XP implementation retains its own topology builder, fuse discovery and shader compiler. [GP107 GR](https://github.com/torvalds/linux/blob/adc218676eef25575469234709c2d87185ca223a/drivers/gpu/drm/nouveau/nvkm/engine/gr/gp107.c), [GP107 context](https://github.com/torvalds/linux/blob/adc218676eef25575469234709c2d87185ca223a/drivers/gpu/drm/nouveau/nvkm/engine/gr/ctxgp107.c).
 
 ### Firmware, command submission and memory management
 
@@ -597,25 +603,25 @@ Key final SHA-256 values:
 
 ```text
 Display.Driver/nv4_mini.sys
-02a4433a11e192bcac7051f8433510fd2ad4a21d0cfa0204520ba0a17d3fb800
+3268a60efe545a58a81418bb8d1fd31e9133b2756b33651057cae35be84cb78a
 
 Display.Driver/nv4_disp.dll
-476cd4001c8a8f5778d984d77aaa124774811754fbc839b5590ed3758241e30a
+f778b29970addcf031e6a5972297f91692449929641a04f84e3523656d0543e6
 
 Display.Driver/nvoglnt.dll
-675ba45e88c1762b305054a41c395127033e359eccda49b0eaaca0152a73156d
+4f17515352c43882c803f23c054d8ffc569843162fba0b3147d00080d9180e16
 
 Display.Driver/nvapi.dll
-425f30b4af60d91333ba56475580c93b864e1ff17f8847b03cc4ab1c4431287f
+778532459dfa51f8406bfefc9449034e62256484fec7aaf22a0fe15e0ec7e83a
 
 nvcpl.dll
-ef7c582626bb18b4ce83723a484fa61dd5f78f1879c66ad70587ac237997af41
+e76790e8e20b876841048e75537611803cb04a39bd4cac4a3d9feab31dfa5d9d
 
 nvDispS.dll
-8e6092376f755b4e14cdd02ff432f0d52bd723f298c4fd0e3974147074af5341
+9d63b0e513e31fe98dbb23a4807336e5d3e3161d86695996b30c70e0b873277a
 
 nvWsS.dll
-dd22dce74485a5fde43166e503c670d99b82a25310f3074aacb9cf645a86bfeb
+b1ba6f3bf4ad8642876c6e6e7f7dcdeba4f11bcc5a7042b06b2a2f24baf6c7c8
 ```
 
-These hashes identify the **10-8-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.
+These hashes identify the **10-9-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.

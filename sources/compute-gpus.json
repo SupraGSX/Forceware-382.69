@@ -466,7 +466,7 @@
     "die": "GP107",
     "name": "NVIDIA GeForce GTX 1050",
     "hardware_id": "PCI\\VEN_10DE&DEV_1C81",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_39",
     "install_section": "Section012"
   },
@@ -475,7 +475,7 @@
     "die": "GP107",
     "name": "NVIDIA GeForce GTX 1050 Ti",
     "hardware_id": "PCI\\VEN_10DE&DEV_1C82",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "GTX 1050 Ti hardware validated",
     "inf_string": "XPP_GPU_40",
     "install_section": "Section012"
   },
@@ -484,7 +484,7 @@
     "die": "GP107",
     "name": "NVIDIA GeForce GTX 1050",
     "hardware_id": "PCI\\VEN_10DE&DEV_1C83",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_41",
     "install_section": "Section012"
   },
@@ -493,7 +493,7 @@
     "die": "GP107",
     "name": "Quadro P1000",
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB1",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_42",
     "install_section": "Section012"
   },
@@ -502,7 +502,7 @@
     "die": "GP107",
     "name": "Quadro P600",
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB2",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_43",
     "install_section": "Section012"
   },
@@ -511,7 +511,7 @@
     "die": "GP107",
     "name": "Quadro P400",
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB3",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_44",
     "install_section": "Section012"
   },
@@ -520,7 +520,7 @@
     "die": "GP107",
     "name": "Quadro P620",
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB6",
-    "coverage": "Experimental internal record retained; display INF excluded following reported Code 10",
+    "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_45",
     "install_section": "Section012"
   }

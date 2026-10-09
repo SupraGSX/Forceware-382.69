@@ -1,0 +1,74 @@
+[
+  {
+    "device": "1B30",
+    "index": 255,
+    "short": "Quadro P6000",
+    "long": "NVIDIA Quadro P6000",
+    "old_short": "GP102GL-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1B82",
+    "index": 266,
+    "short": "GeForce GTX 1070 Ti",
+    "long": "NVIDIA GeForce GTX 1070 Ti",
+    "old_short": "GP104-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1B84",
+    "index": 267,
+    "short": "GeForce GTX 1060 3GB",
+    "long": "NVIDIA GeForce GTX 1060 3GB",
+    "old_short": "GP104-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1BB0",
+    "index": 268,
+    "short": "Quadro P5000",
+    "long": "NVIDIA Quadro P5000",
+    "old_short": "GP104GL-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1BB1",
+    "index": 269,
+    "short": "Quadro P4000",
+    "long": "NVIDIA Quadro P4000",
+    "old_short": "GP104GL-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1C30",
+    "index": 286,
+    "short": "Quadro P2000",
+    "long": "NVIDIA Quadro P2000",
+    "old_short": "GP106GL-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1C81",
+    "index": 298,
+    "short": "GeForce GTX 1050",
+    "long": "NVIDIA GeForce GTX 1050",
+    "old_short": "GP107-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1C82",
+    "index": 299,
+    "short": "GeForce GTX 1050 Ti",
+    "long": "NVIDIA GeForce GTX 1050 Ti",
+    "old_short": "GP107-A",
+    "old_long": "Graphics Device"
+  },
+  {
+    "device": "1CB6",
+    "index": 631,
+    "short": "Quadro P620",
+    "long": "NVIDIA Quadro P620",
+    "old_short": "GP107GL-A",
+    "old_long": "Graphics Device"
+  }
+]

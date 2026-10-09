@@ -103,6 +103,33 @@ def main():
         subprocess.run(['objcopy','-O','binary','-j','.text','gp107.elf','gp107.bin'],cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
     require('There are no relocations' in subprocess.check_output(['readelf','-r',str(gpdir/'gp107.elf')],text=True), 'Unexpected GP107 relocations')
     compare('gp107', (gpdir/'gp107.bin').read_bytes(), mini, 0xd07c40)
+    for stem, va in [('graphics-boot',0xd6a4e0),('chip-limits',0xd6a9a0),('dp-gp107',0xd6aa20)]:
+        with (out/'compiler.log').open('a') as log:
+            for cmd in [
+                ['as','--32',str(src/'gp107'/(stem+'.s')),'-o',stem+'.o'],
+                ['ld','-m','elf_i386','-T',str(src/'gp107'/(stem+'.ld')),stem+'.o','-o',stem+'.elf'],
+                ['objcopy','-O','binary','-j','.text',stem+'.elf',stem+'.bin']]:
+                subprocess.run(cmd,cwd=gpdir,stdout=log,stderr=subprocess.STDOUT,check=True)
+        require('There are no relocations' in subprocess.check_output(['readelf','-r',str(gpdir/(stem+'.elf'))],text=True),'Unexpected GP107 correction relocations')
+        compare('gp107/'+stem,(gpdir/(stem+'.bin')).read_bytes(),mini,va)
+    require(pe_read(data,0x448906,11)==b'\xe9'+struct.pack('<i',0xd6aa20-0x44890b)+b'\x90'*6,'GP107 DP hook mismatch')
+    # Check every corrected name record, both pointers and their HIGHLOW entries.
+    pe=struct.unpack_from('<I',data,60)[0];opt=pe+24;base=struct.unpack_from('<I',data,opt+28)[0]
+    rv,sz=struct.unpack_from('<II',data,opt+96+5*8);raw=pe_read(data,base+rv,sz);pos=0;relocs=set()
+    while pos<len(raw):
+        page,n=struct.unpack_from('<II',raw,pos);require(n>=8 and pos+n<=len(raw),'Relocation bounds')
+        for j in range(pos+8,pos+n,2):
+            v=struct.unpack_from('<H',raw,j)[0]
+            if v>>12==3:relocs.add(page+(v&4095))
+        pos+=n
+    table=struct.unpack('<I',pe_read(data,0x557a93,4))[0]
+    require(struct.unpack('<I',pe_read(data,0x557aaf,4))[0]==650*12,'Name table length')
+    for row in json.loads((src/'gpu-name-corrections.json').read_text()):
+        va=table+row['index']*12;dev,sub,short,long=struct.unpack('<HHII',pe_read(data,va,12))
+        require(dev==int(row['device'],16) and sub==0,'Name correction scope')
+        for slot,ptr,key in [(4,short,'short'),(8,long,'long')]:
+            expected=row[key].encode('ascii')+b'\0'
+            require(pe_read(data,ptr,len(expected))==expected and va+slot-base in relocs,'Name correction pointer or relocation')
     loader = importlib.util.spec_from_file_location('build_date', src/'build-date.py')
     metadata = importlib.util.module_from_spec(loader); loader.loader.exec_module(metadata)
     icd_record = next(r for r in manifest['files'] if r['path']=='Display.Driver/nvoglnt.dll')
