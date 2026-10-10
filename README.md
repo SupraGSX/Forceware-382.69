@@ -33,6 +33,7 @@ Mobile, GP100 and GP108 GPUs are excluded. GP107 support has been validated on G
 - Automatic native DisplayPort scaling requires a preferred timing matching the requested refresh. It was tested at 60 Hz and does not automatically carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh native modes remain available when supported.
 - Automatic HDMI scaling was verified at 543.5 MHz on GTX 1080 Ti. The 594 MHz ceiling is subject to GPU/monitor limits; physical output at that exact clock remains unverified.
 - Scaling choices follow native capability checks. Overscan resizing is available only for timings supported by NVIDIA's native resize implementation.
+- Driver works fine with PAE, BSODs and another bugs wasn't found after several tests
 
 See the [validation results and limits](REBUILDING.md#7-validation-and-limits) for tested configurations.
 
