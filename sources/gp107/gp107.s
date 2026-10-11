@@ -168,7 +168,10 @@ get_gpccs:
  address eax,gpccs_descriptor
  ret 4
 get_gr:
- address eax,gr_descriptor
+ jmp get_gr390
+991: pop eax
+ sub eax, OFFSET FLAT:991b
+ add eax, OFFSET FLAT:gr_descriptor
  ret 4
 
 .balign 16

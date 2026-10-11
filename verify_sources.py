@@ -113,6 +113,37 @@ def main():
         require('There are no relocations' in subprocess.check_output(['readelf','-r',str(gpdir/(stem+'.elf'))],text=True),'Unexpected GP107 correction relocations')
         compare('gp107/'+stem,(gpdir/(stem+'.bin')).read_bytes(),mini,va)
     require(pe_read(data,0x448906,11)==b'\xe9'+struct.pack('<i',0xd6aa20-0x44890b)+b'\x90'*6,'GP107 DP hook mismatch')
+    # Later graphics resources stay family-scoped; compile their XP ABI wrappers.
+    for stem, va in [('gp107',0xd6abc0),('gp102-106',0xd80d40)]:
+        target=out/('firmware-'+stem); target.mkdir()
+        for item in spec['firmware']:
+            family, role=item['label'].split(' ',1)
+            if family not in ('GP102','GP104','GP106','GP107'):continue
+            blob=data[item['target_offset']:item['target_offset']+item['size']]
+            require(digest(blob)==item['sha256'],'Graphics resource mismatch')
+            if stem=='gp107':
+                if family!='GP107' or role not in ('fecs-header','gr-bundle390'):continue
+                name='gr-bundle' if role=='gr-bundle390' else role
+            else:
+                if family=='GP107':continue
+                name=family.lower()+'-'+role
+            (target/(name+'.bin')).write_bytes(blob)
+        with (out/'compiler.log').open('a') as log:
+            for cmd in [
+                ['as','--32',str(src/'firmware-current'/(stem+'.s')),'-o','wrapper.o'],
+                ['ld','-m','elf_i386','-T',str(src/'firmware-current'/(stem+'.ld')),'wrapper.o','-o','wrapper.elf'],
+                ['objcopy','-O','binary','-j','.text','wrapper.elf','wrapper.bin']]:
+                subprocess.run(cmd,cwd=target,stdout=log,stderr=subprocess.STDOUT,check=True)
+        require('There are no relocations' in subprocess.check_output(['readelf','-r',str(target/'wrapper.elf')],text=True),'Unexpected firmware-wrapper relocations')
+        compare('firmware-current/'+stem,(target/'wrapper.bin').read_bytes(),mini,va)
+    current=src/'hdmi-current'
+    run(['as','--32',str(src/'hdmi-hooks.s'),'-o',str(out/'hdmi-current-hooks.o')])
+    run(['gcc',*flags,'-c',str(current/'hdmi-policy.c'),'-o',str(out/'hdmi-current-policy.o')])
+    run(['as','--32',str(current/'hdmi-capabilities.s'),'-o',str(out/'hdmi-current-table.o')])
+    run(['ld','-m','elf_i386','-T',str(current/'hdmi-policy.ld'),str(out/'hdmi-current-hooks.o'),str(out/'hdmi-current-policy.o'),str(out/'hdmi-current-table.o'),'-o',str(out/'hdmi-current.elf')])
+    require('There are no relocations' in subprocess.check_output(['readelf','-r',str(out/'hdmi-current.elf')],text=True),'Unexpected HDMI policy relocations')
+    run(['objcopy','-O','binary','-j','.text',str(out/'hdmi-current.elf'),str(out/'hdmi-current.bin')])
+    compare('hdmi-current',(out/'hdmi-current.bin').read_bytes(),mini,0xdc3840)
     # Check every corrected name record, both pointers and their HIGHLOW entries.
     pe=struct.unpack_from('<I',data,60)[0];opt=pe+24;base=struct.unpack_from('<I',data,opt+28)[0]
     rv,sz=struct.unpack_from('<II',data,opt+96+5*8);raw=pe_read(data,base+rv,sz);pos=0;relocs=set()
@@ -149,6 +180,8 @@ def main():
     compare('dp-wake-lane-restore', wakebin.read_bytes(), args.package/'Display.Driver/nv4_disp.dll', 0x19e23)
     with (out/'display-updates.log').open('w') as log:
         subprocess.run([sys.executable,str(src.parent/'verify_display_updates.py'),'--package',str(args.package.resolve()),'--cpl',str(args.cpl.resolve()),'--out',str(out/'display-updates')],stdout=log,stderr=subprocess.STDOUT,check=True)
+    with (out/'pmu.log').open('w') as log:
+        subprocess.run([sys.executable,str(src.parent/'verify_pmu.py'),'--miniport',str(mini.resolve()),'--out',str(out/'pmu')],stdout=log,stderr=subprocess.STDOUT,check=True)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 

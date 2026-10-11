@@ -1,0 +1,71 @@
+{
+  "receive": [
+    {
+      "name": "rx_claim",
+      "rva": "0x85e063",
+      "before": "8b47045756",
+      "after": "e978605500"
+    },
+    {
+      "name": "rx_empty",
+      "rva": "0x85e06f",
+      "before": "5f5e5db855000000",
+      "after": "e9b1605500909090"
+    },
+    {
+      "name": "rx_return",
+      "rva": "0x85e0ed",
+      "before": "5f5e5d5b59",
+      "after": "e954605500"
+    },
+    {
+      "name": "rx_irq_recheck",
+      "rva": "0x5b694c",
+      "before": "ffd284c07514",
+      "after": "e911d87f0090"
+    }
+  ],
+  "port": [
+    {
+      "name": "read",
+      "rva": "0x6e8e10",
+      "before": "518b44240c",
+      "after": "e9ebe16c00"
+    },
+    {
+      "name": "write",
+      "rva": "0x6e8f90",
+      "before": "83ec108b442418",
+      "after": "e989e06c009090"
+    },
+    {
+      "name": "old_read",
+      "rva": "0x5b7000",
+      "before": "8b4c241485c9",
+      "after": "e93700800090"
+    },
+    {
+      "name": "old_write",
+      "rva": "0x5b7610",
+      "before": "51538b5c241c",
+      "after": "e945fa7f0090"
+    },
+    {
+      "name": "inline_enter",
+      "rva": "0x5b7e9c",
+      "before": "68c0a11000",
+      "after": "e9dff27f00"
+    },
+    {
+      "name": "inline_leave",
+      "rva": "0x5b7fa6",
+      "before": "ffd08b5c2410",
+      "after": "e9f8f17f0090"
+    }
+  ],
+  "receive_code_rva": "0xdb40e0",
+  "receive_bytes": 224,
+  "port_code_rva": "0xdb7000",
+  "port_bytes": 960,
+  "port_state_rva": "0xdb7f00"
+}

@@ -2,13 +2,13 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, with additional Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Build: 10-9-2026** · [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest) · [Rebuilding guide](REBUILDING.md)
+**Build: 10-11-2026** · [Download the installer](https://github.com/SupraGSX/Forceware-382.69/releases/latest) · [Rebuilding guide](REBUILDING.md)
 
 ## Install
 
 Run the EXE and follow the NVIDIA installer. When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.
 
-Windows Server 2003 x86 installation is also supported; optional GeForce Experience is omitted there. Bundled HD Audio, PhysX and nView components retain their existing versions.
+Windows Server 2003 x86 installation is also supported; optional GeForce Experience is omitted there. Added desktop GPU entries expose the eligible installer components, including GP107 HD Audio. Bundled HD Audio, PhysX and nView retain their existing versions.
 
 ## Additional desktop GPUs
 
@@ -22,12 +22,17 @@ Mobile, GP100 and GP108 GPUs are excluded. GP107 support has been validated on G
 
 ## Improvements
 
-- **Rendering and compute:** Pascal initialization fixes, OpenGL display-class recognition, and corrected CUDA, OpenCL and GPU PhysX initialization.
+- **Stability:** Serialize PMU receive processing and shared memory-port transfers.
+- **Rendering and compute:** Pascal initialization fixes and matched GP102–GP107 graphics firmware, OpenGL display-class recognition, and corrected CUDA, OpenCL and GPU PhysX initialization.
 - **DisplayPort:** HBR2/HBR3 training, startup and display sleep/wake recovery, automatic 8-bit fallback when needed, and native scaling within the successfully trained link's bandwidth.
-- **HDMI:** Corrected vendor-block identification, GPU/monitor-aware HDMI/DVI limits, SCDC setup and failure recovery, and native scaling with a 594 MHz ceiling.
+- **HDMI:** Corrected vendor-block identification, conservative GPU-family/monitor-aware HDMI/DVI limits, SCDC setup and failure recovery, and native scaling with a 594 MHz ceiling.
 - **Control Panel:** Corrected display classification, restored **Customize**, separate **Scaling** and **Overscan** pages, and unlocked **View system topology** with EDID loading.
 
 ## Compatibility notes
+
+- The PMU corrections passed concurrent-transfer and GTX 1050 Ti VM tests; physical-hardware confirmation remains pending.
+- The newer GP107 firmware and component installation were tested on GTX 1050 Ti. Updated GP102/GP104/GP106 firmware and older-GPU HDMI changes still need hardware validation; P620 and P2200 compatibility is not yet confirmed.
+- Optional GeForce Experience installs on XP but showed a blank application window in the offline test system. Audible HDMI playback was not verified by the installer test.
 
 - GP107 defaults to HBR2 and lower DisplayPort rates; HBR3 output remains unresolved on the tested GTX 1050 Ti. Other supported GPU families retain their existing link policy. HBR3 support does not establish full DisplayPort 1.4 DSC, HDR or MST support.
 - Automatic native DisplayPort scaling requires a preferred timing matching the requested refresh. It was tested at 60 Hz and does not automatically carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh native modes remain available when supported.

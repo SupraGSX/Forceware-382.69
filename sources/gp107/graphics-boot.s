@@ -5,7 +5,8 @@
 .global fecs_boot_descriptor, gpccs_boot_descriptor, fecs_boot_payload, gpccs_boot_payload
 # Preserve the October 8 GP107 constructors and all their existing overrides.
 # Only GP107's two registration pointers are redirected to these wrappers.
-# Match the intact 376.84 boot code to its existing GP107 application/signature.
+# Use the selected 390.77 GP107 boot payloads; the FECS header is supplied
+# by firmware-current/gp107.s. Filenames retain their earlier recipe names.
 # The staged 0x100-byte boot descriptor has the XP 0x4c-byte fields followed
 # by zero padding. The donor reads argc/argv at 0x4c/0x50: both remain zero.
 .macro delta reg

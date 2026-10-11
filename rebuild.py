@@ -43,8 +43,10 @@ def check(data, expected, label):
 def pe_read(data, va, size):
     pe = struct.unpack_from('<I', data, 60)[0]
     op = pe + 24
-    require(data[pe:pe+4] == b'PE\0\0' and struct.unpack_from('<H', data, op)[0] == 0x10b, 'Expected PE32')
-    rva = va - struct.unpack_from('<I', data, op+28)[0]
+    magic = struct.unpack_from('<H', data, op)[0]
+    require(data[pe:pe+4] == b'PE\0\0' and magic in (0x10b, 0x20b), 'Expected PE32 or PE32+')
+    base = struct.unpack_from('<Q', data, op+24)[0] if magic == 0x20b else struct.unpack_from('<I', data, op+28)[0]
+    rva = va - base
     st = op + struct.unpack_from('<H', data, pe+20)[0]
     for i in range(struct.unpack_from('<H', data, pe+6)[0]):
         vs, rv, rawsize, raw = struct.unpack_from('<IIII', data, st+i*40+8)
@@ -58,9 +60,12 @@ def pe_read(data, va, size):
 
 def firmware(data, spec):
     if 'descriptor_va' in spec:
-        length, pointer, compressed = struct.unpack('<III', pe_read(data, spec['descriptor_va'], 12))
-        require(length == spec['size'] and compressed in (0, 1), 'Unexpected firmware descriptor')
-        if compressed:
+        pe = struct.unpack_from('<I', data, 60)[0]
+        wide = struct.unpack_from('<H', data, pe+24)[0] == 0x20b
+        raw = pe_read(data, spec['descriptor_va'], 24 if wide else 12)
+        length, pointer, flags = struct.unpack('<I4xQI4x', raw) if wide else struct.unpack('<III', raw)
+        require(length == spec['size'] and flags in (0, 1, 2, 3), 'Unexpected firmware descriptor')
+        if flags & 1:
             # The pinned manifest records the consumed compressed stream length.
             raw = pe_read(data, pointer, spec['compressed_size'])
             decoder = zlib.decompressobj(-15)
@@ -125,11 +130,16 @@ def main():
     cli.add_argument('--stock', required=True, type=Path, help='Stock 368.81 XP32 international EXE')
     cli.add_argument('--quadro', required=True, type=Path, help='Expanded 376.84 Win7 x86 nvlddmkm.sys')
     cli.add_argument('--geforce', required=True, type=Path, help='Expanded 378.78 Win7 x86 nvlddmkm.sys')
+    for family in ('gp102', 'gp104', 'gp106', 'gp107'):
+        cli.add_argument('--'+family, required=True, type=Path, help='Expanded matched '+family.upper()+' donor nvlddmkm.sys')
     cli.add_argument('--out', required=True, type=Path, help='A new output directory')
     cli.add_argument('--sevenzip', default='7z')
     args = cli.parse_args()
     here = Path(__file__).resolve().parent
     manifest = json.loads((here/'patches.json').read_text())
+    for path, expected in manifest.get('preserved_vendor_files', {}).items():
+        record = next(r for r in manifest['files'] if r['tree'] == 'package' and r['path'] == path)
+        require(record['kind'] == 'copy' and record['sha256'] == expected and 'build_metadata' not in record, 'Vendor-file preservation policy mismatch: '+path)
     build_date = datetime.datetime.strptime(manifest['build_date'], '%m/%d/%Y').date()
     release_title = manifest['release_title']
     require(release_title == 'Forceware 382.69 ('+str(build_date.month)+'-'+str(build_date.day)+'-'+str(build_date.year)+')', 'Release title/date mismatch')
@@ -143,7 +153,7 @@ def main():
         text = (here/'templates'/path).read_text()
         require('timestamp="'+build_date.isoformat()+'T12:00:00"' in text, 'Installer component date mismatch: '+path)
     stock = check(args.stock.read_bytes(), manifest['inputs']['stock'], 'stock installer')
-    donors = {k: check(getattr(args, k).read_bytes(), manifest['inputs'][k], k+' donor') for k in ['quadro', 'geforce']}
+    donors = {k: check(getattr(args, k).read_bytes(), manifest['inputs'][k], k+' donor') for k in manifest['inputs'] if k != 'stock'}
     root = args.out.resolve()
     require(not root.exists(), 'Output directory already exists')
     require(shutil.which(args.sevenzip) is not None, '7-Zip is required')

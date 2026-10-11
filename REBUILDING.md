@@ -2,7 +2,7 @@
 
 # Rebuilding Forceware 382.69
 
-This guide documents the **10-9-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
+This guide documents the **10-11-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
 
 Start with the reconstruction commands, then use the implementation sections to review the changes by subsystem.
 
@@ -26,7 +26,7 @@ Start with the reconstruction commands, then use the implementation sections to 
 
 | File | Purpose |
 |---|---|
-| [rebuild.py](rebuild.py) | Reconstructs the package from the exact stock installer and two supplied firmware-donor modules. |
+| [rebuild.py](rebuild.py) | Reconstructs the package from the exact stock installer and six supplied firmware-donor modules. |
 | [patches.json](patches.json) | Input hashes, output hashes, byte guards, edits, firmware extraction instructions and the complete package/CPL file inventory. |
 | [sources/](sources/) | Readable C/assembly for the added routines, link scripts and the NVAPI version-reporting patch generator. |
 | [verify_sources.py](verify_sources.py) | Compiles the retained patch blocks and HDMI/DisplayPort scaling and Control Panel routines, then independently verifies the OpenGL display-class patch. |
@@ -36,7 +36,7 @@ Start with the reconstruction commands, then use the implementation sections to 
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
-A verified rebuild matched **585 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; the retained and newly added compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
+A verified rebuild matched **587 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; the retained and newly added compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
 
 Compression, timestamps and tool versions can change archive hashes while preserving identical driver files. The reproduction check is the exact extracted payload.
 
@@ -44,13 +44,17 @@ Compression, timestamps and tool versions can change archive hashes while preser
 
 ### 1.1 Obtain the exact inputs
 
-Use the **32-bit international** packages. An x64 module or a different release is not an interchangeable donor.
+Use the exact packages and architectures below. The XP base and older donors are x86; the selected GP104 and GP106 donors are x64. Their resource descriptors are decoded as PE32+ data; no x64 Windows code or private object layouts are transplanted into XP.
 
 1. [NVIDIA 368.81 Windows XP 32-bit international](https://us.download.nvidia.com/Windows/368.81/368.81-desktop-winxp-32bit-international.exe): the full base installer.
-2. [Quadro 376.84 Windows 7/8 x86 international](https://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-quadro-grid-desktop-notebook-win8-win7-32bit-international-whql.exe): supplies the ACR, SEC2 and GP107 graphics resources. NVIDIA lists the P4000 among this release's supported additions. [Official release information](https://www.nvidia.com/download/driverresults.aspx/115308/en-us/).
+2. [Quadro 376.84 Windows 7/8 x86 international](https://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-quadro-grid-desktop-notebook-win8-win7-32bit-international-whql.exe): supplies ACR, SEC2 and retained earlier GP107 resources. NVIDIA lists the P4000 among this release's supported additions. [Official release information](https://www.nvidia.com/download/driverresults.aspx/115308/en-us/).
 3. [GeForce 378.78 Windows 7/8 x86 international](https://us.download.nvidia.com/Windows/378.78/378.78-desktop-win8-win7-32bit-international-whql.exe): supplies the VPR resources.
+4. [GeForce 381.65 Windows 7/8 x86](https://us.download.nvidia.com/Windows/381.65/381.65-desktop-win8-win7-32bit-international-whql.exe): supplies matched GP102 graphics resources.
+5. [GeForce 398.11 Windows 7/8 x64](https://us.download.nvidia.com/Windows/398.11/398.11-desktop-win8-win7-64bit-international-whql.exe): supplies matched GP104 graphics resources.
+6. [Quadro 431.02 Windows 7/8 x64](https://us.download.nvidia.com/Windows/Quadro_Certified/431.02/431.02-quadro-desktop-notebook-win8-win7-64bit-international-whql.exe): supplies matched GP106 graphics resources.
+7. [Quadro 390.77 Windows 7/8 x86](https://us.download.nvidia.com/Windows/Quadro_Certified/390.77/390.77-quadro-desktop-notebook-win8-win7-32bit-international-whql.exe): supplies matched GP107 graphics resources.
 
-The firmware donors are their **expanded `Display.Driver/nvlddmkm.sys` files**, not the entire Windows 7 driver stacks. Extract their installers with 7-Zip. If the driver is stored as `nvlddmkm.sy_`, extract that CAB member again to obtain `nvlddmkm.sys`. Keep the two identically named donor modules in separate directories. No donor installation or execution is necessary.
+The firmware donors are their **expanded `Display.Driver/nvlddmkm.sys` files**, not the entire Windows 7 driver stacks. Extract their installers with 7-Zip. If the driver is stored as `nvlddmkm.sy_`, extract that CAB member again to obtain `nvlddmkm.sys`. Keep the six identically named donor modules in separate directories. No donor installation or execution is necessary.
 
 Required SHA-256 values:
 
@@ -59,6 +63,10 @@ Required SHA-256 values:
 | Full stock XP 368.81 EXE | `eaaef0650b6c6a99a2ed70d5e15aaf5221570ae596ca51784ff5e6fc7e5482f1` |
 | Expanded Quadro 376.84 `nvlddmkm.sys` | `84fcd8f31466956f40f1aebc833ef4b23c30b0077e61a842257b4076e4482633` |
 | Expanded GeForce 378.78 `nvlddmkm.sys` | `467bdc2e47f4f36330ed011520b9ac79e3051c20728a60e5a2ecebda0228152f` |
+| Expanded GeForce 381.65 x86 `nvlddmkm.sys` | `1de048708f30399a5f33f15b4ac3e3609db0c626b71a5596d2528c3585cb0d09` |
+| Expanded GeForce 398.11 x64 `nvlddmkm.sys` | `941d5e1e74075209e7e0b17d89303a5c894aa9e380ebea1af8c69b2e59a3b3fe` |
+| Expanded Quadro 431.02 x64 `nvlddmkm.sys` | `d0c0994bff6a18989c998054740f751f8843f5d25ef73ba49bfd42eb7fe62c09` |
+| Expanded Quadro 390.77 x86 `nvlddmkm.sys` | `583a7c051bbe933a558ec1c000a0077e0be0cdf03717e366d371e9b3b2006358` |
 
 The builder rejects incorrect input hashes. NVIDIA components retain their applicable licenses.
 
@@ -75,14 +83,18 @@ python3 rebuild.py \
   --stock inputs/368.81-desktop-winxp-32bit-international.exe \
   --quadro inputs/quadro-376.84/nvlddmkm.sys \
   --geforce inputs/geforce-378.78/nvlddmkm.sys \
+  --gp102 inputs/gp102-381.65/nvlddmkm.sys \
+  --gp104 inputs/gp104-398.11/nvlddmkm.sys \
+  --gp106 inputs/gp106-431.02/nvlddmkm.sys \
+  --gp107 inputs/gp107-390.77/nvlddmkm.sys \
   --out build-38269
 ```
 
-The output directory must not already exist. The program first validates all three input hashes, then:
+The output directory must not already exist. The program first validates all seven input hashes, then:
 
 1. Extracts the original full installer and its nested Control Panel installer.
 2. Expands the compressed display modules needed by the final package.
-3. Extracts 18 precisely identified firmware/resource records from the supplied donors and validates every decoded payload hash.
+3. Extracts 43 precisely identified firmware/resource records from the supplied donors and validates every decoded payload hash.
 4. Applies the final byte edits, checking original bytes and expected output hashes.
 5. Writes the final INF/configuration files and preserves the selected original components.
 6. Rebuilds the nested Control Panel SFX with the original XP-compatible launcher.
@@ -93,13 +105,13 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-9-2026).exe
+  Forceware 382.69 (10-11-2026).exe
   Forceware 382.69/
   rebuild-result.json
   work/
 ```
 
-`rebuild-result.json` should report 587 package files, 585 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
+`rebuild-result.json` should report 589 package files, 587 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
 
 <a id="23-optionally-rebuild-the-added-machine-code-from-source"></a>
 
@@ -248,17 +260,39 @@ On GTX 1080 Ti the name-only correction passed CUDA context create/synchronize/d
 
 <a id="gp107-registration-and-graphics-contexts"></a>
 
-### 2.5 GP107 initialization
+### 2.5 Graphics firmware and GP107 initialization
 
-The GP107 addition retains GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with a separate 82-pointer table. Matched XP callbacks, GP107 context constants and intact 376.84 graphics resources are installed through the block at `0xD07C40`. Newer-driver private offsets are not reused.
+The GP107 addition retains GP106 registration at `0x46F7AA`, then registers GP107 index `0x3B` with a separate 82-pointer table. Matched XP callbacks, GP107 context constants and the original registration/context block at `0xD07C40` are retained, with the active graphics resources updated as described below. Newer-driver private offsets are not reused.
 
-The October 9 correction adds matched 512-byte FECS/GPCCS bootloaders through GP107-only constructor wrappers at `0xD6A4E0`. The existing GP107 application/signature resources and secure-validation path remain intact. XP's staged boot descriptor provides its original fields and zero-filled argument slots expected by these bootloaders. A separate GPU-limit callback at `0xD6A9EB` supplies GP107 architectural limits, including one PPC per GPC and three TPCs; native fuse discovery and topology generation remain unchanged. It replaces only slot `0xA4` of the otherwise preserved XP GPU constructor.
+The GP107 boot wrappers at `0xD6A4E0` use matched FECS/GPCCS resources. The October 10 update selects the 390.77 FECS boot code, signatures, header and graphics archive through a GP107-only wrapper at `0xD6ABC0`; the unchanged GPCCS boot code remains compatible. The original secure-validation path remains intact. XP's staged boot descriptor provides its original fields and zero-filled argument slots expected by these bootloaders. A separate GPU-limit callback at `0xD6A9EB` supplies GP107 architectural limits, including one PPC per GPC and three TPCs; native fuse discovery and topology generation remain unchanged. It replaces only slot `0xA4` of the otherwise preserved XP GPU constructor.
 
 The DisplayPort default hook at `0x448906` selects HBR2 and lower attempts only for architecture `0x130`, implementation `7`. This is a conservative GP107 workaround, not a repair of HBR3 signaling. Other chips retain the existing default; actual training, receiver checks and depth/bandwidth validation still govern admission.
+
+The other families independently select matched FECS/GPCCS loaders, headers, signatures and graphics archives: **GP102 from 381.65, GP104 from 398.11, and GP106 from 431.02**. Wrappers at `0xD80D40` retain their original XP constructors and replace only the resource callbacks at the XP field offsets documented in [firmware-current](sources/firmware-current/). GP102 uses the donor's primary 32-entry archive. Signed instructions, ACR/SEC2/VPR and authentication checks are unchanged. These are selected newer donors, not a claim of universal backward compatibility or the newest firmware available.
+
+The 43 extraction records include retained inactive resources as well as current resources. Their payloads are independently hash-checked; the actual XP archive reader, constructor ABI and relocated getters were exercised offline. The GP107 candidate passed rendering and compute checks on GTX 1050 Ti. GP102/GP104/GP106 replacements, P620 and P2200 still need hardware validation.
 
 See [GP107 implementation and limits](templates/package/Documentation/GP107-support.md) and [assembly sources](sources/gp107/gp107.s). `verify_sources.py` checks the registration/context, graphics-boot, chip-limit and DisplayPort blocks. GTX 1050 Ti passed initialization and rendering/compute tests; the restored entries for other desktop GP107 boards remain untested individually.
 
 <a id="7-displayport-negotiate-the-link-then-choose-a-compatible-output-depth"></a>
+
+### 2.6 PMU receive and memory-port serialization
+
+The October 11 miniport adds two complementary synchronization changes. A
+nonblocking receive owner at queue offsets `+0x65/+0x66` protects complete queue
+transactions and requests deferred service after interrupt acknowledgement.
+Ownership is released before upper callbacks and response waits. A separate
+nonpaged lock protects complete shared DMEM selector/data transfers through the
+modern and legacy routines and explicit initialization sequence. Transfers use
+64-byte chunks with caller buffers staged outside the elevated-IRQL section.
+Native statuses and firmware-response waits remain intact.
+
+Sources and guarded hook addresses are in [sources/pmu](sources/pmu/README.md).
+The release contains these corrections without the diagnostic recorder. Paired
+actual-x86 tests reproduced corruption in the previous code and passed with the
+corrections. GTX 1050 Ti VM rendering, compute, GPU PhysX and contention tests
+passed; physical-hardware confirmation and other GPU testing remain pending.
+These results do not establish that every reported hang or STOP has this cause.
 
 ## 3. DisplayPort
 
@@ -370,16 +404,20 @@ The original CTA parser zeroes its 107-byte output before parsing; the display r
 
 In the display DLL, the patch at `0x4111F` queries HDMI status. A positive GPU/output-and-sink HDMI result retains single-link TMDS behavior; other connections retain the original 165-MHz DVI comparison.
 
-The miniport extension is limited to GM200/GM204/GM206 and GP102/GP104/GP106/GP107 on the digital TMDS/SOR path. Its chosen ceiling is **594 MHz for the tested RGB8 path**, bounded by:
+The miniport uses the native architecture/implementation identity and a [GPU-family capability table](sources/hdmi-current/hdmi-capabilities.json) on the digital TMDS/SOR path. Conservative ceilings are **225 MHz for Fermi, 297 MHz for Kepler/Maxwell 1, and 594 MHz for Maxwell 2/Pascal**. Fermi and unknown GPUs do not lift the 165 MHz default; Kepler/Maxwell 1 default correction remains a hardware-validation target. These are software ceilings, bounded by:
 
 - Valid digital EDID, checksum/bounds checks and legacy HDMI identity.
 - Sink-advertised TMDS limits and source/board/resource-manager restrictions.
 - SCDC and advertised high-rate capability for clocks above 340 MHz.
 - A refreshed source query; failed or empty queries clamp conservatively instead of retaining a previous sink's elevated limit.
 
+The monitor cannot grant a legacy GPU HDMI 2.0/SCDC support. Non-default board/resource restrictions remain in force; an old card's genuine 165 MHz board limit can be indistinguishable from the default, so the Kepler/Maxwell 1 correction still requires physical validation. Valid DVI queries preserve native single/dual-link rules. A successful query acknowledges configuration, not receiver or cable stability.
+
+Before a receiver update succeeds and is read back, the Windows cache is bounded to the smaller of the current source limit, sink limit and 165 MHz. Invalid queries cannot retain an elevated limit. Board-limit arithmetic is checked before doubling. The cache's native 10 kHz units have a 600 MHz sanity bound; the operating ceiling remains 594 MHz.
+
 The shared default at `0x5BD79B` remains **165,000 kHz**, and the scrambling/high-clock-ratio transition remains 340,000 kHz. The project's 594-MHz ceiling is an implementation choice, not HDMI 2.0's universal maximum.
 
-Sources: [hdmi-policy.c](sources/hdmi-policy.c), [hdmi-hooks.s](sources/hdmi-hooks.s), [hdmi-protocol.s](sources/hdmi-protocol.s).
+Sources: [current HDMI policy](sources/hdmi-current/hdmi-policy.c), [capability lookup](sources/hdmi-current/hdmi-capabilities.s), [hdmi-hooks.s](sources/hdmi-hooks.s), [hdmi-protocol.s](sources/hdmi-protocol.s). The earlier policy block remains in the image for reproducibility; the three active entry jumps select the new block at `0xDC3840`.
 
 <a id="93-pass-capabilities-and-update-cached-limits"></a>
 
@@ -476,7 +514,11 @@ The installer was also adjusted to:
 
 The recipe updates PE section/image sizes, characteristics, pointers and checksums, preserving relocation entries where required. These structural edits are necessary parts of the patch set.
 
-Modified-file signatures are invalidated; firmware authentication remains a separate, active mechanism.
+Keep `Display.Driver/DisplayDriverExt.dll` byte-identical to the stock 368.81 file, as in the October 4 package. It is excluded from custom date relabeling so its original installer-extension signature is preserved. Modified-file signatures are invalidated; firmware authentication remains a separate, active mechanism.
+
+The 57 added GPU rows use four copies of their original install sections. `NVAllowHDAudioPreStage=1` exposes eligible HD Audio staging; `NVSupportGFExperienceUDA=1` is enabled only for added GeForce/TITAN entries. Existing CopyFiles, AddReg, services and stock model sections are preserved. Quadro eligibility and Server 2003's optional-component exclusion remain unchanged.
+
+The audio INF adds generic and existing subsystem-pattern matches for GP107 codec `HDAUDIO\FUNC_01&VEN_10DE&DEV_0080`, using the bundled XP audio binary and original version. Both XP model sections cover the expected Maxwell/Pascal codecs: GM107 `0070`, GM200/GM204 `0071`, GM206 `0072`, GP102 `0082`, GP104 `0083`, GP106 `0084`, GP107 `0080`. All 201 display rows were checked against retained stock coverage or these mappings; this is not runtime validation of every board. No speculative unassigned codec IDs were added.
 
 <a id="server-2003-installer-compatibility"></a>
 
@@ -505,7 +547,7 @@ HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bu
 
 ### 6.4 Build dates
 
-Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/09/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/11/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
 
 These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
 
@@ -515,12 +557,13 @@ These dates identify the custom package, not a recompilation of NVIDIA's proprie
 
 | Area | Evidence | Boundary |
 |---|---|---|
-| Installation and package | October 9 NVIDIA clean install and restart on GTX 1050 Ti; all 12 checked module hashes, Code 0, NVAPI version and build date matched. Extraction verifies 587 package files, 469 CPL members and 63 dated metadata records; 24 compiled source blocks match. Native tests passed 572 GP107 ABI checks, 102 chip identities at preferred/relocated addresses and 4,944 name-lookup calls. | Other boards were not retested with this package. Native code tests do not replace hardware validation. |
-| Direct3D and OpenGL | October 9 GTX 1050 Ti: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three NVIDIA OpenGL display-list renders with correct pixels and no GL errors. The same checks passed on GTX 1080 Ti with October 8. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
+| Installation and package | October 10 clean install on GTX 1050 Ti exposed Graphics, HD Audio, GeForce Experience, nView and PhysX. GPU/audio report Code 0, with an NVIDIA playback endpoint. All runtime binaries match the tested candidate. Rebuild verifies 589 package files, 469 CPL members and 62 dated records and the preserved original installer extension. | Audible playback and other cards' audio were not tested. Optional GeForce Experience installs but showed a blank window in the offline clone. |
+| Direct3D and OpenGL | October 10 component-update clean install passed 64 D3D9 draw/readbacks and OpenGL windowed/borderless checks with no GL errors. Earlier October 9 GTX 1050 Ti: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three NVIDIA OpenGL display-list renders with correct pixels and no GL errors. The same checks passed on GTX 1080 Ti with October 8. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
 | CUDA, OpenCL and GPU PhysX | October 9 GTX 1050 Ti clean install: CUDA context operations, an OpenCL GPU kernel with 8,192 checked results, and a 60-second fullscreen 1280×720 GPU PhysX benchmark with 30,000 particles, 10,226 simulations and clean shutdown. Correct GPU names were confirmed. | Enable GPU PhysX in Control Panel and the application. An earlier same-process CPU-to-GPU change froze FluidMark; fresh GPU-selected runs pass, but that transition's cause remains unproven. Other compute applications and GPU models were not individually retested. |
 | DisplayPort | P4000/GTX 1080 Ti HBR3 ×4; GTX 980 Ti HBR2 ×4 at 3440×1440/100. Real HBR and RBR controls verified depth/capacity fallback. GTX 1080 Ti explicit 3440×1440/175 RGB8 had a confirmed normal picture. October 8 fullscreen 640×480 scaled to 1920×1440 inside native 3440×1440/60. The earlier ten-minute GTX 1080 Ti display-sleep test recovered the saved link and passed rendering. The GP107 candidate passed GTX 1050 Ti HBR2 ×4 at native 3440×1440/60, receiver-lock checks and a 20-second display-sleep cycle. | Lower-rate tests used capable GPUs, not a separate DP1.1 board. High-refresh native-mode success does not imply automatic high-refresh scaling or whole-system suspend support. |
 | HDMI | October 7 automatic scaling reached 3440×1440/~100 at 543.5 MHz, with successful SCDC setup, correct viewport and a confirmed normal picture. Injected setup failures exercised bounded retries and safe output; later scaling controls restored the prior low-clock desktop. | The 594 MHz boundary passes executable policy tests, but physical automatic output at that exact clock remains unverified. Later sink/cable failures and all connector combinations are not covered. |
 | Control Panel and EDID | DisplayPort classification/custom-mode workflow compared with 355.98. October 8 Scaling/Overscan pages loaded; fixed-aspect Apply and native fullscreen viewport passed. Topology, Manage EDID and the required API path were exercised separately. | Overscan resizing is timing-dependent. Physical DVI and every workstation-only feature were not validated. |
+| Updated graphics firmware | GP107/390.77 passed GTX 1050 Ti D3D, OpenGL, CUDA, OpenCL and GPU PhysX in the separate firmware test. The combined October 10 installer passed subsequent initialization/rendering tests. Offline constructor, relocation and archive-reader checks passed for all four families. | GP102/GP104/GP106 firmware replacements and later GP107 boards still need hardware validation. Newer firmware alone does not establish that P620 Code 10 is fixed. |
 | Other GPUs | Earlier P4000 native XP acceleration, games and package installation were user-reported working. GTX 1050 Ti now passes initialization and rendering/compute checks with the corrected GP107 implementation. | INF inclusion alone is not individual model validation. Other GP107 boards have not been individually tested. GP107 defaults to HBR2; HBR3 physical output remains unresolved. |
 
 For a new system, verify installed hashes, low-resolution output and hardware D3D9 first. Use bounded high-rate trials with a known fallback, check actual link/depth and receiver status, and confirm the physical picture. Then test intended games, audio, hotplug and longer sessions.
@@ -537,6 +580,8 @@ The hardware references were explicitly inspected at fixed revisions:
 - **Mesa:** mesa-24.3.0, commit `f1f246cfda65eff82fba3be1caf2d23bdeda60cc`.
 
 These references identified hardware operations to locate in the Windows binaries. Windows structures, offsets and calling conventions were established independently; Linux code was not copied into XP.
+
+The HDMI family ceilings also reference `drivers/gpu/drm/nouveau/nouveau_connector.c`, `get_tmds_link_bandwidth`, at the same pinned Linux commit. That informs conservative source categories; XP's native connector checks and board restrictions remain independently implemented.
 
 ### Graphics initialization and contexts
 
@@ -603,25 +648,25 @@ Key final SHA-256 values:
 
 ```text
 Display.Driver/nv4_mini.sys
-3268a60efe545a58a81418bb8d1fd31e9133b2756b33651057cae35be84cb78a
+1c20679cd4b65b1e7dc92190924a0951d34cdd3393a9c591bd7d03a089a9a796
 
 Display.Driver/nv4_disp.dll
-f778b29970addcf031e6a5972297f91692449929641a04f84e3523656d0543e6
+dfd580d346735ed57b25ccc807266ef8bdfe96f9d08885c3be30746ba2f99d89
 
 Display.Driver/nvoglnt.dll
-4f17515352c43882c803f23c054d8ffc569843162fba0b3147d00080d9180e16
+177ba9972d5f707cf73c9d927cc9c1f1a4c42673d8a1c79914833ad36627bf47
 
 Display.Driver/nvapi.dll
-778532459dfa51f8406bfefc9449034e62256484fec7aaf22a0fe15e0ec7e83a
+981e564cb5a1c5447740b135d27d28d53a5cacec2efd24cee617e3bcfd370dbf
 
 nvcpl.dll
-e76790e8e20b876841048e75537611803cb04a39bd4cac4a3d9feab31dfa5d9d
+39ba0abe84054198010e59e6e894371d913674c13b394b37abc76e140a586947
 
 nvDispS.dll
-9d63b0e513e31fe98dbb23a4807336e5d3e3161d86695996b30c70e0b873277a
+6ced0fc9f2f65b7784c45a6cd89de1b6fbfeb0ce3bdb6379d9595f44ccf70d80
 
 nvWsS.dll
-b1ba6f3bf4ad8642876c6e6e7f7dcdeba4f11bcc5a7042b06b2a2f24baf6c7c8
+42325e76c5f3d9676fbe913e3b43022c4e8587f684f4ecc8e9af862e3d00b76e
 ```
 
-These hashes identify the **10-9-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.
+These hashes identify the **10-11-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.

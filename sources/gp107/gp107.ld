@@ -7,4 +7,5 @@ original_gp104_fecs = 0x4f0600;
 original_gp104_gpccs = 0x4f0770;
 original_gp104_gr = 0x4f1270;
 original_gp104_caps = 0x4e1430;
-gp107_fecs_boot = 0xd6a4e0; gp107_gpccs_boot = 0xd6a518; gp107_register_finish = 0xd6a9a0;
+gp107_fecs_boot = 0xd6abc0; gp107_gpccs_boot = 0xd6a518; gp107_register_finish = 0xd6a9a0;
+get_gr390 = 0xd6ac0b;

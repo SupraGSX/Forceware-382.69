@@ -1,0 +1,2095 @@
+{
+  "schema": 1,
+  "rate_units": "kHz TMDS character rate",
+  "source_baseline": "October9stable",
+  "nouveau_commit": "adc218676eef25575469234709c2d87185ca223a",
+  "dies": [
+    {
+      "die": "GF100",
+      "arch": 192,
+      "implementation": 0,
+      "selector_index": 23,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF108",
+      "arch": 192,
+      "implementation": 1,
+      "selector_index": 29,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF106",
+      "arch": 192,
+      "implementation": 3,
+      "selector_index": 27,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF104",
+      "arch": 192,
+      "implementation": 4,
+      "selector_index": 25,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF110",
+      "arch": 192,
+      "implementation": 8,
+      "selector_index": 24,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF114",
+      "arch": 192,
+      "implementation": 14,
+      "selector_index": 26,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF116",
+      "arch": 192,
+      "implementation": 15,
+      "selector_index": 28,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GF119",
+      "arch": 208,
+      "implementation": 9,
+      "selector_index": 34,
+      "tmds_ceiling_khz": 225000,
+      "correct_165_default": false,
+      "source_scdc": false,
+      "features": 0,
+      "evidence": "Conservative pinned Nouveau Fermi policy; default correction disabled",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK104",
+      "arch": 224,
+      "implementation": 4,
+      "selector_index": 38,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK106",
+      "arch": 224,
+      "implementation": 6,
+      "selector_index": 39,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK107",
+      "arch": 224,
+      "implementation": 7,
+      "selector_index": 40,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK110",
+      "arch": 240,
+      "implementation": 0,
+      "selector_index": 42,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK110B",
+      "arch": 240,
+      "implementation": 1,
+      "selector_index": 43,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK208B",
+      "arch": 256,
+      "implementation": 6,
+      "selector_index": 46,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GK208",
+      "arch": 256,
+      "implementation": 8,
+      "selector_index": 45,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GM107",
+      "arch": 272,
+      "implementation": 7,
+      "selector_index": 47,
+      "tmds_ceiling_khz": 297000,
+      "correct_165_default": true,
+      "source_scdc": false,
+      "features": 1,
+      "evidence": "Conservative pinned Nouveau Kepler/Maxwell1 policy; experimental default correction",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GM200",
+      "arch": 288,
+      "implementation": 0,
+      "selector_index": 49,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": true
+    },
+    {
+      "die": "GM204",
+      "arch": 288,
+      "implementation": 4,
+      "selector_index": 50,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GM206",
+      "arch": 288,
+      "implementation": 6,
+      "selector_index": 51,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GP102",
+      "arch": 304,
+      "implementation": 2,
+      "selector_index": 55,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": true
+    },
+    {
+      "die": "GP104",
+      "arch": 304,
+      "implementation": 4,
+      "selector_index": 56,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": true
+    },
+    {
+      "die": "GP106",
+      "arch": 304,
+      "implementation": 6,
+      "selector_index": 58,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": false
+    },
+    {
+      "die": "GP107",
+      "arch": 304,
+      "implementation": 7,
+      "selector_index": 59,
+      "tmds_ceiling_khz": 594000,
+      "correct_165_default": true,
+      "source_scdc": true,
+      "features": 3,
+      "evidence": "Existing tested HDMI2 policy; individual board coverage varies",
+      "has_prior_family_hardware_test": true
+    }
+  ],
+  "inf_devices": [
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06C0",
+      "device": "06C0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 480",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06C4",
+      "device": "06C4",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 465",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06CD",
+      "device": "06CD",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 470",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D1",
+      "device": "06D1",
+      "subsystem": null,
+      "name": "NVIDIA Tesla C2050 / C2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D1&SUBSYS_077110DE",
+      "device": "06D1",
+      "subsystem": "077110DE",
+      "name": "NVIDIA Tesla C2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D1&SUBSYS_077210DE",
+      "device": "06D1",
+      "subsystem": "077210DE",
+      "name": "NVIDIA Tesla C2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2",
+      "device": "06D2",
+      "subsystem": null,
+      "name": "NVIDIA Tesla M2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2&SUBSYS_077410DE",
+      "device": "06D2",
+      "subsystem": "077410DE",
+      "name": "NVIDIA Tesla M2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2&SUBSYS_083010DE",
+      "device": "06D2",
+      "subsystem": "083010DE",
+      "name": "NVIDIA Tesla M2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2&SUBSYS_084210DE",
+      "device": "06D2",
+      "subsystem": "084210DE",
+      "name": "NVIDIA Tesla M2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2&SUBSYS_088F10DE",
+      "device": "06D2",
+      "subsystem": "088F10DE",
+      "name": "NVIDIA Tesla X2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D2&SUBSYS_090810DE",
+      "device": "06D2",
+      "subsystem": "090810DE",
+      "name": "NVIDIA Tesla M2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D8",
+      "device": "06D8",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 6000",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section004"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06D9",
+      "device": "06D9",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 5000",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section004"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DD",
+      "device": "06DD",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 4000",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section004"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE",
+      "device": "06DE",
+      "subsystem": null,
+      "name": "NVIDIA Tesla T20 Processor",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_077310DE",
+      "device": "06DE",
+      "subsystem": "077310DE",
+      "name": "NVIDIA Tesla S2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_082F10DE",
+      "device": "06DE",
+      "subsystem": "082F10DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_084010DE",
+      "device": "06DE",
+      "subsystem": "084010DE",
+      "name": "NVIDIA Tesla X2070",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_084210DE",
+      "device": "06DE",
+      "subsystem": "084210DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_084610DE",
+      "device": "06DE",
+      "subsystem": "084610DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_086610DE",
+      "device": "06DE",
+      "subsystem": "086610DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_090710DE",
+      "device": "06DE",
+      "subsystem": "090710DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DE&SUBSYS_091E10DE",
+      "device": "06DE",
+      "subsystem": "091E10DE",
+      "name": "NVIDIA Tesla M2050",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DF",
+      "device": "06DF",
+      "subsystem": null,
+      "name": "NVIDIA Tesla M2070-Q",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DF&SUBSYS_084D10DE",
+      "device": "06DF",
+      "subsystem": "084D10DE",
+      "name": "NVIDIA Tesla M2070-Q",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_06DF&SUBSYS_087F10DE",
+      "device": "06DF",
+      "subsystem": "087F10DE",
+      "name": "NVIDIA Tesla M2070-Q",
+      "die": "GF100",
+      "policy_die": "GF100",
+      "install_section": "Section006"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DC0",
+      "device": "0DC0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 440",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DC4",
+      "device": "0DC4",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTS 450",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DC5",
+      "device": "0DC5",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTS 450",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DC6",
+      "device": "0DC6",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTS 450",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DD8",
+      "device": "0DD8",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 2000",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section005"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DD8&SUBSYS_091410DE",
+      "device": "0DD8",
+      "subsystem": "091410DE",
+      "name": "NVIDIA Quadro 2000D",
+      "die": "GF106",
+      "policy_die": "GF106",
+      "install_section": "Section005"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE0",
+      "device": "0DE0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 440",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE1",
+      "device": "0DE1",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 430",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE2",
+      "device": "0DE2",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 420",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE4",
+      "device": "0DE4",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 520",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE5",
+      "device": "0DE5",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 530",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DE7",
+      "device": "0DE7",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 610",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0DF8",
+      "device": "0DF8",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 600",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section005"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0E22",
+      "device": "0E22",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 460",
+      "die": "GF104",
+      "policy_die": "GF104",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0E23",
+      "device": "0E23",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 460 SE",
+      "die": "GF104",
+      "policy_die": "GF104",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0E24",
+      "device": "0E24",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 460",
+      "die": "GF104",
+      "policy_die": "GF104",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0F00",
+      "device": "0F00",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 630",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0F01",
+      "device": "0F01",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 620",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0F02",
+      "device": "0F02",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 730",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0F03",
+      "device": "0F03",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 610",
+      "die": "GF108",
+      "policy_die": "GF108",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC0",
+      "device": "0FC0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 640",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC1",
+      "device": "0FC1",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 640",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC2",
+      "device": "0FC2",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 630",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC6",
+      "device": "0FC6",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 650",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC8",
+      "device": "0FC8",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 740",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FC9",
+      "device": "0FC9",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 730",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FEF",
+      "device": "0FEF",
+      "subsystem": null,
+      "name": "NVIDIA GRID K340",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section010"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FF2",
+      "device": "0FF2",
+      "subsystem": null,
+      "name": "NVIDIA GRID K1",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section011"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FF3",
+      "device": "0FF3",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K420",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FF9",
+      "device": "0FF9",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K2000D",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FFA",
+      "device": "0FFA",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K600",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FFD",
+      "device": "0FFD",
+      "subsystem": null,
+      "name": "NVIDIA NVS 510",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section009"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FFE",
+      "device": "0FFE",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K2000",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FFF",
+      "device": "0FFF",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 410",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_0FFF&SUBSYS_094A10DE",
+      "device": "0FFF",
+      "subsystem": "094A10DE",
+      "name": "NVIDIA Quadro 410",
+      "die": "GK107",
+      "policy_die": "GK107",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1004",
+      "device": "1004",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 780",
+      "die": "GK110",
+      "policy_die": "GK110",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1005",
+      "device": "1005",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX TITAN",
+      "die": "GK110",
+      "policy_die": "GK110",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1007",
+      "device": "1007",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 780",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1008",
+      "device": "1008",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 780 Ti",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_100A",
+      "device": "100A",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 780 Ti",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_100C",
+      "device": "100C",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX TITAN Black",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_103A",
+      "device": "103A",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K6000",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_103C",
+      "device": "103C",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K5200",
+      "die": "GK110B",
+      "policy_die": "GK110B",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1040",
+      "device": "1040",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 520",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1042",
+      "device": "1042",
+      "subsystem": null,
+      "name": "NVIDIA GeForce 510",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1048",
+      "device": "1048",
+      "subsystem": null,
+      "name": "NVIDIA GeForce 605",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1049",
+      "device": "1049",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 620",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_104A",
+      "device": "104A",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 610",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_104B",
+      "device": "104B",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 625 (OEM)",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_104C",
+      "device": "104C",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 705",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_107C",
+      "device": "107C",
+      "subsystem": null,
+      "name": "NVIDIA NVS 315",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section007"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_107D",
+      "device": "107D",
+      "subsystem": null,
+      "name": "NVIDIA NVS 310",
+      "die": "GF119",
+      "policy_die": "GF119",
+      "install_section": "Section007"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1080",
+      "device": "1080",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 580",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section015"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1081",
+      "device": "1081",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 570",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section015"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1082",
+      "device": "1082",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560 Ti",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1084",
+      "device": "1084",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1086",
+      "device": "1086",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 570",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1087",
+      "device": "1087",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560 Ti",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1088",
+      "device": "1088",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 590",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section016"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1089",
+      "device": "1089",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 580",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_108B",
+      "device": "108B",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 580",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1091",
+      "device": "1091",
+      "subsystem": null,
+      "name": "NVIDIA Tesla M2090",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1091&SUBSYS_088710DE",
+      "device": "1091",
+      "subsystem": "088710DE",
+      "name": "NVIDIA Tesla M2090",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1091&SUBSYS_088E10DE",
+      "device": "1091",
+      "subsystem": "088E10DE",
+      "name": "NVIDIA Tesla X2090",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1091&SUBSYS_089110DE",
+      "device": "1091",
+      "subsystem": "089110DE",
+      "name": "NVIDIA Tesla X2090",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1094",
+      "device": "1094",
+      "subsystem": null,
+      "name": "NVIDIA Tesla M2075",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1094&SUBSYS_088810DE",
+      "device": "1094",
+      "subsystem": "088810DE",
+      "name": "NVIDIA Tesla M2075",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1096",
+      "device": "1096",
+      "subsystem": null,
+      "name": "NVIDIA Tesla C2075",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1096&SUBSYS_091010DE",
+      "device": "1096",
+      "subsystem": "091010DE",
+      "name": "NVIDIA Tesla C2075",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1096&SUBSYS_091110DE",
+      "device": "1096",
+      "subsystem": "091110DE",
+      "name": "NVIDIA Tesla C2050",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section003"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_109B",
+      "device": "109B",
+      "subsystem": null,
+      "name": "NVIDIA Quadro 7000",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section004"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_109B&SUBSYS_091810DE",
+      "device": "109B",
+      "subsystem": "091810DE",
+      "name": "NVIDIA Quadro 7000",
+      "die": "GF110",
+      "policy_die": "GF110",
+      "install_section": "Section004"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1180",
+      "device": "1180",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 680",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1183",
+      "device": "1183",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 660 Ti",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1184",
+      "device": "1184",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 770",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1185",
+      "device": "1185",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 660",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1187",
+      "device": "1187",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 760",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1189",
+      "device": "1189",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 670",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_118A",
+      "device": "118A",
+      "subsystem": null,
+      "name": "NVIDIA GRID K520",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section010"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_118E",
+      "device": "118E",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 760 (192-bit)",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_118F",
+      "device": "118F",
+      "subsystem": null,
+      "name": "NVIDIA Tesla K10",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section013"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1193",
+      "device": "1193",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 760 Ti OEM",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1194",
+      "device": "1194",
+      "subsystem": null,
+      "name": "NVIDIA Tesla K8",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section013"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1195",
+      "device": "1195",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 660",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11B4",
+      "device": "11B4",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K4200",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11BA",
+      "device": "11BA",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K5000",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11BF",
+      "device": "11BF",
+      "subsystem": null,
+      "name": "NVIDIA GRID K2",
+      "die": "GK104",
+      "policy_die": "GK104",
+      "install_section": "Section011"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C0",
+      "device": "11C0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 660",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C2",
+      "device": "11C2",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 650 Ti BOOST",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C3",
+      "device": "11C3",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 650 Ti",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C4",
+      "device": "11C4",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 645",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C5",
+      "device": "11C5",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 740",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C6",
+      "device": "11C6",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 650 Ti",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11C8",
+      "device": "11C8",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 650",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11CB",
+      "device": "11CB",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 740",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_11FA",
+      "device": "11FA",
+      "subsystem": null,
+      "name": "NVIDIA Quadro K4000",
+      "die": "GK106",
+      "policy_die": "GK106",
+      "install_section": "Section012"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1200",
+      "device": "1200",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560 Ti",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1201",
+      "device": "1201",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1205",
+      "device": "1205",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 460 v2",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1206",
+      "device": "1206",
+      "subsystem": null,
+      "name": "NVIDIA GeForce  GTX 555",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1207",
+      "device": "1207",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 645",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1208",
+      "device": "1208",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 560 SE",
+      "die": "GF114",
+      "policy_die": "GF114",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1241",
+      "device": "1241",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 545",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1243",
+      "device": "1243",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 545",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1244",
+      "device": "1244",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 550 Ti",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1245",
+      "device": "1245",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTS 450",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section001"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1249",
+      "device": "1249",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTS 450",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_124B",
+      "device": "124B",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 640",
+      "die": "GF116",
+      "policy_die": "GF116",
+      "install_section": "Section002"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1280",
+      "device": "1280",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 635",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1281",
+      "device": "1281",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 710",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1282",
+      "device": "1282",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 640",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1284",
+      "device": "1284",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 630",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1286",
+      "device": "1286",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 720",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1287",
+      "device": "1287",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 730",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1288",
+      "device": "1288",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 720",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1289",
+      "device": "1289",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 710",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_128B",
+      "device": "128B",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GT 710",
+      "die": "GK208",
+      "policy_die": "GK208",
+      "install_section": "Section008"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1380",
+      "device": "1380",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section021"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1381",
+      "device": "1381",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 750",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section021"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1382",
+      "device": "1382",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 745",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_139D",
+      "device": "139D",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13B9",
+      "device": "13B9",
+      "subsystem": null,
+      "name": "NVS 810",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13BA",
+      "device": "13BA",
+      "subsystem": null,
+      "name": "Quadro K2200",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13BB",
+      "device": "13BB",
+      "subsystem": null,
+      "name": "Quadro K620",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13BC",
+      "device": "13BC",
+      "subsystem": null,
+      "name": "Quadro K1200",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13C0",
+      "device": "13C0",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 980",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13C2",
+      "device": "13C2",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 970",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13F0",
+      "device": "13F0",
+      "subsystem": null,
+      "name": "Quadro M5000",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13F1",
+      "device": "13F1",
+      "subsystem": null,
+      "name": "Quadro M4000",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1401",
+      "device": "1401",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1402",
+      "device": "1402",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 950",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1406",
+      "device": "1406",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1407",
+      "device": "1407",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 750",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section022"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1430",
+      "device": "1430",
+      "subsystem": null,
+      "name": "Quadro M2000",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_17C2",
+      "device": "17C2",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX TITAN X",
+      "die": "GM200",
+      "policy_die": "GM200",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_17C8",
+      "device": "17C8",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 980 Ti",
+      "die": "GM200",
+      "policy_die": "GM200",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_17F0",
+      "device": "17F0",
+      "subsystem": null,
+      "name": "Quadro M6000",
+      "die": "GM200",
+      "policy_die": "GM200",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_17F1",
+      "device": "17F1",
+      "subsystem": null,
+      "name": "Quadro M6000 24GB",
+      "die": "GM200",
+      "policy_die": "GM200",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B00",
+      "device": "1B00",
+      "subsystem": null,
+      "name": "NVIDIA TITAN X (Pascal)",
+      "die": "GP102",
+      "policy_die": "GP102",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B02",
+      "device": "1B02",
+      "subsystem": null,
+      "name": "NVIDIA TITAN Xp",
+      "die": "GP102",
+      "policy_die": "GP102",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B06",
+      "device": "1B06",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "die": "GP102",
+      "policy_die": "GP102",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B30",
+      "device": "1B30",
+      "subsystem": null,
+      "name": "Quadro P6000",
+      "die": "GP102",
+      "policy_die": "GP102",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B80",
+      "device": "1B80",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1080",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B81",
+      "device": "1B81",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1070",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B82",
+      "device": "1B82",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1070 Ti",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B83",
+      "device": "1B83",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 6GB",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1B84",
+      "device": "1B84",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 3GB",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1BB0",
+      "device": "1BB0",
+      "subsystem": null,
+      "name": "Quadro P5000",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1BB1",
+      "device": "1BB1",
+      "subsystem": null,
+      "name": "Quadro P4000",
+      "die": "GP104",
+      "policy_die": "GP104",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C02",
+      "device": "1C02",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 3GB",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C03",
+      "device": "1C03",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 6GB",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C04",
+      "device": "1C04",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 5GB",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C06",
+      "device": "1C06",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1060 6GB",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C30",
+      "device": "1C30",
+      "subsystem": null,
+      "name": "Quadro P2000",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C31",
+      "device": "1C31",
+      "subsystem": null,
+      "name": "Quadro P2200",
+      "die": "GP106",
+      "policy_die": "GP106",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C81",
+      "device": "1C81",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1050",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C82",
+      "device": "1C82",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1050 Ti",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1C83",
+      "device": "1C83",
+      "subsystem": null,
+      "name": "NVIDIA GeForce GTX 1050",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1CB1",
+      "device": "1CB1",
+      "subsystem": null,
+      "name": "Quadro P1000",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1CB2",
+      "device": "1CB2",
+      "subsystem": null,
+      "name": "Quadro P600",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1CB3",
+      "device": "1CB3",
+      "subsystem": null,
+      "name": "Quadro P400",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1CB6",
+      "device": "1CB6",
+      "subsystem": null,
+      "name": "Quadro P620",
+      "die": "GP107",
+      "policy_die": "GP107",
+      "install_section": "Section023"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_861E1043",
+      "device": "1392",
+      "subsystem": "861E1043",
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_86D91043",
+      "device": "1392",
+      "subsystem": "86D91043",
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_107A1025",
+      "device": "139B",
+      "subsystem": "107A1025",
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_364917AA",
+      "device": "139B",
+      "subsystem": "364917AA",
+      "name": "NVIDIA GeForce GTX 750Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_C24819DA",
+      "device": "139B",
+      "subsystem": "C24819DA",
+      "name": "NVIDIA GeForce GTX 750 Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_8A751AFA",
+      "device": "139B",
+      "subsystem": "8A751AFA",
+      "name": "NVIDIA GeForce GTX 750Ti",
+      "die": "GM107",
+      "policy_die": "GM107",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11981462",
+      "device": "13D8",
+      "subsystem": "11981462",
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11991462",
+      "device": "13D8",
+      "subsystem": "11991462",
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28219DA",
+      "device": "13D8",
+      "subsystem": "B28219DA",
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28419DA",
+      "device": "13D8",
+      "subsystem": "B28419DA",
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28619DA",
+      "device": "13D8",
+      "subsystem": "B28619DA",
+      "name": "NVIDIA GeForce GTX 960",
+      "die": "GM204",
+      "policy_die": "GM204",
+      "install_section": "Section024"
+    },
+    {
+      "hardware_id": "PCI\\VEN_10DE&DEV_1427&SUBSYS_D0031458",
+      "device": "1427",
+      "subsystem": "D0031458",
+      "name": "NVIDIA GeForce GTX 950",
+      "die": "GM206",
+      "policy_die": "GM206",
+      "install_section": "Section024"
+    }
+  ]
+}

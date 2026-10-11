@@ -6,7 +6,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1380",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_0",
-    "install_section": "Section018"
+    "install_section": "Section021"
   },
   {
     "device": "1381",
@@ -15,7 +15,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1381",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_1",
-    "install_section": "Section018"
+    "install_section": "Section021"
   },
   {
     "device": "1382",
@@ -24,7 +24,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1382",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_2",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "1392",
@@ -34,7 +34,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_861E1043",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_46",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1392",
@@ -44,7 +44,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1392&SUBSYS_86D91043",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_47",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "139B",
@@ -54,7 +54,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_107A1025",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_48",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "139B",
@@ -64,7 +64,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_364917AA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_49",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "139B",
@@ -74,7 +74,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_8A751AFA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_51",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "139B",
@@ -84,7 +84,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_139B&SUBSYS_C24819DA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_50",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "139D",
@@ -93,7 +93,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_139D",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_3",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "13B9",
@@ -102,7 +102,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13B9",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_4",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "13BA",
@@ -111,7 +111,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13BA",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_5",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "13BB",
@@ -120,7 +120,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13BB",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_6",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "13BC",
@@ -129,7 +129,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13BC",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_7",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "13C0",
@@ -138,7 +138,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13C0",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_8",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13C2",
@@ -147,7 +147,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13C2",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_9",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13D8",
@@ -157,7 +157,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11981462",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_52",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13D8",
@@ -167,7 +167,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_11991462",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_53",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13D8",
@@ -177,7 +177,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28219DA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_54",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13D8",
@@ -187,7 +187,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28419DA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_55",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13D8",
@@ -197,7 +197,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13D8&SUBSYS_B28619DA",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_56",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "13F0",
@@ -206,7 +206,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13F0",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_10",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "13F1",
@@ -215,7 +215,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_13F1",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_11",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1401",
@@ -224,7 +224,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1401",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_12",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "1402",
@@ -233,7 +233,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1402",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_13",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "1406",
@@ -242,7 +242,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1406",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_14",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "1407",
@@ -251,7 +251,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1407",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_15",
-    "install_section": "Section008"
+    "install_section": "Section022"
   },
   {
     "device": "1427",
@@ -261,7 +261,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1427&SUBSYS_D0031458",
     "coverage": "Desktop subsystem-specific alias; untested",
     "inf_string": "XPP_GPU_57",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1430",
@@ -270,7 +270,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1430",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_16",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "17C2",
@@ -279,7 +279,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_17C2",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_17",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "17C8",
@@ -288,7 +288,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_17C8",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_18",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "17F0",
@@ -297,7 +297,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_17F0",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_19",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "17F1",
@@ -306,7 +306,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_17F1",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_20",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1B00",
@@ -315,7 +315,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B00",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_22",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B02",
@@ -324,7 +324,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B02",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_23",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B06",
@@ -333,7 +333,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B06",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_24",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B30",
@@ -342,7 +342,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B30",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_25",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1B80",
@@ -351,7 +351,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B80",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_26",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B81",
@@ -360,7 +360,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B81",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_27",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B82",
@@ -369,7 +369,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B82",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_28",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B83",
@@ -378,7 +378,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B83",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_29",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1B84",
@@ -387,7 +387,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1B84",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_30",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1BB0",
@@ -396,7 +396,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1BB0",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_31",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1BB1",
@@ -405,7 +405,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1BB1",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_32",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1C02",
@@ -414,7 +414,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C02",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_33",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C03",
@@ -423,7 +423,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C03",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_34",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C04",
@@ -432,7 +432,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C04",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_35",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C06",
@@ -441,7 +441,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C06",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_36",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C30",
@@ -450,7 +450,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C30",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_37",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1C31",
@@ -459,7 +459,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C31",
     "coverage": "INF entry; hardware validation not implied",
     "inf_string": "XPP_GPU_38",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1C81",
@@ -468,7 +468,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C81",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_39",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C82",
@@ -477,7 +477,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C82",
     "coverage": "GTX 1050 Ti hardware validated",
     "inf_string": "XPP_GPU_40",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1C83",
@@ -486,7 +486,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1C83",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_41",
-    "install_section": "Section012"
+    "install_section": "Section024"
   },
   {
     "device": "1CB1",
@@ -495,7 +495,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB1",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_42",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1CB2",
@@ -504,7 +504,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB2",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_43",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1CB3",
@@ -513,7 +513,7 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB3",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_44",
-    "install_section": "Section012"
+    "install_section": "Section023"
   },
   {
     "device": "1CB6",
@@ -522,6 +522,6 @@
     "hardware_id": "PCI\\VEN_10DE&DEV_1CB6",
     "coverage": "INF entry; not individually hardware tested",
     "inf_string": "XPP_GPU_45",
-    "install_section": "Section012"
+    "install_section": "Section023"
   }
 ]

@@ -1,0 +1,10 @@
+SECTIONS { . = 0xd80d40; .text : { *(.text*) } /DISCARD/ : { *(.note*) *(.comment*) *(.eh_frame*) } }
+original_gp102_fecs = 0x4f05d0;
+original_gp102_gpccs = 0x4f0740;
+original_gp102_gr = 0x4f10d0;
+original_gp104_fecs = 0x4f0600;
+original_gp104_gpccs = 0x4f0770;
+original_gp104_gr = 0x4f1270;
+original_gp106_fecs = 0x4f0630;
+original_gp106_gpccs = 0x4f07a0;
+original_gp106_gr = 0x4f12b0;
