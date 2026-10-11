@@ -1,8 +1,12 @@
+Experimental October 11 rollback: October 9 stable base with only the
+original October 4 installer extension and two PMU synchronization fixes.
+The later firmware, HDMI-policy and component-detection updates are excluded.
+
 # Forceware 382.69
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, with additional Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Build: 10-9-2026** · [Project and rebuilding guide](https://github.com/SupraGSX/Forceware-382.69)
+**Build: 10-11-2026 rollback** · [Project and rebuilding guide](https://github.com/SupraGSX/Forceware-382.69)
 
 ## Install
 

@@ -1,7 +1,11 @@
-Forceware 382.69 - custom NVIDIA Windows XP 32-bit driver
-Build: 10-9-2026 (display INF date: 10/09/2026)
+Experimental October 11 rollback: October 9 stable base with only the
+original October 4 installer extension and two PMU synchronization fixes.
+The later firmware, HDMI-policy and component-detection updates are excluded.
 
-Launch Forceware 382.69 (10-9-2026).exe and follow the NVIDIA installer.
+Forceware 382.69 - custom NVIDIA Windows XP 32-bit driver
+Build: 10-11-2026 rollback (display INF date: 10/11/2026)
+
+Launch Forceware 382.69 (10-11-2026 rollback).exe and follow the NVIDIA installer.
 When upgrading, select Custom (Advanced), Perform a clean installation,
 then restart. Alternatively, extract the package and run setup.exe.
 This is a modified, unsigned 368.81-based package, not an official NVIDIA release.

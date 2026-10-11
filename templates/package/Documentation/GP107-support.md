@@ -1,6 +1,6 @@
 # GP107 support
 
-Build 10-9-2026 includes desktop GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3) and P620 (1CB6). GTX 1050 Ti has been hardware tested. The other GP107 models have not been individually tested; mobile GPUs, GP100 and GP108 remain excluded.
+Build 10-11-2026 rollback includes desktop GTX 1050 (1C81/1C83), GTX 1050 Ti (1C82), Quadro P1000 (1CB1), P600 (1CB2), P400 (1CB3) and P620 (1CB6). GTX 1050 Ti has been hardware tested. The other GP107 models have not been individually tested; mobile GPUs, GP100 and GP108 remain excluded.
 
 ## Initialization
 

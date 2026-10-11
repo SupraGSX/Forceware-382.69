@@ -1,6 +1,6 @@
 # CUDA, OpenCL and GPU PhysX update
 
-Included in build 10-9-2026; introduced in the October 5 stable release.
+Included in build 10-11-2026 rollback; introduced in the October 5 stable release.
 
 The driver could install and render Direct3D while CUDA and OpenCL failed to enumerate the GPU and PhysX fell back to the CPU. On GTX 1080 Ti, the shared failure was the driver's internal GPU short-name query: the stock table lacked PCI device ID 1B06. The display INF name does not supply this internal name.
 

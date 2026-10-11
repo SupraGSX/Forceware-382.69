@@ -2,7 +2,7 @@
 
 # Rebuilding Forceware 382.69
 
-This guide documents the **10-9-2026 build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
+This guide documents the **10-11-2026 rollback build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
 
 Start with the reconstruction commands, then use the implementation sections to review the changes by subsystem.
 
@@ -93,7 +93,7 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-9-2026).exe
+  Forceware 382.69 (10-11-2026 rollback).exe
   Forceware 382.69/
   rebuild-result.json
   work/
@@ -511,6 +511,18 @@ These dates identify the custom package, not a recompilation of NVIDIA's proprie
 
 <a id="12-validation-what-passed-and-what-remains-unproven"></a>
 
+### Rollback PMU and installer changes
+
+This experimental branch retains the October 9 graphics firmware, HDMI policy,
+GPU lists and component declarations. It adds only the two guarded PMU receive
+and shared-memory-port synchronization fixes from October 11 and preserves the
+exact stock signed `DisplayDriverExt.dll` used by October 4. Build identification
+is October 11. Source and hook locations are in [sources/pmu](sources/pmu/README.md).
+
+Run `python3 verify_pmu.py --miniport "build-38269/Forceware 382.69/Display.Driver/nv4_mini.sys" --out pmu-check`
+after reconstruction. The rollback package is verified by exact difference
+accounting and compiler comparisons; it has not been newly tested on hardware.
+
 ## 7. Validation and limits
 
 | Area | Evidence | Boundary |
@@ -624,4 +636,4 @@ nvWsS.dll
 b1ba6f3bf4ad8642876c6e6e7f7dcdeba4f11bcc5a7042b06b2a2f24baf6c7c8
 ```
 
-These hashes identify the **10-9-2026 build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.
+These hashes identify the **10-11-2026 rollback build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.

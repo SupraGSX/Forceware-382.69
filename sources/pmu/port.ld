@@ -1,0 +1,1 @@
+SECTIONS { . = 14446592; .entry : { *(.entry) } . = 14446848; .tramp : { *(.tramp) } . = 14446976; .text : { *(.text*) } /DISCARD/ : { *(.comment) *(.note*) *(.eh_frame*) } }
