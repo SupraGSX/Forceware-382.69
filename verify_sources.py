@@ -29,7 +29,16 @@ def main():
             subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True)
     def compare(name, blob, module, va):
         data = module.read_bytes()
-        require(pe_read(data, va, len(blob)) == blob, 'Compiled source differs: '+name)
+        expected = bytearray(blob)
+        if name == 'hdmi-policy':
+            # Three old entry points now redirect to the block-aware routines.
+            # The remaining retained bytes are unchanged. The new destinations
+            # and full replacement routines are checked by verify_display_audio.
+            spec = json.loads((src/'display-audio/hooks.json').read_text())['nv4_mini.sys']
+            for edit in spec['edits'][:3]:
+                offset = int(edit['va'], 16) - va
+                expected[offset:offset+5] = bytes.fromhex(edit['after'])
+        require(pe_read(data, va, len(expected)) == expected, 'Compiled source differs: '+name)
         records.append({'source':name,'bytes':len(blob),'sha256':digest(blob),'preferred_va':hex(va)})
     cases = [
         ('dp-startup/disp-startup.s','nv4_disp.dll',0x356b00,[], 'prepare_query'),
@@ -149,6 +158,7 @@ def main():
     compare('dp-wake-lane-restore', wakebin.read_bytes(), args.package/'Display.Driver/nv4_disp.dll', 0x19e23)
     with (out/'display-updates.log').open('w') as log:
         subprocess.run([sys.executable,str(src.parent/'verify_display_updates.py'),'--package',str(args.package.resolve()),'--cpl',str(args.cpl.resolve()),'--out',str(out/'display-updates')],stdout=log,stderr=subprocess.STDOUT,check=True)
+    subprocess.run([sys.executable, str(src.parent/'verify_display_audio.py'), '--package', str(args.package.resolve()), '--out', str(out/'display-audio')], check=True)
     (out/'verification.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'compiled_blocks_matching_release':len(records),'blocks':records},indent=2))
 

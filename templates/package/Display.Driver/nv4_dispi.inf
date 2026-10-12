@@ -7,7 +7,7 @@ Signature   = "$Windows NT$"
 Provider    = %NVIDIA%
 ClassGUID   = {4D36E968-E325-11CE-BFC1-08002BE10318}
 Class       = Display
-DriverVer   = 10/11/2026, 10.18.13.8269
+DriverVer   = 10/12/2026, 10.18.13.8269
 ; Modified package: original catalog no longer applies.
 [nv_CplInstaller]
 Default_addreg = nv_CplInstaller_addreg
@@ -873,8 +873,8 @@ HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplEnableSRS1564,%REG_DWORD%
 %XPP_GPU_5% = Section012, PCI\VEN_10DE&DEV_13BA
 %XPP_GPU_6% = Section012, PCI\VEN_10DE&DEV_13BB
 %XPP_GPU_7% = Section012, PCI\VEN_10DE&DEV_13BC
-%XPP_GPU_8% = Section012, PCI\VEN_10DE&DEV_13C0
-%XPP_GPU_9% = Section012, PCI\VEN_10DE&DEV_13C2
+%XPP_GPU_8% = Section021, PCI\VEN_10DE&DEV_13C0
+%XPP_GPU_9% = Section021, PCI\VEN_10DE&DEV_13C2
 %XPP_GPU_10% = Section012, PCI\VEN_10DE&DEV_13F0
 %XPP_GPU_11% = Section012, PCI\VEN_10DE&DEV_13F1
 %XPP_GPU_12% = Section008, PCI\VEN_10DE&DEV_1401
@@ -882,46 +882,46 @@ HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplEnableSRS1564,%REG_DWORD%
 %XPP_GPU_14% = Section008, PCI\VEN_10DE&DEV_1406
 %XPP_GPU_15% = Section008, PCI\VEN_10DE&DEV_1407
 %XPP_GPU_16% = Section012, PCI\VEN_10DE&DEV_1430
-%XPP_GPU_17% = Section012, PCI\VEN_10DE&DEV_17C2
-%XPP_GPU_18% = Section012, PCI\VEN_10DE&DEV_17C8
+%XPP_GPU_17% = Section021, PCI\VEN_10DE&DEV_17C2
+%XPP_GPU_18% = Section021, PCI\VEN_10DE&DEV_17C8
 %XPP_GPU_19% = Section012, PCI\VEN_10DE&DEV_17F0
 %XPP_GPU_20% = Section012, PCI\VEN_10DE&DEV_17F1
-%XPP_GPU_22% = Section012, PCI\VEN_10DE&DEV_1B00
-%XPP_GPU_23% = Section012, PCI\VEN_10DE&DEV_1B02
-%XPP_GPU_24% = Section012, PCI\VEN_10DE&DEV_1B06
+%XPP_GPU_22% = Section021, PCI\VEN_10DE&DEV_1B00
+%XPP_GPU_23% = Section021, PCI\VEN_10DE&DEV_1B02
+%XPP_GPU_24% = Section021, PCI\VEN_10DE&DEV_1B06
 %XPP_GPU_25% = Section012, PCI\VEN_10DE&DEV_1B30
-%XPP_GPU_26% = Section012, PCI\VEN_10DE&DEV_1B80
-%XPP_GPU_27% = Section012, PCI\VEN_10DE&DEV_1B81
-%XPP_GPU_28% = Section012, PCI\VEN_10DE&DEV_1B82
-%XPP_GPU_29% = Section012, PCI\VEN_10DE&DEV_1B83
-%XPP_GPU_30% = Section012, PCI\VEN_10DE&DEV_1B84
+%XPP_GPU_26% = Section021, PCI\VEN_10DE&DEV_1B80
+%XPP_GPU_27% = Section021, PCI\VEN_10DE&DEV_1B81
+%XPP_GPU_28% = Section021, PCI\VEN_10DE&DEV_1B82
+%XPP_GPU_29% = Section021, PCI\VEN_10DE&DEV_1B83
+%XPP_GPU_30% = Section021, PCI\VEN_10DE&DEV_1B84
 %XPP_GPU_31% = Section012, PCI\VEN_10DE&DEV_1BB0
 %XPP_GPU_32% = Section012, PCI\VEN_10DE&DEV_1BB1
-%XPP_GPU_33% = Section012, PCI\VEN_10DE&DEV_1C02
-%XPP_GPU_34% = Section012, PCI\VEN_10DE&DEV_1C03
-%XPP_GPU_35% = Section012, PCI\VEN_10DE&DEV_1C04
-%XPP_GPU_36% = Section012, PCI\VEN_10DE&DEV_1C06
+%XPP_GPU_33% = Section021, PCI\VEN_10DE&DEV_1C02
+%XPP_GPU_34% = Section021, PCI\VEN_10DE&DEV_1C03
+%XPP_GPU_35% = Section021, PCI\VEN_10DE&DEV_1C04
+%XPP_GPU_36% = Section021, PCI\VEN_10DE&DEV_1C06
 %XPP_GPU_37% = Section012, PCI\VEN_10DE&DEV_1C30
 %XPP_GPU_38% = Section012, PCI\VEN_10DE&DEV_1C31
-%XPP_GPU_39% = Section012, PCI\VEN_10DE&DEV_1C81
-%XPP_GPU_40% = Section012, PCI\VEN_10DE&DEV_1C82
-%XPP_GPU_41% = Section012, PCI\VEN_10DE&DEV_1C83
+%XPP_GPU_39% = Section021, PCI\VEN_10DE&DEV_1C81
+%XPP_GPU_40% = Section021, PCI\VEN_10DE&DEV_1C82
+%XPP_GPU_41% = Section021, PCI\VEN_10DE&DEV_1C83
 %XPP_GPU_42% = Section012, PCI\VEN_10DE&DEV_1CB1
 %XPP_GPU_43% = Section012, PCI\VEN_10DE&DEV_1CB2
 %XPP_GPU_44% = Section012, PCI\VEN_10DE&DEV_1CB3
 %XPP_GPU_45% = Section012, PCI\VEN_10DE&DEV_1CB6
-%XPP_GPU_46% = Section012, PCI\VEN_10DE&DEV_1392&SUBSYS_861E1043
-%XPP_GPU_47% = Section012, PCI\VEN_10DE&DEV_1392&SUBSYS_86D91043
-%XPP_GPU_48% = Section012, PCI\VEN_10DE&DEV_139B&SUBSYS_107A1025
-%XPP_GPU_49% = Section012, PCI\VEN_10DE&DEV_139B&SUBSYS_364917AA
-%XPP_GPU_50% = Section012, PCI\VEN_10DE&DEV_139B&SUBSYS_C24819DA
-%XPP_GPU_51% = Section012, PCI\VEN_10DE&DEV_139B&SUBSYS_8A751AFA
-%XPP_GPU_52% = Section012, PCI\VEN_10DE&DEV_13D8&SUBSYS_11981462
-%XPP_GPU_53% = Section012, PCI\VEN_10DE&DEV_13D8&SUBSYS_11991462
-%XPP_GPU_54% = Section012, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28219DA
-%XPP_GPU_55% = Section012, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28419DA
-%XPP_GPU_56% = Section012, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28619DA
-%XPP_GPU_57% = Section012, PCI\VEN_10DE&DEV_1427&SUBSYS_D0031458
+%XPP_GPU_46% = Section021, PCI\VEN_10DE&DEV_1392&SUBSYS_861E1043
+%XPP_GPU_47% = Section021, PCI\VEN_10DE&DEV_1392&SUBSYS_86D91043
+%XPP_GPU_48% = Section021, PCI\VEN_10DE&DEV_139B&SUBSYS_107A1025
+%XPP_GPU_49% = Section021, PCI\VEN_10DE&DEV_139B&SUBSYS_364917AA
+%XPP_GPU_50% = Section021, PCI\VEN_10DE&DEV_139B&SUBSYS_C24819DA
+%XPP_GPU_51% = Section021, PCI\VEN_10DE&DEV_139B&SUBSYS_8A751AFA
+%XPP_GPU_52% = Section021, PCI\VEN_10DE&DEV_13D8&SUBSYS_11981462
+%XPP_GPU_53% = Section021, PCI\VEN_10DE&DEV_13D8&SUBSYS_11991462
+%XPP_GPU_54% = Section021, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28219DA
+%XPP_GPU_55% = Section021, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28419DA
+%XPP_GPU_56% = Section021, PCI\VEN_10DE&DEV_13D8&SUBSYS_B28619DA
+%XPP_GPU_57% = Section021, PCI\VEN_10DE&DEV_1427&SUBSYS_D0031458
 
 [DestinationDirs]
 DefaultDestDir = 11
@@ -2844,4 +2844,50 @@ REG_EXPAND_SZ = 0x00020000
 REG_MULTI_SZ = 0x00010000
 REG_SZ = 0x00000000
 REG_SZ_APPEND = 0x00010008
+
+
+[Section021]
+NVSupportGFExperienceUDA = 1
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NV3DVisionDisallow = 2
+NVAllowIR3DDriverPreStage = 1
+NVIR3DDriverDisallow = 2
+NVSupport3DVision = 3
+NVSupport3DVisionForOEM = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportNview = 1
+NVSupportPerfDriver = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section021.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section021.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section021.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section021.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__04
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg
+DelReg = nv_clearRegistrySwitches_delreg
 

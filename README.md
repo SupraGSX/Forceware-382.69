@@ -2,15 +2,15 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, with additional Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Experimental build: 10-11-2026 rollback** · [Download the rollback installer](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-10-11-rollback) · [Rebuilding guide](REBUILDING.md)
+**Experimental prerelease: 10-12-2026** · [Download the prerelease installer](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-10-12) · [Rebuilding guide](REBUILDING.md)
 
-This experiment uses the October 9 stable package with only the original October 4 installer extension and the two PMU synchronization corrections. Later firmware, HDMI-policy and component-detection updates are excluded. Physical confirmation of the PMU fixes remains pending.
+This build continues the October 11 rollback with improved DisplayPort/HDMI audio detection, HDMI capability validation and installer component selection. The newer-firmware and High Clock experiments are not included.
 
 ## Install
 
 Run the EXE and follow the NVIDIA installer. When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.
 
-Windows Server 2003 x86 installation is also supported; optional GeForce Experience is omitted there. Bundled HD Audio, PhysX and nView components retain their existing versions.
+Optional GeForce Experience is offered for eligible GeForce/TITAN cards on Windows XP SP3 and omitted on Windows Server 2003 x86. After a clean install, reselect the primary monitor in Windows Display Properties if needed. Bundled HD Audio, PhysX and nView components retain their existing versions.
 
 ## Additional desktop GPUs
 
@@ -27,6 +27,7 @@ Mobile, GP100 and GP108 GPUs are excluded. GP107 support has been validated on G
 - **Rendering and compute:** Pascal initialization fixes, OpenGL display-class recognition, and corrected CUDA, OpenCL and GPU PhysX initialization.
 - **DisplayPort:** HBR2/HBR3 training, startup and display sleep/wake recovery, automatic 8-bit fallback when needed, and native scaling within the successfully trained link's bandwidth.
 - **HDMI:** Corrected vendor-block identification, GPU/monitor-aware HDMI/DVI limits, SCDC setup and failure recovery, and native scaling with a 594 MHz ceiling.
+- **Display audio:** Block-aware CTA/DisplayID audio discovery, bounded ELD construction and corrected HD Audio device binding.
 - **Control Panel:** Corrected display classification, restored **Customize**, separate **Scaling** and **Overscan** pages, and unlocked **View system topology** with EDID loading.
 
 ## Compatibility notes

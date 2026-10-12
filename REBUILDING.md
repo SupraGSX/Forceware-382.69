@@ -2,7 +2,7 @@
 
 # Rebuilding Forceware 382.69
 
-This guide documents the **10-11-2026 rollback build** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
+This guide documents the **10-12-2026 prerelease** of the custom NVIDIA 368.81-based Windows XP 32-bit driver. **382.69 is the project's release number.** The source provided here is the patcher and added C/assembly routines; NVIDIA's proprietary driver source is not included.
 
 Start with the reconstruction commands, then use the implementation sections to review the changes by subsystem.
 
@@ -29,6 +29,7 @@ Start with the reconstruction commands, then use the implementation sections to 
 | [rebuild.py](rebuild.py) | Reconstructs the package from the exact stock installer and two supplied firmware-donor modules. |
 | [patches.json](patches.json) | Input hashes, output hashes, byte guards, edits, firmware extraction instructions and the complete package/CPL file inventory. |
 | [sources/](sources/) | Readable C/assembly for the added routines, link scripts and the NVAPI version-reporting patch generator. |
+| [verify_display_audio.py](verify_display_audio.py) | Compiles the block-aware EDID/audio routines and checks their driver hooks. |
 | [verify_sources.py](verify_sources.py) | Compiles the retained patch blocks and HDMI/DisplayPort scaling and Control Panel routines, then independently verifies the OpenGL display-class patch. |
 | [sources/opengl-display-class.py](sources/opengl-display-class.py) | Guarded recipe for adding the missing OpenGL display class to the preceding Forceware ICD. |
 | [templates/](templates/) | Final INF, installer configuration and text files used during reconstruction. |
@@ -36,7 +37,7 @@ Start with the reconstruction commands, then use the implementation sections to 
 
 The manifest applies the final changes directly to the exact vendor inputs.
 
-A verified rebuild matched **585 outer-package files and all 469 Control Panel files byte-for-byte**. The remaining two outer files are the regenerated Control Panel archive and `SHA256SUMS.txt`. Both archives passed extraction checks; the retained and newly added compiled source blocks matched the driver instructions. The OpenGL table patch is independently regenerated and compared by its source recipe.
+The verified reconstruction reproduced the complete released EXE byte-for-byte: **588 outer-package files and all 469 Control Panel files**. The builder directly verifies 586 outer files and regenerates the Control Panel archive and `SHA256SUMS.txt`. All extracted hashes matched, as did the retained and newly added compiled routines. The OpenGL table patch is independently regenerated and compared by its source recipe.
 
 Compression, timestamps and tool versions can change archive hashes while preserving identical driver files. The reproduction check is the exact extracted payload.
 
@@ -93,13 +94,13 @@ Outputs include:
 
 ```text
 build-38269/
-  Forceware 382.69 (10-11-2026 rollback).exe
+  Forceware 382.69 (10-12-2026).exe
   Forceware 382.69/
   rebuild-result.json
   work/
 ```
 
-`rebuild-result.json` should report 587 package files, 585 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
+`rebuild-result.json` should report 588 package files, 586 exact release-file matches, 469 exact Control Panel member matches, and successful extraction checks. Scratch files and compiler outputs belong under the build directory; they are not installed by the driver.
 
 <a id="23-optionally-rebuild-the-added-machine-code-from-source"></a>
 
@@ -505,29 +506,59 @@ HD Audio **1.3.34.15**, PhysX **9.16.0318** and nView **141.36** retain their bu
 
 ### 6.4 Build dates
 
-Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/09/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
+Each package revision declares `build_date` (MM/DD/YYYY) in `patches.json`. This build uses **10/12/2026**. The display INF, DisplayDriver/Control Panel NVI timestamps, rebuilt display PE headers, embedded July 10 build strings, archive member timestamps and generated SFX headers use the same date. `sources/build-date.py` records reversible metadata edits; the builder rejects mismatched INF/NVI dates and verifies the binary edits. Independent instruction checks normalize only those verified metadata edits.
 
 These dates identify the custom package, not a recompilation of NVIDIA's proprietary code. Historical copyright, firmware and debugger identity are retained. Unchanged audio, PhysX, nView and other vendor components keep their original binary versions and internal dates; the archive dates identify this package. Display version remains 6.14.13.8269. Future builds must refresh all of these display identification fields, and final extracted files must be checked.
 
 <a id="12-validation-what-passed-and-what-remains-unproven"></a>
 
-### Rollback PMU and installer changes
+### October 12 continuation
 
-This experimental branch retains the October 9 graphics firmware, HDMI policy,
-GPU lists and component declarations. It adds only the two guarded PMU receive
-and shared-memory-port synchronization fixes from October 11 and preserves the
-exact stock signed `DisplayDriverExt.dll` used by October 4. Build identification
-is October 11. Source and hook locations are in [sources/pmu](sources/pmu/README.md).
+The base remains the October 11 rollback: October 9 graphics firmware and GPU
+list, the two PMU synchronization corrections, and the exact stock signed
+`DisplayDriverExt.dll` used by October 4. The newer firmware donors and High
+Clock experiment are not included. Build identification is October 12.
 
-Run `python3 verify_pmu.py --miniport "build-38269/Forceware 382.69/Display.Driver/nv4_mini.sys" --out pmu-check`
-after reconstruction. The rollback package is verified by exact difference
-accounting and compiler comparisons; it has not been newly tested on hardware.
+The display INF clones the existing eligible install section and its four
+companions, adding only `NVSupportGFExperienceUDA = 1`. This covers all 39 added
+GeForce/TITAN entries while retaining the 18 added Quadro entries and stock model
+sections. The existing Server 2003 and native prerequisite checks remain. The
+HD Audio INF includes the corrected `DEV_0080` codec bindings without changing
+the audio driver's binary or version.
+
+The display-audio routines in [sources/display-audio](sources/display-audio/README.md)
+read a bounded, per-request RM EDID snapshot and validate CTA collections,
+including those inside DisplayID. They preserve distinct short audio descriptors,
+intersect them with the native source/timing budget, and clear ELD validity on
+failure. HDMI capability validation uses the same complete snapshot and retains
+legacy HDMI identity, source/monitor limits and SCDC requirements. No global
+EDID buffer, new lock, timing reorder or monitor-specific override is added.
+
+`verify_sources.py` includes the new display-audio source/hook checks. Also run
+`python3 verify_pmu.py --miniport "build-38269/Forceware 382.69/Display.Driver/nv4_mini.sys" --out pmu-check`
+to verify the retained PMU changes.
 
 ## 7. Validation and limits
 
+The October 12 EXE was clean-installed in an XP SP3 clone with GTX 1050 Ti as
+primary passthrough GPU. Graphics, HD Audio, nView and optional GeForce Experience
+installed; the bundled PhysX version was already present. Direct3D passed 64
+pixel readbacks and all three OpenGL profiles passed. DP audio endpoint creation,
+DirectSound and PCM buffer completion passed. Audible output and the full legacy
+GeForce Experience application were not tested.
+
+Both DisplayPort and HDMI desktops were physically confirmed normal. A clean
+install reset the primary output; selecting DisplayPort as primary through
+Windows Display Properties persisted through reboot. This is a configuration
+step, not a driver layout-preservation fix. HDMI synthetic-EDID tests covered
+nested/multiple audio collections, basic audio, missing HDMI identity and invalid
+nested checksums. Physical hotplug and other GPU models remain unverified for
+these new routines.
+
+
 | Area | Evidence | Boundary |
 |---|---|---|
-| Installation and package | October 9 NVIDIA clean install and restart on GTX 1050 Ti; all 12 checked module hashes, Code 0, NVAPI version and build date matched. Extraction verifies 587 package files, 469 CPL members and 63 dated metadata records; 24 compiled source blocks match. Native tests passed 572 GP107 ABI checks, 102 chip identities at preferred/relocated addresses and 4,944 name-lookup calls. | Other boards were not retested with this package. Native code tests do not replace hardware validation. |
+| Installation and package | Prior October 9 NVIDIA clean install and restart on GTX 1050 Ti; all 12 checked module hashes, Code 0, NVAPI version and build date matched. The October 12 reconstruction verifies 588 package files, 469 CPL members and 62 dated metadata records; retained source blocks and the new display-audio routines match. Native tests passed 572 GP107 ABI checks, 102 chip identities at preferred/relocated addresses and 4,944 name-lookup calls. | Other boards were not retested with this package. Native code tests do not replace hardware validation. |
 | Direct3D and OpenGL | October 9 GTX 1050 Ti: fullscreen D3D9 HAL/HWVP, VS3/PS3, 64 draws/readbacks and Present; three NVIDIA OpenGL display-list renders with correct pixels and no GL errors. The same checks passed on GTX 1080 Ti with October 8. | Functional checks, not conformance, exhaustive shader or full-VRAM testing. |
 | CUDA, OpenCL and GPU PhysX | October 9 GTX 1050 Ti clean install: CUDA context operations, an OpenCL GPU kernel with 8,192 checked results, and a 60-second fullscreen 1280×720 GPU PhysX benchmark with 30,000 particles, 10,226 simulations and clean shutdown. Correct GPU names were confirmed. | Enable GPU PhysX in Control Panel and the application. An earlier same-process CPU-to-GPU change froze FluidMark; fresh GPU-selected runs pass, but that transition's cause remains unproven. Other compute applications and GPU models were not individually retested. |
 | DisplayPort | P4000/GTX 1080 Ti HBR3 ×4; GTX 980 Ti HBR2 ×4 at 3440×1440/100. Real HBR and RBR controls verified depth/capacity fallback. GTX 1080 Ti explicit 3440×1440/175 RGB8 had a confirmed normal picture. October 8 fullscreen 640×480 scaled to 1920×1440 inside native 3440×1440/60. The earlier ten-minute GTX 1080 Ti display-sleep test recovered the saved link and passed rendering. The GP107 candidate passed GTX 1050 Ti HBR2 ×4 at native 3440×1440/60, receiver-lock checks and a 20-second display-sleep cycle. | Lower-rate tests used capable GPUs, not a separate DP1.1 board. High-refresh native-mode success does not imply automatic high-refresh scaling or whole-system suspend support. |
@@ -615,25 +646,25 @@ Key final SHA-256 values:
 
 ```text
 Display.Driver/nv4_mini.sys
-3268a60efe545a58a81418bb8d1fd31e9133b2756b33651057cae35be84cb78a
+d7eefbcc011daeba99f40bfd38092276eec62ff99a882b9bbbc4f285d80bf09f
 
 Display.Driver/nv4_disp.dll
-f778b29970addcf031e6a5972297f91692449929641a04f84e3523656d0543e6
+0e60e8ec9ce51cdb44f4d07754d9b5511d93f8cba1acbcf0634a3a1a680e2bc4
 
 Display.Driver/nvoglnt.dll
-4f17515352c43882c803f23c054d8ffc569843162fba0b3147d00080d9180e16
+12257990bab72c81949561adb31810d626263b77d8f83b8436edf12addb141ae
 
 Display.Driver/nvapi.dll
-778532459dfa51f8406bfefc9449034e62256484fec7aaf22a0fe15e0ec7e83a
+26b89b763374199f7e4876d060b23660b5c5ac5987fcb938f460ada480f55a86
 
 nvcpl.dll
-e76790e8e20b876841048e75537611803cb04a39bd4cac4a3d9feab31dfa5d9d
+384a96c17875f0525f953e38d6dfb8f064b19bc20eb8cd68d8926e9472e85ffd
 
 nvDispS.dll
-9d63b0e513e31fe98dbb23a4807336e5d3e3161d86695996b30c70e0b873277a
+19eea73a136cd0b583ea3126038bcb1b93689827e095684a08139b7760eb76ae
 
 nvWsS.dll
-b1ba6f3bf4ad8642876c6e6e7f7dcdeba4f11bcc5a7042b06b2a2f24baf6c7c8
+3c70b7290e74fd727aa28ba86d387a18c1e1ee55dc1907899e2646165e0da43e
 ```
 
-These hashes identify the **10-11-2026 rollback build**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.
+These hashes identify the **10-12-2026 prerelease**. Repacked archives need not match the release EXE hash; compare the exact extracted payload and manifest inventories.

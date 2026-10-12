@@ -1,0 +1,100 @@
+{
+  "nv4_mini.sys": {
+    "stub_va": "0xdc8080",
+    "stub_size": 5833,
+    "edits": [
+      {
+        "va": "0xd06d60",
+        "before": "9c605355e8",
+        "after": "e91b130c00",
+        "purpose": "branch to 0xdc8080"
+      },
+      {
+        "va": "0xd06d7b",
+        "before": "9c608b8424",
+        "after": "e91b130c00",
+        "purpose": "branch to 0xdc809b"
+      },
+      {
+        "va": "0xd06da0",
+        "before": "9c608b4424",
+        "after": "e91b130c00",
+        "purpose": "branch to 0xdc80c0"
+      },
+      {
+        "va": "0x44b920",
+        "before": "81ec08010000",
+        "after": "e9bdc7970090",
+        "purpose": "branch to 0xdc80e2"
+      },
+      {
+        "va": "0x44caa9",
+        "before": "e8a2764200",
+        "after": "e862b69700",
+        "purpose": "branch to 0xdc8110"
+      },
+      {
+        "va": "0x45672b",
+        "before": "e820da4100",
+        "after": "e8e9199700",
+        "purpose": "branch to 0xdc8119"
+      },
+      {
+        "va": "0x442190",
+        "before": "538b5c2408",
+        "after": "e9d06a9800",
+        "purpose": "branch to 0xdc8c65"
+      },
+      {
+        "va": "0x44c8f6",
+        "before": "f6853d2c000040",
+        "after": "e94cb897009090",
+        "purpose": "branch to 0xdc8147"
+      }
+    ],
+    "new_absolute_relocations": false
+  },
+  "nv4_disp.dll": {
+    "stub_va": "0x356e00",
+    "stub_size": 303,
+    "edits": [
+      {
+        "va": "0x4b2fa",
+        "before": "83f826",
+        "after": "83f80f",
+        "purpose": "maximum-rate scan bounded to 15"
+      },
+      {
+        "va": "0x4b3b2",
+        "before": "80f926",
+        "after": "80f90f",
+        "purpose": "descriptor count bounded to 15"
+      },
+      {
+        "va": "0x4b7a5",
+        "before": "83fe10",
+        "after": "83fe0f",
+        "purpose": "final source-filter count bounded to 15"
+      },
+      {
+        "va": "0x4b273",
+        "before": "0f85e4050000",
+        "after": "0f857f050000",
+        "purpose": "parsed-query error reaches cleanup"
+      },
+      {
+        "va": "0x4b7d3",
+        "before": "8b9424ac000000",
+        "after": "e928b630009090",
+        "purpose": "branch to 0x356e00"
+      },
+      {
+        "va": "0x4b7f8",
+        "before": "c744241c01000000",
+        "after": "e921b63000909090",
+        "purpose": "branch to 0x356e1e"
+      }
+    ],
+    "new_absolute_relocations": false
+  }
+}
