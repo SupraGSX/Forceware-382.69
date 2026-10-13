@@ -4,7 +4,7 @@ Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, adding Maxwell/Pasc
 
 **Current stable: [10-12-2026](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-10-12)**
 
-Continues the stable rollback build with improved DisplayPort/HDMI audio detection, multi-block EDID handling, corrected HD Audio installation, optional GeForce Experience installer visibility and hardened HDMI capability validation. The newer-firmware and High Clock experiments are not included in either build.
+Improved DisplayPort/HDMI audio detection, multi-block EDID handling, corrected HD Audio installation, optional GeForce Experience installer visibility and hardened HDMI capability validation.
 
 ## Install
 
