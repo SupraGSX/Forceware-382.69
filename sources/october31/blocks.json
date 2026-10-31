@@ -1,0 +1,26 @@
+[
+  {
+    "source": "ddr4.s",
+    "target": "Display.Driver/nv4_mini.sys",
+    "va": 17246400,
+    "size": 652,
+    "symbols": {}
+  },
+  {
+    "source": "worker.s",
+    "target": "Display.Driver/nv4_mini.sys",
+    "va": 17247072,
+    "size": 270,
+    "symbols": {}
+  },
+  {
+    "source": "voltage.s",
+    "target": "Display.Driver/nvapi.dll",
+    "va": 271921152,
+    "size": 89,
+    "symbols": {
+      "native_os": 270098096,
+      "native_arch": 269493088
+    }
+  }
+]

@@ -1,0 +1,7 @@
+Forceware 382.69 (10-31-2026)
+
+- Corrected Pascal PMU worker synchronization.
+- Added GT 1030 DDR4 memory-handling corrections; hardware validation remains pending.
+- Enabled voltage-boost controls for GP107/GP108 on XP, verified with MSI Afterburner on the GTX 1050 Ti.
+
+When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.

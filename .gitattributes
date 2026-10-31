@@ -1,3 +1,4 @@
 * text=auto eol=lf
 # Installer templates must retain exact bytes for manifest hash checks.
 templates/** -text
+sources/october31/templates/** -text -whitespace

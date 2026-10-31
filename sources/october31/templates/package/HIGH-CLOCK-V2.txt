@@ -1,0 +1,15 @@
+Forceware 382.69 (10-31-2026) - High Clock v2
+
+Experimental HDMI clock handling for Fermi, Kepler and Maxwell 1.
+Allows up to 340 MHz TMDS when the monitor permits, including native
+165/225/297 MHz clock-policy paths. Maxwell 2 and Pascal retain their
+existing HDMI handling. Other native source restrictions remain effective.
+
+GT 640 validated at 3440x1440/60, 319.75 MHz. A 340 MHz custom timing
+produced no picture on the tested configuration; its cause is unresolved.
+Fermi and Maxwell 1 hardware qualification remains pending. This build
+does not guarantee 340 MHz operation on every board and has no automatic
+link-quality fallback.
+
+Select Custom (Advanced) / Perform a clean installation, then restart.
+Keep a known-working driver installer available for rollback.
