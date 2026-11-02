@@ -1,0 +1,48 @@
+# Forceware 382.69
+
+Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, with additional Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
+
+**Build: 11-1-2026** · [Project and rebuilding guide](https://github.com/SupraGSX/Forceware-382.69)
+
+## Install
+
+Run the EXE and follow the NVIDIA installer. When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.
+
+Optional GeForce Experience is offered for eligible GeForce/TITAN GPUs on Windows XP SP3. Windows Server 2003 x86 installation is also supported; optional GeForce Experience is omitted there. Bundled HD Audio, PhysX and nView components retain their existing versions.
+
+## Additional desktop GPUs
+
+The display INF adds these models and variants over stock 368.81:
+
+- **GeForce Maxwell:** GTX 970, 980, 980 Ti and GTX TITAN X; additional desktop OEM variants of GTX 950 and 960.
+- **GeForce Pascal:** GT 1030, GTX 1050, 1050 Ti, 1060 (3/5/6 GB), 1070, 1070 Ti, 1080, 1080 Ti, TITAN X and TITAN Xp.
+- **Quadro:** M4000, M5000, M6000, M6000 24GB, P400, P600, P620, P1000, P2000, P2200, P4000, P5000 and P6000.
+
+All original 368.81 device entries, including notebook/OEM models, are retained. Additional GPU entries remain desktop-only; GP100 is excluded. GT 1030 device 1D01 is the only added GP108 model; other GP108 model IDs remain excluded. GP107 support has been validated on GTX 1050 Ti; other included GP107 models have not been individually tested. INF inclusion does not mean every model has been individually tested. See the [complete device list](../ListDevices.txt).
+
+## Improvements
+
+- **Display audio:** Complete-EDID audio discovery for DisplayPort and HDMI, including CTA audio inside DisplayID, with corrected HD Audio installation.
+
+- **GT 1030:** Display, Direct3D, OpenGL, CUDA, OpenCL, GPU PhysX, boost and return to idle were validated on one GDDR5 card. Broader board/memory-variant and sustained-stability testing remain open.
+- **Rendering and compute:** Pascal initialization fixes, OpenGL display-class recognition, and corrected CUDA, OpenCL and GPU PhysX initialization.
+- **DisplayPort:** HBR2/HBR3 training, startup and display sleep/wake recovery, automatic 8-bit fallback when needed, and native scaling within the successfully trained link's bandwidth.
+- **HDMI:** Corrected vendor-block identification, GPU/monitor-aware HDMI/DVI limits, SCDC setup and failure recovery, and native scaling with a 594 MHz ceiling.
+- **Control Panel:** Corrected display classification, restored **Customize**, separate **Scaling** and **Overscan** pages, and unlocked **View system topology** with EDID loading.
+
+## Compatibility notes
+
+- This build continues the October 12 package with GT 1030 initialization, matched 382.23 GP108 firmware and the required display, compute and power-management adapters. Existing GPU-family firmware and HDMI clock policies remain unchanged.
+
+- GP107 defaults to HBR2 and lower DisplayPort rates; HBR3 output remains unresolved on the tested GTX 1050 Ti. Other supported GPU families retain their existing link policy. HBR3 support does not establish full DisplayPort 1.4 DSC, HDR or MST support.
+- Automatic native DisplayPort scaling requires a preferred timing matching the requested refresh. It was tested at 60 Hz and does not automatically carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh native modes remain available when supported.
+- Automatic HDMI scaling was verified at 543.5 MHz on GTX 1080 Ti. The 594 MHz ceiling is subject to GPU/monitor limits; physical output at that exact clock remains unverified.
+- Scaling choices follow native capability checks. Overscan resizing is available only for timings supported by NVIDIA's native resize implementation.
+
+See the [validation results and limits](https://github.com/SupraGSX/Forceware-382.69/blob/main/REBUILDING.md#7-validation-and-limits) for tested configurations.
+
+## Source and license
+
+The repository contains the patcher, C/assembly routines and installer templates. [REBUILDING.md](https://github.com/SupraGSX/Forceware-382.69/blob/main/REBUILDING.md) documents the required NVIDIA inputs, reconstruction commands, implementation and validation. **382.69 is this project's custom release number**, based on NVIDIA 368.81.
+
+Original project code and documentation use GPL-3.0-only, with a narrow [NVIDIA integration exception](https://github.com/SupraGSX/Forceware-382.69/blob/main/NVIDIA-EXCEPTION.txt). Distributed modifications to the covered code must include corresponding source under GPLv3. NVIDIA binaries, firmware and vendor-derived material retain their existing terms.

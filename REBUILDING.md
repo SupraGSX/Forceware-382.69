@@ -1,8 +1,8 @@
 # Rebuilding Forceware 382.69
 
-This guide covers the **October 31, 2026 build**. **382.69 is the project's custom version number**, based on NVIDIA 368.81 for Windows XP 32-bit. The [October 19 stable reconstruction](docs/REBUILDING-10-19.md) remains available with its original inputs and hashes.
+This guide covers the **November 1, 2026 build**. **382.69 is the project's custom version number**, based on NVIDIA 368.81 for Windows XP 32-bit. The [October 19 stable reconstruction](docs/REBUILDING-10-19.md) remains available with its original inputs and hashes.
 
-## Reconstruct October 31
+## Reconstruct November 1
 
 Start with **stock NVIDIA 368.81 XP 32-bit international** and the six vendor firmware donors below. No previous Forceware 382.69 installer is required.
 
@@ -23,7 +23,7 @@ These inputs reconstruct all retained resources, including older inactive copies
 Use Python 3.9+ and `7z`:
 
 ```bash
-python3 rebuild_october31.py \
+python3 rebuild_november1.py \
   --stock inputs/368.81-desktop-winxp-32bit-international.exe \
   --quadro inputs/quadro-376.84/nvlddmkm.sys \
   --geforce inputs/geforce-378.78/nvlddmkm.sys \
@@ -31,71 +31,53 @@ python3 rebuild_october31.py \
   --gp107 inputs/quadro-390.77/nvlddmkm.sys \
   --gp108 inputs/geforce-382.23/nvlddmkm.sys \
   --pascal391 inputs/geforce-391.35/nvlddmkm.sys \
-  --out build-october31
+  --out build-november1
 ```
 
 The output directory must not exist. The builder validates all seven input hashes and the complete stock package/Control Panel inventories, expands the required stock files, extracts and hashes 130 donor resources, copies guarded stock data ranges and applies all final patches/templates. It then checks every resulting payload hash, rebuilds both installers and extracts them again for verification. It does not install or execute the driver.
 
-Outputs include `Forceware 382.69 (10-31-2026).exe`, the extracted `Forceware 382.69/` directory and `rebuild-result.json`. The [stock-to-release manifest](sources/october31/stock-manifest.json) records every input/output hash, donor descriptor, stock-copy range, patch boundary and final package member. The tested recipe reproduced the final EXE byte-for-byte, including **636 non-generated package files and all 469 Control Panel files**. Compression-tool differences can change archive bytes; all runtime files and Control Panel members must still match exactly.
+Outputs include `Forceware 382.69 (11-1-2026).exe`, the extracted `Forceware 382.69/` directory and `rebuild-result.json`. The [stock-to-release manifest](sources/november1/stock-manifest.json) records every input/output hash, donor descriptor, stock-copy range, patch boundary and final package member. The tested recipe reproduced the final EXE byte-for-byte, including **636 non-generated package files and all 469 Control Panel files**. Compression-tool differences can change archive bytes; all runtime files and Control Panel members must still match exactly.
 
 | File | SHA-256 |
 |---|---|
-| October 31 EXE | `e176dc2ed168bf57f1e73dffe0dc028a055f811d7b98a2d507095e40130d6531` |
-| `Display.Driver/nv4_mini.sys` | `e6a1ac13a399ada67865e89ab051ac912578c4bc1ea37df1ce6a5daa911cc57d` |
-| `Display.Driver/nvapi.dll` | `878f8dd846e1103c02e695aad365a032daad23c1c1a0283b6d33ed5b129bb41a` |
+| November 1 EXE | `27e3f16104318b5d6f2cd8c67b380379b143db6878fbdfa39544ea438015eab4` |
+| `Display.Driver/nv4_mini.sys` | `f5ed0da5bc146316839f712620c32307f41b46bfd24ee254949ce444e8b79cdf` |
+| `Display.Driver/nvapi.dll` | `2bebab9b3f6df479c20f9b6c75261cb37b037a3fad522b15e40d21082e7fcf47` |
 
-For an independent compiled-byte check, use GNU Binutils (`as`, `ld`, `objcopy`, `nm`):
+For an independent compiled-byte check, use GCC with 32-bit compilation and GNU Binutils (`as`, `ld`, `objcopy`, `nm`):
 
 ```bash
-python3 verify_october31_sources.py \
-  --package 'build-october31/Forceware 382.69' \
-  --out source-check-october31
+python3 verify_november1_sources.py \
+  --package 'build-november1/Forceware 382.69' \
+  --out source-check-november1
 ```
 
-This assembles all three new adapters and compares their bytes at the final driver locations. It validates the implementation, not physical compatibility with every GPU.
+This compiles six added runtime blocks, including retained predecessors, and compares their bytes at the final driver locations. It validates the implementation, not physical compatibility with every GPU.
 
-## Changes from October 26
+## GP107/GP108 runtime corrections
 
-### Pascal PMU synchronization
+Successful curve replies now provide the acknowledgement required by the legacy completion callback. The allocator reserves firmware workspace in addition to the 16-byte RPC body: 784 bytes for curve operations, 16/32/80 for the three admitted performance SET classes and 32/48/64 for the three power-management SET classes. Allocation failures, payload lengths and real firmware errors remain unchanged; unsupported request shapes retain their existing path.
 
-The asynchronous VFE worker could enter PMU work without owning the native resource-manager semaphore. The corrected worker acquires that semaphore before GPU lookup or object access, retains the native state checks and fetch operation, and releases ownership on all successful-acquisition exits. Failed acquisition preserves the native result; missing or unloaded objects skip work without leaking ownership.
+Reset cleanup skips the callback of an already-canceled request while retaining native payload and sequence cleanup. This avoids calling a released translation context after a timeout followed by reset. The guard uses the current adapter and shared 391.35 provider, preserving other GPU families and request states.
 
-The callback selector at preferred VA `0x772EE9` uses the current adapter's architecture and implementation: Pascal `0x130`, implementations 2, 4, 6, 7 and 8. Other adapters keep their original worker. The new worker starts at `0x1072BB1`; there is no machine-global Pascal-present flag.
+Legacy PSI version 10/20 startup now maps the actual cached BIOS controller and voltage-domain information into the required global, rail and controller sequence. Runtime current selection maps logic/SRAM currents to the matching legacy rail. Invalid formats, selectors and transport failures retain their errors; version 30 MONO/SPLIT support is not implemented.
 
-The earlier receive-owner/pending-service and Falcon-transfer wrappers are replaced by this native worker-ownership repair. Eleven entry/release sites return to stock instructions, including the safely relocated transfer epilogue. The corrected legacy alternate-entry landing and separate display-interrupt branch repair remain intact. Existing firmware translations, scratch allocation, clock/power adaptations and display handling are preserved.
+Implementation: [workspace.c](sources/november1/workspace.c), [curve-ack.s](sources/november1/curve-ack.s), [pmu-reset.s](sources/november1/pmu-reset.s), [psi-current.c](sources/november1/psi-current.c) and [psi-startup.c](sources/november1/psi-startup.c). The [compiled-block manifest](sources/november1/blocks.json) records their exact link addresses and compiler options. Prior routines retained in the image are included for byte verification; active hook targets are defined by the stock-to-release manifest.
 
-Implementation: [worker.s](sources/october31/worker.s), 270 bytes including the selector. Executable tests cover adapter selection, semaphore contention, missing/reset objects, native failure propagation, stack/register contracts and relocated operation. Bounded 2-CPU and 32-CPU GPU-passthrough tests observed ownership before fetch and completed the concurrent PMU workload without a recorder trigger. This does not establish that every historical MMU/FIFO or `0xEA` report is resolved.
+## Package and qualification
 
-### GT 1030 DDR4 memory handling
+The November 1 build continues October 31's firmware, native PMU worker ownership, GT 1030 DDR4 handling, voltage-boost controls, display and scaling policy, rendering/compute fixes, legacy-GPU boot repair and complete stock 368.81 INF set. It does not restore the superseded receive-owner or transfer wrappers. See the [October 31 guide](docs/REBUILDING-10-31.md) for those retained changes and the [October 19 guide](docs/REBUILDING-10-19.md) for its historical recipe.
 
-Three adapters correct the GP108 DDR4 path while preserving GDDR5 and nonmatching GPUs:
+Executable CPU comparisons cover workspace boundaries, acknowledgements, cancellation/reset ordering, adapter/provider guards and PSI command serialization, including preserved real-ROM inputs. The full November 1 installer was clean-installed and rebooted on a GTX 1050 Ti; installed hashes and loaded patch bytes matched. Checked Direct3D/OpenGL rendering, application exit/relaunch, OpenCL work and CUDA context operations passed on the functional baseline. CUDA context checks are not a CUDA kernel-execution claim. GP108 shares the corrected guards and CPU contracts; this revision's physical testing was on GP107.
 
-- `0x645F40`: reconstruct the seven-bit memory reference-voltage value from the existing decoded fields and apply it to MRS6 after successful native timing generation.
-- `0x6A8BEB`: emit the DDR4 digital-DLL calibration sequence with the existing XP register, script and MMIO callbacks, preserving write order, masks and the 10-microsecond delay.
-- `0x6FCC05`: retain the periodic-calibration request from a successfully decoded memory-clock record.
+The Witcher opening movie completed at 3440x1440 with working monitor audio and NVIDIA fixed-aspect scaling during bounded testing. A directly observed quiet replay did not reproduce a major freeze; small stutters and the earlier freeze remain unresolved. These results do not establish a general freeze cure, all-board compatibility or long-run stability.
 
-Each adapter checks the actual GPU and memory type; a PCI ID or ROM filename does not force DDR4 handling. Existing errors, partition selection and calibration admission remain in effect. [ddr4.s](sources/october31/ddr4.s) assembles to 652 bytes. Executable comparisons against the supported 391.35 driver covered all VREF values, periodic/one-shot calibration, parser boundaries, real-ROM records, errors and nonmatching controls. **Physical DDR4 GT 1030 validation remains pending.**
+Established display-component build fields and INF dates identify November 1. The intentionally original DisplayDriverExt.dll and unchanged HD Audio, PhysX, nView and other vendor-component versions remain preserved. Final release packaging changes only build notes and package checksums from the tested installer; every installation/runtime file is identical.
 
-### XP voltage-boost controls
-
-Four NVAPI voltage-control admission calls previously rejected XP before reaching the native GPU request. The adapter preserves the original operating-system predicate, then admits GP107/GP108 only after a successful architecture query for the actual GPU handle. Other GPUs, unknown handles and query failures retain the original denial.
-
-The calls are at DLL RVAs `0x130125`, `0x130525`, `0x12B6BB` and `0x12BBCB`; the 89-byte [voltage.s](sources/october31/voltage.s) adapter is at RVA `0x353000`. Native version, pointer and range checks, firmware replies and voltage-policy limits remain unchanged. The 0–100% control adjusts **voltage-boost allowance**, not a forced millivolt setting.
-
-On GTX 1050 Ti, MSI Afterburner exposed the control and completed apply, independent native readback and restore at idle and under checked load. Invalid-version, null-buffer and out-of-range calls retained their errors. GP108 uses the same guarded admission, but its physical voltage-control test remains pending.
-
-## Package and validation
-
-October 31 keeps the October 26 GP107/GP108 391.35 firmware and protocol work, HDMI/DisplayPort policy, rendering/compute fixes, legacy boot repair, GT 1030 fan-table correction and complete stock 368.81 INF set. The DDR4 changes do not replace the GDDR5 path. Earlier-family core handling remains native except for deliberately shared display/Control Panel fixes and the preserved legacy branch repair.
-
-Established display-component build fields and INF dates identify October 31. The intentionally original `DisplayDriverExt.dll` and unchanged HD Audio, PhysX, nView and other vendor-component versions remain as before.
-
-The final installer has the same installation/runtime payload as the clean-installed, rebooted GTX 1050 Ti test package. Final repackaging changes only labels, build notes and package checksums. Installed core-file hashes were verified, and Direct3D/OpenGL checked rendering, application exit/relaunch, OpenCL and Afterburner apply/restore tests passed. Temperature-transition query testing also passed within its recorded window; bounded tests do not establish universal stability. Broader physical-system, reset/sleep and additional-card qualification remains ongoing.
-
-When upgrading, choose **Custom (Advanced) → Perform a clean installation**, then restart. Verify installed files against the manifest before interpreting a result. Preserve a working installer; use Safe Mode and a clean installation to roll back if necessary.
+When upgrading, choose **Custom (Advanced) → Perform a clean installation**, then restart. Preserve a working installer; use Safe Mode and a clean installation to roll back if necessary.
 
 ## Earlier recipes and licensing
 
-Use [rebuild_october19.py](rebuild_october19.py) with the [October 19 guide](docs/REBUILDING-10-19.md) for that stable build's incremental recipe. The original [rebuild.py](rebuild.py), [patches.json](patches.json) and [October 11 guide](docs/REBUILDING-10-11.md) describe their historical package. The current stock-to-October-31 entry point is **`rebuild_october31.py`** above; it needs no earlier project release.
+The current entry point is **rebuild_november1.py**, starting directly from stock 368.81 and the pinned vendor modules above. No previous project installer is required. Historical recipes retain their original inputs and hashes.
 
 Project code and documentation retain the repository's GPLv3 and NVIDIA integration-exception terms. NVIDIA binaries and firmware retain their existing terms.

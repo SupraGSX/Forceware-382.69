@@ -1,0 +1,143 @@
+[
+  {
+    "name": "curve-ack-legacy",
+    "sources": [
+      "curve-ack-legacy.s"
+    ],
+    "va": 17247360,
+    "size": 52,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "workspace-legacy-entry",
+    "sources": [
+      "workspace-legacy-entry.s",
+      "workspace-legacy.c"
+    ],
+    "va": 17247424,
+    "size": 547,
+    "symbols": {
+      "allocate531": 17146647
+    },
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "pmu-reset",
+    "sources": [
+      "pmu-reset.s"
+    ],
+    "va": 17248000,
+    "size": 107,
+    "symbols": {
+      "provider391": 15782819
+    },
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "workspace-entry",
+    "sources": [
+      "workspace-entry.s",
+      "curve-ack.s",
+      "workspace.c"
+    ],
+    "va": 17248128,
+    "size": 613,
+    "symbols": {
+      "allocate531": 17146647
+    },
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "psi-current",
+    "sources": [
+      "psi-current.c"
+    ],
+    "va": 17248768,
+    "size": 347,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "psi-startup",
+    "sources": [
+      "psi-startup.c"
+    ],
+    "va": 17249120,
+    "size": 696,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-Os",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-pie",
+      "-fno-pic",
+      "-fno-jump-tables",
+      "-fno-tree-switch-conversion",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-mpreferred-stack-boundary=2"
+    ]
+  }
+]

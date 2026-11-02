@@ -2,9 +2,9 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, adding Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Current stable: [10-31-2026](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-10-31)**
+**Current stable: [11-1-2026](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-11-01)**
 
-Adds Pascal PMU worker synchronization, GT 1030 DDR4 memory-handling corrections and GP107/GP108 voltage-boost controls. Includes the legacy-GPU boot fix and existing rendering, display, audio and Control Panel improvements.
+Improves GP107/GP108 clock and power-management requests, reset cleanup and low-power controller initialization. Includes the existing rendering, compute, display and legacy-GPU boot fixes.
 
 ## Install
 
@@ -36,11 +36,11 @@ All original 368.81 INF files and device entries are retained, including noteboo
 - The GP107 391.35 firmware path was tested on GTX 1050 Ti and Quadro P620. HBR3 remains unresolved on the tested GTX 1050 Ti; HBR2 works. P2200 compatibility is not confirmed. INF inclusion is not individual model validation.
 - Automatic native DisplayPort scaling was tested at 60 Hz and does not carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh modes remain available within link limits. HBR3 does not imply full DP 1.4 DSC, HDR or MST support.
 - Automatic HDMI scaling was verified at 543.5 MHz; physical output at the exact 594 MHz ceiling remains unverified. Overscan resizing depends on the timing.
-- Bounded PMU and concurrent-workload tests passed; long-run stability across physical systems remains unproven. October 12 audio endpoint/playback-buffer and installer tests passed, but audible output and full GeForce Experience operation were not verified.
+- Bounded PMU and concurrent-workload tests passed; long-run stability across physical systems remains unproven. Monitor audio was heard on the tested GTX 1050 Ti after restart; full GeForce Experience operation remains unverified.
 
 ## Source and rebuilding
 
-See [REBUILDING.md](REBUILDING.md) for the tested October 31 reconstruction from stock 368.81, exact input/output hashes, patch sources and qualification limits. No earlier Forceware release is required.
+See [REBUILDING.md](REBUILDING.md) for the tested November 1 reconstruction from stock 368.81, exact input/output hashes, patch sources and qualification limits. No earlier Forceware release is required.
 
 The repository provides the patcher, added C/assembly routines and installer templates. **382.69 is this project's custom release number**, based on NVIDIA 368.81.
 

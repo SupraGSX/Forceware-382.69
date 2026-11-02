@@ -1,0 +1,7 @@
+Forceware 382.69 (11-1-2026)
+
+- Corrected GP107/GP108 clock and power-management request handling, including workspace allocation and acknowledgements.
+- Fixed canceled PMU request cleanup during resets.
+- Improved low-power controller initialization and voltage-rail selection.
+
+When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.
