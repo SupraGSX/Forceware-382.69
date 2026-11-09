@@ -1,0 +1,1718 @@
+; NVIDIA Windows XP (32 bit) Display INF file
+; Copyright (c) NVIDIA Corporation. All rights reserved.
+; Timestamp: 1468186560932808 3a4b22d100ff55a5cedafd2d291ddc35
+
+[Version]
+Signature   = "$Windows NT$"
+Provider    = %NVIDIA%
+ClassGUID   = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class       = Display
+DriverVer   = 11/09/2026, 10.18.13.8269
+; Modified package: original catalog no longer applies.
+[nv_CplInstaller]
+Default_addreg = nv_CplInstaller_addreg
+Default_copyfiles = nv_CplInstaller_copyfiles
+
+[nv_CplInstaller_copyfiles]
+NvGpuUtilization.exe
+advanced.tvp
+cad.tvp
+dcc.tvp
+default.tvp
+finance.tvp
+nv3d.chm
+nv3dARA.chm
+nv3dCHS.chm
+nv3dCHT.chm
+nv3dCSY.chm
+nv3dDAN.chm
+nv3dDEU.chm
+nv3dELL.chm
+nv3dENG.chm
+nv3dESM.chm
+nv3dESN.chm
+nv3dFIN.chm
+nv3dFRA.chm
+nv3dHEB.chm
+nv3dHUN.chm
+nv3dITA.chm
+nv3dJPN.chm
+nv3dKOR.chm
+nv3dNLD.chm
+nv3dNOR.chm
+nv3dPLK.chm
+nv3dPTB.chm
+nv3dPTG.chm
+nv3dRUS.chm
+nv3dSKY.chm
+nv3dSLV.chm
+nv3dSVE.chm
+nv3dTHA.chm
+nv3dTRK.chm
+nvcolor.exe
+nvcoproc.bin
+nvcpar.hlp
+nvcpcs.hlp
+nvcpda.hlp
+nvcpde.hlp
+nvcpel.hlp
+nvcpeng.hlp
+nvcpes.hlp
+nvcpesm.hlp
+nvcpfi.hlp
+nvcpfr.hlp
+nvcphe.hlp
+nvcphu.hlp
+nvcpit.hlp
+nvcpja.hlp
+nvcpko.hlp
+nvcpl.chm
+nvcpl.cpl
+nvcpl.dll
+nvcpl.hlp
+nvcplARA.chm
+nvcplCHS.chm
+nvcplCHT.chm
+nvcplCSY.chm
+nvcplDAN.chm
+nvcplDEU.chm
+nvcplELL.chm
+nvcplENG.chm
+nvcplESM.chm
+nvcplESN.chm
+nvcplFIN.chm
+nvcplFRA.chm
+nvcplHEB.chm
+nvcplHUN.chm
+nvcplITA.chm
+nvcplJPN.chm
+nvcplKOR.chm
+nvcplNLD.chm
+nvcplNOR.chm
+nvcplPLK.chm
+nvcplPTB.chm
+nvcplPTG.chm
+nvcplRUS.chm
+nvcplSKY.chm
+nvcplSLV.chm
+nvcplSVE.chm
+nvcplTHA.chm
+nvcplTRK.chm
+nvcplui.exe
+nvcpluir.dll
+nvcpnl.hlp
+nvcpno.hlp
+nvcppl.hlp
+nvcppt.hlp
+nvcpptb.hlp
+nvcpru.hlp
+nvcpsk.hlp
+nvcpsl.hlp
+nvcpsv.hlp
+nvcpth.hlp
+nvcptr.hlp
+nvcpzhc.hlp
+nvcpzht.hlp
+nvdisps.dll
+nvdispsr.dll
+nvdsp.chm
+nvdspARA.chm
+nvdspCHS.chm
+nvdspCHT.chm
+nvdspCSY.chm
+nvdspDAN.chm
+nvdspDEU.chm
+nvdspELL.chm
+nvdspENG.chm
+nvdspESM.chm
+nvdspESN.chm
+nvdspFIN.chm
+nvdspFRA.chm
+nvdspHEB.chm
+nvdspHUN.chm
+nvdspITA.chm
+nvdspJPN.chm
+nvdspKOR.chm
+nvdspNLD.chm
+nvdspNOR.chm
+nvdspPLK.chm
+nvdspPTB.chm
+nvdspPTG.chm
+nvdspRUS.chm
+nvdspSKY.chm
+nvdspSLV.chm
+nvdspSVE.chm
+nvdspTHA.chm
+nvdspTRK.chm
+nvgames.dll
+nvgamesr.dll
+nvlic.chm
+nvlicARA.chm
+nvlicCHS.chm
+nvlicCHT.chm
+nvlicCSY.chm
+nvlicDAN.chm
+nvlicDEU.chm
+nvlicELL.chm
+nvlicENG.chm
+nvlicESM.chm
+nvlicESN.chm
+nvlicFIN.chm
+nvlicFRA.chm
+nvlicHEB.chm
+nvlicHUN.chm
+nvlicITA.chm
+nvlicJPN.chm
+nvlicKOR.chm
+nvlicNLD.chm
+nvlicNOR.chm
+nvlicPLK.chm
+nvlicPTB.chm
+nvlicPTG.chm
+nvlicRUS.chm
+nvlicSKY.chm
+nvlicSLV.chm
+nvlicSVE.chm
+nvlicTHA.chm
+nvlicTRK.chm
+nvmccs.dll
+nvmccsrs.dll
+nvmccss.dll
+nvmccssr.dll
+nvmctray.dll
+nvmob.chm
+nvmobARA.chm
+nvmobCHS.chm
+nvmobCHT.chm
+nvmobCSY.chm
+nvmobDAN.chm
+nvmobDEU.chm
+nvmobELL.chm
+nvmobENG.chm
+nvmobESM.chm
+nvmobESN.chm
+nvmobFIN.chm
+nvmobFRA.chm
+nvmobHEB.chm
+nvmobHUN.chm
+nvmobITA.chm
+nvmobJPN.chm
+nvmobKOR.chm
+nvmobNLD.chm
+nvmobNOR.chm
+nvmobPLK.chm
+nvmobPTB.chm
+nvmobPTG.chm
+nvmobRUS.chm
+nvmobSKY.chm
+nvmobSLV.chm
+nvmobSVE.chm
+nvmobTHA.chm
+nvmobTRK.chm
+nvmobls.dll
+nvmoblsr.dll
+nvrsar.dll
+nvrscs.dll
+nvrsda.dll
+nvrsde.dll
+nvrsel.dll
+nvrseng.dll
+nvrses.dll
+nvrsesm.dll
+nvrsfi.dll
+nvrsfr.dll
+nvrshe.dll
+nvrshu.dll
+nvrsit.dll
+nvrsja.dll
+nvrsko.dll
+nvrsnl.dll
+nvrsno.dll
+nvrspl.dll
+nvrspt.dll
+nvrsptb.dll
+nvrsru.dll
+nvrssk.dll
+nvrssl.dll
+nvrssv.dll
+nvrsth.dll
+nvrstr.dll
+nvrszhc.dll
+nvrszht.dll
+nvshell.dll
+nvsvc32.exe
+nvsvs.dll
+nvsvsr.dll
+nvtuicpl.cpl
+nvvitvs.dll
+nvvitvsr.dll
+nvwcpar.hlp
+nvwcpcs.hlp
+nvwcpda.hlp
+nvwcpde.hlp
+nvwcpel.hlp
+nvwcpeng.hlp
+nvwcpes.hlp
+nvwcpesm.hlp
+nvwcpfi.hlp
+nvwcpfr.hlp
+nvwcphe.hlp
+nvwcphu.hlp
+nvwcpit.hlp
+nvwcpja.hlp
+nvwcpko.hlp
+nvwcpnl.hlp
+nvwcpno.hlp
+nvwcppl.hlp
+nvwcppt.hlp
+nvwcpptb.hlp
+nvwcpru.hlp
+nvwcpsk.hlp
+nvwcpsl.hlp
+nvwcpsv.hlp
+nvwcpth.hlp
+nvwcptr.hlp
+nvwcpzhc.hlp
+nvwcpzht.hlp
+nvwddi.dll
+nvwimg.dll
+nvwks.chm
+nvwksARA.chm
+nvwksCHS.chm
+nvwksCHT.chm
+nvwksCSY.chm
+nvwksDAN.chm
+nvwksDEU.chm
+nvwksELL.chm
+nvwksENG.chm
+nvwksESM.chm
+nvwksESN.chm
+nvwksFIN.chm
+nvwksFRA.chm
+nvwksHEB.chm
+nvwksHUN.chm
+nvwksITA.chm
+nvwksJPN.chm
+nvwksKOR.chm
+nvwksNLD.chm
+nvwksNOR.chm
+nvwksPLK.chm
+nvwksPTB.chm
+nvwksPTG.chm
+nvwksRUS.chm
+nvwksSKY.chm
+nvwksSLV.chm
+nvwksSVE.chm
+nvwksTHA.chm
+nvwksTRK.chm
+nvwrsar.dll
+nvwrscs.dll
+nvwrsda.dll
+nvwrsde.dll
+nvwrsel.dll
+nvwrseng.dll
+nvwrses.dll
+nvwrsesm.dll
+nvwrsfi.dll
+nvwrsfr.dll
+nvwrshe.dll
+nvwrshu.dll
+nvwrsit.dll
+nvwrsja.dll
+nvwrsko.dll
+nvwrsnl.dll
+nvwrsno.dll
+nvwrspl.dll
+nvwrspt.dll
+nvwrsptb.dll
+nvwrsru.dll
+nvwrssk.dll
+nvwrssl.dll
+nvwrssv.dll
+nvwrsth.dll
+nvwrstr.dll
+nvwrszhc.dll
+nvwrszht.dll
+nvwss.dll
+nvwssr.dll
+
+[nv_CplInstaller_addreg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",NvRegisterMCTrayNview,%REG_SZ%,"RUNDLL32.EXE %11%\NVMCTRAY.DLL,NvMCRegisterApp %11%\nView.dll"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",NvRegisterMCTray,%REG_SZ%,"RUNDLL32.EXE %11%\NVMCTRAY.DLL,NvMCRegisterApp %11%\NvCpl.dll"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvMediaCenter,%REG_SZ%,"RUNDLL32.EXE %11%\NvMcTray.dll,NvTaskbarInit"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvCplDaemon,%REG_SZ%,"RUNDLL32.EXE %11%\NvCpl.dll,NvStartup"
+
+[nv_FTS_addreg]
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1212,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1368,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1387,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1542,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1716,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1968,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN1969,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN2068,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN2109,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN218,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN220,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN2252,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN354,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN363,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN385,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN406,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN414,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN826,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableFSN841,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID41500,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID41756,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID45666,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID47036,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID50052,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID52519,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID52996,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID54916,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID55117,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID55118,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID55125,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID55335,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID55936,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID56429,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID57193,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID57409,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID58722,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID59927,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID60446,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID60872,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID61091,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableRID61690,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableSRS1702,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableSRS1942,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableSRS1945,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\FTS",EnableSRS1961,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplEnableSRS1564,%REG_DWORD%,1
+
+[Manufacturer]
+%NVIDIA% = NVIDIA_Devices,NTx86.5.1,NTx86.6.0
+
+[NVIDIA_Devices.NTx86.5.1]
+%NVIDIA_DEV.0DC4.837A.1043% = Section001, PCI\VEN_10DE&DEV_0DC4&SUBSYS_837A1043 
+%NVIDIA_DEV.0DD1.8465.1043% = Section001, PCI\VEN_10DE&DEV_0DD1&SUBSYS_84651043 
+%NVIDIA_DEV.0DE1.836D.1043% = Section001, PCI\VEN_10DE&DEV_0DE1&SUBSYS_836D1043 
+%NVIDIA_DEV.0DE2.835F.1043% = Section001, PCI\VEN_10DE&DEV_0DE2&SUBSYS_835F1043 
+%NVIDIA_DEV.0DE5.839A.1043% = Section001, PCI\VEN_10DE&DEV_0DE5&SUBSYS_839A1043 
+%NVIDIA_DEV.0DE5.839B.1043% = Section001, PCI\VEN_10DE&DEV_0DE5&SUBSYS_839B1043 
+%NVIDIA_DEV.0DE9.8518.1043% = Section001, PCI\VEN_10DE&DEV_0DE9&SUBSYS_85181043 
+%NVIDIA_DEV.0DE9.8523.1043% = Section002, PCI\VEN_10DE&DEV_0DE9&SUBSYS_85231043 
+%NVIDIA_DEV.0DF4.849E.1043% = Section001, PCI\VEN_10DE&DEV_0DF4&SUBSYS_849E1043 
+%NVIDIA_DEV.0DF4.84EE.1043% = Section002, PCI\VEN_10DE&DEV_0DF4&SUBSYS_84EE1043 
+%NVIDIA_DEV.0E22.835D.1043% = Section001, PCI\VEN_10DE&DEV_0E22&SUBSYS_835D1043 
+%NVIDIA_DEV.0E22.8386.1043% = Section001, PCI\VEN_10DE&DEV_0E22&SUBSYS_83861043 
+%NVIDIA_DEV.0E24.8361.1043% = Section001, PCI\VEN_10DE&DEV_0E24&SUBSYS_83611043 
+%NVIDIA_DEV.0FC0.8597.1043% = Section003, PCI\VEN_10DE&DEV_0FC0&SUBSYS_85971043 
+%NVIDIA_DEV.0FC2.83E2.1043% = Section003, PCI\VEN_10DE&DEV_0FC2&SUBSYS_83E21043 
+%NVIDIA_DEV.0FC2.8598.1043% = Section003, PCI\VEN_10DE&DEV_0FC2&SUBSYS_85981043 
+%NVIDIA_DEV.0FD2.8533.1043% = Section004, PCI\VEN_10DE&DEV_0FD2&SUBSYS_85331043 
+%NVIDIA_DEV.0FE1.8585.1043% = Section003, PCI\VEN_10DE&DEV_0FE1&SUBSYS_85851043 
+%NVIDIA_DEV.0FE1.85D3.1043% = Section003, PCI\VEN_10DE&DEV_0FE1&SUBSYS_85D31043 
+%NVIDIA_DEV.1040.83A0.1043% = Section001, PCI\VEN_10DE&DEV_1040&SUBSYS_83A01043 
+%NVIDIA_DEV.1040.83BD.1043% = Section001, PCI\VEN_10DE&DEV_1040&SUBSYS_83BD1043 
+%NVIDIA_DEV.1040.83C1.1043% = Section001, PCI\VEN_10DE&DEV_1040&SUBSYS_83C11043 
+%NVIDIA_DEV.1049.83E6.1043% = Section001, PCI\VEN_10DE&DEV_1049&SUBSYS_83E61043 
+%NVIDIA_DEV.1049.83E7.1043% = Section001, PCI\VEN_10DE&DEV_1049&SUBSYS_83E71043 
+%NVIDIA_DEV.1049.83EA.1043% = Section001, PCI\VEN_10DE&DEV_1049&SUBSYS_83EA1043 
+%NVIDIA_DEV.1049.83EB.1043% = Section001, PCI\VEN_10DE&DEV_1049&SUBSYS_83EB1043 
+%NVIDIA_DEV.104B.844C.1043% = Section001, PCI\VEN_10DE&DEV_104B&SUBSYS_844C1043 
+%NVIDIA_DEV.104B.846B.1043% = Section001, PCI\VEN_10DE&DEV_104B&SUBSYS_846B1043 
+%NVIDIA_DEV.1050.84CF.1043% = Section001, PCI\VEN_10DE&DEV_1050&SUBSYS_84CF1043 
+%NVIDIA_DEV.1058.8536.1043% = Section001, PCI\VEN_10DE&DEV_1058&SUBSYS_85361043 
+%NVIDIA_DEV.105A.851D.1043% = Section001, PCI\VEN_10DE&DEV_105A&SUBSYS_851D1043 
+%NVIDIA_DEV.1086.8387.1043% = Section001, PCI\VEN_10DE&DEV_1086&SUBSYS_83871043 
+%NVIDIA_DEV.1140.8595.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85951043 
+%NVIDIA_DEV.1140.85EA.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85EA1043 
+%NVIDIA_DEV.1140.85EB.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85EB1043 
+%NVIDIA_DEV.1140.85EC.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85EC1043 
+%NVIDIA_DEV.1140.85EE.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85EE1043 
+%NVIDIA_DEV.1140.85F3.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_85F31043 
+%NVIDIA_DEV.1140.860E.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_860E1043 
+%NVIDIA_DEV.1140.861A.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_861A1043 
+%NVIDIA_DEV.1140.861B.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_861B1043 
+%NVIDIA_DEV.1140.8628.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_86281043 
+%NVIDIA_DEV.1140.8643.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_86431043 
+%NVIDIA_DEV.1140.864C.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_864C1043 
+%NVIDIA_DEV.1140.8652.1043% = Section002, PCI\VEN_10DE&DEV_1140&SUBSYS_86521043 
+%NVIDIA_DEV.1140.8660.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_86601043 
+%NVIDIA_DEV.1140.8661.1043% = Section001, PCI\VEN_10DE&DEV_1140&SUBSYS_86611043 
+%NVIDIA_DEV.1200.838B.1043% = Section001, PCI\VEN_10DE&DEV_1200&SUBSYS_838B1043 
+%NVIDIA_DEV.1200.83AC.1043% = Section001, PCI\VEN_10DE&DEV_1200&SUBSYS_83AC1043 
+%NVIDIA_DEV.1243.8508.1043% = Section001, PCI\VEN_10DE&DEV_1243&SUBSYS_85081043 
+%NVIDIA_DEV.1244.838C.1043% = Section001, PCI\VEN_10DE&DEV_1244&SUBSYS_838C1043 
+%NVIDIA_DEV.124B.8540.1043% = Section001, PCI\VEN_10DE&DEV_124B&SUBSYS_85401043 
+%NVIDIA_DEV.1251.84BA.1043% = Section002, PCI\VEN_10DE&DEV_1251&SUBSYS_84BA1043 
+%NVIDIA_DEV.1292.8579.1043% = Section004, PCI\VEN_10DE&DEV_1292&SUBSYS_85791043 
+%NVIDIA_DEV.1292.85A1.1043% = Section004, PCI\VEN_10DE&DEV_1292&SUBSYS_85A11043 
+%NVIDIA_DEV.1341.863A.1043% = Section003, PCI\VEN_10DE&DEV_1341&SUBSYS_863A1043 
+%NVIDIA_DEV.1346.864C.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_864C1043 
+%NVIDIA_DEV.1346.869D.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_869D1043 
+%NVIDIA_DEV.1346.86A5.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86A51043 
+%NVIDIA_DEV.1346.86B3.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86B31043 
+%NVIDIA_DEV.1346.86B8.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86B81043 
+%NVIDIA_DEV.1346.86E1.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86E11043 
+%NVIDIA_DEV.1346.86E5.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86E51043 
+%NVIDIA_DEV.1346.86EB.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86EB1043 
+%NVIDIA_DEV.1346.86EC.1043% = Section003, PCI\VEN_10DE&DEV_1346&SUBSYS_86EC1043 
+%NVIDIA_DEV.1347.86FA.1043% = Section003, PCI\VEN_10DE&DEV_1347&SUBSYS_86FA1043 
+%NVIDIA_DEV.134D.118E.1043% = Section005, PCI\VEN_10DE&DEV_134D&SUBSYS_118E1043 
+%NVIDIA_DEV.134E.117E.1043% = Section006, PCI\VEN_10DE&DEV_134E&SUBSYS_117E1043 
+%NVIDIA_DEV.134E.86F5.1043% = Section006, PCI\VEN_10DE&DEV_134E&SUBSYS_86F51043 
+%NVIDIA_DEV.134E.86FC.1043% = Section006, PCI\VEN_10DE&DEV_134E&SUBSYS_86FC1043 
+%NVIDIA_DEV.134E.870B.1043% = Section006, PCI\VEN_10DE&DEV_134E&SUBSYS_870B1043 
+%NVIDIA_DEV.134F.8708.1043% = Section007, PCI\VEN_10DE&DEV_134F&SUBSYS_87081043 
+%NVIDIA_DEV.1392.861E.1043% = Section004, PCI\VEN_10DE&DEV_1392&SUBSYS_861E1043 
+%NVIDIA_DEV.1392.86D9.1043% = Section003, PCI\VEN_10DE&DEV_1392&SUBSYS_86D91043 
+%NVIDIA_DEV.139A.86CE.1043% = Section003, PCI\VEN_10DE&DEV_139A&SUBSYS_86CE1043 
+%NVIDIA_DEV.139A.86D3.1043% = Section003, PCI\VEN_10DE&DEV_139A&SUBSYS_86D31043 
+%NVIDIA_DEV.139A.86DE.1043% = Section003, PCI\VEN_10DE&DEV_139A&SUBSYS_86DE1043 
+%NVIDIA_DEV.139A.86F0.1043% = Section003, PCI\VEN_10DE&DEV_139A&SUBSYS_86F01043 
+%NVIDIA_DEV.139B.8671.1043% = Section004, PCI\VEN_10DE&DEV_139B&SUBSYS_86711043 
+%NVIDIA_DEV.139B.86A3.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86A31043 
+%NVIDIA_DEV.139B.86AA.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86AA1043 
+%NVIDIA_DEV.139B.86C0.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86C01043 
+%NVIDIA_DEV.139B.86C5.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86C51043 
+%NVIDIA_DEV.139B.86C6.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86C61043 
+%NVIDIA_DEV.139B.86D8.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86D81043 
+%NVIDIA_DEV.139B.86EF.1043% = Section003, PCI\VEN_10DE&DEV_139B&SUBSYS_86EF1043 
+%NVIDIA_DEV.1402.86DC.1043% = Section003, PCI\VEN_10DE&DEV_1402&SUBSYS_86DC1043 
+
+[DestinationDirs]
+DefaultDestDir = 11
+nv_Drs_copyfiles = 16422,NVIDIA Corporation\Drs
+nv_coinstaller_copyfiles = 11
+nv_cplInstallerCache_copyfiles = 16422,NVIDIA Corporation\CPLInstallerCache
+nv_license_copyfiles = 16422,NVIDIA Corporation
+nv_opencl_copyfiles = 16422,NVIDIA Corporation\OpenCL
+nv_sysDrivers_copyfiles = 12
+nv_sysDrivers_delfiles = 12
+nv_system32_copyfiles__01 = 11
+nv_system32_copyfiles__02 = 11
+
+[SourceDisksNames]
+1 = %DiskID1%
+
+[SourceDisksFiles]
+NvCplSetupInt.exe = 1
+OpenCL32.dll = 1
+dbInstaller.exe = 1
+license.txt = 1
+nv4_disp.dll = 1
+nv4_mini.sys = 1
+nvEncodeAPI.dll = 1
+nvapi.dll = 1
+nvcompiler32.dll = 1
+nvcuda32.dll = 1
+nvcuvid32.dll = 1
+nvdata.data = 1
+nvdispco32.dll = 1
+nvdispgenco32.dll = 1
+nvdrsdb.bin = 1
+nvinfo.pb = 1
+nvoglnt.dll = 1
+nvopencl32.dll = 1
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Section001]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__01
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section001.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section001.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section001.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section001.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__01
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section002]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__01
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVOptimusHCloneDisabled = 1
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section002.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section002.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section002.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section002.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__01
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section003]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section003.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section003.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section003.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section003.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__01
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section004]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVOptimusHCloneDisabled = 1
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section004.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section004.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section004.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section004.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__01
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section005]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section005.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section005.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 80
+MaximumNumberOfDevices = 2
+
+[Section005.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section005.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__02
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__02
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__02
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section006]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section006.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section006.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section006.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section006.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__01
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section007]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section007.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section007.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 80
+MaximumNumberOfDevices = 2
+
+[Section007.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section007.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__02
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__02
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__02
+DelReg = nv_clearRegistrySwitches_delreg
+
+[Section008]
+CopyFiles = nv_Drs_copyfiles
+CopyFiles = nv_cplInstallerCache_copyfiles
+CopyFiles = nv_license_copyfiles
+CopyFiles = nv_opencl_copyfiles
+CopyFiles = nv_sysDrivers_copyfiles
+CopyFiles = nv_system32_copyfiles__02
+DelFiles = nv_sysDrivers_delfiles
+DelFiles = nv_system32_delfiles
+NVSupport3DVisionForOEM = 1
+NVSupportDisplayUpdate = 1
+NVSupportGFExperienceExtendedOptions = 1
+NVSupportGFExperienceOEM = 1
+NVSupportGFExperienceUDA = 1
+NVSupportNview = 1
+NVSupportPhysx = 1
+RegisterDLLs = nv_common_registerdll
+
+[Section008.CoInstallers]
+AddReg = nv_commonCoinstaller_addreg
+CopyFiles = nv_coinstaller_copyfiles
+
+[Section008.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 128
+MaximumNumberOfDevices = 4
+
+[Section008.Services]
+AddService = nv,    0x00000002, nv_nv4mini_serviceInstall, nv_nv4mini_eventLogInstall
+DelService = nvarch
+DelService = nvgfx
+
+[Section008.SoftwareSettings]
+AddReg = nv_DRS_addreg
+AddReg = nv_FTS_addreg
+AddReg = nv_commonBase_addreg
+AddReg = nv_commonDisplayModes_addreg
+AddReg = nv_controlPanel_addreg__01
+AddReg = nv_global_addreg
+AddReg = nv_miscBase_addreg__03
+AddReg = nv_opengl_addreg
+AddReg = nv_timingRestrictions_addreg__01
+DelReg = nv_clearRegistrySwitches_delreg
+
+[IncludedSubPackages__01]
+Display.Driver = DisplayDriverExt.dll
+Display.Driver = nvdispco32.dll
+Display.Driver = nvdispgenco32.dll
+Display.Update = *.dll,*.nvi
+NV3DVisionUSB.Driver = nvir3dgenco*.dll,NVIRUSB.nvi,NVIRUSBExt.dll,nvstusb.inf,nvstusb.cat,nvstusb*.sys
+NVI2 = theme.cfg,*.ui.forms,*.ui.strings,*.png,NVI2*.dll,NVPrxy*.dll,NVI2SystemService*.sys,NVNetworkService.exe,NVNetworkServiceAPI.dll
+Update.Core = *.dll,*.nvi,*.exe
+
+[IncludedSubPackages__02]
+Display.Driver = DisplayDriverExt.dll
+Display.Driver = nvdispco32.dll
+Display.Driver = nvdispgenco32.dll
+NV3DVisionUSB.Driver = nvir3dgenco*.dll,NVIRUSB.nvi,NVIRUSBExt.dll,nvstusb.inf,nvstusb.cat,nvstusb*.sys
+NVI2 = theme.cfg,*.ui.forms,*.ui.strings,*.png,NVI2*.dll,NVPrxy*.dll,NVI2SystemService*.sys,NVNetworkService.exe,NVNetworkServiceAPI.dll
+
+[NVIDIA_Devices.NTx86.6.0]
+
+[nv_CoInstaller_Data]
+NVPackageName = Display.Driver
+OriginalInfSourcePath = %01%
+
+[nv_DRS_addreg]
+HKLM,"Software\NVIDIA Corporation\Global\DRS",DRS_Enabled,%REG_DWORD%,1
+
+[nv_Drs_copyfiles]
+dbInstaller.exe,,,0x00004000
+nvdrsdb.bin,,,0x00004000
+
+[nv_clearRegistrySwitches_delreg]
+HKCU,"Software\Classes\VirtualStore\MACHINE\Software\NVIDIA Corporation\Global\NVTweak"
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Run",NVHotkey
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Run",NvCplCleanup
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Run",NvMediaCenter
+HKCU,"Software\NVIDIA Corporation\Global\Display"
+HKCU,"Software\NVIDIA Corporation\Global\NVHotkey"
+HKCU,"Software\NVIDIA Corporation\Global\NVSvc"
+HKCU,"Software\NVIDIA Corporation\Global\NVTweak"
+HKCU,"Software\NVIDIA Corporation\Global\NvCplApi"
+HKCU,"Software\NVIDIA Corporation\Global\OpenGL"
+HKCU,"Software\NVIDIA Corporation\Global\Stereo3D"
+HKCU,"Software\NVIDIA Corporation\Global\UserLoggedIn"
+HKCU,"Software\NVIDIA Corporation\NVPMAPI.001.006"
+HKLM,"SYSTEM\CurrentControlSet\Services\nvlddmkm",SurpriseRemovalSupport
+HKLM,"SYSTEM\CurrentControlSet\Services\nvlddmkm\DisplayDatabase",1641970VRcontext
+HKLM,"SYSTEM\CurrentControlSet\Services\nvlddmkm\DisplayDatabase",1641970context
+HKLM,"Software\Khronos\OpenCL\Vendors","nvopencl.dll"
+HKLM,"Software\Microsoft\TMM",TMMRestrictionOverride
+HKLM,"Software\Microsoft\TMM",UseIViewHelper
+HKLM,"Software\Microsoft\Windows Media Foundation",EMUOPM
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT"
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\msogl",dll
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Controls Folder\Device\shellex\PropertySheetHandlers\NVIDIA CPL Extension"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\NVIDIA CPL Extension"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\NVIDIA NT4 Multimon CPL"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",GFA
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NVDeployClient
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NVHotkey
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NVRotateSysTray
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvCplCleanup
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvCplDaemon
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvMediaCenter
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",NvSvc
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",Nwiz
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",NvExportOEMDefaults
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved",{6D0E6651-1CD8-11d6-92C4-0003479E4848}
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved",{FFB699E0-306A-11d3-8BD1-00104B6F7516}
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\NVIDIA"
+HKLM,"Software\NVIDIA Corporation\Global\CoprocManager"
+HKLM,"Software\NVIDIA Corporation\Global\Display"
+HKLM,"Software\NVIDIA Corporation\Global\FTS"
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",AddDeviceSequence
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",AllowAdditionalDisplays
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",Branding
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",DisablePowerPolicy
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",DisableSmartHybrid
+HKLM,"Software\NVIDIA Corporation\Global\Hybrid",HybridPlatformRole
+HKLM,"Software\NVIDIA Corporation\Global\NVHotkey"
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak"
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc"
+HKLM,"Software\NVIDIA Corporation\Global\OpenGL"
+HKLM,"Software\NVIDIA Corporation\Global\Startup"
+HKLM,"Software\NVIDIA Corporation\Global\Stereo3D"
+HKLM,"Software\NVIDIA Corporation\Global\nview","TabViewUI"
+HKLM,"Software\NVIDIA Corporation\Global\nview",InitProfile
+HKLM,"Software\NVIDIA Corporation\Installer",3DVisionInstall
+HKLM,"Software\NVIDIA Corporation\LDDM\UMode\Video"
+HKLM,"Software\NVIDIA Corporation\NVAPI"
+HKLM,"Software\NVIDIA Corporation\NVIDIA PerfKit"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\Client",ContactDisabled
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\Client",EditingDisabled
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\Client",PrintingDisabled
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\DisplayPanelServer",DesktopProfileFeaturesDisabled
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{01504157-8839-4BF6-9B5B-51165A967B2B}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{0EEC1AF6-7664-4D17-88A5-B71EF18A93BC}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{1BC39379-8D90-4F18-8817-795C57163770}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{3020E6D8-7D1A-4D3C-8B62-C4D4B8F28434}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{3E500C0C-5D15-4610-8095-7CEBD4C43F24}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{49F585C0-CE12-4306-9100-B6A28857B10B}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{51840041-B26F-4843-B358-22ABB067396C}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{6017A978-93AD-4F2F-9E2D-07CF8C8DEBC4}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{63005CD0-8541-439c-A66A-617F4B1F2BCB}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{684FA5EB-5222-47eb-8448-C14391005105}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{6E4B938E-4BA1-4E8D-BCBA-8C51CE95F94F}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{87CDE238-C2D9-4E31-99D7-DCD6A7E15F19}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{9B6E9D01-A89A-45AA-892F-30969B4A5C4D}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{B53EBC0C-2251-4AE2-9818-FD6AAF843EC2}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{C407106B-97E1-44DF-B594-5E557737854F}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{CC0648AE-7E85-483C-B1DB-9335C9D6F8C7}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{D68CED81-05AF-4071-98C4-3829E31945CF}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{DE0549BD-F34D-4748-AD94-0F2F22749F4F}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{EDAC9CAA-4874-48C0-80DB-2D81B63EFE13}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Overrides","{EF884939-F1EA-4EFB-B676-D2F802177C5F}"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2\RegisteredServers\Video_TVServer",AdjustVideoColorSettings
+HKLM,"Software\NVIDIA Corporation\RIVA TNT\OpenGL"
+HKLM,"Software\WOW6432NODE\NVIDIA Corporation\Global\CoprocManager"
+HKLM,"Software\Wow6432Node\Khronos\OpenCL\Vendors","nvopencl.dll"
+HKLM,"Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT"
+HKLM,"Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\msogl",dll
+HKLM,"System\CurrentControlSet\Control\GraphicsDrivers\MemoryManager",Period.EnableEvictionThresholdForWrite
+HKLM,"System\CurrentControlSet\Hardware Profiles\Current\System\CurrentControlSet\SERVICES\NV"
+HKLM,"System\CurrentControlSet\Hardware Profiles\Current\System\CurrentControlSet\SERVICES\NV4\DEVICE0"
+HKLM,"System\CurrentControlSet\Services\nv\NVAPI"
+HKLM,"System\CurrentControlSet\Services\nv\Performance",Close
+HKLM,"System\CurrentControlSet\Services\nv\Performance",Collect
+HKLM,"System\CurrentControlSet\Services\nv\Performance",Library
+HKLM,"System\CurrentControlSet\Services\nv\Performance",Open
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",EnableCoproc
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",EnableHybridMode
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",EnableHybridPerfSLI
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",EnableRuntimePowerManagement
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",PreferCoprocOverHybrid
+HKLM,"System\CurrentControlSet\Services\nvlddmkm",WDMDriver
+HKLM,"System\CurrentControlSet\Services\nvlddmkm\NVAPI"
+HKR,,"CX875.HD480i.default.overscan"
+HKR,,"CX875.HD576i.default.overscan"
+HKR,,"D3D_39482904"
+HKR,,"NV36ZORAN.525@60Hz.saturation"
+HKR,,"NV36ZORAN.625@50Hz.saturation"
+HKR,,"NV36ZORAN.connector"
+HKR,,"NVZORAN.connector"
+HKR,,"NVZORAN.laststdSDTV"
+HKR,,"NVZORAN.standard"
+HKR,,"OverscanComp"
+HKR,,"RMGpuSurpriseRemoval"
+HKR,,"TV Out"
+HKR,,ACPIIdDynamicMapping
+HKR,,APMSupport
+HKR,,AllowAutoAudioInfoFrame
+HKR,,AllowMaxPerf
+HKR,,AllowNonDFPAsPrimary
+HKR,,AvailWin2kDualview
+HKR,,BandwidthFactor
+HKR,,BroadcastDisable
+HKR,,CH7009.default.flickerfilter
+HKR,,COLORCOMPRESSENABLE
+HKR,,CUST_MODE
+HKR,,CX25875.HD480i.0720x0480.flickerfilter
+HKR,,CX875.HD480i.0720x0480.flickerfilter
+HKR,,CX875.HD480p.overscanshift
+HKR,,CX875.HD576p.overscanshift
+HKR,,CapabilityOverride
+HKR,,D3DOGL_74095214
+HKR,,D3D_22355415
+HKR,,D3D_60461791
+HKR,,D3D_74852146
+HKR,,D3D_MAXAGPHEAPSIZE
+HKR,,D3D_fe813414
+HKR,,DCBOverride0
+HKR,,DCBOverride1
+HKR,,DDIBacklightControl
+HKR,,DDIgnore_DevSwitchSuppressMask
+HKR,,DFPAsDefaultMonitor
+HKR,,DMTOVERRIDE
+HKR,,DcbDevsAvailableStatus
+HKR,,DecodeCtl
+HKR,,DefaultSettings.BitsPerPel
+HKR,,DefaultSettings.HDTV.BitsPerPel
+HKR,,DefaultSettings.HDTV.VRefresh
+HKR,,DefaultSettings.HDTV.XResolution
+HKR,,DefaultSettings.HDTV.YResolution
+HKR,,DefaultSettings.TV.BitsPerPel
+HKR,,DefaultSettings.TV.VRefresh
+HKR,,DefaultSettings.TV.XResolution
+HKR,,DefaultSettings.TV.YResolution
+HKR,,DefaultSettings.XResolution
+HKR,,DefaultSettings.YResolution
+HKR,,DellSwitch1
+HKR,,DevSwitchSuppressMask
+HKR,,DevicesConnected
+HKR,,DevmaskExclusiveModes
+HKR,,Disable16x12x32ge70
+HKR,,Disable19x10x32ge70
+HKR,,Disable19x12x32at60
+HKR,,DisableDfpModesGreaterThan
+HKR,,DisableDualView
+HKR,,DisableExtRefresh
+HKR,,DisableFwDuringResumeFromD3
+HKR,,DisableTVOutBIOS
+HKR,,DisableVersionCheck
+HKR,,DisableWindowedStereo
+HKR,,DitherAlgo6
+HKR,,DitherAlgo8
+HKR,,DmiOverride
+HKR,,DrvOptions
+HKR,,DualViewAllow2ndViewAsPrimary
+HKR,,DualViewAllowNonDFPAsPrimary
+HKR,,DualViewHotKeyPolicy
+HKR,,DualViewMobile
+HKR,,DualViewPolicyID
+HKR,,DualviewLockDevices
+HKR,,EarlyMonitorSync
+HKR,,EdgeBlendingData
+HKR,,EnableAGPFW
+HKR,,EnableAGPSBA
+HKR,,EnableBrightnessControl
+HKR,,EnableCoreVoltage
+HKR,,EnableDynamicEDID
+HKR,,EnableDynamicEdidMode
+HKR,,EnableHotplugOnDesktop
+HKR,,EnableHotplugPinEvent
+HKR,,EnableHybridMode
+HKR,,EnableHybridPerfSLI
+HKR,,EnableOverDrive
+HKR,,EnableOverdriveDataFromEdidInfo
+HKR,,EnableOverdriveEditPort0
+HKR,,EnableOverdriveEditPort1
+HKR,,EnableOverdriveEditPort2
+HKR,,EnablePersistenceStorage
+HKR,,EnablePlacerPWBDR
+HKR,,EnableSystemMemoryTiling
+HKR,,EnableWin2KDualview
+HKR,,ExposePrimaryDeviceOnly
+HKR,,ExtTempHighLimit
+HKR,,ExternalSSDeviceRestore
+HKR,,FSDOSHotKeyPolicy
+HKR,,FailAttachment
+HKR,,FailNonPrimaryDevice
+HKR,,FastResume
+HKR,,FeatureControl
+HKR,,FlatPanelDither00010000
+HKR,,FlatPanelDither00020000
+HKR,,FlatPanelMode
+HKR,,FlatPanelMode0
+HKR,,FlatPanelMode00010000
+HKR,,FlatPanelMode00020000
+HKR,,FlatPanelMode1
+HKR,,FlatPanelScaler00010000
+HKR,,FlatPanelScaler00020000
+HKR,,ForceCVT-RB1600x1200x60
+HKR,,ForceExtOnS3Resume
+HKR,,ForceModeNextBoot
+HKR,,ForceNHeads
+HKR,,GlitchFreeMClk
+HKR,,GridLicensedFeatures
+HKR,,GvoInstalled
+HKR,,HAA
+HKR,,HDTVModePruning
+HKR,,HotKeyOptions
+HKR,,HotKeyUseOSResolution
+HKR,,IBMBladeClone
+HKR,,IgnoreMonitorLimit
+HKR,,ImpDualviewPolicy
+HKR,,InitAttachingMode
+HKR,,InstalledDisplayDrivers
+HKR,,IntlTMDSModeClip
+HKR,,LVDSReduceFreq
+HKR,,LidAlwaysOpen
+HKR,,LidBehavior
+HKR,,LidStaysOffOnOpen
+HKR,,LimitVideoPresentSources
+HKR,,LimitedVideoSystem
+HKR,,LocalTempHighLimit
+HKR,,LogicScalingMode
+HKR,,MB_Enable
+HKR,,MCMode
+HKR,,MMDMMContext
+HKR,,MVNumKeys
+HKR,,MapOSD3ToNV
+HKR,,MapOSD4ToNV
+HKR,,Max16x12
+HKR,,MaxPerfWithPerfmon
+HKR,,MinPowerWithPerfmon
+HKR,,MinPstateForHDVideo
+HKR,,MinPstateForSDVideo
+HKR,,Mobile
+HKR,,ModePersistence
+HKR,,ModeUnionEnable
+HKR,,ModesetBlankDelay
+HKR,,MonitorPowerPolicy
+HKR,,MonitorSizePolicy
+HKR,,MonitorTiming
+HKR,,MosaicSLI
+HKR,,MultiFunctionSupported
+HKR,,MutuallyExDevs
+HKR,,NT4MultiDevEnable
+HKR,,NV36ZORAN.connector
+HKR,,NVIF0000000100000000
+HKR,,NVIF0000000B00000000
+HKR,,NVIF0000000B00000001
+HKR,,NVIF0000000B00000005
+HKR,,NVREGSWITCHES
+HKR,,NVZORAN.connector
+HKR,,NV_HDTVModes
+HKR,,NV_HDTVModesFRR
+HKR,,NV_Modes
+HKR,,NV_R&T
+HKR,,NV_TargetData
+HKR,,NewDefaultDitherPattern
+HKR,,NoEdidPolicy
+HKR,,Nv11DVIConnectorOnly
+HKR,,NvCplConfiguration
+HKR,,NvCplDisplayTvLocaleVisited
+HKR,,NvCplDualviewMoveDesktopIcons
+HKR,,NvCplEnableHardwarePage
+HKR,,NvCplEnablenForcePage
+HKR,,NvCplGfxLib
+HKR,,NvCplHDTVUnderScanCap
+HKR,,NvCplIgnoreOSRotationLimitation
+HKR,,NvCplLongProductName
+HKR,,NvCplNameLVDSIntegratedDisplay
+HKR,,NvCplTvFormatDefaultToGeoID
+HKR,,NvCplTvLocaleAutoDetect
+HKR,,OEMRandomModeFilter
+HKR,,OGL_46574957
+HKR,,OGL_92757239
+HKR,,OVERDRIVE
+HKR,,OverDriveData0
+HKR,,OverDriveData1
+HKR,,OverDriveData2
+HKR,,OverDriveData3
+HKR,,OverDriveData5
+HKR,,OverDriveData8
+HKR,,OverDriveData9
+HKR,,OverDriveDataA
+HKR,,OverDriveDataC
+HKR,,OverDriveDataD
+HKR,,OverScan720Level
+HKR,,OverScanFSVMLevel
+HKR,,OverScanOverlayLevel
+HKR,,OverdrivePanelNameCode0
+HKR,,OverdrivePanelNameCode1
+HKR,,OverdrivePanelNameCode2
+HKR,,OverdrivePanelProductCode0
+HKR,,OverlayBrightness
+HKR,,OverlayColorControlEnable
+HKR,,OverlayContrast
+HKR,,OverlayDVC
+HKR,,OverlayGamma
+HKR,,OverlayHue
+HKR,,OverlayMaxGamma
+HKR,,OverlayMode2
+HKR,,OverlayMode3
+HKR,,OverlayMode4
+HKR,,OverlaySaturation
+HKR,,OverlaySharpness
+HKR,,Override1400x1050
+HKR,,OverrideDisRM4High
+HKR,,OverrideEdidFlags0
+HKR,,OverrideEdidFlags1
+HKR,,OverrideEdidFlags2
+HKR,,OverrideEdidFlags3
+HKR,,OverrideEdidFlags4
+HKR,,OverrideSBIOSDevs
+HKR,,PMClocksHighRes
+HKR,,PMClocksHighResThreshold
+HKR,,PMMClockClone
+HKR,,PMMClockOverlay
+HKR,,PMNVClockOverlay
+HKR,,PSSwitch1
+HKR,,PanScanSelection
+HKR,,Panel00
+HKR,,Panel01
+HKR,,Panel02
+HKR,,Panel03
+HKR,,Panel04
+HKR,,Panel05
+HKR,,Panel06
+HKR,,Panel07
+HKR,,Panel08
+HKR,,Panel09
+HKR,,Panel0A
+HKR,,Panel0B
+HKR,,Panel0C
+HKR,,Panel0D
+HKR,,Panel0E
+HKR,,Panel0F
+HKR,,PanelBrightnessLimits
+HKR,,PanelPWMDutyRange
+HKR,,PanelPWMFrequency
+HKR,,PanelPowerWaitForSequencer
+HKR,,PerfLevelSrc
+HKR,,PowerMizerDefault
+HKR,,PowerMizerDefaultAC
+HKR,,PowerMizerEnable
+HKR,,PowerMizerLevel
+HKR,,PowerMizerLevelAC
+HKR,,PowerMizerSelected
+HKR,,PowerMizerSelectedAC
+HKR,,PowerSaverHsyncOn
+HKR,,PreferSbiosFpMode
+HKR,,PrevTwinViewInfo
+HKR,,PruningMode
+HKR,,PushBufferMemorySpace
+HKR,,RM200026907
+HKR,,RM496596
+HKR,,ReBootedNowForceMode
+HKR,,ReqAGPRate
+HKR,,RmAcpiDdcBug400359WAR
+HKR,,RmAvoidBusyReadingTimer
+HKR,,RmCacheLoc
+HKR,,RmCrtHotplug
+HKR,,RmDisableACPI
+HKR,,RmDisableCompression
+HKR,,RmDisableInst2Sys
+HKR,,RmDisablePteCoalesce
+HKR,,RmDisableRpSerrWorkarounds
+HKR,,RmDynamicSLIAllowed
+HKR,,RmEnableBiosDevSelect
+HKR,,RmEnableMPSync
+HKR,,RmEnablePbi
+HKR,,RmEnablePowerSupplyCapacity
+HKR,,RmEnableTVFormatNotify
+HKR,,RmFixTcVcMap
+HKR,,RmForcePerfLevelOnD3Cold
+HKR,,RmI2cValidatedPortMask
+HKR,,RmInduceDeviceScan
+HKR,,RmMaintainDevs
+HKR,,RmMaintainScaling
+HKR,,RmMaintainTVStandard
+HKR,,RmNVIFFunctions
+HKR,,RmOnDemandVBlank
+HKR,,RmPowerSupplyCapacity
+HKR,,RmSecPrivContWar
+HKR,,RmThermalConversionRate
+HKR,,RmThermalProviderInfo
+HKR,,RmThermalProviderNum
+HKR,,RmTilingFormatMode
+HKR,,RmTvoAlwaysDetectEIAJCVBS
+HKR,,RmTvoDisableComponentOverscanHDTV
+HKR,,RmTvoPedestalMS
+HKR,,RmTvoPreferredDetectionHDTV
+HKR,,RmTvoWhitepointOverride
+HKR,,RotateFlag
+HKR,,SDTVDefaultMode10x7
+HKR,,SaveSettings
+HKR,,SmartDimmerEnable
+HKR,,SoftEDIDs
+HKR,,SpreadSpectrumFactoring
+HKR,,StereoImageType
+HKR,,StereoViewerType
+HKR,,TestAnalogLoadAlways
+HKR,,ThermalPolicySW1
+HKR,,TwinViewDisabled
+HKR,,TwinViewInfo
+HKR,,UseBestResolution
+HKR,,UseCVTReducedBlanking
+HKR,,UseCompressedModeFormat
+HKR,,UseEDIDDetailTiming
+HKR,,UseGDIRefreshRate
+HKR,,UseHWSelectedDevice
+HKR,,UseHotKeySameMode
+HKR,,UseUncachedPCIMappings
+HKR,,UserModeDriverGUID
+HKR,,UserModeDriverName
+HKR,,UserModeDriverNameWoW
+HKR,,VBIOSGpioTableUsageMask
+HKR,,VMBrightness
+HKR,,VMContrast
+HKR,,VMDVC
+HKR,,VMForceCRT60
+HKR,,VMGamma
+HKR,,VMHue
+HKR,,VMMaxGamma
+HKR,,VMSaturation
+HKR,,VMSharpness
+HKR,,VPEENABLE
+HKR,,VPVer
+HKR,,VPucodeCtrl
+HKR,,VarBusLinkWidth
+HKR,,VgaCompatible
+HKR,,VideoColorDataA
+HKR,,VideoControl
+HKR,,VideoControl2
+HKR,,VideoEnhancement
+HKR,,VideoPPCadenceAlg
+HKR,,VideoPPCadenceCaps
+HKR,,VideoPPCadenceEnhance
+HKR,,VideoPPCadenceFeature
+HKR,,VideoPPCadenceMisc
+HKR,,VideoPPDeinterlaceAlg
+HKR,,VideoPPDeinterlaceCaps
+HKR,,VideoPPDeinterlaceEnhance
+HKR,,VideoPPDeinterlaceFeature
+HKR,,VideoPPDeinterlaceMisc
+HKR,,VideoPPEdgeEnhanceAlg
+HKR,,VideoPPEdgeEnhanceCaps
+HKR,,VideoPPEdgeEnhanceEnhance
+HKR,,VideoPPEdgeEnhanceFeature
+HKR,,VideoPPEdgeEnhanceMisc
+HKR,,VideoPPEdgeEnhanceValue
+HKR,,VideoPPEdgeEnhanceValueMax
+HKR,,VideoPPEdgeEnhanceValueMin
+HKR,,VideoPPNoiseReductionAlg
+HKR,,VideoPPNoiseReductionCaps
+HKR,,VideoPPNoiseReductionEnhance
+HKR,,VideoPPNoiseReductionFeature
+HKR,,VideoPPNoiseReductionMisc
+HKR,,VideoPPNoiseReductionValue
+HKR,,VideoPPNoiseReductionValueMax
+HKR,,VideoPPNoiseReductionValueMin
+HKR,,VideoPPOverDriveAlg
+HKR,,VideoPPOverDriveCaps
+HKR,,VideoPPOverDriveEnhance
+HKR,,VideoPPOverDriveFeature
+HKR,,VideoPPOverDriveMisc
+HKR,,VideoPPScalingAlg
+HKR,,VideoPPScalingCaps
+HKR,,VideoPPScalingEnhance
+HKR,,VideoPPScalingFeature
+HKR,,VideoPPScalingMisc
+HKR,,WidePanelBehavior
+HKR,,ZCOMPRESSENABLE
+HKR,,_Default_Global_XALG_Color_Range
+HKR,,_Default_Global_XEN_Blue_Stretch
+HKR,,_Default_Global_XEN_Color_Range
+HKR,,_Default_Global_XEN_Dynamic_Contrast
+HKR,,_Default_Global_XEN_Green_Stretch
+HKR,,_Default_Global_XEN_Skin_Tone
+HKR,,_PV1_ENU_VideoColorControlSettings
+HKR,,_PV1_ENU_VideoColorControl_ColorCaps
+HKR,,_PV1_ENU_VideoColorControl_ColorFeature
+HKR,,_PV1_ENU_VideoColorControl_ColorTempCaps
+HKR,,_PV1_ENU_VideoColorControl_ColorTempFeature
+HKR,,_PV1_ENU_VideoColorControl_GammaCaps
+HKR,,_PV1_ENU_VideoColorControl_GammaFeature
+HKR,,_PV1_VAL_Brightness
+HKR,,_PV1_VAL_ColorTemperature
+HKR,,_PV1_VAL_Contrast
+HKR,,_PV1_VAL_Gamma
+HKR,,_PV1_VAL_GammaB
+HKR,,_PV1_VAL_GammaG
+HKR,,_PV1_VAL_GammaR
+HKR,,_PV1_VAL_Hue
+HKR,,_PV1_VAL_Saturation
+HKR,,_User_DFP0_XALG_Deinterlace
+HKR,,_User_DFP0_XEN_Deinterlace
+HKR,,dynEngCtrlEnabled
+HKR,,internalDisplayDeviceOverride
+HKR,,nvEDIDPruning
+
+[nv_coinstaller_copyfiles]
+nvdispco3238269.dll,nvdispco32.dll,,0x00004000
+nvdispgenco3238269.dll,nvdispgenco32.dll,,0x00004000
+
+[nv_commonBase_addreg]
+HKR,,Acceleration.Level,%REG_DWORD%,0
+HKR,,DevSwitchSuppressMask,%REG_DWORD%,7
+HKR,,InstalledDisplayDrivers,%REG_MULTI_SZ%,"nv4_disp"
+HKR,,MultiFunctionSupported,%REG_DWORD%,1
+HKR,,UseBestResolution,%REG_DWORD%,1
+
+[nv_commonCoinstaller_addreg]
+HKR,,CoInstallers32,%REG_MULTI_SZ%,"nvdispgenco3238269.dll,NvGenericCoInstall"
+HKR,,CoInstallers32,%REG_SZ_APPEND%,"nvdispco3238269.dll,NVDisplayCoInstall"
+
+[nv_commonDisplayModes_addreg]
+HKR,, NV_Modes, %REG_MULTI_SZ%,  "{*}S 720x480x8,16,32,64 720x576x8,16,32,64=1; 720x576x8,16,32,64=8032;SHV 1280x720x8,16,32,64 1680x1050x8,16,32,64 1920x1080x8,16,32,64 2048x1536x8,16,32,64=1; 1920x1440x8,16,32,64=1F; 640x480x8,16,32,64 800x600x8,16,32,64 1024x768x8,16,32,64=1FFF; 1920x1200x8,16,32,64=3F; 1600x900x8,16,32,64=3FF; 1600x1024x8,16,32,64 1600x1200x8,16,32,64=7F; 1280x768x8,16,32,64 1280x800x8,16,32,64 1280x960x8,16,32,64 1280x1024x8,16,32,64 1360x768x8,16,32,64=7FF; 1152x864x8,16,32,64=FFF;"
+
+[nv_common_registerdll]
+
+[nv_controlPanel_addreg__01]
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}",,%REG_SZ%,"NVIDIA CPL Extension"
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}\InProcServer32",,%REG_SZ%,"%11%\nvcpl.dll"
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}\InProcServer32",ThreadingModel,%REG_SZ%,"Apartment"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\NVIDIA CPL Extension",,%REG_SZ%,"{FFB699E0-306A-11d3-8BD1-00104B6F7516}"
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplAllowForceTVDetection,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplExposeWin2kDualView,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NvCplTvLocaleAutoDetect,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak\OemConfigurations",MediaCenterLoadPolicy,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak\State",GlobalStartupDefaults,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",ContextUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",CplGroupUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",TaskbarUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:1,Register,Persist:1",%REG_SZ%,"nvcpl.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc\OemConfigurations",LoadLimitedSID,%REG_SZ%,"S-1-5-11"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2",HelpFile,%REG_SZ%,"%18%\nvcpl\nvcpl.chm"
+
+[nv_controlPanel_addreg__02]
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}",,%REG_SZ%,"NVIDIA CPL Extension"
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}\InProcServer32",,%REG_SZ%,"%11%\nvcpl.dll"
+HKCR,"CLSID\{FFB699E0-306A-11d3-8BD1-00104B6F7516}\InProcServer32",ThreadingModel,%REG_SZ%,"Apartment"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\NVIDIA CPL Extension",,%REG_SZ%,"{FFB699E0-306A-11d3-8BD1-00104B6F7516}"
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak\OemConfigurations",MediaCenterLoadPolicy,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",ContextUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",CplGroupUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvCplApi\Policies",TaskbarUIPolicy,%REG_DWORD%,2
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:1,Register,Persist:1",%REG_SZ%,"nvcpl.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc\OemConfigurations",LoadLimitedSID,%REG_SZ%,"S-1-5-11"
+HKLM,"Software\NVIDIA Corporation\NvControlPanel2",HelpFile,%REG_SZ%,"%18%\nvcpl\nvcpl.chm"
+
+[nv_cplInstallerCache_copyfiles]
+NvCplSetupInt.exe,,,0x00000010
+
+[nv_global_addreg]
+HKR,,VgaCompatible,%REG_DWORD%,0
+
+[nv_license_copyfiles]
+license.txt,,,0x00004000
+
+[nv_miscBase_addreg__01]
+HKLM,"Software\Khronos\OpenCL\Vendors",%10%\System32\nvopencl.dll,%REG_DWORD%,0x00000000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NoPages,%REG_DWORD%,0x40000000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1673,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1700,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:2,Register,Persist:1",%REG_SZ%,"nvmccs.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:3,Register,Persist:1",%REG_SZ%,"nvshell.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:4,Register,Persist:1",%REG_SZ%,"nvwdmcpl.dll"
+HKLM,"Software\NVIDIA Corporation\Global\OEM",WhiteList,%REG_MULTI_SZ%,"ccSvcHst.exe"
+HKLM,"Software\NVIDIA Corporation\Global\nview",InitProfile,%REG_SZ%,"default.tvp"
+HKLM,"System\CurrentControlSet\Control\Session Manager\Memory Management",SessionImageSize,%REG_DWORD%,48
+HKR,,HDTVModePruning,%REG_DWORD%,6
+
+[nv_miscBase_addreg__02]
+HKLM,"Software\Khronos\OpenCL\Vendors",%10%\System32\nvopencl.dll,%REG_DWORD%,0x00000000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NoPages,%REG_DWORD%,0x40010000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1673,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1700,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:2,Register,Persist:1",%REG_SZ%,"nvmccs.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:3,Register,Persist:1",%REG_SZ%,"nvshell.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:4,Register,Persist:1",%REG_SZ%,"nvwdmcpl.dll"
+HKLM,"Software\NVIDIA Corporation\Global\OEM",WhiteList,%REG_MULTI_SZ%,"ccSvcHst.exe"
+HKLM,"Software\NVIDIA Corporation\Global\nview",InitProfile,%REG_SZ%,"default.tvp"
+HKLM,"System\CurrentControlSet\Control\Session Manager\Memory Management",SessionImageSize,%REG_DWORD%,48
+HKR,,ModesetBlankDelay,%REG_DWORD%,1
+HKR,,RmMaintainDevs,%REG_DWORD%,1
+HKR,,RmMaintainTVStandard,%REG_DWORD%,1
+
+[nv_miscBase_addreg__03]
+HKLM,"Software\Khronos\OpenCL\Vendors",%10%\System32\nvopencl.dll,%REG_DWORD%,0x00000000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",NoPages,%REG_DWORD%,0x40000000
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1673,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NVTweak",SRS1700,%REG_DWORD%,1
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:2,Register,Persist:1",%REG_SZ%,"nvmccs.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:3,Register,Persist:1",%REG_SZ%,"nvshell.dll"
+HKLM,"Software\NVIDIA Corporation\Global\NvSvc","Nvcmd:4,Register,Persist:1",%REG_SZ%,"nvwdmcpl.dll"
+HKLM,"Software\NVIDIA Corporation\Global\OEM",WhiteList,%REG_MULTI_SZ%,"ccSvcHst.exe"
+HKLM,"Software\NVIDIA Corporation\Global\nview",InitProfile,%REG_SZ%,"default.tvp"
+HKLM,"System\CurrentControlSet\Control\Session Manager\Memory Management",SessionImageSize,%REG_DWORD%,48
+HKR,,HDTVModePruning,%REG_DWORD%,6
+HKR,,RM200026907,%REG_DWORD%,0x1
+
+[nv_nv4miniEventLog_addreg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[nv_nv4miniService_addreg]
+HKR,"Video",Service,%REG_SZ%,"nv"
+
+[nv_nv4mini_eventLogInstall]
+AddReg = nv_nv4miniEventLog_addreg
+
+[nv_nv4mini_serviceInstall]
+AddReg = nv_nv4miniService_addreg
+ErrorControl = 0
+LoadOrderGroup = Video
+ServiceBinary = %12%\nv4_mini.sys
+ServiceType = 1
+StartType = 1
+
+[nv_opencl_copyfiles]
+OpenCL.dll,OpenCL32.dll,,0x00004000
+
+[nv_opengl_addreg]
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT",Dll,%REG_SZ%,"nvoglnt"
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT",DriverVersion,%REG_DWORD%,0x00010000
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT",Flags,%REG_DWORD%,0x00000003
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\RIVATNT",Version,%REG_DWORD%,0x00000002
+
+[nv_sysDrivers_copyfiles]
+nv4_mini.sys,nv4_mini.sys,nv4mtmp.sys,0x00004000
+
+[nv_sysDrivers_delfiles]
+nvarch.sys,,,1
+nvgfx.sys,,,1
+
+[nv_system32_copyfiles__01]
+nv4_disp.dll,nv4_disp.dll,nv4dtmp.dll,0x00004000
+nvapi.dll,,,0x00004000
+nvcompiler.dll,nvcompiler32.dll,,0x00004000
+nvcuda.dll,nvcuda32.dll,,0x00004000
+nvcuvid.dll,nvcuvid32.dll,,0x00004000
+nvdata.data,,,0x00004000
+nvinfo.pb,,,0x00004000
+nvoglnt.dll,nvoglnt.dll,nvotmp.dll,0x00004000
+nvopencl.dll,nvopencl32.dll,,0x00004000
+
+[nv_system32_copyfiles__02]
+nv4_disp.dll,nv4_disp.dll,nv4dtmp.dll,0x00004000
+nvEncodeAPI.dll,,,0x00004000
+nvapi.dll,,,0x00004000
+nvcompiler.dll,nvcompiler32.dll,,0x00004000
+nvcuda.dll,nvcuda32.dll,,0x00004000
+nvcuvid.dll,nvcuvid32.dll,,0x00004000
+nvdata.data,,,0x00004000
+nvinfo.pb,,,0x00004000
+nvoglnt.dll,nvoglnt.dll,nvotmp.dll,0x00004000
+nvopencl.dll,nvopencl32.dll,,0x00004000
+
+[nv_system32_delfiles]
+dmcpl.exe,,,1
+nv4oglnt.dll,,,1
+nvcpl.exe,,,1
+nvcuvenc.dll,,,0x00000001
+nvdesk32.dll,,,1
+nvdmcpl.dll,,,1
+nvencodemft.dll,,,0x00000001
+nviewimg.dll,,,1
+nvinfo.pb,,,1
+nvinstnt.dll,,,1
+nvopenglnt.dll,,,1
+nvpmapi.dll,,,1
+nvqtwk.dll,,,1
+nvwsapps.cfg,,,1
+
+[nv_timingRestrictions_addreg__01]
+HKR,,NV_R&T,%REG_MULTI_SZ%,"R&T0000=1920,1080,*,30,*,CRTX,OEM,7425,2200,48,56,562,2,5,++I"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1080,*,60,*,BNQ766A,OEM,13850,2080,48,32,1111,3,5,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1200,*,60,*,BNQ766A,OEM,15399,2080,48,32,1235,3,6,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1200,*,60,009D,*,OEM,15399,2080,48,32,1235,3,6,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=2561-,1601-,*,*,0190-019E,DFPX.CRTX.TVX,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=800-,600-,*,61-,*,BNQ76DB,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1280,1024,*,*,*,BNQ76DB,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1080,*,60,*,HWP26F5.MEL31C1,OEM,14835,2200,88,44,1125,4,5,++"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1280,800,*,60,*,AOC1580,CVT"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=-*,481-719,*,*,*,MEL31C4,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=720,576,*,*,*,DFPX,OEM,,864,12,64,625,5,5,--"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=*,*,*,*,*,CYV0003.IBM251F.VSC2F0C.VSC3411.VSC3E19.CMO0506,HDLK"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=2048-,2560-,*,*,0190-,PNR15a5.PNR00E8,HDLK"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1080,*,60,*,JVC9213,ADD,OEM+,1920,88,44,2200,1080,4,5,1125,1920,88,44,2200,1080,4,5,1125,++,60000"
+
+[nv_timingRestrictions_addreg__02]
+HKR,,NV_R&T,%REG_MULTI_SZ%,"R&T0000=1920,1080,*,30,*,CRTX,OEM,7425,2200,48,56,562,2,5,++I"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1080,*,60,*,BNQ766A,OEM,13850,2080,48,32,1111,3,5,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1200,*,60,*,BNQ766A,OEM,15399,2080,48,32,1235,3,6,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1200,*,60,009D,*,OEM,15399,2080,48,32,1235,3,6,+-"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=2561-,1601-,*,*,0190-019E,DFPX.CRTX.TVX,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=800-,600-,*,61-,*,BNQ76DB,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1280,1024,*,*,*,BNQ76DB,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1920,1080,*,60,*,HWP26F5.MEL31C1,OEM,14835,2200,88,44,1125,4,5,++"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=1280,800,*,60,*,AOC1580,CVT"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=-*,481-719,*,*,*,MEL31C4,NONE"
+HKR,,NV_R&T,%REG_SZ_APPEND%,"R&T0000=720,576,*,*,*,DFPX,OEM,,864,12,64,625,5,5,--"
+
+[Strings]
+DiskID1 = "NVIDIA Windows XP (32 bit) Driver Library Installation Disk 1"
+NVIDIA = "NVIDIA"
+NVIDIA_DEV.0DC4.837A.1043 = "NVIDIA GeForce GTS 450"
+NVIDIA_DEV.0DD1.8465.1043 = "NVIDIA GeForce GTX 460M"
+NVIDIA_DEV.0DE1.836D.1043 = "NVIDIA GeForce GT 430"
+NVIDIA_DEV.0DE2.835F.1043 = "NVIDIA GeForce GT 420"
+NVIDIA_DEV.0DE5.839A.1043 = "NVIDIA GeForce GT 530"
+NVIDIA_DEV.0DE5.839B.1043 = "NVIDIA GeForce GT 530"
+NVIDIA_DEV.0DE9.8518.1043 = "NVIDIA GeForce GT 630M"
+NVIDIA_DEV.0DE9.8523.1043 = "NVIDIA GeForce GT 630M"
+NVIDIA_DEV.0DF4.849E.1043 = "NVIDIA GeForce GT 540M"
+NVIDIA_DEV.0DF4.84EE.1043 = "NVIDIA GeForce GT 540M"
+NVIDIA_DEV.0E22.835D.1043 = "NVIDIA GeForce GTX 460"
+NVIDIA_DEV.0E22.8386.1043 = "NVIDIA GeForce GTX 460"
+NVIDIA_DEV.0E24.8361.1043 = "NVIDIA GeForce GTX 460"
+NVIDIA_DEV.0FC0.8597.1043 = "NVIDIA GeForce GT 640"
+NVIDIA_DEV.0FC2.83E2.1043 = "NVIDIA GeForce GT 630"
+NVIDIA_DEV.0FC2.8598.1043 = "NVIDIA GeForce GT 630"
+NVIDIA_DEV.0FD2.8533.1043 = "NVIDIA GeForce GT 640M"
+NVIDIA_DEV.0FE1.8585.1043 = "NVIDIA GeForce GT 730M"
+NVIDIA_DEV.0FE1.85D3.1043 = "NVIDIA GeForce GT 730M"
+NVIDIA_DEV.1040.83A0.1043 = "NVIDIA GeForce GT 520"
+NVIDIA_DEV.1040.83BD.1043 = "NVIDIA GeForce GT 520"
+NVIDIA_DEV.1040.83C1.1043 = "NVIDIA GeForce GT 520"
+NVIDIA_DEV.1049.83E6.1043 = "NVIDIA GeForce GT 620"
+NVIDIA_DEV.1049.83E7.1043 = "NVIDIA GeForce GT 620"
+NVIDIA_DEV.1049.83EA.1043 = "NVIDIA GeForce GT 620"
+NVIDIA_DEV.1049.83EB.1043 = "NVIDIA GeForce GT 620"
+NVIDIA_DEV.104B.844C.1043 = "NVIDIA GeForce GT 625"
+NVIDIA_DEV.104B.846B.1043 = "NVIDIA GeForce GT 625"
+NVIDIA_DEV.1050.84CF.1043 = "NVIDIA GeForce GT 520M"
+NVIDIA_DEV.1058.8536.1043 = "NVIDIA GeForce 610M"
+NVIDIA_DEV.105A.851D.1043 = "NVIDIA GeForce 610M"
+NVIDIA_DEV.1086.8387.1043 = "NVIDIA GeForce GTX 570"
+NVIDIA_DEV.1140.8595.1043 = "NVIDIA GeForce GT 720M"
+NVIDIA_DEV.1140.85EA.1043 = "NVIDIA GeForce GT 720M"
+NVIDIA_DEV.1140.85EB.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.85EC.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.85EE.1043 = "NVIDIA GeForce GT 720M"
+NVIDIA_DEV.1140.85F3.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.860E.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.861A.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.861B.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.8628.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.8643.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.864C.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.8652.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.8660.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1140.8661.1043 = "NVIDIA GeForce 820M"
+NVIDIA_DEV.1200.838B.1043 = "NVIDIA GeForce GTX 560 Ti"
+NVIDIA_DEV.1200.83AC.1043 = "NVIDIA GeForce GTX 560 Ti"
+NVIDIA_DEV.1243.8508.1043 = "NVIDIA GeForce GT 545"
+NVIDIA_DEV.1244.838C.1043 = "NVIDIA GeForce GTX 550 Ti"
+NVIDIA_DEV.124B.8540.1043 = "NVIDIA GeForce GT 640"
+NVIDIA_DEV.1251.84BA.1043 = "NVIDIA GeForce GTX 560M"
+NVIDIA_DEV.1292.8579.1043 = "NVIDIA GeForce GT 740M"
+NVIDIA_DEV.1292.85A1.1043 = "NVIDIA GeForce GT 740M"
+NVIDIA_DEV.1341.863A.1043 = "NVIDIA GeForce 840M"
+NVIDIA_DEV.1346.864C.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.869D.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86A5.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86B3.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86B8.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86E1.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86E5.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86EB.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1346.86EC.1043 = "NVIDIA GeForce 930M"
+NVIDIA_DEV.1347.86FA.1043 = "NVIDIA GeForce 940M"
+NVIDIA_DEV.134D.118E.1043 = "NVIDIA GeForce 940MX"
+NVIDIA_DEV.134E.117E.1043 = "NVIDIA GeForce 930MX"
+NVIDIA_DEV.134E.86F5.1043 = "NVIDIA GeForce 930MX"
+NVIDIA_DEV.134E.86FC.1043 = "NVIDIA GeForce 930MX"
+NVIDIA_DEV.134E.870B.1043 = "NVIDIA GeForce 930MX"
+NVIDIA_DEV.134F.8708.1043 = "NVIDIA GeForce 920MX"
+NVIDIA_DEV.1392.861E.1043 = "NVIDIA GeForce GTX 750 Ti"
+NVIDIA_DEV.1392.86D9.1043 = "NVIDIA GeForce GTX 750 Ti"
+NVIDIA_DEV.139A.86CE.1043 = "NVIDIA GeForce GTX 950M"
+NVIDIA_DEV.139A.86D3.1043 = "NVIDIA GeForce GTX 950M"
+NVIDIA_DEV.139A.86DE.1043 = "NVIDIA GeForce GTX 950M"
+NVIDIA_DEV.139A.86F0.1043 = "NVIDIA GeForce GTX 950M"
+NVIDIA_DEV.139B.8671.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86A3.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86AA.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86C0.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86C5.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86C6.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86D8.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.139B.86EF.1043 = "NVIDIA GeForce GTX 960M"
+NVIDIA_DEV.1402.86DC.1043 = "NVIDIA GeForce GTX 950"
+REG_BINARY = 0x00000001
+REG_DWORD = 0x00010001
+REG_EXPAND_SZ = 0x00020000
+REG_MULTI_SZ = 0x00010000
+REG_SZ = 0x00000000
+REG_SZ_APPEND = 0x00010008
+

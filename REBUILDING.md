@@ -1,10 +1,8 @@
 # Rebuilding Forceware 382.69
 
-This guide covers the **November 1, 2026 build**. **382.69 is the project's custom version number**, based on NVIDIA 368.81 for Windows XP 32-bit. The [October 19 stable reconstruction](docs/REBUILDING-10-19.md) remains available with its original inputs and hashes.
+This guide covers **November 9, 2026**. **382.69 is the project's custom version number**, based on NVIDIA 368.81 for Windows XP 32-bit. The build starts directly from stock 368.81 and the pinned vendor firmware modules below; no previous Forceware installer is required.
 
-## Reconstruct November 1
-
-Start with **stock NVIDIA 368.81 XP 32-bit international** and the six vendor firmware donors below. No previous Forceware 382.69 installer is required.
+## Inputs and build
 
 | Input / argument | Required SHA-256 |
 |---|---|
@@ -18,12 +16,13 @@ Start with **stock NVIDIA 368.81 XP 32-bit international** and the six vendor fi
 
 The first hash is for the **complete stock installer**. All other hashes are for each donor's **expanded `Display.Driver/nvlddmkm.sys`**, not its installer. Extract the donor packages with 7-Zip; if the module is stored as `nvlddmkm.sy_`, extract that CAB member too. Keep identically named modules in separate directories. No donor installation is necessary.
 
-These inputs reconstruct all retained resources, including older inactive copies needed for byte-exact reproduction. The final patched dispatch tables determine the active firmware paths; supplying an older donor does not switch GP107/GP108 away from the current 391.35 paths.
+
+The donors reconstruct all retained resources, including inactive earlier copies required for byte-exact reproduction. Final dispatch tables select the active firmware paths; GP107/GP108 use their current 391.35 integration.
 
 Use Python 3.9+ and `7z`:
 
 ```bash
-python3 rebuild_november1.py \
+python3 rebuild_november9.py \
   --stock inputs/368.81-desktop-winxp-32bit-international.exe \
   --quadro inputs/quadro-376.84/nvlddmkm.sys \
   --geforce inputs/geforce-378.78/nvlddmkm.sys \
@@ -31,53 +30,58 @@ python3 rebuild_november1.py \
   --gp107 inputs/quadro-390.77/nvlddmkm.sys \
   --gp108 inputs/geforce-382.23/nvlddmkm.sys \
   --pascal391 inputs/geforce-391.35/nvlddmkm.sys \
-  --out build-november1
+  --out build-november9
 ```
 
-The output directory must not exist. The builder validates all seven input hashes and the complete stock package/Control Panel inventories, expands the required stock files, extracts and hashes 130 donor resources, copies guarded stock data ranges and applies all final patches/templates. It then checks every resulting payload hash, rebuilds both installers and extracts them again for verification. It does not install or execute the driver.
+The output directory must not exist. The builder checks all seven input hashes, complete stock package and Control Panel inventories, 130 donor resources, guarded stock-copy ranges and final patches/templates. It verifies every resulting payload hash, rebuilds both installers, and extracts them again. It does not install or execute a driver.
 
-Outputs include `Forceware 382.69 (11-1-2026).exe`, the extracted `Forceware 382.69/` directory and `rebuild-result.json`. The [stock-to-release manifest](sources/november1/stock-manifest.json) records every input/output hash, donor descriptor, stock-copy range, patch boundary and final package member. The tested recipe reproduced the final EXE byte-for-byte, including **636 non-generated package files and all 469 Control Panel files**. Compression-tool differences can change archive bytes; all runtime files and Control Panel members must still match exactly.
+The [stock-to-release manifest](sources/november9/stock-manifest.json) accounts for all **638 outer package members and 469 Control Panel members**. Of the outer members, 636 are reconstructed directly; the Control Panel installer and checksum list are generated. Compression-tool differences can change archive bytes, but runtime and nested payload hashes must match.
+
+The verified stock rebuild reproduced the complete November 9 release EXE byte-for-byte.
+
+Outputs are `Forceware 382.69 (11-9-2026).exe`, the extracted `Forceware 382.69/` directory and `rebuild-result.json`.
 
 | File | SHA-256 |
 |---|---|
-| November 1 EXE | `27e3f16104318b5d6f2cd8c67b380379b143db6878fbdfa39544ea438015eab4` |
-| `Display.Driver/nv4_mini.sys` | `f5ed0da5bc146316839f712620c32307f41b46bfd24ee254949ce444e8b79cdf` |
-| `Display.Driver/nvapi.dll` | `2bebab9b3f6df479c20f9b6c75261cb37b037a3fad522b15e40d21082e7fcf47` |
+| November 9 EXE | `bb7ff231910851827143a7a090d0e4aca5715a2ce0f26294c8d1004ea40a00f9` |
+| `Display.Driver/nv4_mini.sys` | `375884957ab5b4e72ae56b9feb1bc1865c30cf2ab1df80b2407cc0ded5ffc4f5` |
+| `Display.Driver/nvapi.dll` | `39e8457527090affc1ac9f169718718d0d354b29c7ee484f4554113bb35d1d3e` |
 
-For an independent compiled-byte check, use GCC with 32-bit compilation and GNU Binutils (`as`, `ld`, `objcopy`, `nm`):
+For an independent compiled-byte check, install GCC with 32-bit compilation and GNU Binutils (`as`, `ld`, `objcopy`, `nm`):
 
 ```bash
-python3 verify_november1_sources.py \
-  --package 'build-november1/Forceware 382.69' \
-  --out source-check-november1
+python3 verify_november9_sources.py \
+  --package 'build-november9/Forceware 382.69' \
+  --out source-check-november9
 ```
 
-This compiles six added runtime blocks, including retained predecessors, and compares their bytes at the final driver locations. It validates the implementation, not physical compatibility with every GPU.
+This compiles the 15 added blocks retained since November 1 and checks their exact final bytes. The [block manifest](sources/november9/blocks.json) records source files, link addresses and compiler flags. Earlier recipes retain the sources for their own changes. The current stock manifest defines the final hooks, including the four-byte GP107 link-policy change, metadata and retained older code. Compiled-byte identity establishes reconstruction, not hardware compatibility.
 
-## GP107/GP108 runtime corrections
+## Runtime and display changes
 
-Successful curve replies now provide the acknowledgement required by the legacy completion callback. The allocator reserves firmware workspace in addition to the 16-byte RPC body: 784 bytes for curve operations, 16/32/80 for the three admitted performance SET classes and 32/48/64 for the three power-management SET classes. Allocation failures, payload lengths and real firmware errors remain unchanged; unsupported request shapes retain their existing path.
+The November 9 additions cover:
 
-Reset cleanup skips the callback of an already-canceled request while retaining native payload and sequence cleanup. This avoids calling a released translation context after a timeout followed by reset. The guard uses the current adapter and shared 391.35 provider, preserving other GPU families and request states.
+- **Power-policy serialization:** maps supported policy filters, event/violation associations and remaining stock policy classes to the firmware wire format. Values come from the owning XP objects and native serializers; unsupported shapes and real errors retain their failure behavior.
+- **State and completion handling:** translates the owned display-state view in the conditional low-power copy/handoff path, preserves the fan controller's cooler index and BIOS memory-clock-residency setting, and derives the legacy bus acknowledgement from validated firmware status.
+- **Initialization cleanup:** checks nullable extended-object allocation before zeroing, applies the supported GP108 memory-power feature mask, and releases the added shared surface after acknowledged PMU detach on the admitted late startup-failure path. The original initialization error remains intact.
+- **DisplayPort and timing enumeration:** admits HBR3 for GP107 while retaining actual training, receiver checks and bandwidth/depth fallback. The bounded primary EDID extension adds supported progressive CTA timings through VIC 107 and DisplayID Type I timings while preserving native rows, downstream filtering and the original native result. It does not implement VIC 118, DSC, HDR or MST.
+- **DDR4 GT 1030:** restores clock-drive and QUSE DLL programming, then writes the eight non-training write-barrel-shifter registers from the selected timing context. The two surrounding one-microsecond waits are non-flushing. Guards require the owning GP108 DDR4 path; the barrel-shifter adapter admits the supported single-partition layout and skips the non-training sequence when write training is enabled.
 
-Legacy PSI version 10/20 startup now maps the actual cached BIOS controller and voltage-domain information into the required global, rail and controller sequence. Runtime current selection maps logic/SRAM currents to the matching legacy rail. Invalid formats, selectors and transport failures retain their errors; version 30 MONO/SPLIT support is not implemented.
+Implementation files are grouped under [sources/november9](sources/november9/). Existing November 1 request-workspace, completion, PSI, reset and native PMU worker ownership corrections remain in the build. No superseded receive-owner or transfer wrappers are reinstated. The [November 1 guide](docs/REBUILDING-11-1.md) and [October 31 guide](docs/REBUILDING-10-31.md) describe the retained integrations; their hashes and limitations describe those historical builds.
 
-Implementation: [workspace.c](sources/november1/workspace.c), [curve-ack.s](sources/november1/curve-ack.s), [pmu-reset.s](sources/november1/pmu-reset.s), [psi-current.c](sources/november1/psi-current.c) and [psi-startup.c](sources/november1/psi-startup.c). The [compiled-block manifest](sources/november1/blocks.json) records their exact link addresses and compiler options. Prior routines retained in the image are included for byte verification; active hook targets are defined by the stock-to-release manifest.
+## Validation and limits
 
-## Package and qualification
+- The DDR4 GT 1030 repair passed native-instruction CPU comparisons, adapter/fallback guards and preferred/relocated stack/register checks. The full November 9 installer clean-installed and rebooted on the physical passthrough card at 3440×1440 over HDMI. Six installed binary hashes and 40 loaded code spans matched; six GDI/Direct3D/OpenGL rendering/relaunch cycles passed checked results, with no native bugcheck in the bounded observation. The picture was confirmed normal and full-width.
+- GDDR5 GT 1030 testing covered the preceding runtime baseline's full installation, rendering, CUDA/OpenCL checked results, targeted failed-start detach/release and subsequent normal cold startup. The release also has user-reported hardware validation on M4000, GTX 1050 Ti, GT 640 and both GT 1030 memory variants; individual test durations were not specified.
+- The included GP107 link policy was physically confirmed at 3440×1440/175 Hz, HBR3 ×4, RGB 8-bit on GTX 1050 Ti. HDMI was confirmed at 543.5 MHz on Pascal and 319.75 MHz on GT 640. These results do not establish every board, cable, adapter, monitor or exact policy ceiling.
+- The latest package has not been requalified on P620; other untested models and memory topologies remain unconfirmed. Conditional low-power paths have CPU coverage where their physical triggering was unavailable. Long-run MMU/FIFO/timeout stability and every previously reported freeze remain broader qualification limits.
 
-The November 1 build continues October 31's firmware, native PMU worker ownership, GT 1030 DDR4 handling, voltage-boost controls, display and scaling policy, rendering/compute fixes, legacy-GPU boot repair and complete stock 368.81 INF set. It does not restore the superseded receive-owner or transfer wrappers. See the [October 31 guide](docs/REBUILDING-10-31.md) for those retained changes and the [October 19 guide](docs/REBUILDING-10-19.md) for its historical recipe.
+The release package differs from the tested November 9 installer only in documentation and its regenerated checksum list; every installation/runtime file is identical. Established display build fields and INF dates identify November 9. The intentionally stock DisplayDriverExt.dll and unchanged vendor component versions remain preserved.
 
-Executable CPU comparisons cover workspace boundaries, acknowledgements, cancellation/reset ordering, adapter/provider guards and PSI command serialization, including preserved real-ROM inputs. The full November 1 installer was clean-installed and rebooted on a GTX 1050 Ti; installed hashes and loaded patch bytes matched. Checked Direct3D/OpenGL rendering, application exit/relaunch, OpenCL work and CUDA context operations passed on the functional baseline. CUDA context checks are not a CUDA kernel-execution claim. GP108 shares the corrected guards and CPU contracts; this revision's physical testing was on GP107.
-
-The Witcher opening movie completed at 3440x1440 with working monitor audio and NVIDIA fixed-aspect scaling during bounded testing. A directly observed quiet replay did not reproduce a major freeze; small stutters and the earlier freeze remain unresolved. These results do not establish a general freeze cure, all-board compatibility or long-run stability.
-
-Established display-component build fields and INF dates identify November 1. The intentionally original DisplayDriverExt.dll and unchanged HD Audio, PhysX, nView and other vendor-component versions remain preserved. Final release packaging changes only build notes and package checksums from the tested installer; every installation/runtime file is identical.
-
-When upgrading, choose **Custom (Advanced) → Perform a clean installation**, then restart. Preserve a working installer; use Safe Mode and a clean installation to roll back if necessary.
+When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart. Preserve a working installer; use Safe Mode and a clean installation to roll back if necessary.
 
 ## Earlier recipes and licensing
 
-The current entry point is **rebuild_november1.py**, starting directly from stock 368.81 and the pinned vendor modules above. No previous project installer is required. Historical recipes retain their original inputs and hashes.
+Historical rebuild scripts retain their original inputs and hashes. Use **rebuild_november9.py** for this release; it starts from stock 368.81.
 
 Project code and documentation retain the repository's GPLv3 and NVIDIA integration-exception terms. NVIDIA binaries and firmware retain their existing terms.

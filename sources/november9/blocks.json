@@ -1,0 +1,297 @@
+[
+  {
+    "name": "power-filter",
+    "sources": [
+      "power-filter.c"
+    ],
+    "va": 17249824,
+    "size": 1378,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "power-events",
+    "sources": [
+      "power-events.c"
+    ],
+    "va": 17251232,
+    "size": 1437,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "power-threshold",
+    "sources": [
+      "power-threshold.c"
+    ],
+    "va": 17252672,
+    "size": 1474,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "power-workload",
+    "sources": [
+      "power-workload.c"
+    ],
+    "va": 17254176,
+    "size": 1568,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "power-policy",
+    "sources": [
+      "power-policy.c"
+    ],
+    "va": 17255744,
+    "size": 1738,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "display-state",
+    "sources": [
+      "display-state-entry.s",
+      "display-state-gc6.c"
+    ],
+    "va": 17257504,
+    "size": 888,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "fan-controller",
+    "sources": [
+      "fan-controller.s"
+    ],
+    "va": 17258400,
+    "size": 20,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "edid-timings",
+    "sources": [
+      "edid-timings-entry.s",
+      "edid-timings-convert.c",
+      "edid-timings-extend.c"
+    ],
+    "va": 17258432,
+    "size": 1734,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-fno-tree-loop-distribute-patterns",
+      "-fno-jump-tables",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2",
+      "-fstack-usage"
+    ]
+  },
+  {
+    "name": "allocation-check",
+    "sources": [
+      "allocation-check.s"
+    ],
+    "va": 17260192,
+    "size": 43,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "power-residency",
+    "sources": [
+      "power-residency.s"
+    ],
+    "va": 17260256,
+    "size": 110,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "bus-completion",
+    "sources": [
+      "bus-completion.s"
+    ],
+    "va": 17260384,
+    "size": 22,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "memory-power",
+    "sources": [
+      "memory-power.s"
+    ],
+    "va": 17260416,
+    "size": 14,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "startup-cleanup",
+    "sources": [
+      "startup-cleanup-hook.s",
+      "startup-cleanup-cleanup.c"
+    ],
+    "va": 17260448,
+    "size": 308,
+    "symbols": {},
+    "cflags": [
+      "-m32",
+      "-march=i686",
+      "-Os",
+      "-ffreestanding",
+      "-fno-pic",
+      "-fno-pie",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-builtin",
+      "-mno-sse",
+      "-mno-mmx",
+      "-msoft-float",
+      "-mpreferred-stack-boundary=2"
+    ]
+  },
+  {
+    "name": "ddr4-clock",
+    "sources": [
+      "ddr4-clock.s"
+    ],
+    "va": 17260768,
+    "size": 317,
+    "symbols": {},
+    "cflags": []
+  },
+  {
+    "name": "ddr4-barrel",
+    "sources": [
+      "ddr4-barrel.s"
+    ],
+    "va": 17261088,
+    "size": 317,
+    "symbols": {},
+    "cflags": []
+  }
+]

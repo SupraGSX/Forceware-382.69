@@ -2,9 +2,9 @@
 
 Custom NVIDIA 368.81-based driver for **Windows XP 32-bit**, adding Maxwell/Pascal desktop GPUs and improvements to rendering, display connections and NVIDIA Control Panel.
 
-**Current stable: [11-1-2026](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-11-01)**
+**Current stable: [11-9-2026](https://github.com/SupraGSX/Forceware-382.69/releases/tag/382.69-2026-11-09)**
 
-Improves GP107/GP108 clock and power-management requests, reset cleanup and low-power controller initialization. Includes the existing rendering, compute, display and legacy-GPU boot fixes.
+Fixes DDR4 GT 1030 display corruption, improves GP107/GP108 power management and fan-controller handling, and enables GP107 DisplayPort HBR3 selection with improved monitor-timing detection.
 
 ## Install
 
@@ -24,23 +24,23 @@ All original 368.81 INF files and device entries are retained, including noteboo
 
 ## Improvements
 
-- **Stability:** Corrected shared hook branch targets for older GPUs. Pascal-specific PMU worker ownership, clock/power and completion adaptations preserve native 368.81 core paths on earlier families.
-- **Rendering and compute:** Pascal initialization, OpenGL, CUDA, OpenCL and GPU PhysX fixes.
-- **DisplayPort:** HBR2/HBR3 training, startup and display sleep/wake recovery, automatic 8-bit fallback, and scaling within the trained link's bandwidth.
-- **HDMI:** Corrected HDMI identification, GPU/monitor-aware HDMI/DVI limits, SCDC setup and recovery, and native scaling with a 594 MHz ceiling.
+- **Runtime:** Pascal initialization, clock/power management, request completion and reset handling, including GT 1030 DDR4 memory-clock programming. The older-GPU boot repair and native PMU worker ownership are retained.
+- **Rendering and compute:** OpenGL, CUDA, OpenCL and GPU PhysX corrections, plus voltage-control and monitoring improvements.
+- **DisplayPort:** HBR2/HBR3 selection and training, startup and sleep/wake recovery, automatic 8-bit fallback, and scaling within the trained link's bandwidth. GP107 is no longer restricted to HBR2.
+- **HDMI:** Corrected HDMI identification, source/monitor/adapter-aware limits, SCDC setup and recovery, and native scaling. Eligible Fermi, Kepler and Maxwell 1 paths allow up to 340 MHz; eligible Maxwell 2/Pascal paths allow up to 594 MHz. DVI retains its own limits.
 - **Control Panel:** Restored Customize, separate Scaling and Overscan pages, and View system topology with EDID loading.
 
-## Compatibility
+## Tested hardware and limits
 
-- GT 1030 was tested on the MSI GDDR5 control. Fan-table and DDR4 memory-handling corrections passed ROM/parser and executable CPU tests; other boards and DDR4 hardware remain unqualified.
-- The GP107 391.35 firmware path was tested on GTX 1050 Ti and Quadro P620. HBR3 remains unresolved on the tested GTX 1050 Ti; HBR2 works. P2200 compatibility is not confirmed. INF inclusion is not individual model validation.
-- Automatic native DisplayPort scaling was tested at 60 Hz and does not carry a higher desktop refresh into lower-resolution games. Explicit higher-refresh modes remain available within link limits. HBR3 does not imply full DP 1.4 DSC, HDR or MST support.
-- Automatic HDMI scaling was verified at 543.5 MHz; physical output at the exact 594 MHz ceiling remains unverified. Overscan resizing depends on the timing.
-- Bounded PMU and concurrent-workload tests passed; long-run stability across physical systems remains unproven. Monitor audio was heard on the tested GTX 1050 Ti after restart; full GeForce Experience operation remains unverified.
+- November 9 has user-reported hardware validation on **Quadro M4000, GTX 1050 Ti, GT 640, and both GDDR5 and DDR4 GT 1030**. The DDR4 GT 1030 also passed a clean installation/reboot and six checked GDI/Direct3D/OpenGL rendering and relaunch cycles at 3440×1440 over HDMI.
+- GTX 1050 Ti DisplayPort was confirmed at **3440×1440/175 Hz, HBR3 ×4, RGB 8-bit** during testing of the included link policy. Supported modes still depend on the card, cable, monitor and successful training. This does not establish DSC, HDR or MST support.
+- Automatic DisplayPort scaling requires a preferred timing matching the requested refresh; it does not automatically carry a higher desktop refresh into lower-resolution games. Explicit supported higher-refresh modes remain available.
+- HDMI output was confirmed at 543.5 MHz on Pascal and 319.75 MHz on GT 640. Exact 594 MHz output and universal 340 MHz operation remain unverified. HDMI has no DisplayPort-style link-quality fallback; overscan resizing depends on the timing.
+- Quadro P620 passed earlier firmware-integration testing; the latest changes have not been requalified on it. P2200 and other untested models remain unconfirmed. Bounded tests do not establish all-board or long-run stability, or resolution of every reported freeze. Full GeForce Experience operation remains unverified.
 
 ## Source and rebuilding
 
-See [REBUILDING.md](REBUILDING.md) for the tested November 1 reconstruction from stock 368.81, exact input/output hashes, patch sources and qualification limits. No earlier Forceware release is required.
+See [REBUILDING.md](REBUILDING.md) for the November 9 reconstruction from **stock 368.81**, exact input/output hashes, patch sources and qualification limits. No earlier Forceware release is required.
 
 The repository provides the patcher, added C/assembly routines and installer templates. **382.69 is this project's custom release number**, based on NVIDIA 368.81.
 

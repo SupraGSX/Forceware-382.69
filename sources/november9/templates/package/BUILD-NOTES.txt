@@ -1,0 +1,7 @@
+Forceware 382.69 (11-9-2026)
+
+- Fixed black-and-white bars and display corruption on DDR4 GT 1030 cards.
+- Improved GP107/GP108 power management, fan-controller handling and cleanup after failed initialization.
+- Enabled GP107 DisplayPort HBR3 selection and improved detection of monitor timings.
+
+When upgrading, select **Custom (Advanced) → Perform a clean installation**, then restart.

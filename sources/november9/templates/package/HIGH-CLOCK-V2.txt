@@ -1,0 +1,12 @@
+HDMI clock handling
+
+Eligible Fermi, Kepler and Maxwell 1 HDMI paths allow up to 340 MHz,
+subject to source, connector, adapter and monitor limits. Maxwell 2 and
+Pascal retain their HDMI 2.0 handling, with a 594 MHz policy ceiling.
+DVI remains subject to its separate single-link/dual-link restrictions.
+
+GT 640 output was confirmed at 3440x1440/60, 319.75 MHz. A 340 MHz
+custom timing gave no picture on that test configuration; the cause was
+not established. Pascal HDMI output was confirmed at 543.5 MHz.
+Exact-ceiling operation is not guaranteed on every board or monitor.
+HDMI has no automatic DisplayPort-style link-quality fallback.
